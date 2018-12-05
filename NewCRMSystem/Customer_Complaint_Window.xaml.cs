@@ -24,7 +24,6 @@ namespace NewCRMSystem
         public Customer_Complaint_Window()
         {
             InitializeComponent();
-            setCompID();
         }
 
         private string compID;
@@ -36,25 +35,7 @@ namespace NewCRMSystem
         private string relShrmID;
 
         string query;
-
-        private void setCompID()
-        {
-            try
-            {
-                Database db = new Database();
-                string query = "select case when MAX(comp_id) is null then '10000000' else MAX(comp_id) END as comp_id from Complaint";
-                compID = db.ReadData(query, "comp_id");
-                txt_compID.Text = (Int32.Parse(compID)+1).ToString() ;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        
 
         private void next_btn_Click(object sender, RoutedEventArgs e)
         {

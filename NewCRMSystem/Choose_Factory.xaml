@@ -72,7 +72,7 @@
                                 </StackPanel>
                             </Grid>
                             <ScrollViewer>
-                                <DataGrid x:Name="dataGrid" HorizontalAlignment="Left"  Margin="10,0,0,0" Width="2019" Height="158" />
+                                <DataGrid x:Name="dataGrid" Height="158" />
                             </ScrollViewer>
                             <Button x:Name="btn_next" Padding="5"  Content="Next" FontWeight="ExtraBlack" FontSize="15" Margin="512,20,30,10" Height="40" Width="120"/>
                         </StackPanel>

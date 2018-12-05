@@ -19,14 +19,62 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Delivery : Window
     {
+        int deliveryID;
+        int compItemID;
+        int sourceID;
+        int destinationID;
+
+
         public Delivery()
         {
             InitializeComponent();
         }
 
+        public Delivery(int compItemID1)
+        {
+            InitializeComponent();
+            compItemID = compItemID1;
+            txt_compItemID.Text = compItemID1.ToString();
+        }
+
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void btn_process_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (rb_Insert.IsChecked == true)
+                {
+                    compItemID = Int32.Parse(txt_compItemID.Text.Trim());
+                    sourceID = Int32.Parse(txt_sourceID.Text.Trim());
+                    destinationID = Int32.Parse(txt_desID.Text.Trim());
+
+                    string query = "INSERT INTO Delivery (comp_item_id ,source_id ,destination_id ,source_dt ) values (" + compItemID + ", " + sourceID + ", " + destinationID + ", DEFAULT)";
+                    Database db = new Database();
+
+                    if (db.Save_Del_Update(query) > 0)
+                    {
+                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
     }
 }

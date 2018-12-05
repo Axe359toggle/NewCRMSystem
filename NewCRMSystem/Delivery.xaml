@@ -54,11 +54,6 @@
                                     <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_update" Content="Update" FontWeight="Heavy" FontSize="20"  />
                                 </Viewbox>
                             </StackPanel>
-                            <StackPanel Grid.Column="2" >
-                                <Viewbox Height="30">
-                                    <RadioButton GroupName="Operators" Padding="2"  Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_delete" Content="Delete" FontWeight="Heavy" FontSize="20"  />
-                                </Viewbox>
-                            </StackPanel>
                             <StackPanel Grid.Column="4">
                                 <Viewbox Height="30">
                                     <RadioButton GroupName="Operators" Padding="2"  Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_search" Content="Search" FontWeight="Heavy" FontSize="20" />
@@ -185,8 +180,8 @@
                             </StackPanel>
                         </Grid>
                         <StackPanel Margin="100 20 50 0">
-                            <Button x:Name="btn_search" Padding="5" Width="100"  Content="Search" FontWeight="ExtraBlack" FontSize="15" Height="48"/>
-                            <DataGrid x:Name="dataGrid_logDetails" Height="131" />
+                            <Button x:Name="btn_process" Padding="5" Width="100"  Content="Process" Click="btn_process_Click" />
+                            <DataGrid x:Name="dg_logDetails" Height="131" />
                         </StackPanel>
 
                         <Grid Margin="100 20 50 0" >
