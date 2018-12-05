@@ -26,13 +26,13 @@ namespace NewCRMSystem
             InitializeComponent();
         }
 
-        private string compID;
-        private string refID;
-        private string cusID;
+        private int compID;
+        private int refID;
+        private int cusID;
         private string compMethod;
         private string compType1 = "Customer";
         private string compType2;
-        private string relShrmID;
+        private int relShrmID;
 
         string query;
         
@@ -43,8 +43,8 @@ namespace NewCRMSystem
             {
                 if (validate())
                 {
-                    compID = txt_compID.Text;
-                    cusID = txt_cusID.Text.Trim();
+                    compID = Int32.Parse(txt_compID.Text);
+                    cusID = Int32.Parse(txt_cusID.Text.Trim());
 
                     if (rbn_byCall.IsChecked == true) { compMethod = "By Call"; }
                     else if (rbn_inPerson.IsChecked == true) { compMethod = "In Person"; }
@@ -61,7 +61,7 @@ namespace NewCRMSystem
                         {
                             
                             string query1 = "INSERT INTO Reference DEFAULT VALUES DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as ref_id";
-                            txt_refID.Text = refID = db.ReadData(query1, "ref_id");
+                            txt_refID.Text = db.ReadData(query1, "ref_id");
                         }
                         catch (SqlException ex)
                         {
@@ -75,7 +75,7 @@ namespace NewCRMSystem
                     }
                     else
                     {
-                        refID = txt_refID.Text.Trim();
+                        refID = Int32.Parse(txt_refID.Text.Trim());
                     }
 
 
@@ -85,7 +85,7 @@ namespace NewCRMSystem
                     }
                     else
                     {
-                        relShrmID = txt_relShrmID.Text.Trim();
+                        relShrmID = Int32.Parse(txt_relShrmID.Text.Trim());
                         query = "INSERT INTO Complaint (comp_id,comp_type,ref_id) values('" + compID + "','" + compType1 + "','" + refID + "') INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type,related_showroom) values('" + compID + "','" + cusID + "','"+compMethod+"','" + compType2 + "','"+ relShrmID +"')";
                     }
 
@@ -126,7 +126,7 @@ namespace NewCRMSystem
         {
             bool check = true;
 
-            if(txt_compID.Text.Length != CRMdbData.Complaint.comp_id.size)
+            if(CRMdbData.Complaint.comp_id.validate(txt_compID.Text))
             {
                 check = false;
                 compIDNotify.Source = compIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
@@ -136,7 +136,7 @@ namespace NewCRMSystem
                 compIDNotify.Source = compIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
 
-            if (!(txt_refID.Text.Trim().Length >= CRMdbData.Reference.ref_id.minsize || txt_refID.Text.Trim().Length == 0 ))
+            if (CRMdbData.Reference.ref_id.validate(txt_refID.Text))
             {
                 check = false;
                 refIDNotify.Source = refIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
@@ -146,7 +146,7 @@ namespace NewCRMSystem
                 refIDNotify.Source = refIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
 
-            if (txt_cusID.Text.Trim().Length != CRMdbData.Customer.cus_id.size)
+            if (CRMdbData.Customer.cus_id.validate(txt_cusID.Text))
             {
                 check = false;
                 cusIDNotify.Source = cusIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
@@ -176,7 +176,7 @@ namespace NewCRMSystem
                 compTypeNotify.Source = compTypeNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
 
-            if (!(txt_relShrmID.Text.Trim().Length == CRMdbData.Location.location_id.size || txt_relShrmID.Text.Trim().Length == 0))
+            if (CRMdbData.Location.location_id.validate(txt_relShrmID.Text)
             {
                 check = false;
                 relShrmIDNotify.Source = relShrmIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;

@@ -25,7 +25,7 @@ namespace NewCRMSystem
            
         }
 
-        public ReceivedItem_Details(string compID)
+        public ReceivedItem_Details(int compID)
         {
             InitializeComponent();
 

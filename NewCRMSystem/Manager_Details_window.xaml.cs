@@ -22,7 +22,7 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Manager_Details_window : Window
     {
-        private string managerID;
+        private int managerID;
         private string title;
         private string fname;
         private string lname;

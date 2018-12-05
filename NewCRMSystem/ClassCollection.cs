@@ -297,128 +297,320 @@ namespace NewCRMSystem
 
     static class CRMdbData
     {
+        //Location table
         internal static class Location
         {
             internal static class location_id
             {
                 internal static int size = 5;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class addr_no
             {
                 internal static int size = 30;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class addr_lane
             {
                 internal static int size = 100;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class addr_town
             {
                 internal static int size = 30;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class addr_city
             {
                 internal static int size = 30;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class location_type
             {
                 internal static int size = 12;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
         }
+        //Designation table
         internal static class Designation
         {
             internal static class des_id
             {
                 internal static int size = 1;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class desName
             {
                 internal static int size = 20;
+                static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
         }
+        //Manager table
         internal static class Manager
         {
             internal static class emp_id
             {
                 internal static int size = 6;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class emp_title
             {
                 internal static int size = 5;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
-            internal static class emp_fullname
+            internal static class emp_fname
             {
-                internal static int size = 100;
+                internal static int size = 30;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class emp_lname
+            {
+                internal static int size = 30;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class emp_tp
             {
                 internal static int size = 12;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class emp_email
             {
                 internal static int size = 100;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
         }
+        //Complaint table
         internal static class Complaint
         {
             internal static class comp_id
             {
                 internal static int size = 8;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class comp_type
             {
                 internal static int size = 8;
+                static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
         }
+        //Customer table
         internal static class Customer
         {
             internal static class cus_id
             {
                 internal static int size = 7;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class cus_name
             {
                 internal static int size = 50;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class cus_tp
             {
                 internal static int size = 12;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    return check;
+                }
             }
             internal static class cus_email
             {
                 internal static int size = 100;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
         }
+        //CustomerComplaint table
         internal static class CustomerComplaint
         {
             internal static class comp_method
             {
                 internal static int size = 9;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class cus_comp_type
             {
                 internal static int size = 5;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
         }
+        //Reference table
         internal static class Reference
         {
             internal static class ref_id
             {
                 internal static int minsize = 8;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length < minsize)
+                        check = false;
+                    return check;
+                }
             }
         }
+        //Login table
         internal static class Login
         {
             internal static class login_id
             {
                 internal static int size = 6;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class emp_username
             {
                 internal static int size = 30;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
             internal static class emp_pass
             {
                 internal static int size = 64;
+                internal static bool validate(string value)
+                {
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
             }
         }
 

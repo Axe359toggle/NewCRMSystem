@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-         Title="Location" Height="500" Width="800" Background="#FFFF8C00" >
-    <Border Padding="10" Background="#FF8B4513"  Margin="20" CornerRadius="30">
+         Title="Location" Height="500" Width="800" >
+    <Border Padding="10"  Margin="20" CornerRadius="30">
         <StackPanel>
             <TextBlock Text="Location" HorizontalAlignment="Center"  Foreground="White" FontWeight="Heavy"  FontStyle="Oblique"  Margin="0,10"/>
             <!--Buttons-->
@@ -21,22 +21,22 @@
 
                 <StackPanel Grid.Column="0" >
                     <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
-                        <RadioButton GroupName="Operators" Padding="2" Background="LightSteelBlue"  Foreground="LightSlateGray"  VerticalContentAlignment="Center"  Name="rbInsert" Content="Insert" FontWeight="Heavy" FontSize="20"  RenderTransformOrigin="0.484,0.484"/>
+                        <RadioButton GroupName="Operators" Padding="2" Background="LightSteelBlue"  VerticalContentAlignment="Center"  Name="rbInsert" Content="Insert" FontWeight="Heavy" FontSize="20"  RenderTransformOrigin="0.484,0.484"/>
                     </Viewbox>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <Viewbox Height="30">
-                        <RadioButton GroupName="Operators" Padding="2" Background="LightSteelBlue"  Foreground="LightSlateGray" VerticalContentAlignment="Center" Name="rbUpdate" Content="Update" FontWeight="Heavy" FontSize="20" />
+                        <RadioButton GroupName="Operators" Padding="2" Background="LightSteelBlue" VerticalContentAlignment="Center" Name="rbUpdate" Content="Update" FontWeight="Heavy" FontSize="20" />
                     </Viewbox>
                 </StackPanel>
                 <StackPanel Grid.Column="2" >
                     <Viewbox Height="30">
-                        <RadioButton GroupName="Operators" Padding="2"  Background="LightSteelBlue"  Foreground="LightSlateGray" VerticalContentAlignment="Center" Name="rbDelete" Content="Delete" FontWeight="Heavy" FontSize="20" />
+                        <RadioButton GroupName="Operators" Padding="2"  Background="LightSteelBlue"  VerticalContentAlignment="Center" Name="rbDelete" Content="Delete" FontWeight="Heavy" FontSize="20" />
                     </Viewbox>
                 </StackPanel>
                 <StackPanel Grid.Column="4">
                     <Viewbox Height="30">
-                        <RadioButton GroupName="Operators" Padding="2"  Background="LightSteelBlue"  Foreground="LightSlateGray" VerticalContentAlignment="Center" Name="rbSearch" Content="Search" FontWeight="Heavy" FontSize="20"/>
+                        <RadioButton GroupName="Operators" Padding="2"  Background="LightSteelBlue"  VerticalContentAlignment="Center" Name="rbSearch" Content="Search" FontWeight="Heavy" FontSize="20"/>
                     </Viewbox>
                 </StackPanel>
             </Grid>
