@@ -57,6 +57,9 @@
     <Compile Include="Assign_New_Item_Window.xaml.cs">
       <DependentUpon>Assign_New_Item_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Location.xaml.cs">
+      <DependentUpon>Location.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rebate_Payment.xaml.cs">
       <DependentUpon>Rebate_Payment.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,10 @@
     <Page Include="Item_Details.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Location.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
