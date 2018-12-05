@@ -1,0 +1,223 @@
+﻿<Window x:Class="NewCRMSystem.Delivery"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewCRMSystem"
+        mc:Ignorable="d"
+        Title="Delivery" Height="1000" Width="1000" Background="FloralWhite" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource panelRowSize}"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+                <DockPanel>
+                    <Image Source="{StaticResource backButtonImage}"/>
+                </DockPanel>
+            </Button>
+            <Grid Grid.Column="1">
+                <local:CommonControlPanel/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+
+
+                <Border Padding="10" Background="LightPink"  Margin="20,20,20,23" CornerRadius="30">
+                    <StackPanel Margin="0,0,0,-10">
+                        <TextBlock Text="Delivery" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Heavy"  FontStyle="Oblique" FontSize="25" Margin="320,10,0,10" Width="164"/>
+                        <!--Buttons-->
+                        <Grid Margin="61,10,10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="94*"/>
+                                <ColumnDefinition Width="94*"/>
+                                <ColumnDefinition Width="85*"/>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="94*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" >
+                                <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
+                                    <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center"  x:Name="rb_Insert" Content="Insert" FontWeight="Heavy" FontSize="20"/>
+                                </Viewbox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Viewbox Height="30">
+                                    <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_update" Content="Update" FontWeight="Heavy" FontSize="20"  />
+                                </Viewbox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" >
+                                <Viewbox Height="30">
+                                    <RadioButton GroupName="Operators" Padding="2"  Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_delete" Content="Delete" FontWeight="Heavy" FontSize="20"  />
+                                </Viewbox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="4">
+                                <Viewbox Height="30">
+                                    <RadioButton GroupName="Operators" Padding="2"  Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_search" Content="Search" FontWeight="Heavy" FontSize="20" />
+                                </Viewbox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="348">
+                            <StackPanel>
+                                <Grid Margin="100 20 50 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox Content="Delivery Id" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_deliveryID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="deliveryIDNotify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                                <Grid Margin="100 20 50 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox Content="Complaint Item Id" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_compItemID"  Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="compItemIDNotify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                    <Button x:Name="btn_compItemSearch" Grid.Column="3" Content="Search"/>
+                                </Grid>
+                                <Grid Margin="100 20 50 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox Content="Source Id" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_sourceID"  Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="sourceIDNotify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                    <Button x:Name="btn_sourceSearch" Grid.Column="3" Content="Search"/>
+                                </Grid>
+                                <Grid Margin="100 20 50 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox Content="Source Name" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_sourceName"  Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="sourceNameNotify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                                <Grid Margin="100 20 50 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox Content="Source Send Date" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <DatePicker x:Name="dt_sendDate"  Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="sendDateNotify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                                <Grid Margin="100 20 50 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox Content="Destination Id" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_desID"  Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="destinationIDNotify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                    <Button x:Name="btn_destinationSearch" Grid.Column="3" Content="Search"/>
+                                </Grid>
+                                <Grid Margin="100 20 50 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox Content="Destination Name" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_desName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="destinNameIDNotify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Margin="100 20 50 0">
+                            <Button x:Name="btn_search" Padding="5" Width="100"  Content="Search" FontWeight="ExtraBlack" FontSize="15" Height="48"/>
+                            <DataGrid x:Name="dataGrid_logDetails" Height="131" />
+                        </StackPanel>
+
+                        <Grid Margin="100 20 50 0" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Content="Destination Receive Date" Foreground="Black" FontWeight="Heavy" FontSize="15" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <DatePicker x:Name="dt_desReceivedDate" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                <Grid Grid.Column="2">
+                                    <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                        <Image x:Name="destinDtIDNotify"/>
+                                    </DockPanel>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                    </StackPanel>
+                </Border>
+
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid Grid.Row="2" Margin="100 10 50 20">
+                <Button x:Name="ok_btn" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" />
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

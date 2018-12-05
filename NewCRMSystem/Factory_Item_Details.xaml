@@ -1,0 +1,83 @@
+﻿<Window x:Class="NewCRMSystem.Factory_Item_Details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewCRMSystem"
+        mc:Ignorable="d"
+        Title="Factory Item_Details" Height="1109.766" Width="900" Background="FloralWhite" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource panelRowSize}"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+                <DockPanel>
+                    <Image Source="{StaticResource backButtonImage}"/>
+                </DockPanel>
+            </Button>
+            <Grid Grid.Column="1">
+                <local:CommonControlPanel/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+
+                <Border Padding="10" Background="LightBlue"  Margin="20" CornerRadius="30">
+                    <StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Item Details" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Heavy"  FontStyle="Oblique" FontSize="25" Margin="288,10,0,10"/>
+                            <Grid Height="1010">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="175*"/>
+                                    <ColumnDefinition Width="172*"/>
+                                    <ColumnDefinition Width="63*"/>
+                                    <ColumnDefinition Width="0*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" Margin="40,0,0,174">
+                                    <TextBlock Text="Complaint ID" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 10 0 0"/>
+                                    <TextBlock Text="Complaint Item ID" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 20 0 0"/>
+                                    <TextBlock Text="Delivary ID" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
+                                    <TextBlock Text="Item ID" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
+                                    <TextBlock Text="Item Defect" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_itemDefectImage" Margin="0,30,0,0" Height="184"/>
+                                    <TextBlock Text="Item Defect Image" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="30 10 0 0" Height="30"/>
+                                    <TextBlock Text="Item Remarks" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
+                                    <TextBlock Text="Decision" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 200 0 0"/>
+                                    <TextBlock Text="Investigation Date" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 50 0 0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Height="836" VerticalAlignment="Bottom" Margin="0,0,0,174" >
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_compID" Margin="0 10 0 0"/>
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_compItemID" Margin="0 10 0 0"/>
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_delivaryID" Margin="0 10 0 0"/>
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_itemID" Margin="0 10 0 0"/>
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_itemDefect" Margin="0 10 0 0"/>
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_itemImage" Margin="20,20,0,0" Height="178"/>
+                                    <TextBlock Text="Item Image" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="70,10,0,0" Height="26"/>
+                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_itemImageRemarks" Margin="20,20,0,0" Height="178"/>
+                                    <RadioButton Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center"  x:Name="rb_Investigate" Content="Investigate" FontSize="20" Margin="0,35,224,0"/>
+                                    <RadioButton Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center"  x:Name="rb_Repair" Content="Repair" FontSize="20" />
+                                    <DatePicker HorizontalAlignment="Left" Height="28" Width="348" VerticalAlignment="Top" Grid.ColumnSpan="2" Name="DateTime_deliver" Margin="0 10 0 0" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" Margin="0,0,0,96">
+                                    <Button x:Name="btn_details" Padding="5"  Margin="10,120,10,0" Content="Details" FontWeight="ExtraBlack" FontSize="15" />
+                                    <Button x:Name="btn_next" Padding="5"  Margin="10,700,10,0" Content="Next" FontWeight="ExtraBlack" FontSize="15" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
+

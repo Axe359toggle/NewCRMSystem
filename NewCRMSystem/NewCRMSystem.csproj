@@ -54,6 +54,97 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assign_New_Item_Window.xaml.cs">
+      <DependentUpon>Assign_New_Item_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rebate_Payment.xaml.cs">
+      <DependentUpon>Rebate_Payment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedItem_Details.xaml.cs">
+      <DependentUpon>ReceivedItem_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Receive_Item.xaml.cs">
+      <DependentUpon>Receive_Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repair.xaml.cs">
+      <DependentUpon>Repair.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Search_Complaints.xaml.cs">
+      <DependentUpon>Search_Complaints.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowroomManager_MainMenu.xaml.cs">
+      <DependentUpon>ShowroomManager_MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Showroom_Manager_Mainmenu.xaml.cs">
+      <DependentUpon>Showroom_Manager_Mainmenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Staff_Complaint.xaml.cs">
+      <DependentUpon>Staff_Complaint.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Assign_New_Item_Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Choose_Factory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CommonControlPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Customer_Complaint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Customer_Complaint_Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Customer_Details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Delivery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Deliver_Item.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Deliver_To_Customer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Factory_Item_Details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HQ_insert_Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HQ_Manager_Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Item_Complaint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Item_Details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login_Details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,12 +153,97 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Choose_Factory.xaml.cs">
+      <DependentUpon>Choose_Factory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassCollection.cs" />
+    <Compile Include="CommonControlPanel.xaml.cs">
+      <DependentUpon>CommonControlPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Complaint.xaml.cs">
+      <DependentUpon>Customer_Complaint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Complaint_Window.xaml.cs">
+      <DependentUpon>Customer_Complaint_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Details.xaml.cs">
+      <DependentUpon>Customer_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery.xaml.cs">
+      <DependentUpon>Delivery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Deliver_Item.xaml.cs">
+      <DependentUpon>Deliver_Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Deliver_To_Customer.xaml.cs">
+      <DependentUpon>Deliver_To_Customer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Factory_Item_Details.xaml.cs">
+      <DependentUpon>Factory_Item_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HQ_insert_Dashboard.xaml.cs">
+      <DependentUpon>HQ_insert_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HQ_Manager_Dashboard.xaml.cs">
+      <DependentUpon>HQ_Manager_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Item_Complaint.xaml.cs">
+      <DependentUpon>Item_Complaint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Item_Details.xaml.cs">
+      <DependentUpon>Item_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login_Details.xaml.cs">
+      <DependentUpon>Login_Details.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Manager_Details_window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Rebate_Payment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReceivedItem_Details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Receive_Item.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Repair.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Search_Complaints.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ShowroomManager_MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Showroom_Manager_Mainmenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Staff_Complaint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager_Details_window.xaml.cs">
+      <DependentUpon>Manager_Details_window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +268,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8_Back_To_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8_Checked_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8_High_Priority_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8_Home_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8_Logout_Rounded_Up_96px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

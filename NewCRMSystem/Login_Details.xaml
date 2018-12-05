@@ -1,0 +1,193 @@
+﻿<Window x:Class="NewCRMSystem.Login_Details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewCRMSystem"
+        mc:Ignorable="d"
+       Title="Login Details" Height="700" Width="900" Background="FloralWhite" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource panelRowSize}"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+                <DockPanel>
+                    <Image Source="{StaticResource backButtonImage}"/>
+                </DockPanel>
+            </Button>
+            <Grid Grid.Column="1">
+                <local:CommonControlPanel/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <Border Padding="10" Background="PaleVioletRed"  Margin="20" CornerRadius="30">
+                    <StackPanel>
+                        <TextBlock Text="Login Details" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Heavy" FontSize="25" Margin="50,10,0,10"/>
+
+                        <!--Buttons-->
+                        <Grid Margin="10,10,10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="94*"/>
+                                <ColumnDefinition Width="94*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" >
+                                <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
+                                    <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center"  x:Name="insert_rbn" Content="Insert" FontWeight="Heavy" FontSize="20"  RenderTransformOrigin="0.484,0.484" Checked="insert_rbn_Checked"/>
+                                </Viewbox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Viewbox Height="30">
+                                    <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="update_rbn" Content="Update" FontWeight="Heavy" FontSize="20" Checked="update_rbn_Checked"  />
+                                </Viewbox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" >
+                            </StackPanel>
+                        </Grid>
+
+                        <!--Login Id-->
+                        <Grid Margin="10 10 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Login ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <TextBox Grid.Column="2" x:Name="loginID_txt" Background="AliceBlue"  Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                            <DockPanel Grid.Column="3" Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="loginIDNotify"/>
+                            </DockPanel>
+                            
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Employee ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <TextBox Grid.Column="2" x:Name="empID_txt" Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                            <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
+                                <Image x:Name="empIDNotify"/>
+                            </DockPanel>
+
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Designation ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <TextBox Grid.Column="2" x:Name="desID_txt" Background="AliceBlue" Padding="5" Height="28" IsReadOnly="False" VerticalContentAlignment="Center"/>
+                            <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
+                                <Image x:Name="desIDNotify"/>
+                            </DockPanel>
+
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Username" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <TextBox Grid.Column="2" x:Name="uName_txt" Background="AliceBlue" Padding="5" Height="28" VerticalContentAlignment="Center"/>
+                            <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
+                                <Image x:Name="uNameNotify"/>
+                            </DockPanel>
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Current Password" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <PasswordBox Grid.Column="2" x:Name="currPass_txt" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
+                            <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
+                                <Image x:Name="currPassNotify"/>
+                            </DockPanel>
+
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="New Password" Foreground="Black" FontWeight="Heavy" FontSize="15" />
+                            <PasswordBox Grid.Column="2" x:Name="newPass_txt" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
+                            <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
+                                <Image x:Name="newPassNotify"/>
+                            </DockPanel>
+
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Re-Enter Password" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <PasswordBox Grid.Column="2" x:Name="rePass_txt" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
+                            <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
+                                <Image x:Name="rePassNotify"/>
+                            </DockPanel>
+
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Account Status" Foreground="Black" FontWeight="Heavy" FontSize="15" />
+                            <ComboBox Grid.Column="2" Background="AliceBlue" Padding="5" x:Name="accStatus_cmb" VerticalContentAlignment="Center"/>
+
+                        </Grid>
+                        <Grid Margin="10 5 10 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="Login set Date" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <TextBox Grid.Column="2" IsReadOnly="True" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center" />
+
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2" Margin="100 10 50 20">
+            <Button x:Name="ok_btn" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" Click="ok_btn_Click"/>
+        </Grid>
+    </Grid>
+</Window>
