@@ -120,7 +120,7 @@ namespace NewCRMSystem
                         }
                         else if (rbn_itemComp.IsChecked == true)
                         {
-                            Login.b1.addWindowAndOpenNextWindow(this, new Item_Complaint(compID));
+                            Login.b1.addWindowAndOpenNextWindow(this, new ReceivedItem_Details(compID));
                         }
                         //open next window
                     }

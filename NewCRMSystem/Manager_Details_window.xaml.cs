@@ -24,12 +24,13 @@ namespace NewCRMSystem
     {
         private string managerID;
         private string title;
-        private string fullName;
+        private string fname;
+        private string lname;
         private string tp;
-        private string email;
         private string accStatus;
         private string desID;
         private string loginID;
+        private string locationID;
 
 
         public Manager_Details_window()
@@ -70,7 +71,6 @@ namespace NewCRMSystem
             cmbTitle.Text = "";
             txtFullName.Text = "";
             txtTp.Text = "";
-            txtEmail.Text = "";
             txtLoginStatus.Text = "";
             cmbDes.Text = "";
         }
@@ -109,7 +109,6 @@ namespace NewCRMSystem
             btnProcess.Content = "Insert";
             rbnUpdate.IsEnabled = false;
             btnSetLogin.IsEnabled = false;
-            btnLocationAdd.IsEnabled = false;
             setErrorImagesNull();
         }
 
@@ -119,7 +118,6 @@ namespace NewCRMSystem
             txtManagerID.IsReadOnly = true;
             txtlocationID.IsReadOnly = true;
             btnSetLogin.IsEnabled = true;
-            btnLocationAdd.IsEnabled = true;
             txtlocationID.Text = "";
             rbnUpdate.IsEnabled = true;
             btnProcess.Content = "Update";
@@ -133,30 +131,10 @@ namespace NewCRMSystem
             txtlocationID.IsReadOnly = false;
             rbnUpdate.IsEnabled = false;
             btnSetLogin.IsEnabled = false;
-            btnLocationAdd.IsEnabled = false;
             btnProcess.Content = "Search";
             setErrorImagesNull();
         }
-
-        //load new ManagerID
-        private void setManagerID()
-        {
-            try
-            {
-                Database db = new Database();
-                string query = "select case when MAX(emp_id) is null then '100000' else MAX(emp_id) END as emp_id from Manager";
-                managerID = db.ReadData(query, "emp_id");
-                txtManagerID.Text = (Int32.Parse(managerID) + 1).ToString();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        
 
         private void btnProcess_Click(object sender, RoutedEventArgs e)
         {
@@ -167,19 +145,10 @@ namespace NewCRMSystem
                     if (validate())
                     {
 
-                        if (txtManagerID.Text.Trim().Length == 0)
-                        {
-                            setManagerID();
-                        }
-                        else
-                        {
-                            managerID = txtManagerID.Text.Trim();
-                        }
-
                         title = cmbTitle.Text.Trim();
-                        fullName = txtFullName.Text.Trim();
+                        fname = txtFname.Text.Trim();
+                        lname = txtLname.Text.Trim();
                         tp = txtTp.Text.Trim();
-                        email = txtEmail.Text.Trim();
                         //accStatus = 
                         //loginID;
 
@@ -202,7 +171,7 @@ namespace NewCRMSystem
 
 
                         Database db = new Database();
-                        string query = "INSERT INTO Manager (emp_id, emp_title, emp_fullname, emp_tp, emp_email, des_id) values ('" + managerID + "','" + title + "','" + fullName + "','" + tp + "','" + email + "','" + desID + "')";
+                        string query = "INSERT INTO Manager ( emp_title, emp_fname, emp_lname, emp_tp, des_id, location_id) values ('" + title + "','" + fname + "','" + lname + "','" + tp + "','" + desID + "','"+locationID+"')";
                         int rows = db.Save_Del_Update(query);
 
                         if (rows > 0)
@@ -231,7 +200,7 @@ namespace NewCRMSystem
                 else if (rbnSearch.IsChecked == true)
                 {
 
-                    string query = "SELECT emp_id,emp_title,emp_fullname,emp_tp,emp_email,des_id,login_id from Manager";
+                    string query = "SELECT emp_id,emp_title,emp_fname,emp_lname,emp_tp,des_id,login_id,location_id,assigned_dt from Manager";
                     int x = 0;
 
                     void checkX()
@@ -242,7 +211,7 @@ namespace NewCRMSystem
                         }
                     }
 
-                    if (chkManagerID.IsChecked == true || chkTitle.IsChecked == true || chkFullName.IsChecked==true || chkTp.IsChecked==true || chkEmail.IsChecked==true || chkAccStatus.IsChecked==true || chkDes.IsChecked==true || chkLocation.IsChecked==true)
+                    if (chkManagerID.IsChecked == true || chkTitle.IsChecked == true || chkFullName.IsChecked==true || chkTp.IsChecked==true || chkAccStatus.IsChecked==true || chkDes.IsChecked==true || chkLocation.IsChecked==true)
                     {
                         query = query + " WHERE";
                     }
@@ -270,12 +239,6 @@ namespace NewCRMSystem
                     {
                         checkX();
                         query = query + " emp_tp LIKE '%" + txtTp.Text + "%'";
-                        x++;
-                    }
-                    if (chkEmail.IsChecked == true && txtEmail.Text.Length > 0)
-                    {
-                        checkX();
-                        query = query + " emp_email LIKE '%" + txtEmail.Text + "%'";
                         x++;
                     }
 
@@ -369,16 +332,6 @@ namespace NewCRMSystem
                 tpNotify.Source = tpNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
 
-            if (txtEmail.Text.Trim().Length > CRMdbData.Manager.emp_email.size || txtEmail.Text.Trim().Length == 0)
-            {
-                check = false;
-                emailNotify.Source = emailNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-            }
-            else
-            {
-                emailNotify.Source = emailNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-
             if (cmbDes.Text.Trim().Length > CRMdbData.Designation.desName.size || cmbDes.Text.Trim().Length == 0)
             {
                 check = false;
@@ -398,7 +351,6 @@ namespace NewCRMSystem
             titleNotify.Source = null;
             fullNameNotify.Source = null;
             tpNotify.Source = null;
-            emailNotify.Source = null;
             desNotify.Source = null;
         }
 
@@ -413,36 +365,29 @@ namespace NewCRMSystem
                     cmbTitle.Text = dv.Row.ItemArray[1].ToString();//emp_title
                     txtFullName.Text = dv.Row.ItemArray[2].ToString();//emp_fullname
                     txtTp.Text = dv.Row.ItemArray[3].ToString();//emp_tp
-                    txtEmail.Text = dv.Row.ItemArray[4].ToString();//emp_email
 
                     loginID = dv.Row.ItemArray[6].ToString();//login_id
                     string query = "Select login_dt,logout_dt from LoginDetails where login_id='" + loginID + "' ";
                     Database db = new Database();
                     loginDatagrid.ItemsSource = db.GetData(query).AsDataView();
-
-                    string query2="";
+                    
                     desID = dv.Row.ItemArray[5].ToString();//emp_title
                     if (desID.Equals("S"))
                     {
                         cmbDes.Text = "Showroom Manager";
-                        query2 = "select location_id, assigned_dt from ShowroomManager_Showroom where emp_id ='" + dv.Row.ItemArray[0].ToString() + "' ";
                     }
                     else if (desID.Equals("F"))
                     {
                         cmbDes.Text = "Factory Manager";
-                        query2 = "select location_id, assigned_dt from FactoryManager_Factory where emp_id ='" + dv.Row.ItemArray[0].ToString() + "' ";
                     }
                     else if (desID.Equals("H"))
                     {
                         cmbDes.Text = "Headquarters Manager";
-                        query2 = "select '10000' as location_id, assigned_dt from HQ_Top_Manager where emp_id ='" + dv.Row.ItemArray[0].ToString() + "' ";
                     }
                     else if (desID.Equals("T"))
                     {
                         cmbDes.Text = "Top Manager";
-                        query2 = "select '10000' as location_id, assigned_dt from HQ_Top_Manager where emp_id ='" + dv.Row.ItemArray[0].ToString() + "' ";
                     }
-                    locationDatagrid.ItemsSource = db.GetData(query2).AsDataView();
 
 
                     rbnUpdate.IsChecked = true;

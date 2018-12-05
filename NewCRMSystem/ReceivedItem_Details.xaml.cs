@@ -25,6 +25,11 @@ namespace NewCRMSystem
            
         }
 
+        public ReceivedItem_Details(string compID)
+        {
+            InitializeComponent();
+
+        }
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);

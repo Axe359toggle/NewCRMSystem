@@ -88,10 +88,6 @@
                                     <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_staffName" Margin="0 10 0 0"/>
                                     <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_description" Margin="0 10 0 0" Height="70"/>
                                 </StackPanel>
-
-
-                                <StackPanel Grid.Column="3"/>
-                                <Button x:Name="btn_ok" Padding="5"   Content="Ok" FontWeight="ExtraBlack" FontSize="15" Grid.Column="2" Margin="64,216,36,74"/>
                             </Grid>
 
 
@@ -99,6 +95,9 @@
                     </StackPanel>
                 </Border>
             </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2" Margin="100 10 50 20">
+            <Button x:Name="btn_ok" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" Click="btn_ok_Click" />
         </Grid>
     </Grid>
 </Window>
