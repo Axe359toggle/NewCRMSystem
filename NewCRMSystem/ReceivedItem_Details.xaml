@@ -188,7 +188,7 @@
             </ScrollViewer>
         </Grid>
         <Grid Grid.Row="2" Margin="100 10 50 20">
-            <Button x:Name="btn_next" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" Click="btn_next_Click" />
+            <Button x:Name="btn_next" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" />
         </Grid>
     </Grid>
 </Window>
