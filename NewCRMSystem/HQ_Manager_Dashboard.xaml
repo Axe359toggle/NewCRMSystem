@@ -15,15 +15,9 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Height="{StaticResource panelSize}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
-                <DockPanel>
-                    <Image Source="{StaticResource backButtonImage}"/>
-                </DockPanel>
-            </Button>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="0">
                 <local:CommonControlPanel/>
             </Grid>
         </Grid>
@@ -43,7 +37,7 @@
                                 <Button x:Name="btn_insert" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Insert" Height="150" Margin="105,51,-196,0" VerticalAlignment="Top" Background="DarkOrange"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
-                                <Button x:Name="btn_assignRebate" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign&#xD;&#xA; Rebate"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange"/>
+                                <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager&#xD;&#xA; Details"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/>
                             </StackPanel>
                         </Grid>
                         <Grid Margin="10 0 10 10">

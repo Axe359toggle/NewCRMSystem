@@ -14,8 +14,8 @@ namespace NewCRMSystem
     {
 
 
-        static string[] previousWindows;
-        static int noOfWindows = 0;
+        static string[] previousWindows { get; set; }
+        static int noOfWindows { get; set; }
 
         public BackButton()
         {
@@ -88,7 +88,7 @@ namespace NewCRMSystem
             noOfWindows++;
         }
 
-        public void addWindowAndOpenNextWindow(Window Window1, Window Window2)
+        public void hideWindowAndOpenNextWindow(Window Window1, Window Window2)
         {
             addCurrentWindow(Window1);
             Window2.Show();
@@ -107,9 +107,9 @@ namespace NewCRMSystem
 
     class Person
     {
-        string id;
-        string fname;
-        string nic;
+        string id { get; set; }
+        string fname { get; set; }
+        string nic { get; set; }
 
         public Person(string x, string y, string z)
         {
@@ -185,6 +185,7 @@ namespace NewCRMSystem
             return dt;
         }
 
+        /*
         public string ReadData(string query, string column)
         {
             string tb = "555";
@@ -214,6 +215,7 @@ namespace NewCRMSystem
             return tb;
 
         }
+        */
 
         public Person ReadData1(string query)
         {
@@ -302,53 +304,14 @@ namespace NewCRMSystem
         {
             internal static class location_id
             {
-                internal static int size = 5;
-                internal static bool validate(string value)
+                static int size = 5;
+                internal static int Size
                 {
-                    bool check = true;
-                    if (value.Length == 0 || value.Length > size)
-                        check = false;
-                    return check;
+                    get { return size; }
                 }
-            }
-            internal static class addr_no
-            {
-                internal static int size = 30;
                 internal static bool validate(string value)
                 {
-                    bool check = true;
-                    if (value.Length == 0 || value.Length > size)
-                        check = false;
-                    return check;
-                }
-            }
-            internal static class addr_lane
-            {
-                internal static int size = 100;
-                internal static bool validate(string value)
-                {
-                    bool check = true;
-                    if (value.Length == 0 || value.Length > size)
-                        check = false;
-                    return check;
-                }
-            }
-            internal static class addr_town
-            {
-                internal static int size = 30;
-                internal static bool validate(string value)
-                {
-                    bool check = true;
-                    if (value.Length == 0 || value.Length > size)
-                        check = false;
-                    return check;
-                }
-            }
-            internal static class addr_city
-            {
-                internal static int size = 30;
-                internal static bool validate(string value)
-                {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -357,9 +320,110 @@ namespace NewCRMSystem
             }
             internal static class location_type
             {
-                internal static int size = 12;
+                static int size = 12;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class location_name
+            {
+                static int size = 20;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class addr_no
+            {
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class addr_lane
+            {
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class addr_town
+            {
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class addr_city
+            {
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class location_tp
+            {
+                static int size = 12;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -372,9 +436,14 @@ namespace NewCRMSystem
         {
             internal static class des_id
             {
-                internal static int size = 1;
+                static int size = 1;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -383,9 +452,14 @@ namespace NewCRMSystem
             }
             internal static class desName
             {
-                internal static int size = 20;
-                static bool validate(string value)
+                static int size = 20;
+                internal static int Size
                 {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -398,9 +472,14 @@ namespace NewCRMSystem
         {
             internal static class emp_id
             {
-                internal static int size = 6;
+                static int size = 6;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -409,9 +488,14 @@ namespace NewCRMSystem
             }
             internal static class emp_title
             {
-                internal static int size = 5;
+                static int size = 5;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -420,9 +504,14 @@ namespace NewCRMSystem
             }
             internal static class emp_fname
             {
-                internal static int size = 30;
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -431,9 +520,14 @@ namespace NewCRMSystem
             }
             internal static class emp_lname
             {
-                internal static int size = 30;
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -442,9 +536,14 @@ namespace NewCRMSystem
             }
             internal static class emp_tp
             {
-                internal static int size = 12;
+                static int size = 12;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -453,9 +552,14 @@ namespace NewCRMSystem
             }
             internal static class emp_email
             {
-                internal static int size = 100;
+                static int size = 100;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -468,9 +572,14 @@ namespace NewCRMSystem
         {
             internal static class comp_id
             {
-                internal static int size = 8;
+                static int size = 8;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -479,9 +588,14 @@ namespace NewCRMSystem
             }
             internal static class comp_type
             {
-                internal static int size = 8;
+                static int size = 8;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -494,9 +608,14 @@ namespace NewCRMSystem
         {
             internal static class cus_id
             {
-                internal static int size = 7;
+                static int size = 7;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -505,9 +624,14 @@ namespace NewCRMSystem
             }
             internal static class cus_name
             {
-                internal static int size = 50;
+                static int size = 50;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -516,18 +640,30 @@ namespace NewCRMSystem
             }
             internal static class cus_tp
             {
-                internal static int size = 12;
+                static int size = 12;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
                     return check;
                 }
             }
             internal static class cus_email
             {
-                internal static int size = 100;
+                static int size = 100;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -540,9 +676,14 @@ namespace NewCRMSystem
         {
             internal static class comp_method
             {
-                internal static int size = 9;
+                static int size = 9;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -551,9 +692,14 @@ namespace NewCRMSystem
             }
             internal static class cus_comp_type
             {
-                internal static int size = 5;
+                static int size = 5;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -566,11 +712,16 @@ namespace NewCRMSystem
         {
             internal static class ref_id
             {
-                internal static int minsize = 8;
+                static int size = 8;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
-                    if (value.Length == 0 || value.Length < minsize)
+                    if (value.Length > 0 && value.Length < size)
                         check = false;
                     return check;
                 }
@@ -581,9 +732,14 @@ namespace NewCRMSystem
         {
             internal static class login_id
             {
-                internal static int size = 6;
+                static int size = 6;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -592,9 +748,14 @@ namespace NewCRMSystem
             }
             internal static class emp_username
             {
-                internal static int size = 30;
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -603,9 +764,14 @@ namespace NewCRMSystem
             }
             internal static class emp_pass
             {
-                internal static int size = 64;
+                static int size = 64;
+                internal static int Size
+                {
+                    get { return size; }
+                }
                 internal static bool validate(string value)
                 {
+                    value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
                         check = false;
@@ -614,6 +780,314 @@ namespace NewCRMSystem
             }
         }
 
+        //Staff Complaint table
+        internal static class StaffComplaint
+        {
+            internal static class staff_id
+            {
+                static int size = 4;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class staff_name
+            {
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class description
+            {
+                static int size = 250;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class remarks
+            {
+                static int size = 250;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+        }
+
+        //Item Type table
+        internal static class ItemType
+        {
+            internal static class item_type_id
+            {
+                static int size = 5;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class item_brand
+            {
+                static int size = 10;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class item_category
+            {
+                static int size = 10;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class item_name
+            {
+                static int size = 50;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class item_size
+            {
+                static int size = 2;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+        }
+
+        //Item table
+        internal static class Item
+        {
+            internal static class item_id
+            {
+                static int size = 15;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class item_price
+            {
+                static int size = 7;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class item_pic
+            {
+                static int size = 100;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+        }
+
+        //Item table
+        internal static class ComplaintItem
+        {
+            internal static class comp_item_id
+            {
+                static int size = 8;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            internal static class shoe_side
+            {
+                static int size = 5;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+
+            /*
+            internal static class received_dt
+            {
+                internal static int size = 100;
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+            */
+            internal static class item_defect_img
+            {
+                static int size = 100;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+
+            internal static class item_defect
+            {
+                static int size = 100;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+
+            internal static class item_remarks
+            {
+                static int size = 250;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                        check = false;
+                    return check;
+                }
+            }
+        }
     }
 
 }

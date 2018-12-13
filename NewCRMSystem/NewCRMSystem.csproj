@@ -75,9 +75,6 @@
     <Compile Include="Search_Complaints.xaml.cs">
       <DependentUpon>Search_Complaints.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShowroomManager_MainMenu.xaml.cs">
-      <DependentUpon>ShowroomManager_MainMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Showroom_Manager_Mainmenu.xaml.cs">
       <DependentUpon>Showroom_Manager_Mainmenu.xaml</DependentUpon>
     </Compile>
@@ -93,10 +90,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="CommonControlPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Customer_Complaint.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -136,7 +129,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Item_Details.xaml">
+    <Page Include="Defected_Item_Details.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -167,9 +160,6 @@
     <Compile Include="CommonControlPanel.xaml.cs">
       <DependentUpon>CommonControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Customer_Complaint.xaml.cs">
-      <DependentUpon>Customer_Complaint.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Customer_Complaint_Window.xaml.cs">
       <DependentUpon>Customer_Complaint_Window.xaml</DependentUpon>
     </Compile>
@@ -197,8 +187,8 @@
     <Compile Include="Item_Complaint.xaml.cs">
       <DependentUpon>Item_Complaint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Item_Details.xaml.cs">
-      <DependentUpon>Item_Details.xaml</DependentUpon>
+    <Compile Include="Defected_Item_Details.xaml.cs">
+      <DependentUpon>Defected_Item_Details.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -231,10 +221,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Search_Complaints.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ShowroomManager_MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

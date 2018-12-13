@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-       Title="Login Details" Height="700" Width="900" Background="FloralWhite" >
+       Title="Login Details" Height="700" Width="900" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <ScrollViewer>
-                <Border Padding="10" Background="PaleVioletRed"  Margin="20" CornerRadius="30">
+                <Border Padding="10">
                     <StackPanel>
                         <TextBlock Text="Login Details" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Heavy" FontSize="25" Margin="50,10,0,10"/>
 
@@ -41,12 +41,12 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" >
                                 <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
-                                    <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center"  x:Name="insert_rbn" Content="Insert" FontWeight="Heavy" FontSize="20"  RenderTransformOrigin="0.484,0.484" Checked="insert_rbn_Checked"/>
+                                    <RadioButton  x:Name="rbn_insert" GroupName="Operators" Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center" Content="Insert" FontWeight="Heavy" FontSize="20"  RenderTransformOrigin="0.484,0.484" Checked="insert_rbn_Checked"/>
                                 </Viewbox>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Viewbox Height="30">
-                                    <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="update_rbn" Content="Update" FontWeight="Heavy" FontSize="20" Checked="update_rbn_Checked"  />
+                                    <RadioButton x:Name="rbn_update" GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" Content="Update" FontWeight="Heavy" FontSize="20" Checked="update_rbn_Checked"  />
                                 </Viewbox>
                             </StackPanel>
                             <StackPanel Grid.Column="2" >
@@ -63,9 +63,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Login ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                            <TextBox Grid.Column="2" x:Name="loginID_txt" Background="AliceBlue"  Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Column="2" x:Name="txt_loginID" Background="AliceBlue"  Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="30" Width="30" VerticalAlignment="Center">
-                                <Image x:Name="loginIDNotify"/>
+                                <Image x:Name="loginID_Notify"/>
                             </DockPanel>
                             
                         </Grid>
@@ -78,9 +78,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Employee ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                            <TextBox Grid.Column="2" x:Name="empID_txt" Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Column="2" x:Name="txt_empID" Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
-                                <Image x:Name="empIDNotify"/>
+                                <Image x:Name="empID_Notify"/>
                             </DockPanel>
 
                         </Grid>
@@ -93,9 +93,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Designation ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                            <TextBox Grid.Column="2" x:Name="desID_txt" Background="AliceBlue" Padding="5" Height="28" IsReadOnly="False" VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Column="2" x:Name="txt_desID" Background="AliceBlue" Padding="5" Height="28" IsReadOnly="False" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
-                                <Image x:Name="desIDNotify"/>
+                                <Image x:Name="desID_Notify"/>
                             </DockPanel>
 
                         </Grid>
@@ -108,9 +108,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Username" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                            <TextBox Grid.Column="2" x:Name="uName_txt" Background="AliceBlue" Padding="5" Height="28" VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Column="2" x:Name="txt_uName" Background="AliceBlue" Padding="5" Height="28" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
-                                <Image x:Name="uNameNotify"/>
+                                <Image x:Name="uName_Notify"/>
                             </DockPanel>
                         </Grid>
                         <Grid Margin="10 5 10 5">
@@ -122,9 +122,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Current Password" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                            <PasswordBox Grid.Column="2" x:Name="currPass_txt" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
+                            <PasswordBox Grid.Column="2" x:Name="txt_currPass" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
-                                <Image x:Name="currPassNotify"/>
+                                <Image x:Name="currPass_Notify"/>
                             </DockPanel>
 
                         </Grid>
@@ -137,9 +137,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="New Password" Foreground="Black" FontWeight="Heavy" FontSize="15" />
-                            <PasswordBox Grid.Column="2" x:Name="newPass_txt" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
+                            <PasswordBox Grid.Column="2" x:Name="txt_newPass" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
-                                <Image x:Name="newPassNotify"/>
+                                <Image x:Name="newPass_Notify"/>
                             </DockPanel>
 
                         </Grid>
@@ -152,9 +152,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Re-Enter Password" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                            <PasswordBox Grid.Column="2" x:Name="rePass_txt" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
+                            <PasswordBox Grid.Column="2" x:Name="txt_rePass" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
-                                <Image x:Name="rePassNotify"/>
+                                <Image x:Name="rePass_Notify"/>
                             </DockPanel>
 
                         </Grid>
@@ -167,7 +167,7 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Account Status" Foreground="Black" FontWeight="Heavy" FontSize="15" />
-                            <ComboBox Grid.Column="2" Background="AliceBlue" Padding="5" x:Name="accStatus_cmb" VerticalContentAlignment="Center"/>
+                            <ComboBox Grid.Column="2" x:Name="cmb_accStatus" Background="AliceBlue" Padding="5" VerticalContentAlignment="Center"/>
 
                         </Grid>
                         <Grid Margin="10 5 10 5">
@@ -179,8 +179,7 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Login set Date" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                            <TextBox Grid.Column="2" IsReadOnly="True" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center" />
-
+                            <TextBox Grid.Column="2" x:Name="txt_loginSetDate" IsReadOnly="True" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center" />
                         </Grid>
                     </StackPanel>
                 </Border>

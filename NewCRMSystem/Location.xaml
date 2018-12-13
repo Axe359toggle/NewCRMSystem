@@ -5,120 +5,221 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-         Title="Location" Height="500" Width="800" >
-    <Border Padding="10"  Margin="20" CornerRadius="30">
-        <StackPanel>
-            <TextBlock Text="Location" HorizontalAlignment="Center"  Foreground="White" FontWeight="Heavy"  FontStyle="Oblique"  Margin="0,10"/>
-            <!--Buttons-->
-            <Grid Margin="61,10,10,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="94*"/>
-                    <ColumnDefinition Width="94*"/>
-                    <ColumnDefinition Width="85*"/>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="94*"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" >
-                    <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
-                        <RadioButton GroupName="Operators" Padding="2" Background="LightSteelBlue"  VerticalContentAlignment="Center"  Name="rbInsert" Content="Insert" FontWeight="Heavy" FontSize="20"  RenderTransformOrigin="0.484,0.484"/>
-                    </Viewbox>
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <Viewbox Height="30">
-                        <RadioButton GroupName="Operators" Padding="2" Background="LightSteelBlue" VerticalContentAlignment="Center" Name="rbUpdate" Content="Update" FontWeight="Heavy" FontSize="20" />
-                    </Viewbox>
-                </StackPanel>
-                <StackPanel Grid.Column="2" >
-                    <Viewbox Height="30">
-                        <RadioButton GroupName="Operators" Padding="2"  Background="LightSteelBlue"  VerticalContentAlignment="Center" Name="rbDelete" Content="Delete" FontWeight="Heavy" FontSize="20" />
-                    </Viewbox>
-                </StackPanel>
-                <StackPanel Grid.Column="4">
-                    <Viewbox Height="30">
-                        <RadioButton GroupName="Operators" Padding="2"  Background="LightSteelBlue"  VerticalContentAlignment="Center" Name="rbSearch" Content="Search" FontWeight="Heavy" FontSize="20"/>
-                    </Viewbox>
-                </StackPanel>
+         Title="Location" Height="1200" Width="800" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource panelRowSize}"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+                <DockPanel>
+                    <Image Source="{StaticResource backButtonImage}"/>
+                </DockPanel>
+            </Button>
+            <Grid Grid.Column="1">
+                <local:CommonControlPanel/>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <Grid VerticalAlignment="Center">
+                    <StackPanel>
 
-            <!--Employee Id-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Margin="10 10 10 10">
-                    <TextBlock Text="Location Id" FontWeight="DemiBold"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <TextBox  Background="AliceBlue"  Padding="5" Name="txtLocation_Id"/>
-                </StackPanel>
-                <StackPanel Grid.Column="3"/>
-            </Grid>
+                            <CheckBox x:Name="chk_LocationID" Content="Location ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_LocationID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="locationID_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-            <!--Location Address-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="chk_LocationType" Content="Location Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cmb_LocationType" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                <ComboBoxItem Content="HQ"/>
+                                <ComboBoxItem Content="Showroom"/>
+                                <ComboBoxItem Content="Factory"/>
+                            </ComboBox>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="locationType_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Margin="10 10 10 10">
-                    <TextBlock Text="Location Address" FontWeight="DemiBold"/>
-                </StackPanel>
+                            <CheckBox x:Name="chk_LocationName" Content="Location Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_LocationName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="locationName_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 50 100 0" >
+                            <TextBlock Text="Address" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Margin="140 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="1">
-                    <TextBox  Background="AliceBlue"  Padding="5" Name="txtAdd_No"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                    <StackPanel Grid.Column="0">
-                        <TextBox  Background="AliceBlue"  Padding="5" Name="txtAdd_Lane"/>
+                            <CheckBox x:Name="chk_AddrNo" Content="No." Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_AddrNo" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrNo_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="140 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_AddrLane" Content="Lane" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_AddrLane" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrLane_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="140 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_AddrTown" Content="Town" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_AddrTown" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrTown_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="140 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_AddrCity" Content="City" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_AddrCity" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrCity_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 50 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_Tp" Content="Telephone" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_Tp" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="tp_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                            <Button x:Name="btn_tpAdd" Grid.Column="3" Content="Add" IsEnabled="False" Click="btn_tpAdd_Click"/>
+                            <Button x:Name="btn_tpRemove" Grid.Column="5" Content="Remove" IsEnabled="False" Click="btn_tpRemove_Click"/>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <DataGrid x:Name="telephone_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="telephone_Datagrid_SelectionChanged">
+                                    <DataGrid.Columns>
+
+                                        <DataGridTextColumn Header="Telephone" Binding="{Binding location_tp}"/>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="50 50 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton x:Name="rbnInsert" Grid.Column="0" Content="Insert" HorizontalAlignment="Center" Checked="rbnInsert_Checked"/>
+                                <RadioButton x:Name="rbnUpdate" Grid.Column="1" Content="Update" HorizontalAlignment="Center" Checked="rbnUpdate_Checked" IsEnabled="False"/>
+                                <RadioButton x:Name="rbnSearch" Grid.Column="2" Content="Search" HorizontalAlignment="Center" Checked="rbnSearch_Checked"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Process" Click="btnProcess_Click"/>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <DataGrid x:Name="location_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="location_Datagrid_SelectionChanged">
+                                    <DataGrid.Columns>
+
+                                        <DataGridTextColumn Header="Location ID" Binding="{Binding location_id}"/>
+                                        <DataGridTextColumn Header="Location Type" Binding="{Binding location_type}"/>
+                                        <DataGridTextColumn Header="Location Name" Binding="{Binding location_name}"/>
+                                        <DataGridTextColumn Header="Address No." Binding="{Binding addr_no}"/>
+                                        <DataGridTextColumn Header="Address Lane" Binding="{Binding addr_lane}"/>
+                                        <DataGridTextColumn Header="Address Town" Binding="{Binding addr_town}"/>
+                                        <DataGridTextColumn Header="Address City" Binding="{Binding addr_city}"/>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Grid>
+
                     </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <TextBox  Background="AliceBlue"  Padding="5" Name="txtAddCity"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2">
-                        <TextBox  Background="AliceBlue"  Padding="5" Name="txtAddTown"/>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel Grid.Column="2">
-                    <TextBlock Text="No" FontWeight="DemiBold" Padding="5"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="Lane" FontWeight="DemiBold" Padding="5"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <TextBlock Text="City" FontWeight="DemiBold" Padding="5"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2">
-                        <TextBlock Text="Town" FontWeight="DemiBold" Padding="5"/>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel Grid.Column="4">
-                    <Button x:Name="btnProcess" Padding="5"  Margin="0 10 10 0" Content="Process" FontWeight="Medium" RenderTransformOrigin="0.492,0.888" />
-                    <Button x:Name="btnNext" Padding="5"  Margin="0 10 10 0" Content="Next" FontWeight="Medium" RenderTransformOrigin="0.492,0.888" />
-                    <Button x:Name="btnBack" Padding="5"  Margin="0 10 10 0" Content="Back" FontWeight="Medium" RenderTransformOrigin="0.492,0.888" />
-                </StackPanel>
-            </Grid>
-
-        </StackPanel>
-    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2" Margin="50 10 50 20" Grid.ColumnSpan="2">
+            <Button x:Name="btn_ok" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" Click="btn_ok_Click" IsEnabled="False"/>
+        </Grid>
+    </Grid>
 </Window>

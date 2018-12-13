@@ -30,14 +30,14 @@ namespace NewCRMSystem
         private void btn_logout_Click(object sender, RoutedEventArgs e)
         {
             Database db = new Database();
-            string query = "Update LoginDetails set logout_dt = GETDATE() WHERE logindetail_id ='"+ Login.logindetailID +"' ";
+            string query = "Update LoginDetails set logout_dt = GETDATE() WHERE logindetail_id ='"+ Login.LogindetailID +"' ";
             db.Save_Del_Update(query);
 
             Login lg = new Login();
             lg.Show();
             parentWindow.Hide();
 
-            MessageBox.Show("Logged out","Information",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            MessageBox.Show("Logged out","Information",MessageBoxButton.OK,MessageBoxImage.Information);
         }
 
         private void Loaded_Panel(object sender, RoutedEventArgs e)

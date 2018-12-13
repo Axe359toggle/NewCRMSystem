@@ -14,7 +14,7 @@ namespace NewCRMSystem
 
         private void btn_LoginDetails_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.addWindowAndOpenNextWindow(this, new Login_Details());
+            Login.b1.hideWindowAndOpenNextWindow(this, new Login_Details());
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)

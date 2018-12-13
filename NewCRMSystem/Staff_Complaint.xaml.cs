@@ -19,28 +19,119 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Staff_Complaint : Window
     {
-        int compID;
-
         public Staff_Complaint()
         {
             InitializeComponent();
         }
 
+        private int compID;
+        private string staffID = "";
+        private string staffName = "";
+        private string description = "";
+
         public Staff_Complaint(int compID1)
         {
             InitializeComponent();
-            compID = compID1;
-            txt_compID.Text = compID.ToString();
+            txt_compID.Text = compID1.ToString();
+        }
+
+        private bool validate()
+        {
+            bool check = true;
+
+            //Complaint ID
+            if (CRMdbData.Complaint.comp_id.validate(txt_compID.Text))
+            {
+                compID_Notify.Source = compID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                compID_Notify.Source = compID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Staff ID
+            if (CRMdbData.StaffComplaint.staff_id.validate(txt_staffID.Text))
+            {
+                staffID_Notify.Source = staffID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                staffID_Notify.Source = staffID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Staff Name
+            if (CRMdbData.StaffComplaint.staff_name.validate(txt_staffName.Text))
+            {
+                staffName_Notify.Source = staffName_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                staffName_Notify.Source = staffName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Description
+            if (CRMdbData.StaffComplaint.description.validate(txt_description.Text))
+            {
+                description_Notify.Source = description_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                description_Notify.Source = description_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            return check;
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
         }
-
-        private void btn_ok_Click(object sender, RoutedEventArgs e)
+        
+        private void btn_next_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                if (validate())
+                {
+                    
+                    
+                    Database db = new Database();
+
+                    compID = Int32.Parse(txt_compID.Text);
+                    staffID = txt_staffID.Text;
+                    staffName = txt_staffName.Text;
+                    description = txt_description.Text;
+
+                    string query = "INSERT INTO StaffComplaint (comp_id ,staff_id ,staff_name ,description ) VALUES ("+compID+" , '"+staffID+"' , '"+staffName+"' , '"+description+"') ";
+                    
+                    if (db.Save_Del_Update(query) > 0)
+                    {
+                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        if (Login.DesID.Equals("H"))
+                            Login.b1.hideWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());
+                        else if (Login.DesID.Equals("S"))
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

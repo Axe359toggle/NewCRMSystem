@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-          Title="Customer Details" Height="942.329" Width="900" Background="FloralWhite"
-         WindowStartupLocation="Manual">
+        Title="Customer Details" Height="700" Width="900"
+        WindowStartupLocation="Manual">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -30,80 +30,108 @@
         </Grid>
         <Grid Grid.Row="1">
             <ScrollViewer>
-
-                <Border Padding="10" Background="White" CornerRadius="30" Height="865">
+                <Grid VerticalAlignment="Center">
                     <StackPanel>
-                        <StackPanel>
-                            <TextBlock Text="Customer Details" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Heavy"  FontStyle="Oblique" FontSize="25" Margin="288,10,0,10"/>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-                            <!--Buttons-->
-                            <Grid Margin="61,10,10,10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="94*"/>
-                                    <ColumnDefinition Width="94*"/>
-                                    <ColumnDefinition Width="85*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <StackPanel Grid.Column="0" >
-                                    <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
-                                        <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center"  x:Name="rb_Insert" Content="Insert" FontWeight="Heavy" FontSize="20"/>
-                                    </Viewbox>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1">
-                                    <Viewbox Height="30">
-                                        <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_update" Content="Update" FontWeight="Heavy" FontSize="20"  />
-                                    </Viewbox>
-                                </StackPanel>
-                                <StackPanel Grid.Column="4">
-                                    <Viewbox Height="30">
-                                        <RadioButton GroupName="Operators" Padding="2"  Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_search" Content="Search" FontWeight="Heavy" FontSize="20" />
-                                    </Viewbox>
-                                </StackPanel>
+                            <CheckBox x:Name="chk_cusID" Content="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_cusID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusID_Notify"/>
+                                </DockPanel>
                             </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <StackPanel Grid.Column="0" Margin="10 30 10 10">
-                                    <TextBlock Text="Customer Id" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                                    <TextBlock Text="Customer Name" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 20 0 0"/>
-                                    <TextBlock Text="Customer Email" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                                    <TextBlock Text="Customer Contact Number" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1" Height="322"  Margin="10 30 10 10">
-                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_cusId"/>
-                                    <TextBox Background="AliceBlue"  Padding="5" x:Name="txt_cusName" Margin="0 10 0 0"/>
-                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_cusMail" Margin="0 10 0 0"/>
-                                    <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_cusContactNo" Margin="0 10 0 0" />
-                                </StackPanel>
-                                <StackPanel Grid.Column="2" Margin="10 30 10 10"/>
+                            <CheckBox x:Name="chk_cusName" Content="Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_cusName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusName_Notify"/>
+                                </DockPanel>
                             </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-                            <Grid Margin="10,-150,0,10" Height="100" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Height="43" VerticalAlignment="Bottom"  >
-                                    <Button x:Name="btn_process" Padding="5"  Content="Process" FontWeight="ExtraBlack" FontSize="15" VerticalAlignment="Bottom" Margin="209,0,0,519"  Click="btn_process_Click"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1" Height="43" VerticalAlignment="Bottom"  >
-                                    <Button x:Name="btn_clear" Padding="5"  Content="Clear" FontWeight="ExtraBlack" FontSize="15" Margin="77,0,130,0"/>
-                                </StackPanel>
+                            <CheckBox x:Name="chk_cusEmail" Content="Email" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_cusEmail" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusEmail_Notify"/>
+                                </DockPanel>
                             </Grid>
-                            <ScrollViewer>
-                                <DataGrid x:Name="dataGrid" HorizontalAlignment="Left"  Margin="10,0,0,0" Width="2019" Height="158" />
-                            </ScrollViewer>
-                            <Button x:Name="btn_next" Padding="5"  Content="Next" FontWeight="ExtraBlack" FontSize="15" Margin="512,20,30,10" Height="40" Width="120"/>
-                        </StackPanel>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_cusTp" Content="Contact No." Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_cusTp" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusTp_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="50 50 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton x:Name="rbnInsert" Grid.Column="0" Content="Insert" HorizontalAlignment="Center" Checked="rbnInsert_Checked"/>
+                                <RadioButton x:Name="rbnUpdate" Grid.Column="1" Content="Update" HorizontalAlignment="Center" Checked="rbnUpdate_Checked" IsEnabled="False"/>
+                                <RadioButton x:Name="rbnSearch" Grid.Column="2" Content="Search" HorizontalAlignment="Center" Checked="rbnSearch_Checked"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btn_process" HorizontalAlignment="Center" Width="100" Content="Process" Click="btn_process_Click"/>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <DataGrid x:Name="cus_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="cus_Datagrid_SelectionChanged">
+                                    <DataGrid.Columns>
+
+                                        <DataGridTextColumn Header="Customer ID" Binding="{Binding cus_id}"/>
+                                        <DataGridTextColumn Header="Name" Binding="{Binding cus_name}"/>
+                                        <DataGridTextColumn Header="Email" Binding="{Binding cus_email}"/>
+                                        <DataGridTextColumn Header="Telephone" Binding="{Binding cus_tp}"/>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Grid>
+                        
                     </StackPanel>
-                </Border>
+                </Grid>
             </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2" Margin="50 10 50 20" Grid.ColumnSpan="2">
+            <Button x:Name="btn_ok" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" Click="btn_ok_Click" IsEnabled="False"/>
         </Grid>
     </Grid>
 </Window>

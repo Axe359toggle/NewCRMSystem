@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:NewCRMSystem"
-             StartupUri="Manager_Details_window.xaml">
+             StartupUri="Login.xaml">
     <Application.Resources>
         <BitmapImage x:Key="backButtonImage" UriSource="/Resources/icons8_Back_To_96px.png" />
         <BitmapImage x:Key="notifyCorrectImage" UriSource="/Resources/icons8_Checked_96px.png" />

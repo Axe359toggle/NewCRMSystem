@@ -21,114 +21,173 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Login_Details : Window
     {
-        string loginID;
-        string empID;
-        string desID;
-        string uName;
-        string newPass;
+        int loginID = 0;
+        int empID = 0;
+        string desID = "";
+        string uName = "";
+        string newPass = "";
 
+        private bool showdialogstatus;
 
         public Login_Details()
         {
             InitializeComponent();
         }
 
-        public Login_Details(string empID1)
+        public Login_Details(bool dialogstatus, int empID1)
         {
             InitializeComponent();
-            empID_txt.Text = empID1;
-            insert_rbn.IsChecked = true;
+            txt_empID.Text = empID1.ToString();
+            rbn_insert.IsChecked = true;
+            showdialogstatus = true;
         }
 
-        public Login_Details(string empID1 , string loginID1)
+        public Login_Details(bool dialogstatus, int empID1 , int loginID1)
         {
             InitializeComponent();
 
-            empID_txt.Text = empID1;
-            loginID_txt.Text = loginID1;
+            txt_empID.Text = empID1.ToString();
+            txt_loginID.Text = loginID1.ToString();
 
-            update_rbn.IsChecked = true;
-            insert_rbn.IsEnabled = false;
+            rbn_update.IsChecked = true;
+            showdialogstatus = true;
         }
 
-        private void setInsert(bool value)
+        private void setInsert()
         {
-            currPass_txt.IsEnabled = !value;
-            accStatus_cmb.IsEnabled = !value;
+            txt_loginID.IsEnabled = false;
+            txt_currPass.IsEnabled = false;
+            cmb_accStatus.IsEnabled = false;
+        }
+
+        private void setUpdate()
+        {
+            txt_loginID.IsEnabled = true;
+            txt_currPass.IsEnabled = true;
+            cmb_accStatus.IsEnabled = true;
+            rbn_insert.IsEnabled = false;
+        }
+
+        private bool authenticate()
+        {
+            bool check = false;
+
+            string uname = Login.UName;
+            string upass = Password.sha256(txt_currPass.Password);
+
+            Database db = new Database();
+            string query = "SELECT emp_username,emp_pass from Login where emp_username = '" + uname + "' and emp_pass='" + upass + "' ";
+            System.Data.DataTable dt = db.GetData(query);
+
+
+            if (dt.Rows.Count == 1)
+            {
+                if (dt.Rows[0]["emp_username"].Equals(uname) && dt.Rows[0]["emp_pass"].Equals(upass))
+                {
+                    check = true;
+                }
+                else
+                {
+                    MessageBox.Show("Login Failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Login Failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
+            return check;
         }
 
         private void insert_rbn_Checked(object sender, RoutedEventArgs e)
         {
-            if (insert_rbn.IsChecked == true)
+            if (rbn_insert.IsChecked == true)
             {
-                setLoginID();
-                setInsert(true);
+                setInsert();
             }
         }
 
         private void update_rbn_Checked(object sender, RoutedEventArgs e)
         {
-            if (update_rbn.IsChecked == true)
-            { setInsert(false); }
+            if (rbn_update.IsChecked == true)
+            {
+                setUpdate();
+            }
         }
 
         private void ok_btn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-
-                
-
-                if(insert_rbn.IsChecked == true || update_rbn.IsChecked == true)
+                if (rbn_insert.IsChecked == true)
                 {
-                    if (insert_rbn.IsChecked == true)
+                    if (validate(false))
                     {
-                        if (validate(true))
+                        empID = Int32.Parse(txt_empID.Text);
+                        uName = txt_uName.Text;
+                        desID = txt_desID.Text.Trim();
+                        newPass = Password.sha256(txt_newPass.Password);
+
+                        string query = "insert into login (emp_username,emp_pass,des_id) values ('" + uName + "','" + newPass + "','" + desID + "')  DECLARE @ID int = SCOPE_IDENTITY() ";
+
+                        string query2 = "update Manager set login_id = @ID where emp_id='" + empID + "' SELECT @ID AS login_id";
+                        query = query + query2;
+
+                        Database db = new Database();
+
+                        System.Data.DataTable dt = db.GetData(query);
+                        txt_loginID.Text = dt.Rows[0]["login_id"].ToString();
+
+                        if (dt.Rows.Count > 0)
                         {
-                            loginID = loginID_txt.Text;
-                            uName = uName_txt.Text;
-                            desID = desID_txt.Text.Trim();
-                            newPass = Password.sha256(newPass_txt.Password);
-
-
-                            if (!(empID_txt.Text.Length == 0))
-                            { empID = empID_txt.Text; }
-
-
-                            string query = "insert into login (login_id,emp_username,emp_pass,des_id) values ('" + loginID + "','" + uName + "','" + newPass + "','" + desID + "')   ";
-
-                            string query2 = "update Manager set login_id ='" + loginID + "' where emp_id='" + empID + "'";
-                            query = query + query2;
-
-                            Database db = new Database();
-                            int rows = db.Save_Del_Update(query);
-
-                            if (rows > 0)
+                            MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            if (showdialogstatus == true)
                             {
-                                MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                                
-                                //open next window
+                                Login.b1.removePreviousWindow();
+                                DialogResult = true;
+                                this.Hide();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        }
+                    }
+                }
+                else if (rbn_update.IsChecked == true)
+                {
+                    if (validate(true)) //validates with Location ID
+                    {
+                        loginID = Int32.Parse(txt_loginID.Text);
+                        desID = txt_desID.Text;
+                        uName = txt_uName.Text;
+
+                        if (authenticate())
+                        {
+                            string query = " UPDATE Login SET emp_username = '" + uName + "' , emp_pass  = '" + txt_newPass.Password + "' WHERE login_id  = " + loginID + " ";
+                            Database db = new Database();
+
+                            if (db.Save_Del_Update(query) > 0)
+                            {
+                                MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                                if (showdialogstatus == true)
+                                {
+                                    Login.b1.removePreviousWindow();
+                                    DialogResult = true;
+                                    this.Hide();
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                                MessageBox.Show("Data updation failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                             }
                         }
-                    }
-                    else if (update_rbn.IsChecked == true)
-                    {
-                        if (validate(false))
+                        else
                         {
-                            string currPass;
-
+                            MessageBox.Show("Current Password Wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         }
                     }
-
-
-
                 }
-                
-
             }
             catch (SqlException ex)
             {
@@ -139,168 +198,94 @@ namespace NewCRMSystem
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        
 
-        private void setLoginID()
+        private bool validate(bool value)
         {
-            try
-            {
-                Database db = new Database();
-                string query = "select case when MAX(login_id) is null then '100000' else MAX(login_id) END as login_id from Login";
-                loginID = db.ReadData(query, "login_id");
-                loginID_txt.Text = (Int32.Parse(loginID) + 1).ToString();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private bool validate(bool type)
-        {
-            //type = true for insert
-            //type = false for update
+            //value = true to include loginID and currentPassword validation
+            //value = false to exclude loginID and currentPassword validation
             bool check = true;
-            if(type==true)
+
+            if (value == true)
             {
-                if (!(loginID_txt.Text.Trim().Length >= CRMdbData.Login.login_id.size || loginID_txt.Text.Trim().Length == 0))
+                //Location ID
+                if (CRMdbData.Login.login_id.validate(txt_loginID.Text))
                 {
-                    check = false;
-                    loginIDNotify.Source = loginIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    loginID_Notify.Source = loginID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
                 }
                 else
                 {
-                    loginIDNotify.Source = loginIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
+                    loginID_Notify.Source = loginID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    check = false;
                 }
 
-                if (!(empID_txt.Text.Trim().Length >= CRMdbData.Manager.emp_id.size || empID_txt.Text.Trim().Length == 0))
+                //Current Password
+                if (CRMdbData.Login.emp_pass.validate(txt_currPass.Password))
                 {
-                    check = false;
-                    empIDNotify.Source = empIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    currPass_Notify.Source = currPass_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
                 }
                 else
                 {
-                    empIDNotify.Source = empIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
-                if (uName_txt.Text.Trim().Length > CRMdbData.Login.emp_username.size|| uName_txt.Text.Trim().Length == 0)
-                {
+                    currPass_Notify.Source = currPass_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
                     check = false;
-                    uNameNotify.Source = uNameNotify.TryFindResource("notifyErrorImage") as BitmapImage;
                 }
-                else
-                {
-                    uNameNotify.Source = uNameNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
+            }
 
-                if (desID_txt.Text.Trim().Length != CRMdbData.Designation.des_id.size)
-                {
-                    check = false;
-                    desIDNotify.Source = desIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    desIDNotify.Source = desIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
-
-                if (newPass_txt.Password.Length > CRMdbData.Login.emp_pass.size || newPass_txt.Password.Trim().Length == 0)
-                {
-                    check = false;
-                    newPassNotify.Source = newPassNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    newPassNotify.Source = newPassNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
-                if (!rePass_txt.Password.Equals(newPass_txt.Password))
-                {
-                    check = false;
-                    rePassNotify.Source = rePassNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    rePassNotify.Source = rePassNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
+            //Manager ID
+            if (CRMdbData.Manager.emp_id.validate(txt_empID.Text))
+            {
+                empID_Notify.Source = empID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
             else
             {
-                if (!(loginID_txt.Text.Trim().Length >= CRMdbData.Login.login_id.size))
-                {
-                    check = false;
-                    loginIDNotify.Source = loginIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    loginIDNotify.Source = loginIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
+                empID_Notify.Source = empID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
 
-                if (!(empID_txt.Text.Trim().Length >= CRMdbData.Manager.emp_id.size || empID_txt.Text.Trim().Length == 0))
-                {
-                    check = false;
-                    empIDNotify.Source = empIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    empIDNotify.Source = empIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
+            //Designation ID
+            if (CRMdbData.Designation.desName.validate(txt_desID.Text))
+            {
+                desID_Notify.Source = desID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                desID_Notify.Source = desID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
 
-                if (uName_txt.Text.Trim().Length > CRMdbData.Login.emp_username.size || uName_txt.Text.Trim().Length == 0)
-                {
-                    check = false;
-                    uNameNotify.Source = uNameNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    uNameNotify.Source = uNameNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
-                if (desID_txt.Text.Trim().Length != CRMdbData.Designation.des_id.size)
-                {
-                    check = false;
-                    desIDNotify.Source = desIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    desIDNotify.Source = desIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
-                if (currPass_txt.Password.Length > CRMdbData.Login.emp_pass.size || currPass_txt.Password.Trim().Length == 0)
-                {
-                    check = false;
-                    currPassNotify.Source = currPassNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    currPassNotify.Source = currPassNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
-                if (newPass_txt.Password.Length > CRMdbData.Login.emp_pass.size || newPass_txt.Password.Trim().Length == 0)
-                {
-                    check = false;
-                    newPassNotify.Source = newPassNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    newPassNotify.Source = newPassNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-
-                if (!rePass_txt.Password.Equals(newPass_txt.Password))
-                {
-                    check = false;
-                    rePassNotify.Source = rePassNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                }
-                else
-                {
-                    rePassNotify.Source = rePassNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
+            //Username
+            if (CRMdbData.Login.emp_username.validate(txt_uName.Text))
+            {
+                uName_Notify.Source = uName_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                uName_Notify.Source = uName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
             }
             
+
+            //New Password
+            if (CRMdbData.Login.emp_pass.validate(txt_newPass.Password))
+            {
+                newPass_Notify.Source = newPass_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                newPass_Notify.Source = newPass_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Re-Enter Password
+            if (txt_newPass.Password.Equals(txt_rePass.Password))
+            {
+                rePass_Notify.Source = rePass_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                rePass_Notify.Source = rePass_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
 
             return check;
         }

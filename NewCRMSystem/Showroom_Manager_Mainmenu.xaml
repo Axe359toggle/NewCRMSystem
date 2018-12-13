@@ -15,15 +15,9 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Height="{StaticResource panelSize}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
-                <DockPanel>
-                    <Image Source="{StaticResource backButtonImage}"/>
-                </DockPanel>
-            </Button>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="0">
                 <local:CommonControlPanel/>
             </Grid>
         </Grid>

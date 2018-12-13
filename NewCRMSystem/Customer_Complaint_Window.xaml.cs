@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using System.Data.SqlClient;
-
 namespace NewCRMSystem
 {
     /// <summary>
@@ -25,8 +23,7 @@ namespace NewCRMSystem
         {
             InitializeComponent();
         }
-
-        private int compID;
+        
         private int refID;
         private int cusID;
         private string compMethod;
@@ -34,81 +31,144 @@ namespace NewCRMSystem
         private string compType2;
         private int relShrmID;
 
-        string query;
-        
+        private bool validateRefID()
+        {
+            bool check = false;
 
-        private void next_btn_Click(object sender, RoutedEventArgs e)
+            if (txt_refID.Text.Length > 0)
+            {
+                refID = Int32.Parse(txt_refID.Text);
+
+                string query = " SELECT refID from Reference WHERE refID = " + refID + " ";
+                Database db = new Database();
+                System.Data.DataTable dt = db.GetData(query);
+
+                if (dt.Rows.Count == 1)
+                {
+                    check = true;
+                }
+            }
+            else
+            {
+                check = true;
+            }
+            
+            return check;
+        }
+
+        private bool validate()
+        {
+            bool check = true;
+            
+            //Reference ID
+            if (CRMdbData.Reference.ref_id.validate(txt_refID.Text) && validateRefID())
+            {
+                refID_Notify.Source = refID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                refID_Notify.Source = refID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Customer ID
+            if (CRMdbData.Customer.cus_id.validate(txt_cusID.Text))
+            {
+                cusID_Notify.Source = cusID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                cusID_Notify.Source = cusID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Complaint Method
+            if (rbn_byCall.IsChecked == true || rbn_inPerson.IsChecked == true)
+            {
+                compMethod_Notify.Source = compMethod_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                compMethod_Notify.Source = compMethod_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Complaint Type
+            if (rbn_staffComp.IsChecked == true || rbn_itemComp.IsChecked == true)
+            {
+                compType_Notify.Source = compType_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                compType_Notify.Source = compType_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+            //Related Showroom ID
+            if (CRMdbData.Location.location_id.validate(txt_relShrmID.Text))
+            {
+                relShrmID_Notify.Source = relShrmID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                relShrmID_Notify.Source = relShrmID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                check = false;
+            }
+
+
+            return check;
+        }
+
+        ~Customer_Complaint_Window() { }
+
+        private void btn_next_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (validate())
                 {
-                    compID = Int32.Parse(txt_compID.Text);
-                    cusID = Int32.Parse(txt_cusID.Text.Trim());
+                    cusID = Int32.Parse(txt_cusID.Text);
 
                     if (rbn_byCall.IsChecked == true) { compMethod = "By Call"; }
                     else if (rbn_inPerson.IsChecked == true) { compMethod = "In Person"; }
 
                     if (rbn_staffComp.IsChecked == true) { compType2 = "Staff"; }
                     else if (rbn_itemComp.IsChecked == true) { compType2 = "Item"; }
-
-
+                    
                     Database db = new Database();
 
                     if (txt_refID.Text.Trim().Length == 0)
                     {
-                        try
-                        {
-                            
-                            string query1 = "INSERT INTO Reference DEFAULT VALUES DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as ref_id";
-                            txt_refID.Text = db.ReadData(query1, "ref_id");
-                        }
-                        catch (SqlException ex)
-                        {
-                            MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-
-                    }
-                    else
-                    {
-                        refID = Int32.Parse(txt_refID.Text.Trim());
+                        string query1 = "INSERT INTO Reference DEFAULT VALUES DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as ref_id";
+                        txt_refID.Text = db.GetData(query1).Rows[0]["ref_id"].ToString();
                     }
 
+                    refID = Int32.Parse(txt_refID.Text);
 
-                    if(txt_relShrmID.Text.Trim().Length==0)
-                    {
-                        query = "INSERT INTO Complaint (comp_id,comp_type,ref_id) values('" + compID + "','" + compType1 + "','" + refID + "') INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type) values('" + compID + "','" + cusID + "','"+compMethod+"','" + compType2 + "')";
-                    }
-                    else
-                    {
-                        relShrmID = Int32.Parse(txt_relShrmID.Text.Trim());
-                        query = "INSERT INTO Complaint (comp_id,comp_type,ref_id) values('" + compID + "','" + compType1 + "','" + refID + "') INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type,related_showroom) values('" + compID + "','" + cusID + "','"+compMethod+"','" + compType2 + "','"+ relShrmID +"')";
-                    }
+                    relShrmID = Int32.Parse(txt_relShrmID.Text);
+                    string query = "INSERT INTO Complaint (comp_type,ref_id,relatedLocation_id ) VALUES ('" + compType1 + "','" + refID + "','" + relShrmID + "') DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type) values(@ID,'" + cusID + "','" + compMethod + "','" + compType2 + "') SELECT @ID as comp_id";
 
-                    int rows = db.Save_Del_Update(query);
+                    int compID = 0;
+                    compID = Int32.Parse(db.GetData(query).Rows[0]["comp_id"].ToString());
 
-                    if ( rows > 0)
+                    if (compID > 0)
                     {
                         MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                         if (rbn_staffComp.IsChecked == true)
                         {
-                            Login.b1.addWindowAndOpenNextWindow(this, new Staff_Complaint(compID));
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Staff_Complaint(compID));
                         }
                         else if (rbn_itemComp.IsChecked == true)
                         {
-                            Login.b1.addWindowAndOpenNextWindow(this, new ReceivedItem_Details(compID));
+                            Login.b1.hideWindowAndOpenNextWindow(this, new ReceivedItem_Details(compID));
                         }
                         //open next window
                     }
                     
                 }
             }
-            catch (SqlException ex)
+            catch (System.Data.SqlClient.SqlException ex)
             {
                 MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -122,77 +182,43 @@ namespace NewCRMSystem
             
         }
 
-        private bool validate()
-        {
-            bool check = true;
-
-            if(CRMdbData.Complaint.comp_id.validate(txt_compID.Text))
-            {
-                check = false;
-                compIDNotify.Source = compIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-            }
-            else
-            {
-                compIDNotify.Source = compIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-
-            if (CRMdbData.Reference.ref_id.validate(txt_refID.Text))
-            {
-                check = false;
-                refIDNotify.Source = refIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-            }
-            else
-            {
-                refIDNotify.Source = refIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-
-            if (CRMdbData.Customer.cus_id.validate(txt_cusID.Text))
-            {
-                check = false;
-                cusIDNotify.Source = cusIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-            }
-            else
-            {
-                cusIDNotify.Source = cusIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-
-            if (!(rbn_byCall.IsChecked==true||rbn_inPerson.IsChecked==true))
-            {
-                check = false;
-                compMethodNotify.Source = compMethodNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-            }
-            else
-            {
-                compMethodNotify.Source = compMethodNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-
-            if (!(rbn_staffComp.IsChecked == true || rbn_itemComp.IsChecked == true))
-            {
-                check = false;
-                compTypeNotify.Source = compTypeNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-            }
-            else
-            {
-                compTypeNotify.Source = compTypeNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-
-            if (CRMdbData.Location.location_id.validate(txt_relShrmID.Text)
-            {
-                check = false;
-                relShrmIDNotify.Source = relShrmIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-            }
-            else
-            {
-                relShrmIDNotify.Source = relShrmIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-                
-
-            return check;
-        }
-
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void btn_cusSearch_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var w = new Customer_Details(true);
+                Login.b1.addCurrentWindow(this);
+                if (w.ShowDialog() == true)
+                {
+                    txt_cusID.Text = w.txt_cusID.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btn_shrmSearch_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var w = new Location(true);
+                Login.b1.addCurrentWindow(this);
+                if (w.ShowDialog() == true)
+                {
+                    txt_relShrmID.Text = w.txt_LocationID.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

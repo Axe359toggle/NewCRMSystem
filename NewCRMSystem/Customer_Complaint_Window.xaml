@@ -29,143 +29,126 @@
         </Grid>
         <Grid Grid.Row="1">
             <ScrollViewer>
-            <Grid VerticalAlignment="Center">
-                <StackPanel>
-                    <Grid Margin="100 20 50 0" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="100"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_compID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                <Grid VerticalAlignment="Center">
+                    <StackPanel>
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock   Text="Reference ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_refID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="compIDNotify"/>
+                                    <Image x:Name="refID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                    </Grid>
-                    <Grid Margin="100 20 50 0" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="100"/>
-                        </Grid.ColumnDefinitions>
+                        </Grid>
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock   Text="Reference ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txt_refID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <TextBlock Text="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="refIDNotify"/>
+                                    <Image x:Name="cusID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                    </Grid>
-                    <Grid Margin="100 20 50 0" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="100"/>
-                        </Grid.ColumnDefinitions>
+                            <Button x:Name="btn_cusSearch" Grid.Column="3" Content="Search" Click="btn_cusSearch_Click"/>
+                        </Grid>
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <TextBlock Text="Related Showroom ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_relShrmID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusIDNotify"/>
+                                    <Image x:Name="relShrmID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                        <Button x:Name="btn_cusSearch" Grid.Column="3" Content="Search"/>
-                    </Grid>
-                    <Grid Margin="100 20 50 0" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="100"/>
-                        </Grid.ColumnDefinitions>
+                            <Button x:Name="btn_shrmSearch" Grid.Column="3" Content="Search" Click="btn_shrmSearch_Click"/>
+                        </Grid>
+                        <Grid Margin="110 50 100 0" >
+                            <TextBlock Text="Complaint Method" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Margin="100 10 50 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Border BorderThickness="2" BorderBrush="Black" Padding="20">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100"/>
+                                        </Grid.RowDefinitions>
 
-                        <TextBlock Text="Related Showroom ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txt_relShrmID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                        <Grid Grid.Column="2">
-                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                <Image x:Name="relShrmIDNotify"/>
-                            </DockPanel>
-                        </Grid>
-                        <Button x:Name="btn_shrmSearch" Grid.Column="3" Content="Search"/>
-                    </Grid>
-                    <Grid Margin="110 50 100 0" >
-                        <TextBlock Text="Complaint Method" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    </Grid>
-                    <Grid Margin="100 10 50 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="50"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Border BorderThickness="2" BorderBrush="Black" Padding="20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="20"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="100"/>
-                                    </Grid.RowDefinitions>
-
-                                    <RadioButton x:Name="rbn_byCall" Style="{StaticResource {x:Type ToggleButton}}" Content="By Call" Grid.Column="0" />
-                                    <RadioButton x:Name="rbn_inPerson" Style="{StaticResource {x:Type ToggleButton}}" Content="In Person" Grid.Column="2" />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <DockPanel Height="50" Width="50" VerticalAlignment="Center">
-                                <Image x:Name="compMethodNotify"/>
-                            </DockPanel>
-                        </Grid>
-                    </Grid>
-                    <Grid Margin="110 50 100 0" >
-                        <TextBlock   Text="Complaint Type" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    </Grid>
-                    <Grid Margin="100 10 50 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="50"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Border BorderThickness="2" BorderBrush="Black" Padding="20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="20"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="100"/>
-                                    </Grid.RowDefinitions>
-
-                                    <RadioButton x:Name="rbn_staffComp" Style="{StaticResource {x:Type ToggleButton}}" Content="Staff Complaint" Grid.Column="0" />
-                                    <RadioButton x:Name="rbn_itemComp" Style="{StaticResource {x:Type ToggleButton}}" Content="Item Complaint" Grid.Column="2" />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid Grid.Column="1">
+                                        <RadioButton x:Name="rbn_byCall" Style="{StaticResource {x:Type ToggleButton}}" Content="By Call" Grid.Column="0" />
+                                        <RadioButton x:Name="rbn_inPerson" Style="{StaticResource {x:Type ToggleButton}}" Content="In Person" Grid.Column="2" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="1">
                                 <DockPanel Height="50" Width="50" VerticalAlignment="Center">
-                                    <Image x:Name="compTypeNotify"/>
+                                    <Image x:Name="compMethod_Notify"/>
                                 </DockPanel>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </StackPanel>
-            </Grid>
+                        <Grid Margin="110 50 100 0" >
+                            <TextBlock   Text="Complaint Type" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Margin="100 10 50 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Border BorderThickness="2" BorderBrush="Black" Padding="20">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100"/>
+                                        </Grid.RowDefinitions>
+
+                                        <RadioButton x:Name="rbn_staffComp" Style="{StaticResource {x:Type ToggleButton}}" Content="Staff Complaint" Grid.Column="0" />
+                                        <RadioButton x:Name="rbn_itemComp" Style="{StaticResource {x:Type ToggleButton}}" Content="Item Complaint" Grid.Column="2" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <DockPanel Height="50" Width="50" VerticalAlignment="Center">
+                                    <Image x:Name="compType_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
             </ScrollViewer>
         </Grid>
 
         <Grid Grid.Row="2" Margin="100 10 50 20">
-            <Button x:Name="next_btn" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" Click="next_btn_Click" />
+            <Button x:Name="btn_next" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" Click="btn_next_Click" />
         </Grid>
 
     </Grid>

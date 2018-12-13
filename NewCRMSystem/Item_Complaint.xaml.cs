@@ -38,7 +38,7 @@ namespace NewCRMSystem
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.addWindowAndOpenNextWindow(this, new Delivery());
+            Login.b1.hideWindowAndOpenNextWindow(this, new Delivery());
         }
     }
 }

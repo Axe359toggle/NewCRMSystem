@@ -17,9 +17,9 @@ namespace NewCRMSystem
     /// <summary>
     /// Interaction logic for Item_Details.xaml
     /// </summary>
-    public partial class Item_Details : Window
+    public partial class Defected_Item_Details : Window
     {
-        public Item_Details()
+        public Defected_Item_Details()
         {
             InitializeComponent();
         }

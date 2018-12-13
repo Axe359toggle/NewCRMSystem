@@ -26,12 +26,17 @@ namespace NewCRMSystem
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.addWindowAndOpenNextWindow(this, new HQ_insert_Dashboard());
+            Login.b1.hideWindowAndOpenNextWindow(this, new HQ_insert_Dashboard());
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void btn_managerDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Manager_Details_window());
         }
     }
 }

@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="Manager_Details_window" Height="750" Width="1600">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="515*"/>
-            <ColumnDefinition Width="281*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
             <RowDefinition Height="1*"/>
@@ -21,7 +17,7 @@
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0">
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click_1">
                 <DockPanel>
                     <Image Source="{StaticResource backButtonImage}"/>
                 </DockPanel>
@@ -30,8 +26,8 @@
                 <local:CommonControlPanel/>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <ScrollViewer Margin="-10,0,9.6,0.2">
+        <Grid Grid.Row="1">
+            <ScrollViewer>
                 <Grid VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -175,14 +171,14 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkLocation" Content="Location ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <CheckBox x:Name="chkLocationID" Content="Location ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBox x:Name="txtlocationID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="locationIDNotify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btnLocationSearch" Grid.Column="3" Content="Search Location"/>
+                            <Button x:Name="btnLocationSearch" Grid.Column="3" Content="Search Location" Click="btnLocationSearch_Click"/>
                         </Grid>
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
@@ -193,7 +189,7 @@
                             </Grid.ColumnDefinitions>
 
                             <CheckBox x:Name="chkAssignedDt" Content="Assigned Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txtAssignedDt" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="txtAssignedDt" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="assignedDtNotify"/>
@@ -265,7 +261,7 @@
             </ScrollViewer>
         </Grid>
         <Grid Grid.Row="2" Margin="50 10 50 20" Grid.ColumnSpan="2">
-            <Button x:Name="ok_btn" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok"/>
+            <Button x:Name="btn_ok" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" IsEnabled="False" Click="btn_ok_Click"/>
         </Grid>
     </Grid>
 </Window>
