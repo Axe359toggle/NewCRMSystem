@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,12 @@
     </ApplicationDefinition>
     <Compile Include="Assign_New_Item_Window.xaml.cs">
       <DependentUpon>Assign_New_Item_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assign_Reabate_Window.xaml.cs">
+      <DependentUpon>Assign_Reabate_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Item_Type_Window.xaml.cs">
+      <DependentUpon>Item_Type_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Location.xaml.cs">
       <DependentUpon>Location.xaml</DependentUpon>
@@ -84,6 +91,10 @@
     <Page Include="Assign_New_Item_Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assign_Reabate_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Choose_Factory.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +143,10 @@
     <Page Include="Defected_Item_Details.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Item_Type_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Location.xaml">
       <SubType>Designer</SubType>

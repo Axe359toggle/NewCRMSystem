@@ -534,7 +534,6 @@ namespace NewCRMSystem
                         {
                             refreshTP_datagrid(locID);
                             MessageBox.Show("Data Deleted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
                         }
                         else
                         {
@@ -555,7 +554,8 @@ namespace NewCRMSystem
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
-            
+            Login.b1.removePreviousWindow();
+            this.Hide();
         }
 
         private void location_Datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -640,7 +640,6 @@ namespace NewCRMSystem
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
         }
     }
 }

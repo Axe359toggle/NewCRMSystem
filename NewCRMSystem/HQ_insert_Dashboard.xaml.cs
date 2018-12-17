@@ -21,6 +21,11 @@ namespace NewCRMSystem
         {
             Login.b1.goBack(this);
         }
+
+        private void btn_AssignRebate_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Reabate_Window());
+        }
     }
 }
 

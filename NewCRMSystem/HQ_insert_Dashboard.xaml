@@ -33,17 +33,14 @@
 <Border Padding="10" Background="BlanchedAlmond"  Margin="20" CornerRadius="30">
     <StackPanel>
             <Grid Margin="10 10 10 10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="9*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
-                    <Button x:Name="btn_LoginDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Login &#xD;&#xA;Details" Height="150" Margin="105,51,-196,0" VerticalAlignment="Top" Background="DarkOrange"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <Button x:Name="btn_Assign" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign&#xD;&#xA; Rebate"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="9*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1">
+                    <Button x:Name="btn_AssignRebate" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign&#xD;&#xA; Rebate"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_AssignRebate_Click"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="10 0 10 10">

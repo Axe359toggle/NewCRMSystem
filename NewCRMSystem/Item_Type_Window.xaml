@@ -1,0 +1,152 @@
+﻿<Window x:Class="NewCRMSystem.Item_Type_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewCRMSystem"
+        mc:Ignorable="d"
+        Title="Item_Type_Window" Height="800" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource panelRowSize}"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+                <DockPanel>
+                    <Image Source="{StaticResource backButtonImage}"/>
+                </DockPanel>
+            </Button>
+            <Grid Grid.Column="1">
+                <local:CommonControlPanel/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <Grid VerticalAlignment="Center">
+                    <StackPanel>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_itemTypeID" Content="Item Type ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_itemTypeID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="itemTypeID_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_brand" Content="Brand" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_brand" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="brand_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_category" Content="Category" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_category" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="category_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_name" Content="Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_name" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="name_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_size" Content="Size" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_size" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="size_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="50 50 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton x:Name="rbnInsert" Grid.Column="0" Content="Insert" HorizontalAlignment="Center" Checked="rbnInsert_Checked"/>
+                                <RadioButton x:Name="rbnUpdate" Grid.Column="1" Content="Update" HorizontalAlignment="Center" Checked="rbnUpdate_Checked" IsEnabled="False"/>
+                                <RadioButton x:Name="rbnSearch" Grid.Column="2" Content="Search" HorizontalAlignment="Center" Checked="rbnSearch_Checked"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Process" Click="btnProcess_Click"/>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <DataGrid x:Name="itemType_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="itemType_Datagrid_SelectionChanged">
+                                    <DataGrid.Columns>
+
+                                        <DataGridTextColumn Header="Item Type ID" Binding="{Binding item_type_id}"/>
+                                        <DataGridTextColumn Header="Brand" Binding="{Binding item_brand}"/>
+                                        <DataGridTextColumn Header="Category" Binding="{Binding item_category}"/>
+                                        <DataGridTextColumn Header="Name" Binding="{Binding item_name}"/>
+                                        <DataGridTextColumn Header="Size" Binding="{Binding item_size}"/>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Grid>
+                        
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2" Margin="50 10 50 20" Grid.ColumnSpan="2">
+            <Button x:Name="btn_ok" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" Click="btn_ok_Click" IsEnabled="False"/>
+        </Grid>
+    </Grid>
+</Window>

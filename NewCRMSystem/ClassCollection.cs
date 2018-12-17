@@ -8,11 +8,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 
+using System.Configuration;
+
 namespace NewCRMSystem
 {
     public class BackButton
     {
-
 
         static string[] previousWindows { get; set; }
         static int noOfWindows { get; set; }
@@ -139,7 +140,7 @@ namespace NewCRMSystem
         public Database()
         {
             con = new SqlConnection();
-            con.ConnectionString = @"Data Source=DESKTOP-99OKMBM;Initial Catalog=NewCRMdb;Integrated Security=True";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DatabaseKey"].ConnectionString;
         }
 
         public void openCon()
@@ -153,7 +154,7 @@ namespace NewCRMSystem
 
         public int Save_Del_Update(string query)
         {
-            int rows;
+            int rows = 0;
             try
             {
                 openCon();
@@ -162,14 +163,19 @@ namespace NewCRMSystem
             {
                 MessageBox.Show("Check the Database Connection", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            cmd = new SqlCommand(query, con);
-            rows = cmd.ExecuteNonQuery();
-            cmd.Dispose();
+
+            if(con.State == System.Data.ConnectionState.Open)
+            {
+                cmd = new SqlCommand(query, con);
+                rows = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
             closeCon();
             return rows;
         }
         public DataTable GetData(string query)
         {
+            DataTable dt = null;
             try
             {
                 openCon();
@@ -178,9 +184,13 @@ namespace NewCRMSystem
             {
                 MessageBox.Show("Check the Database Connection", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            SqlDataAdapter da = new SqlDataAdapter(query, con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+
+            if (con.State == System.Data.ConnectionState.Open)
+            {
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                dt = new DataTable();
+                da.Fill(dt);
+            }
             closeCon();
             return dt;
         }

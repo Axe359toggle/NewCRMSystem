@@ -21,7 +21,8 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Login : Window
     {
-        internal static BackButton b1 { get; set; }
+        static BackButton B1 = new BackButton();
+        internal static BackButton b1 { get { return B1; } }
 
         static int empID = 0; 
         internal static int EmpID { get { return empID; } }
@@ -72,13 +73,11 @@ namespace NewCRMSystem
                         //locID = dt.Rows[0]["emp_id"].ToString();
                         if (desID.Equals("H"))
                         {
-                            b1 = new BackButton();
-                            b1.hideWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());
+                            B1.hideWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());
                         }
                         else if (desID.Equals("S"))
                         {
-                            b1 = new BackButton();
-                            b1.hideWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
+                            B1.hideWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
                         }
                     }
                     else
