@@ -85,8 +85,7 @@ namespace NewCRMSystem
             cmbDes.Text = "";
             txtlocationID.Text = "";
         }
-
-
+        
         //load Insert option
         private void setInsert()
         {
@@ -138,6 +137,20 @@ namespace NewCRMSystem
             lnameNotify.Source = null;
             tpNotify.Source = null;
             desNotify.Source = null;
+            locationIDNotify.Source = null;
+        }
+
+        private void hide_chk(Visibility visibility)
+        {
+            chkManagerID.Visibility = visibility;
+            chkTitle.Visibility = visibility;
+            chkFname.Visibility = visibility;
+            chkLname.Visibility = visibility;
+            chkTp.Visibility = visibility;
+            chkAccStatus.Visibility = visibility;
+            chkDes.Visibility = visibility;
+            chkLocationID.Visibility = visibility;
+            chkAssignedDt.Visibility = visibility;
         }
 
         private void enable_chk(bool value)
@@ -151,6 +164,15 @@ namespace NewCRMSystem
             chkDes.IsEnabled = value;
             chkLocationID.IsEnabled = value;
             chkAssignedDt.IsEnabled = value;
+
+            if (value)
+            {
+                hide_chk(Visibility.Visible);
+            }
+            else
+            {
+                hide_chk(Visibility.Hidden);
+            }
         }
 
         private void rbnInsert_Checked(object sender, RoutedEventArgs e)
@@ -224,7 +246,6 @@ namespace NewCRMSystem
                             txtManagerID.Text = managerID.ToString();
                             MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                             rbnUpdate.IsChecked = true;
-
                         }
                         else
                         {
@@ -391,6 +412,7 @@ namespace NewCRMSystem
                 else
                 {
                     managerIDNotify.Source = managerIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    managerIDNotify.ToolTip = CRMdbData.Manager.emp_id.Error;
                     check = false;
                 }
             }
@@ -403,6 +425,7 @@ namespace NewCRMSystem
             else
             {
                 titleNotify.Source = titleNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                titleNotify.ToolTip = CRMdbData.Manager.emp_title.Error;
                 check = false;
             }
 
@@ -414,6 +437,7 @@ namespace NewCRMSystem
             else
             {
                 fnameNotify.Source = fnameNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                fnameNotify.ToolTip = CRMdbData.Manager.emp_fname.Error;
                 check = false;
             }
 
@@ -425,6 +449,7 @@ namespace NewCRMSystem
             else
             {
                 lnameNotify.Source = lnameNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                lnameNotify.ToolTip = CRMdbData.Manager.emp_lname.Error;
                 check = false;
             }
 
@@ -436,6 +461,7 @@ namespace NewCRMSystem
             else
             {
                 tpNotify.Source = tpNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                tpNotify.ToolTip = CRMdbData.Manager.emp_tp.Error;
                 check = false;
             }
 
@@ -447,6 +473,7 @@ namespace NewCRMSystem
             else
             {
                 desNotify.Source = desNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                desNotify.ToolTip = CRMdbData.Designation.desName.Error;
                 check = false;
             }
 
@@ -458,6 +485,7 @@ namespace NewCRMSystem
             else
             {
                 locationIDNotify.Source = locationIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
+                locationIDNotify.ToolTip = CRMdbData.Location.location_id.Error;
                 check = false;
             }
 
@@ -497,6 +525,10 @@ namespace NewCRMSystem
                         loginID = Int32.Parse(dv.Row.ItemArray[6].ToString());//login_id
 
                         btnSetLogin.Content = "Update Login";
+                    }
+                    else
+                    {
+                        loginID = 0;
                     }
 
                     txtlocationID.Text = dv.Row.ItemArray[7].ToString();//location_id

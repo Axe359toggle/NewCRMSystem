@@ -34,7 +34,7 @@
                                 <ColumnDefinition Width="9*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
-                                <Button x:Name="btn_insert" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Insert" Height="150" Margin="105,51,-196,0" VerticalAlignment="Top" Background="DarkOrange"/>
+                                <Button x:Name="btn_insert" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Insert" Height="150" Margin="105,51,-196,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_insert_Click"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager&#xD;&#xA; Details"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/>

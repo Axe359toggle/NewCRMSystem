@@ -52,7 +52,7 @@ namespace NewCRMSystem
                 string upass = Password.sha256(upass_txt.Password);
 
                 Database db = new Database();
-                string query = "SELECT des_id,emp_id,login_id,emp_username,emp_pass from Login where emp_username = '" + uName + "' and emp_pass='" + upass + "' ";
+                string query = "SELECT des_id,emp_id,login_id,emp_username,emp_pass from Login where emp_username = '" + uName + "' and emp_pass='" + upass + "' and account_status = 1 ";
                 System.Data.DataTable dt = db.GetData(query);
 
 

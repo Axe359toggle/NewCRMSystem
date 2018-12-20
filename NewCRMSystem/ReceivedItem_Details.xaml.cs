@@ -24,13 +24,12 @@ namespace NewCRMSystem
         private double itemPrice = 0;
         private string shoeSide = "";
         private int itemTypeID = 0;
-        private int itemID = 0;
+        private string itemID = "";
         private string itemDefect = "";
         private string itemRemarks = "";
         private string defectImageSource = "";
 
-        string ext = "";
-        string filepath = "";
+
 
 
         public ReceivedItem_Details()
@@ -57,14 +56,40 @@ namespace NewCRMSystem
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
 
-        private string uploadImage(string filepath1, string ext1, string imageName)
+        //Save to Local required varibles
+        string filepath = "";
+        string ext = "";
+
+        private void browseImageToLocal()
         {
-            string imgSource = "";
-            if (filepath1.Length > 0)
+            Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
+            open.Multiselect = false;
+            open.DefaultExt = ".png";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.png; *.bmp)|*.jpg; *.jpeg; *.gif; *.png; *.bmp";
+            //open.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            bool? result = open.ShowDialog();
+
+
+            if (result == true)
             {
-                var imageFile = new System.IO.FileInfo(filepath1);
+                filepath = open.FileName; // Stores Original Path in Textbox
+                defectImageSource = filepath;
+                ext = System.IO.Path.GetExtension(open.FileName);
+                ImageSource imgsource = new BitmapImage(new Uri(filepath)); // Just show The File In Image when we browse It
+                img_defect.Source = imgsource;
+            }
+
+            
+        }
+
+        private string saveImageToLocal(int compItemID1)
+        {
+            string imageSource = "";
+
+            if(filepath.Length>0)
+            {
+                var imageFile = new System.IO.FileInfo(filepath);
                 if (imageFile.Exists)// check image file exist
                 {
                     // get your application folder
@@ -75,17 +100,62 @@ namespace NewCRMSystem
                     if (!dir.Exists)
                         dir.Create();
                     // Copy file to your folder
-                    string fileName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, imageName + ext1)).ToString();
-                    
-                    imgSource = dir.FullName + @"\" + fileName;
+                    string imageName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, compItemID1 + ext)).ToString();
+
+                    imageSource = dir.FullName + @"\" + imageName;
                 }
             }
-            else
+
+            return imageSource;
+        }
+
+        //Save to DB required varibles
+        System.Data.DataSet ds;
+        string strName = "", imageName = "";
+
+        private void browseImageToDB()
+        {
+            Microsoft.Win32.FileDialog fldlg = new Microsoft.Win32.OpenFileDialog();
+            fldlg.InitialDirectory = Environment.SpecialFolder.MyPictures.ToString();
+            fldlg.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif";
+            fldlg.ShowDialog();
             {
-                MessageBox.Show("Please Choose a image to Upload", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                strName = fldlg.SafeFileName;
+                imageName = fldlg.FileName;
+                ImageSourceConverter isc = new ImageSourceConverter();
+                img_defect.SetValue(Image.SourceProperty, isc.ConvertFromString(imageName));
             }
-            
-            return imgSource;
+            fldlg = null;
+        }
+
+        private bool saveImageToDB(int compItemID1)
+        {
+            bool value = false;
+            if (imageName != "")
+            {
+                //Initialize a file stream to read the image file
+                System.IO.FileStream fs = new System.IO.FileStream(imageName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+
+                //Initialize a byte array with size of stream
+                byte[] imgByteArr = new byte[fs.Length];
+
+                //Read data from the file stream and put into the byte array
+                fs.Read(imgByteArr, 0, Convert.ToInt32(fs.Length));
+
+                //Close a file stream
+                fs.Close();
+                string sql = "UPDATE ComplaintItem SET item_defect_img = @img WHERE comp_item_id = '" + compItemID1 + "' ";
+                
+                Database db = new Database();
+                //Pass byte array into database
+
+                if (db.Save_Del_Update(sql,imgByteArr) == 1)
+                {
+                    value = true;
+                }
+            }
+
+            return value;
         }
 
         private bool validate()
@@ -100,21 +170,21 @@ namespace NewCRMSystem
             else
             {
                 compID_Notify.Source = compID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                compID_Notify.ToolTip = CRMdbData.Complaint.comp_id.Error;
                 check = false;
             }
-
-            /*
+            
             //Received Date
-            if (CRMdbData.Location.location_id.validate(txt_relShrmID.Text))
+            if (CRMdbData.ComplaintItem.received_dt.validate(dt_receivedDt.Text))
             {
-                relShrmID_Notify.Source = relShrmID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+                receivedDt_Notify.Source = receivedDt_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
             else
             {
-                relShrmID_Notify.Source = relShrmID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                receivedDt_Notify.Source = receivedDt_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                receivedDt_Notify.ToolTip = CRMdbData.ComplaintItem.received_dt.Error;
                 check = false;
             }
-            */
             
             //Item Price
             if (CRMdbData.Item.item_price.validate(txt_itemPrice.Text))
@@ -124,6 +194,7 @@ namespace NewCRMSystem
             else
             {
                 itemPrice_Notify.Source = itemPrice_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                itemPrice_Notify.ToolTip = CRMdbData.Item.item_price.Error;
                 check = false;
             }
 
@@ -135,6 +206,7 @@ namespace NewCRMSystem
             else
             {
                 shoeSide_Notify.Source = shoeSide_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                shoeSide_Notify.ToolTip = CRMdbData.ComplaintItem.shoe_side.Error;
                 check = false;
             }
 
@@ -147,6 +219,7 @@ namespace NewCRMSystem
             else
             {
                 itemTypeID_Notify.Source = itemTypeID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                itemTypeID_Notify.ToolTip = CRMdbData.ItemType.item_type_id.Error;
                 check = false;
             }
 
@@ -158,6 +231,7 @@ namespace NewCRMSystem
             else
             {
                 itemID_Notify.Source = itemID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                itemID_Notify.ToolTip = CRMdbData.Item.item_id.Error;
                 check = false;
             }
 
@@ -169,6 +243,7 @@ namespace NewCRMSystem
             else
             {
                 defect_Notify.Source = defect_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                defect_Notify.ToolTip = CRMdbData.ComplaintItem.item_defect.Error;
                 check = false;
             }
 
@@ -180,6 +255,7 @@ namespace NewCRMSystem
             else
             {
                 defectImage_Notify.Source = defectImage_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                defectImage_Notify.ToolTip = CRMdbData.ComplaintItem.item_defect_img.Error;
                 check = false;
             }
 
@@ -191,6 +267,7 @@ namespace NewCRMSystem
             else
             {
                 remarks_Notify.Source = remarks_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                remarks_Notify.ToolTip = CRMdbData.ComplaintItem.item_remarks.Error;
                 check = false;
             }
 
@@ -217,9 +294,10 @@ namespace NewCRMSystem
                     compID = Int32.Parse(txt_compID.Text);
                     receivedDt = DateTime.Parse(dt_receivedDt.Text);
                     itemTypeID = Int32.Parse(txt_itemTypeID.Text);
-                    itemID = Int32.Parse(txt_itemID.Text);
+                    itemID = txt_itemID.Text;
                     itemDefect = txt_defect.Text;
                     itemRemarks = txt_remarks.Text;
+                    itemPrice = Double.Parse(txt_itemPrice.Text);
 
                     string query = "INSERT INTO Item (item_id ,item_price ) VALUES ('"+itemID+"',"+itemPrice+") ";
                     query += "INSERT INTO ComplaintItem (shoe_side ,received_dt ,item_defect ,item_remarks ,item_id  ,item_type_id ,comp_id ) VALUES ('"+shoeSide+"','"+receivedDt+"','"+itemDefect+"','"+itemRemarks+"','"+itemID+"','"+itemTypeID+"','"+compID+"') DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as comp_item_id";
@@ -228,17 +306,16 @@ namespace NewCRMSystem
 
                     int compItemID = Int32.Parse(db.GetData(query).Rows[0]["comp_item_id"].ToString());
 
-                    defectImageSource = uploadImage(filepath, ext,compItemID.ToString());
-
-                    string queryUpdate = "Update ComplaintItem set item_defect_img = '"+defectImageSource+ "' WHERE comp_item_id = "+compItemID+" ";
-
-                    if (compItemID > 0)
+                    string imagePath = saveImageToLocal(compItemID);
+                    string query1 = "Update ComplaintItem SET item_defect_img = '" + imagePath + "' WHERE comp_item_id = " + compItemID + " ";
+                    if (db.Save_Del_Update(query1)>0)
                     {
-                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        if (Login.DesID.Equals("H"))
-                            Login.b1.hideWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());
-                        else if (Login.DesID.Equals("S"))
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                        LoadMainMenu.LoadFor(this);
+                    }
+                    else
+                    {
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
 
                 }
@@ -257,21 +334,7 @@ namespace NewCRMSystem
         {
             try
             {
-                Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
-                open.Multiselect = false;
-                open.DefaultExt = ".png";
-                open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.png; *.bmp)|*.jpg; *.jpeg; *.gif; *.png; *.bmp";
-                //open.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-                bool? result = open.ShowDialog();
-
-
-                if (result == true)
-                {
-                    filepath = open.FileName; // Stores Original Path in Textbox
-                    ext = System.IO.Path.GetExtension(open.FileName);
-                    ImageSource imgsource = new BitmapImage(new Uri(filepath)); // Just show The File In Image when we browse It
-                    img_defect.Source = imgsource;
-                }
+                browseImageToLocal();
             }
             catch (Exception ex)
             {
@@ -287,7 +350,7 @@ namespace NewCRMSystem
                 Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
-                    txt_itemID.Text = w.txt_itemTypeID.Text;
+                    txt_itemTypeID.Text = w.txt_itemTypeID.Text;
                 }
             }
             catch (Exception ex)

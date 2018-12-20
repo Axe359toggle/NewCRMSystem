@@ -34,163 +34,214 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
-                        <Grid Margin="100 10 50 0" >
+                        <Grid Margin="50 10 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton x:Name="rbnInsert" Grid.Column="0" Content="Insert" HorizontalAlignment="Center" Checked="rbnInsert_Checked"/>
+                                <RadioButton x:Name="rbnUpdate" Grid.Column="1" Content="Update" HorizontalAlignment="Center" Checked="rbnUpdate_Checked" IsEnabled="False"/>
+                                <RadioButton x:Name="rbnSearch" Grid.Column="2" Content="Search" HorizontalAlignment="Center" Checked="rbnSearch_Checked"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Process" Click="btnProcess_Click"/>
+                        </Grid>
+                        <Grid Margin="60 30 100 0" >
+                            <TextBlock Text="Manager Details" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Margin="100 30 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkManagerID" Content="Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txtManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
-                            <Grid Grid.Column="2">
+                            <CheckBox x:Name="chkManagerID"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Label HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center" Content="Manager ID"/>
+                            <TextBox x:Name="txtManagerID" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True" />
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="managerIDNotify"/>
                                 </DockPanel>
                             </Grid>
                         </Grid>
+
+                        <!--Title-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkTitle" Content="Title" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmbTitle" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                            <CheckBox x:Name="chkTitle"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left"  Grid.Column="1" VerticalAlignment="Center" Content="Title"/>
+                            <ComboBox x:Name="cmbTitle" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="2">
                                 <ComboBoxItem Content="Mr."/>
                                 <ComboBoxItem Content="Mrs."/>
                                 <ComboBoxItem Content="Ms."/>
                             </ComboBox>
-                            <Grid Grid.Column="2">
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="titleNotify"/>
                                 </DockPanel>
                             </Grid>
                         </Grid>
+
+                        <!--First name-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkFname" Content="First Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txtFname" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                            <CheckBox x:Name="chkFname"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="First Name" Grid.Column="1"/>
+                            <TextBox x:Name="txtFname" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center" Grid.ColumnSpan="2">
                                     <Image x:Name="fnameNotify"/>
                                 </DockPanel>
                             </Grid>
 
                         </Grid>
+
+                        <!--Last Name-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkLname" Content="Last Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txtLname" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
+                            <CheckBox x:Name="chkLname"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Last Name" Grid.Column="1"/>
+                            <TextBox x:Name="txtLname" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="lnameNotify"/>
                                 </DockPanel>
                             </Grid>
 
                         </Grid>
+
+                        <!--Telephone-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkTp" Content="Telephone" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txtTp" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
+                            <CheckBox x:Name="chkTp" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Telephone" Grid.Column="1"/>
+                            <TextBox x:Name="txtTp" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="tpNotify"/>
                                 </DockPanel>
                             </Grid>
 
                         </Grid>
+
+                        <!--Login Account Status-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkAccStatus" Content="Login account Status" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txtLoginStatus" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
-                            <Grid Grid.Column="2">
+                            <CheckBox x:Name="chkAccStatus"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Login Account Status" Grid.Column="1"/>
+                            <TextBox x:Name="txtLoginStatus" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="loginStatusNotify"/>
                                 </DockPanel>
                             </Grid>
 
                         </Grid>
+
+                        <!--Designation-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkDes" Content="Designation" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmbDes" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                            <CheckBox x:Name="chkDes" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Designation" Grid.Column="1"/>
+                            <ComboBox x:Name="cmbDes" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                                 <ComboBoxItem Content="Showroom Manager"/>
                                 <ComboBoxItem Content="Factory Manager"/>
                                 <ComboBoxItem Content="Headquarters Manager"/>
                                 <ComboBoxItem Content="Top Manager"/>
                             </ComboBox>
-                            <Grid Grid.Column="2">
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="desNotify"/>
                                 </DockPanel>
                             </Grid>
                         </Grid>
                         <Grid Margin="60 30 100 0" >
-                            <TextBlock Text="Assigned Locations" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="Assigned Location" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Grid>
 
+                        <!--Location ID-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkLocationID" Content="Location ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txtlocationID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
+                            <CheckBox x:Name="chkLocationID"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Location ID" Grid.Column="1"/>
+                            <TextBox x:Name="txtlocationID" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="locationIDNotify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btnLocationSearch" Grid.Column="3" Content="Search Location" Click="btnLocationSearch_Click"/>
+                            <Button x:Name="btnLocationSearch" Grid.Column="4" Content="Search Location" Click="btnLocationSearch_Click" HorizontalAlignment="Center" Width="120"  />
                         </Grid>
+
+                        <!--Assigned Date-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chkAssignedDt" Content="Assigned Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <DatePicker x:Name="txtAssignedDt" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False"/>
-                            <Grid Grid.Column="2">
+                            <CheckBox x:Name="chkAssignedDt" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="Assigned Date" Grid.Column="1"/>
+                            <DatePicker x:Name="txtAssignedDt" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False"/>
+                            <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="assignedDtNotify"/>
                                 </DockPanel>
@@ -198,6 +249,27 @@
                         </Grid>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
+                        <Grid Margin="60 30 100 0" >
+                            <TextBlock Text="Manager Details" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Margin="50 10 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <DataGrid x:Name="managerDatagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="managerDatagrid_SelectionChanged">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Manager ID" Binding="{Binding emp_id}" />
+                                        <DataGridTextColumn Header="Title" Binding="{Binding emp_title}" />
+                                        <DataGridTextColumn Header="First Name" Binding="{Binding emp_fname}" />
+                                        <DataGridTextColumn Header="Last Name" Binding="{Binding emp_lname}" />
+                                        <DataGridTextColumn Header="Telephone" Binding="{Binding emp_tp}" />
+                                        <DataGridTextColumn Header="Designation ID" Binding="{Binding des_id}" />
+                                        <DataGridTextColumn Header="Login ID" Binding="{Binding login_id}" />
+                                        <DataGridTextColumn Header="Location ID" Binding="{Binding location_id}" />
+                                        <DataGridTextColumn Header="Assigned Date" Binding="{Binding assigned_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Grid>
 
                         <Grid Margin="60 30 100 0" >
                             <TextBlock Text="Login Details" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -224,38 +296,7 @@
                         </Grid>
 
 
-                        <Grid Margin="50 10 50 0" >
-                            <Grid HorizontalAlignment="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
-                                </Grid.ColumnDefinitions>
-                                <RadioButton x:Name="rbnInsert" Grid.Column="0" Content="Insert" HorizontalAlignment="Center" Checked="rbnInsert_Checked"/>
-                                <RadioButton x:Name="rbnUpdate" Grid.Column="1" Content="Update" HorizontalAlignment="Center" Checked="rbnUpdate_Checked" IsEnabled="False"/>
-                                <RadioButton x:Name="rbnSearch" Grid.Column="2" Content="Search" HorizontalAlignment="Center" Checked="rbnSearch_Checked"/>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="50 10 50 0" >
-                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Process" Click="btnProcess_Click"/>
-                        </Grid>
-                        <Grid Margin="50 10 50 0" >
-                            <Grid HorizontalAlignment="Center">
-                                <DataGrid x:Name="managerDatagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="managerDatagrid_SelectionChanged">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Manager ID" Binding="{Binding emp_id}" />
-                                        <DataGridTextColumn Header="Title" Binding="{Binding emp_title}" />
-                                        <DataGridTextColumn Header="First Name" Binding="{Binding emp_fname}" />
-                                        <DataGridTextColumn Header="Last Name" Binding="{Binding emp_lname}" />
-                                        <DataGridTextColumn Header="Telephone" Binding="{Binding emp_tp}" />
-                                        <DataGridTextColumn Header="Designation ID" Binding="{Binding des_id}" />
-                                        <DataGridTextColumn Header="Login ID" Binding="{Binding login_id}" />
-                                        <DataGridTextColumn Header="Location ID" Binding="{Binding location_id}" />
-                                        <DataGridTextColumn Header="Assigned Date" Binding="{Binding assigned_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </Grid>
-                        </Grid>
+                        
                     </StackPanel>
                 </Grid>
             </ScrollViewer>

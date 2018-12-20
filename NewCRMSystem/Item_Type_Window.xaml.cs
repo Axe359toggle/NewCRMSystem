@@ -87,6 +87,15 @@ namespace NewCRMSystem
             size_Notify.Source = null;
         }
 
+        private void hide_chk(Visibility visibility)
+        {
+            chk_itemTypeID.Visibility = visibility;
+            chk_brand.Visibility = visibility;
+            chk_category.Visibility = visibility;
+            chk_name.Visibility = visibility;
+            chk_size.Visibility = visibility;
+        }
+
         private void enable_chk(bool value)
         {
             chk_itemTypeID.IsEnabled = value;
@@ -94,6 +103,15 @@ namespace NewCRMSystem
             chk_category.IsEnabled = value;
             chk_name.IsEnabled = value;
             chk_size.IsEnabled = value;
+
+            if (value)
+            {
+                hide_chk(Visibility.Visible);
+            }
+            else
+            {
+                hide_chk(Visibility.Hidden);
+            }
         }
 
         //load Insert option
@@ -147,6 +165,7 @@ namespace NewCRMSystem
                 else
                 {
                     itemTypeID_Notify.Source = itemTypeID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    itemTypeID_Notify.ToolTip = CRMdbData.ItemType.item_type_id.Error;
                     check = false;
                 }
             }
@@ -159,6 +178,7 @@ namespace NewCRMSystem
             else
             {
                 brand_Notify.Source = brand_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                brand_Notify.ToolTip = CRMdbData.ItemType.item_brand.Error;
                 check = false;
             }
 
@@ -170,6 +190,7 @@ namespace NewCRMSystem
             else
             {
                 category_Notify.Source = category_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                category_Notify.ToolTip = CRMdbData.ItemType.item_category.Error;
                 check = false;
             }
 
@@ -181,6 +202,7 @@ namespace NewCRMSystem
             else
             {
                 name_Notify.Source = name_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                name_Notify.ToolTip = CRMdbData.ItemType.item_name.Error;
                 check = false;
             }
 
@@ -192,6 +214,7 @@ namespace NewCRMSystem
             else
             {
                 size_Notify.Source = size_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                size_Notify.ToolTip = CRMdbData.ItemType.item_size.Error;
                 check = false;
             }
             

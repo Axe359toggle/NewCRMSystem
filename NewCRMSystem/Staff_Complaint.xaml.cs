@@ -47,6 +47,7 @@ namespace NewCRMSystem
             else
             {
                 compID_Notify.Source = compID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                compID_Notify.ToolTip = CRMdbData.Complaint.comp_id.Error;
                 check = false;
             }
 
@@ -58,6 +59,7 @@ namespace NewCRMSystem
             else
             {
                 staffID_Notify.Source = staffID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                staffID_Notify.ToolTip = CRMdbData.StaffComplaint.staff_id.Error;
                 check = false;
             }
 
@@ -69,6 +71,7 @@ namespace NewCRMSystem
             else
             {
                 staffName_Notify.Source = staffName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                staffName_Notify.ToolTip = CRMdbData.StaffComplaint.staff_name.Error;
                 check = false;
             }
 
@@ -80,6 +83,7 @@ namespace NewCRMSystem
             else
             {
                 description_Notify.Source = description_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                description_Notify.ToolTip = CRMdbData.StaffComplaint.description.Error;
                 check = false;
             }
 
@@ -110,16 +114,11 @@ namespace NewCRMSystem
                     
                     if (db.Save_Del_Update(query) > 0)
                     {
-                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        if (Login.DesID.Equals("H"))
-                            Login.b1.hideWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());
-                        else if (Login.DesID.Equals("S"))
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
-                        
+                        LoadMainMenu.LoadFor(this);
                     }
                     else
                     {
-                        MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
 
                 }

@@ -97,6 +97,18 @@ namespace NewCRMSystem
             tp_Notify.Source = null;
         }
 
+        private void hide_chk(Visibility visibility)
+        {
+            chk_LocationID.Visibility = visibility;
+            chk_LocationName.Visibility = visibility;
+            chk_LocationType.Visibility = visibility;
+            chk_AddrNo.Visibility = visibility;
+            chk_AddrLane.Visibility = visibility;
+            chk_AddrTown.Visibility = visibility;
+            chk_AddrCity.Visibility = visibility;
+            chk_Tp.Visibility = visibility;
+        }
+
         private void enable_chk(bool value)
         {
             chk_LocationID.IsEnabled = value;
@@ -107,6 +119,15 @@ namespace NewCRMSystem
             chk_AddrTown.IsEnabled = value;
             chk_AddrCity.IsEnabled = value;
             chk_Tp.IsEnabled = value;
+
+            if (value)
+            {
+                hide_chk(Visibility.Visible);
+            }
+            else
+            {
+                hide_chk(Visibility.Hidden);
+            }
         }
 
         //load Insert option
@@ -166,6 +187,7 @@ namespace NewCRMSystem
                 else
                 {
                     locationID_Notify.Source = locationID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    locationID_Notify.ToolTip = CRMdbData.Location.location_id.Error;
                     check = false;
                 }
             }
@@ -180,6 +202,7 @@ namespace NewCRMSystem
                 else
                 {
                     tp_Notify.Source = tp_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    tp_Notify.ToolTip = CRMdbData.Location.location_tp.Error;
                     check = false;
                 }
             }
@@ -192,6 +215,7 @@ namespace NewCRMSystem
             else
             {
                 locationType_Notify.Source = locationType_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                locationType_Notify.ToolTip = CRMdbData.Location.location_type.Error;
                 check = false;
             }
 
@@ -203,6 +227,7 @@ namespace NewCRMSystem
             else
             {
                 locationName_Notify.Source = locationName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                locationName_Notify.ToolTip = CRMdbData.Location.location_name.Error;
                 check = false;
             }
 
@@ -214,6 +239,7 @@ namespace NewCRMSystem
             else
             {
                 addrNo_Notify.Source = addrNo_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                addrNo_Notify.ToolTip = CRMdbData.Location.addr_no.Error;
                 check = false;
             }
 
@@ -225,6 +251,7 @@ namespace NewCRMSystem
             else
             {
                 addrLane_Notify.Source = addrLane_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                addrLane_Notify.ToolTip = CRMdbData.Location.addr_lane.Error;
                 check = false;
             }
 
@@ -236,6 +263,7 @@ namespace NewCRMSystem
             else
             {
                 addrTown_Notify.Source = addrTown_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                addrTown_Notify.ToolTip = CRMdbData.Location.addr_town.Error;
                 check = false;
             }
 
@@ -247,6 +275,7 @@ namespace NewCRMSystem
             else
             {
                 addrCity_Notify.Source = addrCity_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                addrCity_Notify.ToolTip = CRMdbData.Location.addr_city.Error;
                 check = false;
             }
             
@@ -264,6 +293,7 @@ namespace NewCRMSystem
             else
             {
                 locationID_Notify.Source = locationID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                locationID_Notify.ToolTip = CRMdbData.Location.location_id.Error;
             }
 
             //Telephone
@@ -274,6 +304,7 @@ namespace NewCRMSystem
             else
             {
                 tp_Notify.Source = tp_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                tp_Notify.ToolTip = CRMdbData.Location.location_tp.Error;
             }
         }
 

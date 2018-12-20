@@ -68,6 +68,7 @@ namespace NewCRMSystem
             else
             {
                 refID_Notify.Source = refID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                refID_Notify.ToolTip = CRMdbData.Reference.ref_id.Error;
                 check = false;
             }
 
@@ -79,6 +80,7 @@ namespace NewCRMSystem
             else
             {
                 cusID_Notify.Source = cusID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                cusID_Notify.ToolTip = CRMdbData.Customer.cus_id.Error;
                 check = false;
             }
 
@@ -90,6 +92,7 @@ namespace NewCRMSystem
             else
             {
                 compMethod_Notify.Source = compMethod_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                compMethod_Notify.ToolTip = "Choose an Option";
                 check = false;
             }
 
@@ -101,6 +104,7 @@ namespace NewCRMSystem
             else
             {
                 compType_Notify.Source = compType_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                compType_Notify.ToolTip = "Choose an Option";
                 check = false;
             }
 
@@ -112,6 +116,7 @@ namespace NewCRMSystem
             else
             {
                 relShrmID_Notify.Source = relShrmID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                relShrmID_Notify.ToolTip = CRMdbData.Location.location_id.Error;
                 check = false;
             }
 

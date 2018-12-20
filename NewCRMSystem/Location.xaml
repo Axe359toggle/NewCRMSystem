@@ -31,156 +31,7 @@
                 <Grid VerticalAlignment="Center">
                     <StackPanel>
 
-                        <Grid Margin="100 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_LocationID" Content="Location ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_LocationID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="locationID_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_LocationType" Content="Location Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmb_LocationType" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                                <ComboBoxItem Content="HQ"/>
-                                <ComboBoxItem Content="Showroom"/>
-                                <ComboBoxItem Content="Factory"/>
-                            </ComboBox>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="locationType_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_LocationName" Content="Location Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_LocationName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="locationName_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 50 100 0" >
-                            <TextBlock Text="Address" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        </Grid>
-                        <Grid Margin="140 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_AddrNo" Content="No." Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_AddrNo" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="addrNo_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="140 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_AddrLane" Content="Lane" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_AddrLane" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="addrLane_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="140 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_AddrTown" Content="Town" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_AddrTown" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="addrTown_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="140 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_AddrCity" Content="City" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_AddrCity" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="addrCity_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 50 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_Tp" Content="Telephone" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_Tp" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="tp_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                            <Button x:Name="btn_tpAdd" Grid.Column="3" Content="Add" IsEnabled="False" Click="btn_tpAdd_Click"/>
-                            <Button x:Name="btn_tpRemove" Grid.Column="5" Content="Remove" IsEnabled="False" Click="btn_tpRemove_Click"/>
-                        </Grid>
-                        <Grid Margin="50 10 50 0" >
-                            <Grid HorizontalAlignment="Center">
-                                <DataGrid x:Name="telephone_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="telephone_Datagrid_SelectionChanged">
-                                    <DataGrid.Columns>
-
-                                        <DataGridTextColumn Header="Telephone" Binding="{Binding location_tp}"/>
-
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </Grid>
-                        </Grid>
+                        <!--Radio Buttons-->
                         <Grid Margin="50 50 50 0" >
                             <Grid HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
@@ -195,6 +46,189 @@
                         </Grid>
                         <Grid Margin="50 10 50 0" >
                             <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Process" Click="btnProcess_Click"/>
+                        </Grid>
+
+                        <!--Location ID-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_LocationID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Location Type" Grid.Column="1"/>
+                            <TextBox x:Name="txt_LocationID" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="locationID_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--Location Type-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_LocationType" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Location ID" Grid.Column="1"/>
+                            <ComboBox x:Name="cmb_LocationType" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                <ComboBoxItem Content="HQ"/>
+                                <ComboBoxItem Content="Showroom"/>
+                                <ComboBoxItem Content="Factory"/>
+                            </ComboBox>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="locationType_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--Location Name-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_LocationName" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"   Content="Location Name" Grid.Column="1"/>
+                            <TextBox x:Name="txt_LocationName" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="locationName_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 50 100 0" >
+                            <TextBlock Text="Address" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <!--Address-->
+
+                        <!--No-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_AddrNo"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="No." Grid.Column="1"/>
+                            <TextBox x:Name="txt_AddrNo" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrNo_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--Lane-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_AddrLane"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Lane" Grid.Column="1"/>
+                            <TextBox x:Name="txt_AddrLane" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrLane_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+
+                        <!--Town-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_AddrTown"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Town" Grid.Column="1"/>
+                            <TextBox x:Name="txt_AddrTown" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrTown_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--City-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_AddrCity" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center"  Content="City"/>
+                            <TextBox x:Name="txt_AddrCity" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="addrCity_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="100 50 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_Tp" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center"  Content="Telephone"/>
+                            <TextBox x:Name="txt_Tp" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="tp_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                            <Button x:Name="btn_tpAdd" Grid.Column="4" Content="Add" IsEnabled="False" Click="btn_tpAdd_Click"/>
+                            <Button x:Name="btn_tpRemove" Grid.Column="6" Content="Remove" IsEnabled="False" Click="btn_tpRemove_Click"/>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Grid HorizontalAlignment="Center">
+                                <DataGrid x:Name="telephone_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="telephone_Datagrid_SelectionChanged">
+                                    <DataGrid.Columns>
+
+                                        <DataGridTextColumn Header="Telephone" Binding="{Binding location_tp}"/>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
                         </Grid>
                         <Grid Margin="50 10 50 0" >
                             <Grid HorizontalAlignment="Center">

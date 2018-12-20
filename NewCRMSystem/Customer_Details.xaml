@@ -32,70 +32,8 @@
             <ScrollViewer>
                 <Grid VerticalAlignment="Center">
                     <StackPanel>
-                        <Grid Margin="100 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
 
-                            <CheckBox x:Name="chk_cusID" Content="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusID_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_cusName" Content="Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusName_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_cusEmail" Content="Email" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusEmail" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusEmail_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 10 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="chk_cusTp" Content="Contact No." Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusTp" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusTp_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
+                        <!--Radio Button-->
                         <Grid Margin="50 50 50 0" >
                             <Grid HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
@@ -111,7 +49,91 @@
                         <Grid Margin="50 10 50 0" >
                             <Button x:Name="btn_process" HorizontalAlignment="Center" Width="100" Content="Process" Click="btn_process_Click"/>
                         </Grid>
-                        <Grid Margin="50 10 50 0" >
+
+                        <!--Customer ID-->
+                        <Grid Margin="100 30 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_cusID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"   Content="Customer ID" Grid.Column="1"/>
+                            <TextBox x:Name="txt_cusID" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusID_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+
+                        <!--Customer Name-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_cusName" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"   Content="Name" Grid.Column="1"/>
+                            <TextBox x:Name="txt_cusName" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusName_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+
+                        <!--Customer Email Address-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_cusEmail"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="Email" Grid.Column="1"/>
+                            <TextBox x:Name="txt_cusEmail" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusEmail_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+
+                        <!--Customer Telephone Number-->
+                        <Grid Margin="100 10 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="chk_cusTp"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Contact No." Grid.Column="1"/>
+                            <TextBox x:Name="txt_cusTp" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                            <Grid Grid.Column="3">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusTp_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Margin="50 50 50 0" >
                             <Grid HorizontalAlignment="Center">
                                 <DataGrid x:Name="cus_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="cus_Datagrid_SelectionChanged">
                                     <DataGrid.Columns>

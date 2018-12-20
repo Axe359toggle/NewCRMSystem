@@ -38,13 +38,12 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Complaint Item ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_compItemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <ComboBox x:Name="cmb_compItemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_compItemID_DropDownClosed"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="compItemID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btn_compItemSearch" Grid.Column="3" Content="Details" />
                         </Grid>
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
@@ -54,7 +53,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="cusID_Notify"/>
@@ -70,7 +69,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Item Type ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_itemTypeID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_itemTypeID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="itemTypeID_Notify"/>
@@ -86,7 +85,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Item ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_itemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_itemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="itemID_Notify"/>
@@ -102,7 +101,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Text="Item Defect" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_itemDefect" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
+                            <TextBox x:Name="txt_itemDefect" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="itemDefect_Notify"/>
@@ -149,7 +148,7 @@
                                     <Image x:Name="itemImage_Notify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btn_itemImageUpload" Grid.Column="3" Height="30" Content="Upload" />
+                            <Button x:Name="btn_itemImageUpload" Grid.Column="3" Height="30" Content="Upload" Click="btn_itemImageUpload_Click" />
                         </Grid>
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
@@ -160,7 +159,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Text="Item Remarks" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_itemRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
+                            <TextBox x:Name="txt_itemRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="itemRemarks_Notify"/>
@@ -175,7 +174,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Item Price" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_itemPrice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_itemPrice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="itemPrice_Notify"/>
@@ -191,7 +190,12 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Rebate Percentage" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_rebatePercentage" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <ComboBox x:Name="cmb_rebatePercentage" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_rebatePercentage_DropDownClosed">
+                                <ComboBoxItem Content="25%"/>
+                                <ComboBoxItem Content="50%"/>
+                                <ComboBoxItem Content="75%"/>
+                                <ComboBoxItem Content="100%"/>
+                            </ComboBox>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="rebatePercentage_Notify"/>
@@ -207,7 +211,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Rebate amount" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_rebateAmount" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_rebateAmount" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="rebateAmount_Notify"/>

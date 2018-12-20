@@ -36,21 +36,46 @@ namespace NewCRMSystem
 
         public Login_Details(bool dialogstatus, int empID1)
         {
-            InitializeComponent();
-            txt_empID.Text = empID1.ToString();
-            rbn_insert.IsChecked = true;
-            showdialogstatus = true;
+            try
+            {
+                InitializeComponent();
+                txt_empID.Text = empID1.ToString();
+                rbn_insert.IsChecked = true;
+                showdialogstatus = true;
+                loadDesID(empID1);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public Login_Details(bool dialogstatus, int empID1 , int loginID1)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            txt_empID.Text = empID1.ToString();
-            txt_loginID.Text = loginID1.ToString();
+                txt_empID.Text = empID1.ToString();
+                txt_loginID.Text = loginID1.ToString();
 
-            rbn_update.IsChecked = true;
-            showdialogstatus = true;
+                rbn_update.IsChecked = true;
+                showdialogstatus = true;
+
+                loadDesID(empID1);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void setInsert()
@@ -66,6 +91,14 @@ namespace NewCRMSystem
             txt_currPass.IsEnabled = true;
             cmb_accStatus.IsEnabled = true;
             rbn_insert.IsEnabled = false;
+        }
+
+        private void loadDesID(int empID1)
+        {
+            string query = "SELECT des_id from Manager where emp_id = '" + empID1 + "' ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+            txt_desID.Text = dt.Rows[0]["des_id"].ToString();
         }
 
         private bool authenticate()
@@ -216,6 +249,7 @@ namespace NewCRMSystem
                 else
                 {
                     loginID_Notify.Source = loginID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    loginID_Notify.ToolTip = CRMdbData.Login.login_id.Error;
                     check = false;
                 }
 
@@ -227,6 +261,7 @@ namespace NewCRMSystem
                 else
                 {
                     currPass_Notify.Source = currPass_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    currPass_Notify.ToolTip = CRMdbData.Login.emp_pass.Error;
                     check = false;
                 }
             }
@@ -239,6 +274,7 @@ namespace NewCRMSystem
             else
             {
                 empID_Notify.Source = empID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                empID_Notify.ToolTip = CRMdbData.Manager.emp_id.Error;
                 check = false;
             }
 
@@ -250,6 +286,7 @@ namespace NewCRMSystem
             else
             {
                 desID_Notify.Source = desID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                desID_Notify.ToolTip = CRMdbData.Designation.desName.Error;
                 check = false;
             }
 
@@ -261,6 +298,7 @@ namespace NewCRMSystem
             else
             {
                 uName_Notify.Source = uName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                uName_Notify.ToolTip = CRMdbData.Login.emp_username.Error;
                 check = false;
             }
             
@@ -273,6 +311,7 @@ namespace NewCRMSystem
             else
             {
                 newPass_Notify.Source = newPass_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                newPass_Notify.ToolTip = CRMdbData.Login.emp_pass.Error;
                 check = false;
             }
 
@@ -284,6 +323,7 @@ namespace NewCRMSystem
             else
             {
                 rePass_Notify.Source = rePass_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                rePass_Notify.ToolTip = "Not equal to New Password";
                 check = false;
             }
 

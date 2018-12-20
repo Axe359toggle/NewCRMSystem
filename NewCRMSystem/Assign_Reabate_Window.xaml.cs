@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using System.Data;
+
 namespace NewCRMSystem
 {
     /// <summary>
@@ -20,51 +22,225 @@ namespace NewCRMSystem
     public partial class Assign_Reabate_Window : Window
     {
         private int compItemID = 0;
-        private int itemTypeID = 0;
         private string itemImageSource = "";
         private double rebatePercentage = 0;
-
-        string ext = "";
-        string filepath = "";
-
+        
         public Assign_Reabate_Window()
         {
             InitializeComponent();
+            bindCompItemIDList();
         }
 
         public Assign_Reabate_Window(int compItemID1)
         {
             InitializeComponent();
-            txt_compItemID.Text = compItemID1.ToString();
+            bindCompItemIDList();
+            foreach (ComboBoxItem item in cmb_compItemID.Items)
+            {
+                if (item.Content.ToString() == compItemID1.ToString())
+                {
+                    cmb_compItemID.SelectedValue = item;
+                    break;
+                }
+            }
+            loadData(compItemID1.ToString());
         }
 
-        private string uploadImage(string filepath1, string ext1, string imageName)
+        private void bindCompItemIDList()
         {
-            string imgSource = "";
-            if (filepath1.Length > 0)
+            try
             {
-                var imageFile = new System.IO.FileInfo(filepath1);
+                string query = "SELECT comp_item_id from ComplaintItem";
+                Database db = new Database();
+                DataTable dt = db.GetData(query);
+
+                cmb_compItemID.Items.Clear();
+
+                foreach (DataRow dr in dt.Rows)
+                    cmb_compItemID.Items.Add(dr["comp_item_id"].ToString());
+
+                cmb_compItemID.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private double getRebatePercentage()
+        {
+            double percentage = 0;
+            foreach (ComboBoxItem item in cmb_rebatePercentage.Items)
+            {
+                if (item.Content.ToString().Equals("25%"))
+                {
+                    percentage = 0.25;
+                    break;
+                }
+                else if (item.Content.ToString().Equals("50%"))
+                {
+                    percentage = 0.50;
+                    break;
+                }
+                else if (item.Content.ToString().Equals("75%"))
+                {
+                    percentage = 0.75;
+                    break;
+                }
+                else if (item.Content.ToString().Equals("100%"))
+                {
+                    percentage = 1.00;
+                    break;
+                }
+            }
+            return percentage;
+        }
+
+        private void setRebateAmountTxt(double itemPrice1)
+        {
+            double percentage = getRebatePercentage();
+            
+            txt_rebateAmount.Text = (itemPrice1 * percentage).ToString();
+        }
+        
+        System.Data.DataSet ds;
+        string strName, imageName;
+
+        private void browseImageToDB()
+        {
+            Microsoft.Win32.FileDialog fldlg = new Microsoft.Win32.OpenFileDialog();
+            fldlg.InitialDirectory = Environment.SpecialFolder.MyPictures.ToString();
+            fldlg.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif";
+            fldlg.ShowDialog();
+            {
+                strName = fldlg.SafeFileName;
+                imageName = fldlg.FileName;
+                ImageSourceConverter isc = new ImageSourceConverter();
+                img_itemImage.SetValue(Image.SourceProperty, isc.ConvertFromString(imageName));
+            }
+            fldlg = null;
+        }
+
+        private bool saveImageToDB(int itemID1)
+        {
+            bool value = false;
+            if (imageName != "")
+            {
+                //Initialize a file stream to read the image file
+                System.IO.FileStream fs = new System.IO.FileStream(imageName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+
+                //Initialize a byte array with size of stream
+                byte[] imgByteArr = new byte[fs.Length];
+
+                //Read data from the file stream and put into the byte array
+                fs.Read(imgByteArr, 0, Convert.ToInt32(fs.Length));
+
+                //Close a file stream
+                fs.Close();
+                string sql = "UPDATE Item SET item_pic = @img WHERE item_id = " + itemID1 + " ";
+
+                Database db = new Database();
+                if (db.Save_Del_Update(sql , imgByteArr) == 1)
+                {
+                    value = true;
+                }
+            }
+
+            return value;
+        }
+
+        private void loadDefectImageFromDB(byte[] blob)
+        {
+            //Store binary data read from the database in a byte array
+            System.IO.MemoryStream stream = new System.IO.MemoryStream();
+            stream.Write(blob, 0, blob.Length);
+            stream.Position = 0;
+
+            System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            ms.Seek(0, System.IO.SeekOrigin.Begin);
+            bi.StreamSource = ms;
+            bi.EndInit();
+            img_defectImage.Source = bi;
+        }
+
+        //Save to Local required varibles
+        string filepath = "";
+        string ext = "";
+
+        private void browseItemImageToLocal()
+        {
+            Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
+            open.Multiselect = false;
+            open.DefaultExt = ".png";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.png; *.bmp)|*.jpg; *.jpeg; *.gif; *.png; *.bmp";
+            //open.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            bool? result = open.ShowDialog();
+
+
+            if (result == true)
+            {
+                filepath = open.FileName; // Stores Original Path
+                itemImageSource = filepath;
+                ext = System.IO.Path.GetExtension(open.FileName);
+                ImageSource imgsource = new BitmapImage(new Uri(filepath)); // Just show The File In Image when we browse It
+                img_itemImage.Source = imgsource;
+            }
+
+
+        }
+
+        private string saveItemImageToLocal(string itemID1)
+        {
+            string imageSource = "";
+
+            if (filepath.Length > 0)
+            {
+                var imageFile = new System.IO.FileInfo(filepath);
                 if (imageFile.Exists)// check image file exist
                 {
                     // get your application folder
                     var applicationPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
                     // get your 'Uploaded' folder
-                    var dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(applicationPath, "Defect Images"));
+                    var dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(applicationPath, "Item Images"));
                     if (!dir.Exists)
                         dir.Create();
                     // Copy file to your folder
-                    string fileName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, imageName + ext1)).ToString();
+                    string imageName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, itemID1 + ext)).ToString();
 
-                    imgSource = dir.FullName + @"\" + fileName;
+                    imageSource = dir.FullName + @"\" + imageName;
                 }
             }
-            else
-            {
-                MessageBox.Show("Please Choose a image to Upload", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
 
-            return imgSource;
+            return imageSource;
+        }
+
+        private void loadDefectImageFromLocal(string path)
+        {
+            ImageSource imageSource = new BitmapImage(new Uri(path));
+            img_defectImage.Source = imageSource;
+        }
+
+        private void loadData(string compItemID1)
+        {
+            string query = "SELECT CI.item_type_id , CI.item_id , CI.item_defect , CI.item_defect_img , CI.item_remarks , CC.cus_id , I.item_price from ComplaintItem as CI , CustomerComplaint as CC , Item as I where CI.comp_item_id = '" + compItemID1 + "' and CC.comp_id = CI.comp_id and I.item_id = CI.item_id ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            txt_itemTypeID.Text = dt.Rows[0]["item_type_id"].ToString();
+            txt_itemID.Text = dt.Rows[0]["item_id"].ToString();
+            txt_itemDefect.Text = dt.Rows[0]["item_defect"].ToString();
+            txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
+            txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
+            txt_itemPrice.Text = dt.Rows[0]["item_price"].ToString();
+
+            string imagePath = dt.Rows[0]["item_defect_img"].ToString();
+            loadDefectImageFromLocal(imagePath);
         }
 
         private bool validate()
@@ -72,13 +248,14 @@ namespace NewCRMSystem
             bool check = true;
 
             //Complaint Item ID
-            if (CRMdbData.ComplaintItem.comp_item_id.validate(txt_compItemID.Text))
+            if (CRMdbData.ComplaintItem.comp_item_id.validate(cmb_compItemID.Text))
             {
                 compItemID_Notify.Source = compItemID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
             else
             {
                 compItemID_Notify.Source = compItemID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                compItemID_Notify.ToolTip = CRMdbData.ComplaintItem.comp_item_id.Error;
                 check = false;
             }
 
@@ -90,6 +267,19 @@ namespace NewCRMSystem
             else
             {
                 itemPrice_Notify.Source = itemPrice_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                itemPrice_Notify.ToolTip = CRMdbData.Item.item_price.Error;
+                check = false;
+            }
+
+            //Item Image
+            if (CRMdbData.Item.item_pic.validate(itemImageSource))
+            {
+                itemImage_Notify.Source = itemImage_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                itemImage_Notify.Source = itemImage_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                itemImage_Notify.ToolTip = CRMdbData.Item.item_price.Error;
                 check = false;
             }
 
@@ -112,12 +302,95 @@ namespace NewCRMSystem
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.goBack(this);
+            try
+            {
+                Login.b1.goBack(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btn_itemImageUpload_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                browseItemImageToLocal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        
+        private void cmb_compItemID_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmb_compItemID.Text.Length > 0)
+                {
+                    loadData(cmb_compItemID.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void cmb_rebatePercentage_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmb_rebatePercentage.Text.Length > 0)
+                {
+                    setRebateAmountTxt(Double.Parse(txt_itemPrice.Text));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btn_next_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (validate())
+                {
+                    compItemID = Int32.Parse(cmb_compItemID.Text);
+                    rebatePercentage = getRebatePercentage();
+                    string itemID = txt_itemID.Text;
+                    string itemImageSource = saveItemImageToLocal(txt_itemID.Text);
+                    int HQManagerID = Login.EmpID;
 
+                    string query = "INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES ('" + compItemID + "'," + HQManagerID + "," + rebatePercentage + ") ";
+                    query += "Update Item SET item_pic = '" + itemImageSource + "' WHERE item_id = '" + itemID + "' ";
+
+                    Database db = new Database();
+                    
+                    if (db.Save_Del_Update(query) > 0)
+                    {
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                        LoadMainMenu.LoadFor(this);
+                    }
+                    else
+                    {
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                    }
+
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -83,12 +83,29 @@ namespace NewCRMSystem
             cusTp_Notify.Source = null;
         }
 
+        private void hide_chk(Visibility visibility)
+        {
+            chk_cusID.Visibility = visibility;
+            chk_cusName.Visibility = visibility;
+            chk_cusEmail.Visibility = visibility;
+            chk_cusTp.Visibility = visibility;
+        }
+
         private void enable_chk(bool value)
         {
             chk_cusID.IsEnabled = value;
             chk_cusName.IsEnabled = value;
             chk_cusEmail.IsEnabled = value;
             chk_cusTp.IsEnabled = value;
+
+            if (value)
+            {
+                hide_chk(Visibility.Visible);
+            }
+            else
+            {
+                hide_chk(Visibility.Hidden);
+            }
         }
 
         //load Insert option
@@ -142,6 +159,7 @@ namespace NewCRMSystem
                 else
                 {
                     cusID_Notify.Source = cusID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                    cusID_Notify.ToolTip = CRMdbData.Customer.cus_id.Error;
                     check = false;
                 }
             }
@@ -154,6 +172,7 @@ namespace NewCRMSystem
             else
             {
                 cusName_Notify.Source = cusName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                cusName_Notify.ToolTip = CRMdbData.Customer.cus_name.Error;
                 check = false;
             }
 
@@ -165,6 +184,7 @@ namespace NewCRMSystem
             else
             {
                 cusEmail_Notify.Source = cusEmail_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                cusEmail_Notify.ToolTip = CRMdbData.Customer.cus_email.Error;
                 check = false;
             }
 
@@ -176,6 +196,7 @@ namespace NewCRMSystem
             else
             {
                 cusTp_Notify.Source = cusTp_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                cusTp_Notify.ToolTip = CRMdbData.Customer.cus_tp.Error;
                 check = false;
             }
 

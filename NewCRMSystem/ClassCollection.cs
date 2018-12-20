@@ -137,6 +137,8 @@ namespace NewCRMSystem
     {
         private SqlConnection con;
         private SqlCommand cmd;
+        internal SqlCommand Cmd { get { return cmd; } }
+
         public Database()
         {
             con = new SqlConnection();
@@ -173,6 +175,30 @@ namespace NewCRMSystem
             closeCon();
             return rows;
         }
+
+        public int Save_Del_Update(string query , byte[] imgByteArr)
+        {
+            int rows = 0;
+            try
+            {
+                openCon();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Check the Database Connection", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (con.State == System.Data.ConnectionState.Open)
+            {
+                cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("img", imgByteArr));
+                rows = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            closeCon();
+            return rows;
+        }
+
         public DataTable GetData(string query)
         {
             DataTable dt = null;
@@ -291,6 +317,17 @@ namespace NewCRMSystem
 
     }
 
+    static class LoadMainMenu
+    {
+        internal static void LoadFor(Window window)
+        {
+            if (Login.DesID.Equals("H"))
+                Login.b1.hideWindowAndOpenNextWindow(window, new HQ_Manager_Dashboard());
+            else if (Login.DesID.Equals("S"))
+                Login.b1.hideWindowAndOpenNextWindow(window, new Showroom_Manager_Mainmenu());
+        }
+    }
+
     static class Password
     {
         internal static string sha256(string randomString)
@@ -307,6 +344,39 @@ namespace NewCRMSystem
         }
     }
 
+    static class GenericMessageBoxes
+    {
+        internal static class DatabaseMessages
+        {
+            internal static class DataInsertMessage
+            {
+                internal static void Successful()
+                {
+                    MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                internal static void Failed()
+                {
+                    MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+
+        internal static class ExceptionMessages
+        {
+            internal static void ExceptionMessage(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            internal static void SQLExceptionMessage(SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+    }
+
+
     static class CRMdbData
     {
         //Location table
@@ -314,6 +384,8 @@ namespace NewCRMSystem
         {
             internal static class location_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 5;
                 internal static int Size
                 {
@@ -324,12 +396,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class location_type
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 12;
                 internal static int Size
                 {
@@ -340,12 +417,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class location_name
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 20;
                 internal static int Size
                 {
@@ -356,12 +438,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class addr_no
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -372,12 +459,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class addr_lane
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -388,12 +480,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class addr_town
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -404,12 +501,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class addr_city
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -420,12 +522,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class location_tp
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 12;
                 internal static int Size
                 {
@@ -436,7 +543,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -446,6 +556,8 @@ namespace NewCRMSystem
         {
             internal static class des_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 1;
                 internal static int Size
                 {
@@ -456,12 +568,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class desName
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 20;
                 internal static int Size
                 {
@@ -472,7 +589,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -482,6 +602,8 @@ namespace NewCRMSystem
         {
             internal static class emp_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 6;
                 internal static int Size
                 {
@@ -492,12 +614,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class emp_title
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 5;
                 internal static int Size
                 {
@@ -508,12 +635,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class emp_fname
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -524,12 +656,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class emp_lname
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -540,12 +677,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class emp_tp
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 12;
                 internal static int Size
                 {
@@ -556,12 +698,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class emp_email
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 100;
                 internal static int Size
                 {
@@ -572,7 +719,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -582,6 +732,8 @@ namespace NewCRMSystem
         {
             internal static class comp_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 8;
                 internal static int Size
                 {
@@ -592,12 +744,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class comp_type
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 8;
                 internal static int Size
                 {
@@ -608,7 +765,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -618,6 +778,8 @@ namespace NewCRMSystem
         {
             internal static class cus_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 7;
                 internal static int Size
                 {
@@ -628,12 +790,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class cus_name
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 50;
                 internal static int Size
                 {
@@ -644,12 +811,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class cus_tp
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 12;
                 internal static int Size
                 {
@@ -660,12 +832,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class cus_email
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 100;
                 internal static int Size
                 {
@@ -676,7 +853,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -686,6 +866,8 @@ namespace NewCRMSystem
         {
             internal static class comp_method
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 9;
                 internal static int Size
                 {
@@ -696,12 +878,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class cus_comp_type
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 5;
                 internal static int Size
                 {
@@ -712,7 +899,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -722,6 +912,8 @@ namespace NewCRMSystem
         {
             internal static class ref_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 8;
                 internal static int Size
                 {
@@ -732,7 +924,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length > 0 && value.Length < size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -742,6 +937,8 @@ namespace NewCRMSystem
         {
             internal static class login_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 6;
                 internal static int Size
                 {
@@ -752,12 +949,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class emp_username
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -768,12 +970,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class emp_pass
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 64;
                 internal static int Size
                 {
@@ -784,7 +991,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -795,6 +1005,8 @@ namespace NewCRMSystem
         {
             internal static class staff_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 4;
                 internal static int Size
                 {
@@ -805,12 +1017,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class staff_name
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 30;
                 internal static int Size
                 {
@@ -821,12 +1038,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class description
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 250;
                 internal static int Size
                 {
@@ -837,12 +1059,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class remarks
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 250;
                 internal static int Size
                 {
@@ -853,7 +1080,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -864,6 +1094,8 @@ namespace NewCRMSystem
         {
             internal static class item_type_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 5;
                 internal static int Size
                 {
@@ -874,12 +1106,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class item_brand
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 10;
                 internal static int Size
                 {
@@ -890,12 +1127,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class item_category
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 10;
                 internal static int Size
                 {
@@ -906,12 +1148,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class item_name
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 50;
                 internal static int Size
                 {
@@ -922,12 +1169,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class item_size
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 2;
                 internal static int Size
                 {
@@ -938,7 +1190,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -949,6 +1204,8 @@ namespace NewCRMSystem
         {
             internal static class item_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 15;
                 internal static int Size
                 {
@@ -959,12 +1216,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class item_price
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 7;
                 internal static int Size
                 {
@@ -975,12 +1237,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class item_pic
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 100;
                 internal static int Size
                 {
@@ -991,7 +1258,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
@@ -1002,6 +1272,8 @@ namespace NewCRMSystem
         {
             internal static class comp_item_id
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 8;
                 internal static int Size
                 {
@@ -1012,12 +1284,17 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
             internal static class shoe_side
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 5;
                 internal static int Size
                 {
@@ -1028,27 +1305,35 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
-
-            /*
+            
             internal static class received_dt
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 internal static int size = 100;
                 internal static bool validate(string value)
                 {
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
-            */
             internal static class item_defect_img
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 100;
                 internal static int Size
                 {
@@ -1059,13 +1344,18 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
 
             internal static class item_defect
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 100;
                 internal static int Size
                 {
@@ -1076,13 +1366,18 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
 
             internal static class item_remarks
             {
+                static string error = "";
+                internal static string Error { get { return error; } }
                 static int size = 250;
                 internal static int Size
                 {
@@ -1093,7 +1388,10 @@ namespace NewCRMSystem
                     value = value.Trim();
                     bool check = true;
                     if (value.Length == 0 || value.Length > size)
+                    {
                         check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
                     return check;
                 }
             }
