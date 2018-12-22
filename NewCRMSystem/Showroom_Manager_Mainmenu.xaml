@@ -23,43 +23,28 @@
         </Grid>
         <Grid Grid.Row="1">
             <ScrollViewer>
+                <Border Padding="10" Background="BlanchedAlmond" Grid.Column="1" Margin="20" CornerRadius="30">
+                    <Grid>
+                        <Grid Margin="30" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
 
-                <Border Padding="10" Background="BlanchedAlmond"  Margin="20" CornerRadius="30">
-                    <StackPanel>
-                        <Grid Margin="10 10 10 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="9*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0">
-                                <Button x:Name="btn_cusComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Customer Complaint" Height="83" Margin="105,51,-603,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_cusComplaint_Click"/>
+                            <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_cusComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Customer Complaint" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_cusComplaint_Click"/>
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_batchComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Batch Complaint" Height="83" VerticalAlignment="Top" Background="DarkOrange"/>
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_assignRebate" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Rebate Payment" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignRebate_Click" />
+                                </Grid>
                             </StackPanel>
                         </Grid>
-                        <Grid Margin="10 0 10 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="9*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0">
-                                <Button x:Name="btn_batchComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Batch Complaint" Height="83" Margin="105,51,-603,0" VerticalAlignment="Top" Background="DarkOrange"/>
-                            </StackPanel>
-                        </Grid>
-                        <Grid Margin="10 0 10 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="9*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0">
-                                <Button x:Name="btn_searchComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Search Complaint" Height="83" Margin="105,51,-603,0" VerticalAlignment="Top" Background="DarkOrange"/>
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
+                    </Grid>
                 </Border>
             </ScrollViewer>
         </Grid>

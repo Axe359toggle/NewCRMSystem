@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-         Title="Rebate Payment" Height="500" Width="900" >
+         Title="Rebate Payment" Height="700" Width="900" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -38,11 +38,11 @@
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Complaint Item ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmb_compItemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_compItemID_DropDownClosed"/>
+                            <TextBlock   Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_compItemID_DropDownClosed"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="compItemID_Notify"/>
+                                    <Image x:Name="compID_Notify"/>
                                 </DockPanel>
                             </Grid>
                         </Grid>
@@ -76,6 +76,82 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+
+                        <GroupBox Header="Customer Details" Margin="100 20 50 0">
+                            <StackPanel>
+                                <!--Customer ID-->
+                                <Grid Margin="20 20 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="cusID_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Customer Name-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Content="Name"   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    <TextBox x:Name="txt_cusName" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="cusName_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Customer Telephone-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Content="Telephone" HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_cusTp" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="cusTp_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Customer Email-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Content="Email" HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_cusEmail" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="cusEmail_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                        
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -83,30 +159,14 @@
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusID_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                            <Button x:Name="btn_cusSearch" Grid.Column="3" Content="Details" />
-                        </Grid>
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Customer Satisfied ?" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmb_cusSatisfaction" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" >
-                                <ComboBoxItem Content="Satisfied"/>
-                                <ComboBoxItem Content="Unsatisfied"/>
+                            <TextBlock   Text="Customer Rebate Choice" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cmb_cusChoice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" >
+                                <ComboBoxItem Content="Accepted"/>
+                                <ComboBoxItem Content="Rejected"/>
                             </ComboBox>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusSatisfaction_Notify"/>
+                                    <Image x:Name="cusChoice_Notify"/>
                                 </DockPanel>
                             </Grid>
                         </Grid>
@@ -115,7 +175,7 @@
             </ScrollViewer>
         </Grid>
         <Grid Grid.Row="2" Margin="100 10 50 20">
-            <Button x:Name="btn_next" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" />
+            <Button x:Name="btn_next" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" Click="btn_next_Click" />
         </Grid>
     </Grid>
 </Window>

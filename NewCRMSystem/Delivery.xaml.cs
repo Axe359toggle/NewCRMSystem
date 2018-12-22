@@ -30,11 +30,10 @@ namespace NewCRMSystem
             InitializeComponent();
         }
 
-        public Delivery(int compItemID1)
+        public Delivery(int compID1)
         {
             InitializeComponent();
-            compItemID = compItemID1;
-            txt_compItemID.Text = compItemID1.ToString();
+            txt_compID.Text = compID1.ToString();
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
@@ -46,11 +45,11 @@ namespace NewCRMSystem
         {
             try
             {
-                if (rb_Insert.IsChecked == true)
+                if (rbnInsert.IsChecked == true)
                 {
-                    compItemID = Int32.Parse(txt_compItemID.Text.Trim());
+                    compItemID = Int32.Parse(txt_compID.Text.Trim());
                     sourceID = Int32.Parse(txt_sourceID.Text.Trim());
-                    destinationID = Int32.Parse(txt_desID.Text.Trim());
+                    destinationID = Int32.Parse(txt_destinationID.Text.Trim());
 
                     string query = "INSERT INTO Delivery (comp_item_id ,source_id ,destination_id ,source_dt ) values (" + compItemID + ", " + sourceID + ", " + destinationID + ", DEFAULT)";
                     Database db = new Database();

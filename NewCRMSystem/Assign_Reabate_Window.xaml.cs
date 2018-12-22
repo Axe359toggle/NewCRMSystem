@@ -21,78 +21,86 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Assign_Reabate_Window : Window
     {
-        private int compItemID = 0;
+        private int compID = 0;
         private string itemImageSource = "";
-        private double rebatePercentage = 0;
+        private string rebatePercentage = "";
         
         public Assign_Reabate_Window()
         {
-            InitializeComponent();
-            bindCompItemIDList();
-        }
-
-        public Assign_Reabate_Window(int compItemID1)
-        {
-            InitializeComponent();
-            bindCompItemIDList();
-            foreach (ComboBoxItem item in cmb_compItemID.Items)
-            {
-                if (item.Content.ToString() == compItemID1.ToString())
-                {
-                    cmb_compItemID.SelectedValue = item;
-                    break;
-                }
-            }
-            loadData(compItemID1.ToString());
-        }
-
-        private void bindCompItemIDList()
-        {
             try
             {
-                string query = "SELECT comp_item_id from ComplaintItem";
-                Database db = new Database();
-                DataTable dt = db.GetData(query);
-
-                cmb_compItemID.Items.Clear();
-
-                foreach (DataRow dr in dt.Rows)
-                    cmb_compItemID.Items.Add(dr["comp_item_id"].ToString());
-
-                cmb_compItemID.SelectedIndex = 0;
+                InitializeComponent();
+                bindCompIDList();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
+        }
+
+        public Assign_Reabate_Window(int compID1)
+        {
+            try
+            {
+                InitializeComponent();
+                bindCompIDList();
+                foreach (ComboBoxItem item in cmb_compID.Items)
+                {
+                    if (item.Content.ToString() == compID1.ToString())
+                    {
+                        cmb_compID.SelectedValue = item;
+                        break;
+                    }
+                }
+                loadData(compID1.ToString());
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void bindCompIDList()
+        {
+                string query = "SELECT comp_id FROM ComplaintItem WHERE NOT EXISTS (SELECT comp_item_id FROM Rebate WHERE  Rebate.comp_item_id = ComplaintItem.comp_item_id)";
+                Database db = new Database();
+                DataTable dt = db.GetData(query);
+
+                cmb_compID.Items.Clear();
+
+                foreach (DataRow dr in dt.Rows)
+                    cmb_compID.Items.Add(dr["comp_id"].ToString());
+
+                cmb_compID.SelectedIndex = 0;
         }
 
         private double getRebatePercentage()
         {
             double percentage = 0;
-            foreach (ComboBoxItem item in cmb_rebatePercentage.Items)
-            {
-                if (item.Content.ToString().Equals("25%"))
+                if (cmb_rebatePercentage.Text.Equals("25%"))
                 {
                     percentage = 0.25;
-                    break;
                 }
-                else if (item.Content.ToString().Equals("50%"))
+                else if (cmb_rebatePercentage.Text.Equals("50%"))
                 {
                     percentage = 0.50;
-                    break;
                 }
-                else if (item.Content.ToString().Equals("75%"))
+                else if (cmb_rebatePercentage.Text.Equals("75%"))
                 {
                     percentage = 0.75;
-                    break;
                 }
-                else if (item.Content.ToString().Equals("100%"))
+                else if (cmb_rebatePercentage.Text.Equals("100%"))
                 {
                     percentage = 1.00;
-                    break;
                 }
-            }
             return percentage;
         }
 
@@ -210,6 +218,13 @@ namespace NewCRMSystem
                     var dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(applicationPath, "Item Images"));
                     if (!dir.Exists)
                         dir.Create();
+
+                    System.IO.FileInfo destFile = new System.IO.FileInfo(System.IO.Path.Combine(dir.FullName, itemID1 + ext));
+                    if (destFile.Exists)
+                    {
+                        //delete
+                        System.IO.File.Delete(System.IO.Path.Combine(dir.FullName, itemID1 + ext));
+                    }
                     // Copy file to your folder
                     string imageName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, itemID1 + ext)).ToString();
 
@@ -226,9 +241,9 @@ namespace NewCRMSystem
             img_defectImage.Source = imageSource;
         }
 
-        private void loadData(string compItemID1)
+        private void loadData(string compID1)
         {
-            string query = "SELECT CI.item_type_id , CI.item_id , CI.item_defect , CI.item_defect_img , CI.item_remarks , CC.cus_id , I.item_price from ComplaintItem as CI , CustomerComplaint as CC , Item as I where CI.comp_item_id = '" + compItemID1 + "' and CC.comp_id = CI.comp_id and I.item_id = CI.item_id ";
+            string query = "SELECT CI.item_type_id , CI.item_id , CI.item_defect , CI.item_defect_img , CI.item_remarks , CC.cus_id , I.item_price , IT.item_brand , IT.item_category , IT.item_name , IT.item_size from ComplaintItem as CI , CustomerComplaint as CC , Item as I , ItemType as IT where CI.comp_id = '" + compID1 + "' and CC.comp_id = CI.comp_id and I.item_id = CI.item_id and CI.item_type_id = IT.item_type_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -239,38 +254,19 @@ namespace NewCRMSystem
             txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
             txt_itemPrice.Text = dt.Rows[0]["item_price"].ToString();
 
+            txt_brand.Text = dt.Rows[0]["item_brand"].ToString();
+            txt_category.Text = dt.Rows[0]["item_category"].ToString();
+            txt_name.Text = dt.Rows[0]["item_name"].ToString();
+            txt_size.Text = dt.Rows[0]["item_size"].ToString();
+
             string imagePath = dt.Rows[0]["item_defect_img"].ToString();
             loadDefectImageFromLocal(imagePath);
         }
 
-        private bool validate()
+        private bool validateItemImageSource()
         {
             bool check = true;
-
-            //Complaint Item ID
-            if (CRMdbData.ComplaintItem.comp_item_id.validate(cmb_compItemID.Text))
-            {
-                compItemID_Notify.Source = compItemID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                compItemID_Notify.Source = compItemID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                compItemID_Notify.ToolTip = CRMdbData.ComplaintItem.comp_item_id.Error;
-                check = false;
-            }
-
-            //Rebate Percentage
-            if (CRMdbData.Item.item_price.validate(txt_itemPrice.Text))
-            {
-                itemPrice_Notify.Source = itemPrice_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                itemPrice_Notify.Source = itemPrice_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                itemPrice_Notify.ToolTip = CRMdbData.Item.item_price.Error;
-                check = false;
-            }
-
+            
             //Item Image
             if (CRMdbData.Item.item_pic.validate(itemImageSource))
             {
@@ -280,6 +276,48 @@ namespace NewCRMSystem
             {
                 itemImage_Notify.Source = itemImage_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
                 itemImage_Notify.ToolTip = CRMdbData.Item.item_price.Error;
+                check = false;
+            }
+            
+
+
+            return check;
+        }
+
+        private bool validate()
+        {
+            bool check = true;
+
+            //Complaint Item ID
+            if (CRMdbData.Complaint.comp_id.validate(cmb_compID.Text))
+            {
+                compID_Notify.Source = compID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                compID_Notify.Source = compID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                compID_Notify.ToolTip = CRMdbData.ComplaintItem.comp_item_id.Error;
+                check = false;
+            }
+
+            //Rebate Percentage
+            if (CRMdbData.Rebate.rebate_percentage.validate(cmb_rebatePercentage.Text))
+            {
+                rebatePercentage_Notify.Source = rebatePercentage_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
+            }
+            else
+            {
+                rebatePercentage_Notify.Source = rebatePercentage_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
+                rebatePercentage_Notify.ToolTip = CRMdbData.Item.item_price.Error;
+                check = false;
+            }
+
+            //Item Image
+            if (validateItemImageSource())
+            {
+            }
+            else
+            {
                 check = false;
             }
 
@@ -308,7 +346,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -318,24 +356,13 @@ namespace NewCRMSystem
             {
                 browseItemImageToLocal();
             }
-            catch (Exception ex)
+            catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-        
-        private void cmb_compItemID_DropDownClosed(object sender, EventArgs e)
-        {
-            try
-            {
-                if (cmb_compItemID.Text.Length > 0)
-                {
-                    loadData(cmb_compItemID.Text);
-                }
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -348,9 +375,32 @@ namespace NewCRMSystem
                     setRebateAmountTxt(Double.Parse(txt_itemPrice.Text));
                 }
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void cmb_compID_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmb_compID.Text.Length > 0)
+                {
+                    loadData(cmb_compID.Text);
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -360,36 +410,43 @@ namespace NewCRMSystem
             {
                 if (validate())
                 {
-                    compItemID = Int32.Parse(cmb_compItemID.Text);
-                    rebatePercentage = getRebatePercentage();
+                    compID = Int32.Parse(cmb_compID.Text);
+                    rebatePercentage = cmb_rebatePercentage.Text;
                     string itemID = txt_itemID.Text;
                     string itemImageSource = saveItemImageToLocal(txt_itemID.Text);
                     int HQManagerID = Login.EmpID;
 
-                    string query = "INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES ('" + compItemID + "'," + HQManagerID + "," + rebatePercentage + ") ";
-                    query += "Update Item SET item_pic = '" + itemImageSource + "' WHERE item_id = '" + itemID + "' ";
-
-                    Database db = new Database();
-                    
-                    if (db.Save_Del_Update(query) > 0)
+                    if (CRMdbData.Item.item_pic.validate(itemImageSource))
                     {
-                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-                        LoadMainMenu.LoadFor(this);
+                        
+                        string query = "DECLARE @ID int SET @ID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "')  INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES (@ID," + HQManagerID + ",'" + rebatePercentage + "') ";
+                        query += "Update Item SET item_pic = '" + itemImageSource + "' WHERE item_id = '" + itemID + "' ";
+
+                        Database db = new Database();
+
+                        if (db.Save_Del_Update(query) > 0)
+                        {
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                            LoadMainMenu.LoadFor(this);
+                        }
+                        else
+                        {
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                        }
                     }
                     else
                     {
-                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                        MessageBox.Show("Image Source Length Error");
                     }
-
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
     }

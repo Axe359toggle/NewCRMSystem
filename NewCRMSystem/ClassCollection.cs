@@ -376,6 +376,26 @@ namespace NewCRMSystem
         }
     }
 
+    static class Validation
+    {
+        internal static bool validate(System.Windows.Controls.Image image, bool condition, string ErrorMessage)
+        {
+            bool check = true;
+
+            if (condition)
+            {
+                image.Source = image.TryFindResource("notifyCorrectImage") as System.Windows.Media.Imaging.BitmapImage;
+            }
+            else
+            {
+                image.Source = image.TryFindResource("notifyErrorImage") as System.Windows.Media.Imaging.BitmapImage;
+                image.ToolTip = ErrorMessage;
+                check = false;
+            }
+
+            return check;
+        }
+    }
 
     static class CRMdbData
     {
@@ -1248,7 +1268,7 @@ namespace NewCRMSystem
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
-                static int size = 100;
+                static int size = 120;
                 internal static int Size
                 {
                     get { return size; }
@@ -1317,7 +1337,7 @@ namespace NewCRMSystem
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
-                internal static int size = 100;
+                internal static int size = 30;
                 internal static bool validate(string value)
                 {
                     value = value.Trim();
@@ -1334,7 +1354,7 @@ namespace NewCRMSystem
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
-                static int size = 100;
+                static int size = 120;
                 internal static int Size
                 {
                     get { return size; }
@@ -1379,6 +1399,53 @@ namespace NewCRMSystem
                 static string error = "";
                 internal static string Error { get { return error; } }
                 static int size = 250;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+        }
+        //Rebate table
+        internal static class Rebate
+        {
+            internal static class rebate_percentage
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 3;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+
+            internal static class customer_choice
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 8;
                 internal static int Size
                 {
                     get { return size; }

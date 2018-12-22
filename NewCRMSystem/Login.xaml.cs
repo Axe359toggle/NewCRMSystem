@@ -21,7 +21,7 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Login : Window
     {
-        static BackButton B1 = new BackButton();
+        static BackButton B1 = new BackButton(30);
         internal static BackButton b1 { get { return B1; } }
 
         static int empID = 0; 
@@ -100,6 +100,22 @@ namespace NewCRMSystem
             }
             
 
+        }
+
+        private void uname_txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                upass_txt.Focus();
+            }
+        }
+
+        private void upass_txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                login_btn_Click(this, new RoutedEventArgs());
+            }
         }
     }
 }

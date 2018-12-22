@@ -37,11 +37,11 @@
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Complaint Item ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmb_compItemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_compItemID_DropDownClosed"/>
+                            <TextBlock   Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_compID_DropDownClosed"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="compItemID_Notify"/>
+                                    <Image x:Name="compID_Notify"/>
                                 </DockPanel>
                             </Grid>
                         </Grid>
@@ -61,22 +61,98 @@
                             </Grid>
                             <Button x:Name="btn_cusSearch" Grid.Column="3" Content="Details" />
                         </Grid>
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Item Type ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_itemTypeID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="itemTypeID_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
 
+                        <GroupBox Header="Item Type" Margin="100 20 50 0">
+                            <StackPanel>
+                                <!--Item Brand-->
+                                <Grid Margin="20 20 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Item Type ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_itemTypeID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="itemTypeID_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Brand-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Content="Brand" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    <TextBox x:Name="txt_brand" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="brand_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Category-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Category"/>
+                                    <TextBox x:Name="txt_category" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="category_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Name-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Name"/>
+                                    <TextBox x:Name="txt_name" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="name_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Size-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Size"/>
+                                    <TextBox x:Name="txt_size" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="size_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>

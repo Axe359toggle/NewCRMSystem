@@ -161,7 +161,7 @@ namespace NewCRMSystem
                         desID = txt_desID.Text.Trim();
                         newPass = Password.sha256(txt_newPass.Password);
 
-                        string query = "insert into login (emp_username,emp_pass,des_id) values ('" + uName + "','" + newPass + "','" + desID + "')  DECLARE @ID int = SCOPE_IDENTITY() ";
+                        string query = "insert into login (emp_username,emp_pass,des_id,emp_id) values ('" + uName + "','" + newPass + "','" + desID + "','" + empID + "')  DECLARE @ID int = SCOPE_IDENTITY() ";
 
                         string query2 = "update Manager set login_id = @ID where emp_id='" + empID + "' SELECT @ID AS login_id";
                         query = query + query2;

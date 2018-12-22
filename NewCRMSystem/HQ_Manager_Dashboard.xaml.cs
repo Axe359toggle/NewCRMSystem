@@ -24,11 +24,9 @@ namespace NewCRMSystem
             InitializeComponent();
         }
 
-        private void btn_insert_Click(object sender, RoutedEventArgs e)
-        {
-            Login.b1.hideWindowAndOpenNextWindow(this, new HQ_insert_Dashboard());
-        }
+        ~HQ_Manager_Dashboard() { }
 
+        
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
@@ -37,6 +35,11 @@ namespace NewCRMSystem
         private void btn_managerDetails_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Manager_Details_window());
+        }
+
+        private void btn_assignRebate_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Reabate_Window());
         }
     }
 }

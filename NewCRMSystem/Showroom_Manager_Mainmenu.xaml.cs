@@ -24,6 +24,8 @@ namespace NewCRMSystem
             InitializeComponent();
         }
 
+        ~Showroom_Manager_Mainmenu() { }
+
         private void btn_cusComplaint_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Customer_Complaint_Window());
@@ -32,6 +34,11 @@ namespace NewCRMSystem
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void btn_assignRebate_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Rebate_Payment());
         }
     }
 }

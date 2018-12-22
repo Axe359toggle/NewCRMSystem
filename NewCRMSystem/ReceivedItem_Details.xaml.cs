@@ -28,10 +28,7 @@ namespace NewCRMSystem
         private string itemDefect = "";
         private string itemRemarks = "";
         private string defectImageSource = "";
-
-
-
-
+        
         public ReceivedItem_Details()
         {
             InitializeComponent();

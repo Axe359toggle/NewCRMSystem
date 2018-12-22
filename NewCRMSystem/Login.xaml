@@ -17,8 +17,8 @@
             </Grid.ColumnDefinitions>
             <StackPanel VerticalAlignment="Center" Grid.Column="1">
                 <Grid Margin="0 20 0 20">
-                    
-                    <TextBox x:Name="uname_txt" VerticalAlignment="Center" Padding="10 5 10 5" />
+
+                    <TextBox x:Name="uname_txt" VerticalAlignment="Center" Padding="10 5 10 5" KeyDown="uname_txt_KeyDown" />
                     <TextBlock IsHitTestVisible="False" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="Username" Padding="10 5 10 5"  Foreground="DarkGray">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -32,15 +32,10 @@
                         </TextBlock.Style>
                     </TextBlock>
                 </Grid>
-                <PasswordBox x:Name="upass_txt" Margin="0 20 0 20" HorizontalAlignment="Stretch" Padding="10 5 10 5"/>
+                <PasswordBox x:Name="upass_txt" Margin="0 20 0 20" HorizontalAlignment="Stretch" Padding="10 5 10 5" KeyDown="upass_txt_KeyDown"/>
                 <Button x:Name="login_btn" Margin="0 20 0 20" HorizontalAlignment="Center" Padding="10 0" Content="Login" Click="login_btn_Click"/>
                 <Label x:Name="forgot_lbl" HorizontalAlignment="Center" Content="Forgot password?" Background="White" Foreground="Blue"/>
             </StackPanel>
-
-
-
-
-
         </Grid>
     </Grid>
 </Window>

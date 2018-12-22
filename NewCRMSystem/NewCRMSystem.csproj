@@ -33,6 +33,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconfinder_Flat_Bed-12_281164.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -61,6 +66,9 @@
     </Compile>
     <Compile Include="Assign_Reabate_Window.xaml.cs">
       <DependentUpon>Assign_Reabate_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Deliver_Item_Window.xaml.cs">
+      <DependentUpon>Deliver_Item_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Item_Type_Window.xaml.cs">
       <DependentUpon>Item_Type_Window.xaml</DependentUpon>
@@ -117,19 +125,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Deliver_Item.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Deliver_Item_Window.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Deliver_To_Customer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Factory_Item_Details.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="HQ_insert_Dashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -185,17 +189,11 @@
     <Compile Include="Delivery.xaml.cs">
       <DependentUpon>Delivery.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Deliver_Item.xaml.cs">
-      <DependentUpon>Deliver_Item.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Deliver_To_Customer.xaml.cs">
       <DependentUpon>Deliver_To_Customer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Factory_Item_Details.xaml.cs">
       <DependentUpon>Factory_Item_Details.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HQ_insert_Dashboard.xaml.cs">
-      <DependentUpon>HQ_insert_Dashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="HQ_Manager_Dashboard.xaml.cs">
       <DependentUpon>HQ_Manager_Dashboard.xaml</DependentUpon>
@@ -292,6 +290,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons8_Logout_Rounded_Up_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconfinder_screen__monitor__computer__television__desktop__system__pc_2528062.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconfinder_Flat_Bed-12_281164.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

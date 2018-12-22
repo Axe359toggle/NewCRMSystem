@@ -405,89 +405,33 @@ namespace NewCRMSystem
             if (value == true)
             {
                 //Manager ID
-                if (CRMdbData.Manager.emp_id.validate(txtManagerID.Text))
-                {
-                    managerIDNotify.Source = managerIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-                else
-                {
-                    managerIDNotify.Source = managerIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                    managerIDNotify.ToolTip = CRMdbData.Manager.emp_id.Error;
-                    check = false;
-                }
+                if (Validation.validate( managerIDNotify, CRMdbData.Manager.emp_id.validate(txtManagerID.Text) , CRMdbData.Manager.emp_id.Error)) { }
+                else { check = false; }
             }
 
             //Title
-            if (CRMdbData.Manager.emp_title.validate(cmbTitle.Text))
-            {
-                titleNotify.Source = titleNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                titleNotify.Source = titleNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                titleNotify.ToolTip = CRMdbData.Manager.emp_title.Error;
-                check = false;
-            }
+            if (Validation.validate( titleNotify, CRMdbData.Manager.emp_title.validate(cmbTitle.Text) , CRMdbData.Manager.emp_title.Error )) { }
+            else { check = false; }
 
             //First Name
-            if (CRMdbData.Manager.emp_fname.validate(txtFname.Text))
-            {
-                fnameNotify.Source = fnameNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                fnameNotify.Source = fnameNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                fnameNotify.ToolTip = CRMdbData.Manager.emp_fname.Error;
-                check = false;
-            }
+            if(Validation.validate( fnameNotify , CRMdbData.Manager.emp_fname.validate(txtFname.Text) , CRMdbData.Manager.emp_fname.Error)) { }
+            else { check = false; }
 
             //Last Name
-            if (CRMdbData.Manager.emp_lname.validate(txtLname.Text))
-            {
-                lnameNotify.Source = lnameNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                lnameNotify.Source = lnameNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                lnameNotify.ToolTip = CRMdbData.Manager.emp_lname.Error;
-                check = false;
-            }
+            if (Validation.validate( lnameNotify, CRMdbData.Manager.emp_lname.validate(txtLname.Text), CRMdbData.Manager.emp_lname.Error)) { }
+            else { check = false; }
 
             //Telephone
-            if (CRMdbData.Manager.emp_tp.validate(txtTp.Text))
-            {
-                tpNotify.Source = tpNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                tpNotify.Source = tpNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                tpNotify.ToolTip = CRMdbData.Manager.emp_tp.Error;
-                check = false;
-            }
+            if (Validation.validate( tpNotify, CRMdbData.Manager.emp_tp.validate(txtTp.Text), CRMdbData.Manager.emp_tp.Error)) { }
+            else { check = false; }
 
             //Designation
-            if (CRMdbData.Designation.desName.validate(cmbDes.Text))
-            {
-                desNotify.Source = desNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                desNotify.Source = desNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                desNotify.ToolTip = CRMdbData.Designation.desName.Error;
-                check = false;
-            }
+            if (Validation.validate( desNotify, CRMdbData.Designation.desName.validate(cmbDes.Text), CRMdbData.Designation.desName.Error)) { }
+            else { check = false; }
 
             //Location ID
-            if (CRMdbData.Location.location_id.validate(txtlocationID.Text))
-            {
-                locationIDNotify.Source = locationIDNotify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                locationIDNotify.Source = locationIDNotify.TryFindResource("notifyErrorImage") as BitmapImage;
-                locationIDNotify.ToolTip = CRMdbData.Location.location_id.Error;
-                check = false;
-            }
+            if (Validation.validate( locationIDNotify, CRMdbData.Location.location_id.validate(txtlocationID.Text), CRMdbData.Location.location_id.Error)) { }
+            else { check = false; }
 
             return check;
         }
@@ -622,7 +566,6 @@ namespace NewCRMSystem
             {
                 if (desID.Length > 0 && txtManagerID.Text.Length > 0)
                 {
-
                     string query2 = "";
                     if (desID.Equals("S"))
                     {
@@ -667,10 +610,6 @@ namespace NewCRMSystem
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
-            
-            
         }
 
         ~Manager_Details_window() { }

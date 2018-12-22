@@ -225,7 +225,7 @@
                                     <Image x:Name="locationIDNotify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btnLocationSearch" Grid.Column="4" Content="Search Location" Click="btnLocationSearch_Click" HorizontalAlignment="Center" Width="120"  />
+                            <Button x:Name="btnLocationSearch" Grid.Column="4" Content="Search Location" Click="btnLocationSearch_Click" HorizontalAlignment="Center" Width="100"  />
                         </Grid>
 
                         <!--Assigned Date-->
