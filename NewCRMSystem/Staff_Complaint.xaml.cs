@@ -102,7 +102,6 @@ namespace NewCRMSystem
                 if (validate())
                 {
                     
-                    
                     Database db = new Database();
 
                     compID = Int32.Parse(txt_compID.Text);
@@ -111,7 +110,9 @@ namespace NewCRMSystem
                     description = txt_description.Text;
 
                     string query = "INSERT INTO StaffComplaint (comp_id ,staff_id ,staff_name ,description ) VALUES ("+compID+" , '"+staffID+"' , '"+staffName+"' , '"+description+"') ";
-                    
+                    query += "UPDATE Complaint SET comp_status_id = 24 WHERE comp_id = " + compID + " ";
+
+
                     if (db.Save_Del_Update(query) > 0)
                     {
                         LoadMainMenu.LoadFor(this);

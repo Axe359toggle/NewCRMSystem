@@ -1,11 +1,11 @@
-﻿<Window x:Class="NewCRMSystem.Deliver_Item_Window"
+﻿<Window x:Class="NewCRMSystem.Assign_Factory_Window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Deliver_Item_Window" Height="500" Width="800">
+        Title="Assign_Factory_Window" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -30,63 +30,43 @@
             <ScrollViewer>
                 <Grid VerticalAlignment="Center">
                     <StackPanel>
-
                         <!--Complaint ID-->
-                        <Grid Margin="100 10 50 0" >
+                        <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-
-                            <Label Content="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                            <TextBox x:Name="txt_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                            <TextBlock   Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="compID_Notify"/>
                                 </DockPanel>
                             </Grid>
                         </Grid>
-
-                        <GroupBox Header="Source Details" Margin="100 10 50 0" >
+                        <!--Item Type-->
+                        <GroupBox Header="Item Type" Margin="100 20 50 0">
                             <StackPanel>
-                                <!--Source ID-->
-                                <Grid Margin="20 10 0 0" >
+                                <!--Item Brand-->
+                                <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
-
-                                    <Label Content="Source ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                                    <TextBox x:Name="txt_sourceID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                                    <Label Content="Item Type ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_itemTypeID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="sourceID_Notify"/>
-                                        </DockPanel>
-                                    </Grid>
-                                    <Button x:Name="btnSourceLocationSearch" Grid.Column="4" Content="Select Location" HorizontalAlignment="Center" Width="100" Click="btnSourceLocationSearch_Click"  />
-                                </Grid>
-                                <!--Source Name-->
-                                <Grid Margin="20 10 0 0" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Content="Source Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                                    <TextBox x:Name="txt_sourceName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
-                                    <Grid Grid.Column="2">
-                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="sourceName_Notify"/>
+                                            <Image x:Name="itemTypeID_Notify"/>
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
-                                <!--Source Sent Date-->
+
+                                <!--Item Brand-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
@@ -95,20 +75,72 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Content="Source Sent Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                                    <DatePicker x:Name="dt_sourceSentDate" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                                    <Label Content="Brand" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    <TextBox x:Name="txt_brand" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="sourceSentDate_Notify"/>
+                                            <Image x:Name="brand_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Category-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Category"/>
+                                    <TextBox x:Name="txt_category" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="category_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Name-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Name"/>
+                                    <TextBox x:Name="txt_name" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="name_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Size-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Size"/>
+                                    <TextBox x:Name="txt_size" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="size_Notify"/>
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
-
-                        <GroupBox Header="Destination Details" Margin="100 10 50 0" >
+                        <GroupBox Header="Choose Factory" Margin="100 10 50 0" >
                             <StackPanel>
-                                <!--Destination ID-->
+                                <!--Location ID-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
@@ -117,14 +149,14 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Content="Destination ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                                    <TextBox x:Name="txt_destinationID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                                    <Label Content="Location ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                                    <TextBox x:Name="txt_locationID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="destinationID_Notify"/>
+                                            <Image x:Name="locationID_Notify"/>
                                         </DockPanel>
                                     </Grid>
-                                    <Button x:Name="btnDestinationLocationSearch" Grid.Column="4" Content="Select Location" HorizontalAlignment="Center" Width="100" Click="btnDestinationLocationSearch_Click"  />
+                                    <Button x:Name="btnFactoryLocationSearch" Grid.Column="4" Content="Select Factory" HorizontalAlignment="Center" Width="100" Click="btnFactoryLocationSearch_Click"  />
                                 </Grid>
 
                                 <!--Destination Name-->
@@ -136,11 +168,11 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Content="Destination Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                                    <TextBox x:Name="txt_destinationName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True" />
+                                    <Label Content="Location Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                                    <TextBox x:Name="txt_locationName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True" />
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="destinationName_Notify"/>
+                                            <Image x:Name="locationName_Notify"/>
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
@@ -152,7 +184,7 @@
         </Grid>
         <Grid Grid.Row="3">
             <Grid Grid.Row="2" Margin="100 10 50 20">
-                <Button x:Name="next_btn" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" Click="next_btn_Click" />
+                <Button x:Name="next_btn" Width="100" HorizontalAlignment="Right" Padding="5" Content="Next" />
             </Grid>
         </Grid>
 

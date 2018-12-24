@@ -59,66 +59,26 @@ namespace NewCRMSystem
         private bool validate()
         {
             bool check = true;
-            
+
             //Reference ID
-            if (CRMdbData.Reference.ref_id.validate(txt_refID.Text) && validateRefID())
-            {
-                refID_Notify.Source = refID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                refID_Notify.Source = refID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                refID_Notify.ToolTip = CRMdbData.Reference.ref_id.Error;
-                check = false;
-            }
+            if (Validation.validate(refID_Notify, CRMdbData.Reference.ref_id.validate(txt_refID.Text) && validateRefID(), CRMdbData.Reference.ref_id.Error)) { }
+            else { check = false; }
 
             //Customer ID
-            if (CRMdbData.Customer.cus_id.validate(txt_cusID.Text))
-            {
-                cusID_Notify.Source = cusID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                cusID_Notify.Source = cusID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                cusID_Notify.ToolTip = CRMdbData.Customer.cus_id.Error;
-                check = false;
-            }
+            if (Validation.validate(cusID_Notify, CRMdbData.Customer.cus_id.validate(txt_cusID.Text), CRMdbData.Customer.cus_id.Error)) { }
+            else { check = false; }
 
             //Complaint Method
-            if (rbn_byCall.IsChecked == true || rbn_inPerson.IsChecked == true)
-            {
-                compMethod_Notify.Source = compMethod_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                compMethod_Notify.Source = compMethod_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                compMethod_Notify.ToolTip = "Choose an Option";
-                check = false;
-            }
+            if (Validation.validate(compMethod_Notify, rbn_byCall.IsChecked == true || rbn_inPerson.IsChecked == true, "Choose an Option")) { }
+            else { check = false; }
 
             //Complaint Type
-            if (rbn_staffComp.IsChecked == true || rbn_itemComp.IsChecked == true)
-            {
-                compType_Notify.Source = compType_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                compType_Notify.Source = compType_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                compType_Notify.ToolTip = "Choose an Option";
-                check = false;
-            }
+            if (Validation.validate(compType_Notify, rbn_staffComp.IsChecked == true || rbn_itemComp.IsChecked == true, "Choose an Option")) { }
+            else { check = false; }
 
             //Related Showroom ID
-            if (CRMdbData.Location.location_id.validate(txt_relShrmID.Text))
-            {
-                relShrmID_Notify.Source = relShrmID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                relShrmID_Notify.Source = relShrmID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                relShrmID_Notify.ToolTip = CRMdbData.Location.location_id.Error;
-                check = false;
-            }
+            if (Validation.validate(relShrmID_Notify, CRMdbData.Location.location_id.validate(txt_relShrmID.Text), CRMdbData.Location.location_id.Error)) { }
+            else { check = false; }
 
 
             return check;
@@ -133,12 +93,13 @@ namespace NewCRMSystem
                 if (validate())
                 {
                     cusID = Int32.Parse(txt_cusID.Text);
+                    int compStatusID = 0;
 
-                    if (rbn_byCall.IsChecked == true) { compMethod = "By Call"; }
+                    if (rbn_byCall.IsChecked == true) { compMethod = "By Call"; compStatusID = 23; }
                     else if (rbn_inPerson.IsChecked == true) { compMethod = "In Person"; }
 
                     if (rbn_staffComp.IsChecked == true) { compType2 = "Staff"; }
-                    else if (rbn_itemComp.IsChecked == true) { compType2 = "Item"; }
+                    else if (rbn_itemComp.IsChecked == true) { compType2 = "Item"; compStatusID = 1; }
                     
                     Database db = new Database();
 
@@ -151,14 +112,14 @@ namespace NewCRMSystem
                     refID = Int32.Parse(txt_refID.Text);
 
                     relShrmID = Int32.Parse(txt_relShrmID.Text);
-                    string query = "INSERT INTO Complaint (comp_type,ref_id,relatedLocation_id ) VALUES ('" + compType1 + "','" + refID + "','" + relShrmID + "') DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type) values(@ID,'" + cusID + "','" + compMethod + "','" + compType2 + "') SELECT @ID as comp_id";
+                    string query = "INSERT INTO Complaint (comp_type,ref_id,relatedLocation_id , comp_status_id ) VALUES ('" + compType1 + "','" + refID + "','" + relShrmID + "' , " + compStatusID + ") DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type) values(@ID,'" + cusID + "','" + compMethod + "','" + compType2 + "') SELECT @ID as comp_id";
 
                     int compID = 0;
                     compID = Int32.Parse(db.GetData(query).Rows[0]["comp_id"].ToString());
 
                     if (compID > 0)
                     {
-                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
 
                         if (rbn_staffComp.IsChecked == true)
                         {
@@ -175,16 +136,16 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
-            
 
 
-            
+
+
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
@@ -205,7 +166,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -213,7 +174,7 @@ namespace NewCRMSystem
         {
             try
             {
-                var w = new Location(true);
+                var w = new Location(true,"Showroom");
                 Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
@@ -222,7 +183,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
     }

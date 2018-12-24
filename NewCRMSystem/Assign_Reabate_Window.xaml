@@ -30,6 +30,7 @@
             <ScrollViewer>
                 <Grid VerticalAlignment="Center">
                     <StackPanel>
+                        <!--Complaint ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -45,6 +46,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Customer ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -62,6 +65,7 @@
                             <Button x:Name="btn_cusSearch" Grid.Column="3" Content="Details" />
                         </Grid>
 
+                        <!--Item Type-->
                         <GroupBox Header="Item Type" Margin="100 20 50 0">
                             <StackPanel>
                                 <!--Item Brand-->

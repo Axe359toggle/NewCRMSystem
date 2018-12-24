@@ -44,6 +44,8 @@ namespace NewCRMSystem
             InitializeComponent();
         }
 
+        ~Login() { }
+
         private void login_btn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -52,7 +54,7 @@ namespace NewCRMSystem
                 string upass = Password.sha256(upass_txt.Password);
 
                 Database db = new Database();
-                string query = "SELECT des_id,emp_id,login_id,emp_username,emp_pass from Login where emp_username = '" + uName + "' and emp_pass='" + upass + "' and account_status = 1 ";
+                string query = "SELECT L.des_id , L.emp_id , L.login_id , L.emp_username , L.emp_pass , M.location_id from Login as L , Manager as M where emp_username = '" + uName + "' and emp_pass='" + upass + "' and account_status = 1 and L.emp_id = M.emp_id";
                 System.Data.DataTable dt = db.GetData(query);
 
 
@@ -70,7 +72,12 @@ namespace NewCRMSystem
                         }
                         
                         desID = dt.Rows[0]["des_id"].ToString();
-                        //locID = dt.Rows[0]["emp_id"].ToString();
+
+                        if (dt.Rows[0]["location_id"].ToString().Length > 0)
+                        {
+                            locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
+                        }
+
                         if (desID.Equals("H"))
                         {
                             B1.hideWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());

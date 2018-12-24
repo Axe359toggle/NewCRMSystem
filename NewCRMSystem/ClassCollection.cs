@@ -397,6 +397,8 @@ namespace NewCRMSystem
         }
     }
 
+    
+
     static class CRMdbData
     {
         //Location table
@@ -1446,6 +1448,76 @@ namespace NewCRMSystem
                 static string error = "";
                 internal static string Error { get { return error; } }
                 static int size = 8;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+        }
+
+        //Delivery table
+        internal static class Delivery
+        {
+            internal static class delivery_id
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 9;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+
+            internal static class source_dt
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+
+            internal static class destination_dt
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 30;
                 internal static int Size
                 {
                     get { return size; }

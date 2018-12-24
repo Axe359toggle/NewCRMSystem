@@ -41,5 +41,25 @@ namespace NewCRMSystem
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Reabate_Window());
         }
+
+        private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
+        }
+
+        private void btn_assignFactory_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Factory_Window());
+        }
+
+        private void btn_locationDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Location());
+        }
+
+        private void btn_itemTypeDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Item_Type_Window());
+        }
     }
 }

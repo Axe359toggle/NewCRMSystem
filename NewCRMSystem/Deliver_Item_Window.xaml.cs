@@ -19,6 +19,9 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Deliver_Item_Window : Window
     {
+        int compID = 0;
+        int deliveyID = 0;
+
         public Deliver_Item_Window()
         {
             InitializeComponent();
@@ -30,6 +33,7 @@ namespace NewCRMSystem
             {
                 InitializeComponent();
                 txt_compID.Text = compID.ToString();
+                txt_compID.IsReadOnly = true;
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -93,6 +97,7 @@ namespace NewCRMSystem
                 if (w.ShowDialog() == true)
                 {
                     txt_sourceID.Text = w.txt_LocationID.Text;
+                    txt_sourceName.Text = w.txt_LocationName.Text;
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
@@ -114,6 +119,7 @@ namespace NewCRMSystem
                 if (w.ShowDialog() == true)
                 {
                     txt_destinationID.Text = w.txt_LocationID.Text;
+                    txt_destinationName.Text = w.txt_LocationName.Text;
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
@@ -135,9 +141,29 @@ namespace NewCRMSystem
         {
             try
             {
+                int sourceID = Int32.Parse(txt_sourceID.Text);
+                int destinationID = Int32.Parse(txt_destinationID.Text);
+                DateTime sourceDt= dt_sourceSentDate.DisplayDate;
                 if (validate())
                 {
+                    compID = Int32.Parse(txt_compID.Text);
+                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Delivery ( comp_item_id , source_id , destination_id , source_dt) VALUES ( @COMPitemID , '" + sourceID + "' , '" + destinationID + "' , '" + sourceDt + "' )  DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as delivery_id ";
+                    query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 5 then 6 when comp_status_id = 27 then 28 when comp_status_id = 8 then 9 when comp_status_id = 30 then 31 when comp_status_id = 12 then 13 when comp_status_id = 34 then 35 when comp_status_id = 14 then 15 when comp_status_id = 36 then 37 when comp_status_id = 19 then 20 when comp_status_id = 40 then 41 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
+                    query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
+                    Database db = new Database();
+                    System.Data.DataTable dt = db.GetData(query);
+                    deliveyID = Int32.Parse(dt.Rows[0]["delivery_id"].ToString());
 
+                    if (deliveyID > 0)
+                    {
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                        MessageBox.Show("Delivery ID is " + deliveyID + " .", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        LoadMainMenu.LoadFor(this);
+                    }
+                    else
+                    {
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                    }
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)

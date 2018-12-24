@@ -201,10 +201,16 @@ namespace NewCRMSystem
                 {
                     compID = Int32.Parse(cmb_compID.Text);
                     cusChoice = cmb_cusChoice.Text;
+
+                    int compStatusID = 0;
+                    if (cmb_cusChoice.Text.Equals("Accepted")) { compStatusID = 4; }
+                    else if(cmb_cusChoice.Text.Equals("Rejected")) { compStatusID = 5; }
+
                     int ShowroomManagerID = Login.EmpID;
 
                     string query = "DECLARE @ID int SET @ID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') ";
                     query += "Update Rebate SET shrmManager = " + ShowroomManagerID + " , customer_choice = '" + cusChoice + "' WHERE comp_item_id = @ID ";
+                    query += "UPDATE Complaint SET comp_status_id = " + compStatusID + " WHERE comp_id = " + compID + " ";
 
                     Database db = new Database();
 
@@ -213,7 +219,7 @@ namespace NewCRMSystem
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                         if (cusChoice.Equals("Rejected"))
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Delivery());
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
                         }
                         else if (cusChoice.Equals("Accepted"))
                         {

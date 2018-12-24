@@ -244,14 +244,13 @@ namespace NewCRMSystem
                         if (managerID > 0)
                         {
                             txtManagerID.Text = managerID.ToString();
-                            MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                             rbnUpdate.IsChecked = true;
                         }
                         else
                         {
-                            MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                         }
-
                     }
                 }
                 else if (rbnUpdate.IsChecked == true)
@@ -288,11 +287,12 @@ namespace NewCRMSystem
 
                         if (db.Save_Del_Update(query) > 0)
                         {
-                            MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+
                         }
                         else
                         {
-                            MessageBox.Show("Data updation failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                         }
                     }
                 }
@@ -390,11 +390,11 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -473,6 +473,7 @@ namespace NewCRMSystem
                     else
                     {
                         loginID = 0;
+                        btnSetLogin.Content = "Set Login";
                     }
 
                     txtlocationID.Text = dv.Row.ItemArray[7].ToString();//location_id
@@ -513,11 +514,11 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
 
         }
@@ -542,76 +543,30 @@ namespace NewCRMSystem
                     if (w.ShowDialog() == true)
                     {
                         loginID = Int32.Parse(w.txt_loginID.Text);
+
+                        string query = "SELECT emp_id,emp_title,emp_fname,emp_lname,emp_tp,des_id,login_id,location_id,assigned_dt from Manager";
+                        Database db = new Database();
+                        managerDatagrid.ItemsSource = db.GetData(query).AsDataView();
                     }
                 }
-                
-                
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
 
-            
+
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
         }
-
-        private void btnLocationAdd_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (desID.Length > 0 && txtManagerID.Text.Length > 0)
-                {
-                    string query2 = "";
-                    if (desID.Equals("S"))
-                    {
-                        cmbDes.Text = "Showroom Manager";
-                        query2 = "insert into ShowroomManager_Showroom (emp_id,assigned_dt,location_id) values('" + managerID + "',DEFAULT,'" + txtlocationID.Text + "') ";
-                    }
-                    else if (desID.Equals("F"))
-                    {
-                        cmbDes.Text = "Factory Manager";
-                        query2 = "insert into FactoryManager_Factory (emp_id,assigned_dt,location_id) values('" + managerID + "',DEFAULT,'" + txtlocationID.Text + "') ";
-                    }
-                    else if (desID.Equals("H"))
-                    {
-                        cmbDes.Text = "Headquarters Manager";
-                        query2 = "insert into HQ_Top_Manager (emp_id,assigned_dt) values('" + managerID + "',DEFAULT) ";
-                    }
-                    else if (desID.Equals("T"))
-                    {
-                        cmbDes.Text = "Top Manager";
-                        query2 = "insert into HQ_Top_Manager (emp_id,assigned_dt) values('" + managerID + "',DEFAULT) ";
-                    }
-
-                    Database db = new Database();
-
-                    if (db.Save_Del_Update(query2) > 0)
-                    {
-                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        rbnUpdate.IsChecked = true;
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    }
-                }
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
+        
         ~Manager_Details_window() { }
 
         private void btnLocationSearch_Click(object sender, RoutedEventArgs e)
@@ -627,7 +582,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -644,7 +599,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 

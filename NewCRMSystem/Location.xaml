@@ -59,7 +59,7 @@
                             </Grid.ColumnDefinitions>
 
                             <CheckBox x:Name="chk_LocationID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <Label Content="Location Type" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="Location ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBox x:Name="txt_LocationID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
@@ -79,7 +79,7 @@
                             </Grid.ColumnDefinitions>
 
                             <CheckBox x:Name="chk_LocationType" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <Label Content="Location ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            <Label Content="Location Type" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
                             <ComboBox x:Name="cmb_LocationType" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" >
                                 <ComboBoxItem Content="HQ"/>
                                 <ComboBoxItem Content="Showroom"/>

@@ -61,6 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assign_Factory_Window.xaml.cs">
+      <DependentUpon>Assign_Factory_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Assign_New_Item_Window.xaml.cs">
       <DependentUpon>Assign_New_Item_Window.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
     <Compile Include="Receive_Item.xaml.cs">
       <DependentUpon>Receive_Item.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Record_Delivered_Item_Window.xaml.cs">
+      <DependentUpon>Record_Delivered_Item_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Repair.xaml.cs">
       <DependentUpon>Repair.xaml</DependentUpon>
     </Compile>
@@ -97,6 +103,10 @@
     <Compile Include="Staff_Complaint.xaml.cs">
       <DependentUpon>Staff_Complaint.xaml</DependentUpon>
     </Compile>
+    <Page Include="Assign_Factory_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assign_New_Item_Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,10 +114,6 @@
     <Page Include="Assign_Reabate_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Choose_Factory.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="CommonControlPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -173,9 +179,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Choose_Factory.xaml.cs">
-      <DependentUpon>Choose_Factory.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClassCollection.cs" />
     <Compile Include="CommonControlPanel.xaml.cs">
       <DependentUpon>CommonControlPanel.xaml</DependentUpon>
@@ -229,6 +232,10 @@
     <Page Include="Receive_Item.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Record_Delivered_Item_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Repair.xaml">
       <Generator>MSBuild:Compile</Generator>

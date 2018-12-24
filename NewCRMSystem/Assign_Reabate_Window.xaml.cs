@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using System.Data;
 
 namespace NewCRMSystem
 {
@@ -72,11 +71,11 @@ namespace NewCRMSystem
         {
                 string query = "SELECT comp_id FROM ComplaintItem WHERE NOT EXISTS (SELECT comp_item_id FROM Rebate WHERE  Rebate.comp_item_id = ComplaintItem.comp_item_id)";
                 Database db = new Database();
-                DataTable dt = db.GetData(query);
+                System.Data.DataTable dt = db.GetData(query);
 
                 cmb_compID.Items.Clear();
 
-                foreach (DataRow dr in dt.Rows)
+                foreach (System.Data.DataRow dr in dt.Rows)
                     cmb_compID.Items.Add(dr["comp_id"].ToString());
 
                 cmb_compID.SelectedIndex = 0;
@@ -266,20 +265,10 @@ namespace NewCRMSystem
         private bool validateItemImageSource()
         {
             bool check = true;
-            
-            //Item Image
-            if (CRMdbData.Item.item_pic.validate(itemImageSource))
-            {
-                itemImage_Notify.Source = itemImage_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                itemImage_Notify.Source = itemImage_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                itemImage_Notify.ToolTip = CRMdbData.Item.item_price.Error;
-                check = false;
-            }
-            
 
+            //Item Image
+            if (Validation.validate(itemImage_Notify, CRMdbData.Item.item_pic.validate(itemImageSource), CRMdbData.Item.item_pic.Error)) { }
+            else { check = false; }
 
             return check;
         }
@@ -288,42 +277,21 @@ namespace NewCRMSystem
         {
             bool check = true;
 
-            //Complaint Item ID
-            if (CRMdbData.Complaint.comp_id.validate(cmb_compID.Text))
-            {
-                compID_Notify.Source = compID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                compID_Notify.Source = compID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                compID_Notify.ToolTip = CRMdbData.ComplaintItem.comp_item_id.Error;
-                check = false;
-            }
+            //Complaint ID
+            if (Validation.validate(compID_Notify, CRMdbData.Complaint.comp_id.validate(cmb_compID.Text), CRMdbData.Complaint.comp_id.Error)) { }
+            else { check = false; }
 
             //Rebate Percentage
-            if (CRMdbData.Rebate.rebate_percentage.validate(cmb_rebatePercentage.Text))
-            {
-                rebatePercentage_Notify.Source = rebatePercentage_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                rebatePercentage_Notify.Source = rebatePercentage_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                rebatePercentage_Notify.ToolTip = CRMdbData.Item.item_price.Error;
-                check = false;
-            }
+            if (Validation.validate(rebatePercentage_Notify, CRMdbData.Rebate.rebate_percentage.validate(cmb_rebatePercentage.Text), CRMdbData.Rebate.rebate_percentage.Error)) { }
+            else { check = false; }
 
             //Item Image
-            if (validateItemImageSource())
-            {
-            }
+            if (validateItemImageSource()) { }
             else
-            {
-                check = false;
-            }
+            { check = false; }
 
             //HQ Manager ID
-            if (CRMdbData.Manager.emp_id.validate(Login.EmpID.ToString()))
-            { }
+            if (CRMdbData.Manager.emp_id.validate(Login.EmpID.ToString())) { }
             else
             {
                 MessageBox.Show("Logged Employee ID Error ", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -421,6 +389,7 @@ namespace NewCRMSystem
                         
                         string query = "DECLARE @ID int SET @ID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "')  INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES (@ID," + HQManagerID + ",'" + rebatePercentage + "') ";
                         query += "Update Item SET item_pic = '" + itemImageSource + "' WHERE item_id = '" + itemID + "' ";
+                        query += "UPDATE Complaint SET comp_status_id = 3 WHERE comp_id = " + compID + " ";
 
                         Database db = new Database();
 

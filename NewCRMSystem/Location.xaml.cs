@@ -31,6 +31,7 @@ namespace NewCRMSystem
         private string tp = "";
 
         private bool showdialogstatus;
+        private bool onlyAllowSearch = false;
 
         public Location()
         {
@@ -43,6 +44,40 @@ namespace NewCRMSystem
             InitializeComponent();
             showdialogstatus = dialogstatus;
             rbnSearch.IsChecked = true;
+        }
+
+        public Location(bool dialogstatus , string LocationType)
+        {
+            try
+            {
+                InitializeComponent();
+                showdialogstatus = dialogstatus;
+                rbnSearch.IsChecked = true;
+                rbnInsert.IsEnabled = false;
+                onlyAllowSearch = true;
+
+                foreach (ComboBoxItem item in cmb_LocationType.Items)
+                {
+                    if (item.Content.ToString() == LocationType)
+                    {
+                        cmb_LocationType.SelectedValue = item;
+                        break;
+                    }
+                }
+
+                chk_LocationType.IsChecked = true;
+                chk_LocationType.IsEnabled = false;
+                cmb_LocationType.IsHitTestVisible = false;
+                cmb_LocationType.Focusable = false;
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
         }
 
         public Location(char option)
@@ -108,28 +143,7 @@ namespace NewCRMSystem
             chk_AddrCity.Visibility = visibility;
             chk_Tp.Visibility = visibility;
         }
-
-        private void enable_chk(bool value)
-        {
-            chk_LocationID.IsEnabled = value;
-            chk_LocationName.IsEnabled = value;
-            chk_LocationType.IsEnabled = value;
-            chk_AddrNo.IsEnabled = value;
-            chk_AddrLane.IsEnabled = value;
-            chk_AddrTown.IsEnabled = value;
-            chk_AddrCity.IsEnabled = value;
-            chk_Tp.IsEnabled = value;
-
-            if (value)
-            {
-                hide_chk(Visibility.Visible);
-            }
-            else
-            {
-                hide_chk(Visibility.Hidden);
-            }
-        }
-
+        
         //load Insert option
         private void setInsert()
         {
@@ -141,7 +155,7 @@ namespace NewCRMSystem
             btn_tpRemove.IsEnabled = false;
             btn_ok.IsEnabled = false;
             setErrorImagesNull();
-            enable_chk(false);
+            hide_chk(Visibility.Hidden);
         }
 
         //load Update option
@@ -156,7 +170,7 @@ namespace NewCRMSystem
             btn_tpRemove.IsEnabled = true;
             btn_ok.IsEnabled = true;
             setErrorImagesNull();
-            enable_chk(false);
+            hide_chk(Visibility.Hidden);
         }
 
         //load Search option
@@ -170,7 +184,7 @@ namespace NewCRMSystem
             btn_tpRemove.IsEnabled = false;
             btn_ok.IsEnabled = false;
             setErrorImagesNull();
-            enable_chk(true);
+            hide_chk(Visibility.Visible);
         }
 
         private bool validate(bool value)
@@ -180,132 +194,51 @@ namespace NewCRMSystem
             if (value == true)
             {
                 //Location ID
-                if (CRMdbData.Location.location_id.validate(txt_LocationID.Text))
-                {
-                    locationID_Notify.Source = locationID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-                else
-                {
-                    locationID_Notify.Source = locationID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                    locationID_Notify.ToolTip = CRMdbData.Location.location_id.Error;
-                    check = false;
-                }
+                if (Validation.validate(locationID_Notify, CRMdbData.Location.location_id.validate(txt_LocationID.Text), CRMdbData.Location.location_id.Error)) { }
+                else { check = false; }
             }
 
             if (value == false)
             {
                 //Telephone
-                if (CRMdbData.Location.location_tp.validate(txt_Tp.Text))
-                {
-                    tp_Notify.Source = tp_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-                else
-                {
-                    tp_Notify.Source = tp_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                    tp_Notify.ToolTip = CRMdbData.Location.location_tp.Error;
-                    check = false;
-                }
+                if (Validation.validate(tp_Notify, CRMdbData.Location.location_tp.validate(txt_Tp.Text), CRMdbData.Location.location_tp.Error)) { }
+                else { check = false; }
             }
 
             //Location Type
-            if (CRMdbData.Location.location_type.validate(cmb_LocationType.Text))
-            {
-                locationType_Notify.Source = locationType_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                locationType_Notify.Source = locationType_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                locationType_Notify.ToolTip = CRMdbData.Location.location_type.Error;
-                check = false;
-            }
+            if (Validation.validate(locationType_Notify, CRMdbData.Location.location_type.validate(cmb_LocationType.Text), CRMdbData.Location.location_type.Error)) { }
+            else { check = false; }
 
             //Location Name
-            if (CRMdbData.Location.location_name.validate(txt_LocationName.Text))
-            {
-                locationName_Notify.Source = locationName_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                locationName_Notify.Source = locationName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                locationName_Notify.ToolTip = CRMdbData.Location.location_name.Error;
-                check = false;
-            }
+            if (Validation.validate(locationName_Notify, CRMdbData.Location.location_name.validate(txt_LocationName.Text), CRMdbData.Location.location_name.Error)) { }
+            else { check = false; }
 
             //Address No.
-            if (CRMdbData.Location.addr_no.validate(txt_AddrNo.Text))
-            {
-                addrNo_Notify.Source = addrNo_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                addrNo_Notify.Source = addrNo_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                addrNo_Notify.ToolTip = CRMdbData.Location.addr_no.Error;
-                check = false;
-            }
+            if (Validation.validate(addrNo_Notify, CRMdbData.Location.addr_no.validate(txt_AddrNo.Text), CRMdbData.Location.addr_no.Error)) { }
+            else { check = false; }
 
             //Address Lane
-            if (CRMdbData.Location.addr_lane.validate(txt_AddrLane.Text))
-            {
-                addrLane_Notify.Source = addrLane_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                addrLane_Notify.Source = addrLane_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                addrLane_Notify.ToolTip = CRMdbData.Location.addr_lane.Error;
-                check = false;
-            }
+            if (Validation.validate(addrLane_Notify, CRMdbData.Location.addr_lane.validate(txt_AddrLane.Text), CRMdbData.Location.addr_lane.Error)) { }
+            else { check = false; }
 
             //Address Town
-            if (CRMdbData.Location.addr_town.validate(txt_AddrTown.Text))
-            {
-                addrTown_Notify.Source = addrTown_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                addrTown_Notify.Source = addrTown_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                addrTown_Notify.ToolTip = CRMdbData.Location.addr_town.Error;
-                check = false;
-            }
+            if (Validation.validate(addrTown_Notify, CRMdbData.Location.addr_town.validate(txt_AddrTown.Text), CRMdbData.Location.addr_town.Error)) { }
+            else { check = false; }
 
             //Address City
-            if (CRMdbData.Location.addr_city.validate(txt_AddrCity.Text))
-            {
-                addrCity_Notify.Source = addrCity_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                addrCity_Notify.Source = addrCity_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                addrCity_Notify.ToolTip = CRMdbData.Location.addr_city.Error;
-                check = false;
-            }
+            if (Validation.validate(addrCity_Notify, CRMdbData.Location.addr_city.validate(txt_AddrCity.Text), CRMdbData.Location.addr_city.Error)) { }
+            else { check = false; }
             
-
             return check;
         }
 
         private void validate_LocID_Tp()
         {
             //Location ID
-            if (CRMdbData.Location.location_id.validate(txt_LocationID.Text))
-            {
-                locationID_Notify.Source = locationID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                locationID_Notify.Source = locationID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                locationID_Notify.ToolTip = CRMdbData.Location.location_id.Error;
-            }
+            if (Validation.validate(locationID_Notify, CRMdbData.Location.location_id.validate(txt_LocationID.Text), CRMdbData.Location.location_id.Error)) { }
 
             //Telephone
-            if (CRMdbData.Location.location_tp.validate(txt_Tp.Text))
-            {
-                tp_Notify.Source = tp_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                tp_Notify.Source = tp_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                tp_Notify.ToolTip = CRMdbData.Location.location_tp.Error;
-            }
+            if (Validation.validate(tp_Notify, CRMdbData.Location.location_tp.validate(txt_Tp.Text), CRMdbData.Location.location_tp.Error)) { }
         }
 
         private void refreshTP_datagrid(int locID1)
@@ -368,12 +301,12 @@ namespace NewCRMSystem
                         if (locID > 0)
                         {
                             txt_LocationID.Text = locID.ToString();
-                            MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                             rbnUpdate.IsChecked = true;
                         }
                         else
                         {
-                            MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                         }
 
                     }
@@ -499,11 +432,11 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -526,22 +459,22 @@ namespace NewCRMSystem
                     if (db.Save_Del_Update(query) > 0)
                     {
                         refreshTP_datagrid(locID);
-                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
 
                     }
                     else
                     {
-                        MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -575,11 +508,11 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -621,18 +554,20 @@ namespace NewCRMSystem
                     txt_AddrCity.Text = dv.Row.ItemArray[6].ToString();//Address City
 
                     refreshTP_datagrid(locID);
-                    
 
-                    rbnUpdate.IsChecked = true;
+                    if (!onlyAllowSearch)
+                    {
+                        rbnUpdate.IsChecked = true;
+                    }
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -648,11 +583,11 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -669,7 +604,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
     }

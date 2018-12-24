@@ -40,6 +40,18 @@
                                     <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/>
                                     <!-- <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager&#xD;&#xA; Details"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/> -->
                                 </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_recordReceivedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Delivered Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_recordReceivedItem_Click" />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_assignFactory" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign Factory" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignFactory_Click" />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_locationDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Location Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_locationDetails_Click" />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_itemTypeDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Item Type Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_itemTypeDetails_Click" />
+                                </Grid>
                             </StackPanel>
                         </Grid>
                     </Grid>

@@ -46,11 +46,11 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -96,6 +96,13 @@ namespace NewCRMSystem
                     var dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(applicationPath, "Defect Images"));
                     if (!dir.Exists)
                         dir.Create();
+
+                    System.IO.FileInfo destFile = new System.IO.FileInfo(System.IO.Path.Combine(dir.FullName, compItemID1 + ext));
+                    if (destFile.Exists)
+                    {
+                        //delete
+                        System.IO.File.Delete(System.IO.Path.Combine(dir.FullName, compItemID1 + ext));
+                    }
                     // Copy file to your folder
                     string imageName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, compItemID1 + ext)).ToString();
 
@@ -297,8 +304,10 @@ namespace NewCRMSystem
                     itemPrice = Double.Parse(txt_itemPrice.Text);
 
                     string query = "INSERT INTO Item (item_id ,item_price ) VALUES ('"+itemID+"',"+itemPrice+") ";
+                    query += "UPDATE Complaint SET comp_status_id = 2 WHERE comp_id = " + compID + " ";
                     query += "INSERT INTO ComplaintItem (shoe_side ,received_dt ,item_defect ,item_remarks ,item_id  ,item_type_id ,comp_id ) VALUES ('"+shoeSide+"','"+receivedDt+"','"+itemDefect+"','"+itemRemarks+"','"+itemID+"','"+itemTypeID+"','"+compID+"') DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as comp_item_id";
                     
+
                     Database db = new Database();
 
                     int compItemID = Int32.Parse(db.GetData(query).Rows[0]["comp_item_id"].ToString());
@@ -319,11 +328,11 @@ namespace NewCRMSystem
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -335,7 +344,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
@@ -352,7 +361,7 @@ namespace NewCRMSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
     }
