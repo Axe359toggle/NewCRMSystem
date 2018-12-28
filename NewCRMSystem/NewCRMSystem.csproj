@@ -70,8 +70,17 @@
     <Compile Include="Assign_Reabate_Window.xaml.cs">
       <DependentUpon>Assign_Reabate_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Close_Batch_Item_Complaint_Window.xaml.cs">
+      <DependentUpon>Close_Batch_Item_Complaint_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Deliver_Item_Window.xaml.cs">
       <DependentUpon>Deliver_Item_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Factory_Item_Decision_Window.xaml.cs">
+      <DependentUpon>Factory_Item_Decision_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Factory_Manager_Dashboard.xaml.cs">
+      <DependentUpon>Factory_Manager_Dashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Item_Type_Window.xaml.cs">
       <DependentUpon>Item_Type_Window.xaml</DependentUpon>
@@ -85,14 +94,14 @@
     <Compile Include="ReceivedItem_Details.xaml.cs">
       <DependentUpon>ReceivedItem_Details.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Receive_Item.xaml.cs">
-      <DependentUpon>Receive_Item.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Record_Delivered_Item_Window.xaml.cs">
       <DependentUpon>Record_Delivered_Item_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Repair.xaml.cs">
       <DependentUpon>Repair.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repaired_Item_Window.xaml.cs">
+      <DependentUpon>Repaired_Item_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Search_Complaints.xaml.cs">
       <DependentUpon>Search_Complaints.xaml</DependentUpon>
@@ -112,6 +121,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Assign_Reabate_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Close_Batch_Item_Complaint_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,19 +152,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Factory_Item_Decision_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Factory_Item_Details.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Factory_Manager_Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HQ_Manager_Dashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Item_Complaint.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Defected_Item_Details.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -168,10 +181,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Login_Details.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -201,21 +210,11 @@
     <Compile Include="HQ_Manager_Dashboard.xaml.cs">
       <DependentUpon>HQ_Manager_Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Item_Complaint.xaml.cs">
-      <DependentUpon>Item_Complaint.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Defected_Item_Details.xaml.cs">
-      <DependentUpon>Defected_Item_Details.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login_Details.xaml.cs">
       <DependentUpon>Login_Details.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Page Include="Manager_Details_window.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -229,10 +228,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Receive_Item.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Record_Delivered_Item_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -240,6 +235,10 @@
     <Page Include="Repair.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Repaired_Item_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Search_Complaints.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -112,7 +112,7 @@ namespace NewCRMSystem
                     refID = Int32.Parse(txt_refID.Text);
 
                     relShrmID = Int32.Parse(txt_relShrmID.Text);
-                    string query = "INSERT INTO Complaint (comp_type,ref_id,relatedLocation_id , comp_status_id ) VALUES ('" + compType1 + "','" + refID + "','" + relShrmID + "' , " + compStatusID + ") DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type) values(@ID,'" + cusID + "','" + compMethod + "','" + compType2 + "') SELECT @ID as comp_id";
+                    string query = "INSERT INTO Complaint (comp_type , ref_id , relatedLocation_id , comp_status_id , recordedEmp_id , recordedLocation_id) VALUES ('" + compType1 + "','" + refID + "','" + relShrmID + "' , " + compStatusID + " , " + Login.EmpID + " , " + Login.LocID + ") DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO CustomerComplaint (comp_id,cus_id,comp_method,cus_comp_type) values(@ID,'" + cusID + "','" + compMethod + "','" + compType2 + "') SELECT @ID as comp_id";
 
                     int compID = 0;
                     compID = Int32.Parse(db.GetData(query).Rows[0]["comp_id"].ToString());

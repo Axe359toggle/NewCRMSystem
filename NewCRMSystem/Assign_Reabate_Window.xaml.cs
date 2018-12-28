@@ -386,8 +386,7 @@ namespace NewCRMSystem
 
                     if (CRMdbData.Item.item_pic.validate(itemImageSource))
                     {
-                        
-                        string query = "DECLARE @ID int SET @ID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "')  INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES (@ID," + HQManagerID + ",'" + rebatePercentage + "') ";
+                        string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "')  INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES (@COMPitemID," + HQManagerID + ",'" + rebatePercentage + "') ";
                         query += "Update Item SET item_pic = '" + itemImageSource + "' WHERE item_id = '" + itemID + "' ";
                         query += "UPDATE Complaint SET comp_status_id = 3 WHERE comp_id = " + compID + " ";
 

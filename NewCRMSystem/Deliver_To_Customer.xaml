@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Deliver To Customer" Height="616.383" Width="900" Background="FloralWhite" >
-
+        Title="Deliver To Customer" Height="1000" Width="900" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -28,98 +27,233 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <ScrollViewer Margin="0,0,0,-31">
+            <ScrollViewer>
+                <Grid VerticalAlignment="Center">
+                    <StackPanel>
+                        <!--Complaint ID-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock   Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_compID_DropDownClosed"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="compID_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
 
+                        <!--Customer ID-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock   Text="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="cusID_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                            <Button x:Name="btn_cusSearch" Grid.Column="3" Content="Update" />
+                        </Grid>
+                        
+                        <!--Item Type-->
+                        <GroupBox Header="Item Type" Margin="100 20 50 0">
+                            <StackPanel>
+                                <!--Item Brand-->
+                                <Grid Margin="20 20 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Item Type ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_itemTypeID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="itemTypeID_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
 
-                
-                <Border Padding="10" Background="White"  Margin="25" CornerRadius="30">
-        <StackPanel>
-            <StackPanel Height="460">
-               
+                                <!--Item Brand-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Deliver To Customer" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Heavy"  FontStyle="Oblique" FontSize="25" Margin="288,10,0,10"/>
+                                    <Label Content="Brand" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    <TextBox x:Name="txt_brand" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="brand_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
 
-                <!--Buttons-->
-                <Grid Margin="61,10,10,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="94*"/>
-                        <ColumnDefinition Width="94*"/>
-                        <ColumnDefinition Width="85*"/>
-                        <ColumnDefinition Width="9*"/>
-                        <ColumnDefinition Width="94*"/>
-                    </Grid.ColumnDefinitions>
+                                <!--Item Category-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" >
-                        <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
-                            <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center"  x:Name="rb_Insert" Content="Insert" FontWeight="Heavy" FontSize="20"/>
-                        </Viewbox>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <Viewbox Height="30">
-                            <RadioButton GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_update" Content="Update" FontWeight="Heavy" FontSize="20"  />
-                        </Viewbox>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2" >
-                        <Viewbox Height="30">
-                            <RadioButton GroupName="Operators" Padding="2"  Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_delete" Content="Delete" FontWeight="Heavy" FontSize="20"  />
-                        </Viewbox>
-                    </StackPanel>
-                    <StackPanel Grid.Column="4">
-                        <Viewbox Height="30">
-                            <RadioButton GroupName="Operators" Padding="2"  Background="white"  Foreground="Black" VerticalContentAlignment="Center" x:Name="rb_search" Content="Search" FontWeight="Heavy" FontSize="20" />
-                        </Viewbox>
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Category"/>
+                                    <TextBox x:Name="txt_category" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="category_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Name-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Name"/>
+                                    <TextBox x:Name="txt_name" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="name_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Size-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Size"/>
+                                    <TextBox x:Name="txt_size" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="size_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!--Item Defect-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Item Defect" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_itemDefect" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="itemDefect_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--Item Remarks-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Item Remarks" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_itemRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="itemRemarks_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--Repair Remarks-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Repair Remarks" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_repairRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="repairRemarks_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--Item Status-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock   Text="Item Status" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cmb_itemStatus" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5">
+                                <ComboBoxItem Content="Repaired"/>
+                                <ComboBoxItem Content="New Item"/>
+                            </ComboBox>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="itemStatus_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                        
+                        <!--Close Complaint-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="chk_closeComplaint" Grid.Column="1" Content="Close Complaint" HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="5"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="closeComplaint_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
                     </StackPanel>
                 </Grid>
-
-                <!--Login Id-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Grid.Column="0" Margin="10 10 10 10">
-                        <TextBlock Text="Complaint Id" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
-                        <TextBlock Text="Complaint Item Id" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                        <TextBlock Text="Delivery Id" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                        <TextBlock Text="Item Status" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                        <TextBlock Text="Item ID" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                        <TextBlock Text="Customer ID" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                        <TextBlock Text="Date" Foreground="Black" FontWeight="Heavy" FontSize="15" Margin="0 15 0 0"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Height="322" VerticalAlignment="Bottom">
-                        <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_compID"/>
-                        <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_compItemID" Margin="0 10 0 0"/>
-                        <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_deliveryID" Margin="0 10 0 0"/>
-                        <ComboBox Background="AliceBlue" Padding="5" x:Name="cmb_itemStatus" Margin="0 10 0 0"/>
-                        <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_itemID" Margin="0 10 0 0"/>
-                        <TextBox  Background="AliceBlue"  Padding="5" x:Name="txt_CustomerID" Margin="0 10 0 0"/>
-                        <CheckBox Background="AliceBlue"  Padding="5" x:Name="chk_itemReturned" Margin="0 50 0 0" >Item Received</CheckBox>
-                        <CheckBox Background="AliceBlue"  Padding="5" x:Name="chk_cusSatisfied" Margin="0 10 0 0" >Customer Satisfied</CheckBox>
-                    </StackPanel>
-
-                    <DatePicker HorizontalAlignment="Left" Height="28" Width="208" Margin="203,226,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Name="DateTime_deliver" />
-                    <StackPanel Grid.Column="3">
-                        <Button x:Name="btn_deliveryDetails" Padding="5"  Content="Details" FontWeight="ExtraBlack" FontSize="15" Margin="0 70 0 10"/>
-                        <Button x:Name="btn_itemDetails" Padding="5"   Content="Details" FontWeight="ExtraBlack" FontSize="15"/>
-                        <Button x:Name="btn_customerDetails" Padding="5"   Content="Details" FontWeight="ExtraBlack" FontSize="15" Margin="0 10 0 10"/>
-                        <Button x:Name="btn_ok" Padding="5"   Content="Ok" FontWeight="ExtraBlack" FontSize="15"/>
-                    </StackPanel>
-                </Grid>
-
-
-            </StackPanel>
-        </StackPanel>
-    </Border>
-
-    </ScrollViewer>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2" Margin="100 10 50 20">
+            <Button x:Name="btn_next" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" Click="btn_next_Click" />
+        </Grid>
     </Grid>
 
-    <Grid Grid.Row="2" Margin="100 10 50 20">
-
-    </Grid>
-
-    </Grid>
 </Window>

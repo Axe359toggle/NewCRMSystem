@@ -1,12 +1,11 @@
-﻿<Window x:Class="NewCRMSystem.Showroom_Manager_Mainmenu"
+﻿<Window x:Class="NewCRMSystem.Factory_Manager_Dashboard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-       Title="Showroom_Manager_Mainmenu" Height="700" Width="800" Background="FloralWhite" >
-
+        Title="Factory_Manager_Dashboard" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -34,19 +33,13 @@
 
                             <StackPanel VerticalAlignment="Center" Grid.Column="1">
                                 <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_cusComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Customer Complaint" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_cusComplaint_Click"/>
+                                    <Button x:Name="btn_recordReceivedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Received Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_recordReceivedItem_Click" />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_batchComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Batch Complaint" Height="83" VerticalAlignment="Top" Background="DarkOrange"/>
+                                    <Button x:Name="btn_makeFactoryDecision" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Item Decision" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_makeFactoryDecision_Click" />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_assignRebate" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Rebate Payment" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignRebate_Click" />
-                                </Grid>
-                                <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_deliverToCustomer" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Deliver to Customer" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_deliverToCustomer_Click"  />
-                                </Grid>
-                                <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_closeBatchItemComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Close Batch Item Complaint" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_closeBatchItemComplaint_Click"  />
+                                    <Button x:Name="btn_recordRepairedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Repaired Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" />
                                 </Grid>
                             </StackPanel>
                         </Grid>

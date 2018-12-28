@@ -45,22 +45,32 @@ namespace NewCRMSystem
             }
         }
 
-        private bool validate1(Image image , bool condition ,string ErrorMessage)
+        public Deliver_Item_Window(int compID , DatabaseBased_Objects.Location destinationLocation)
         {
-            bool check = true;
-
-            if (condition)
+            try
             {
-                image.Source = image.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                image.Source = image.TryFindResource("notifyErrorImage") as BitmapImage;
-                image.ToolTip = ErrorMessage;
-                check = false;
-            }
+                InitializeComponent();
+                txt_compID.Text = compID.ToString();
+                txt_compID.IsReadOnly = true;
 
-            return check;
+                if (destinationLocation.locID > 0)
+                {
+                    txt_destinationID.Text = destinationLocation.locID.ToString();
+                    btnDestinationLocationSearch.IsEnabled = false;
+                }
+                if (destinationLocation.locName.Length > 0)
+                {
+                    txt_destinationName.Text = destinationLocation.locName;
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
         }
 
         private bool validate()

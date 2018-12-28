@@ -189,11 +189,11 @@ namespace NewCRMSystem
                         }
                         else if (compStatusID == 10 || compStatusID == 32)
                         {
-
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window());
                         }
                         else if (compStatusID == 14 || compStatusID == 36)
                         {
-
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
                         }
                         else if (compStatusID == 16)
                         {

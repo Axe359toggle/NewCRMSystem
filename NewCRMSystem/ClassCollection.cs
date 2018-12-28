@@ -397,7 +397,38 @@ namespace NewCRMSystem
         }
     }
 
-    
+    public class DatabaseBased_Objects
+    {
+        public class Location
+        {
+            internal int locID = 0;
+            //internal int locID { get { return location_id; } set { location_id = locID; } }
+            internal string locName = "";
+            internal string locType = "";
+            internal string addrNo = "";
+            internal string addrLane = "";
+            internal string addrTown = "";
+            internal string addrCity = "";
+
+            /*
+            internal void setLocID(int locID1) { locID = locID1; }
+            internal void setLocName(string locName1) { locName = locName1; }
+            internal void setLocType(string locType1) { locType = locType1; }
+            internal void setAddrNo(string addrNo1) { addrNo = addrNo1; }
+            internal void setAddrLane(string addrLane1) { addrLane = addrLane1; }
+            internal void setAddrTown(string addrTown1) { addrTown = addrTown1; }
+            internal void setAddrCity(string addrCity1) { addrCity = addrCity1; }
+
+            internal int getLocID() { return locID; }
+            internal string getLocName() { return locName; }
+            internal string getLocType() { return locType; }
+            internal string getAddrNo() { return addrNo; }
+            internal string getAddrLane() { return addrLane; }
+            internal string getAddrTown() { return addrTown; }
+            internal string getAddrCity() { return addrCity; }
+            */
+        }
+    }
 
     static class CRMdbData
     {
@@ -1514,6 +1545,80 @@ namespace NewCRMSystem
             }
 
             internal static class destination_dt
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+        }
+
+        //Investigation table
+        internal static class Investigation
+        {
+            internal static class investigation_dt
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 30;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+        }
+
+        //Repair table
+        internal static class Repair
+        {
+            internal static class repair_remarks
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 200;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+
+            internal static class repair_dt
             {
                 static string error = "";
                 internal static string Error { get { return error; } }

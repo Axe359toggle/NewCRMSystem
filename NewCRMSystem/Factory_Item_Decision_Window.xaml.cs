@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace NewCRMSystem
 {
     /// <summary>
-    /// Interaction logic for Deliver_To_Customer.xaml
+    /// Interaction logic for Factory_Item_Decision_Window.xaml
     /// </summary>
-    public partial class Deliver_To_Customer : Window
+    public partial class Factory_Item_Decision_Window : Window
     {
-        public Deliver_To_Customer()
+        public Factory_Item_Decision_Window()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace NewCRMSystem
 
         private void bindCompIDList()
         {
-            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , CustomerComplaint AS CC WHERE D.destination_id = " + Login.LocID + " D.comp_id = C.comp_id AND ( C.comp_status_id = 16 OR C.comp_status_id = 21 ) AND C.comp_id = CC.comp_id ";
+            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D WHERE D.destination_id = " + Login.LocID + " D.comp_id = C.comp_id AND ( C.comp_status_id = 10 OR C.comp_status_id = 32 )  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -50,9 +50,15 @@ namespace NewCRMSystem
             cmb_compID.SelectedIndex = 0;
         }
 
+        private void loadDefectImageFromLocal(string path)
+        {
+            ImageSource imageSource = new BitmapImage(new Uri(path));
+            img_defectImage.Source = imageSource;
+        }
+
         private void loadData(int compID)
         {
-            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_remarks , R.repair_remarks , CC.cus_id FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R , CustomerComplaint AS CC WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id AND CI.comp_id = CC.comp_id ";
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_defect_img , CI.item_remarks FROM ItemType as IT , ComplaintItem as CI WHERE CI.comp_id  = '" + compID + "' and CI.item_type_id = IT.item_type_id  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -65,9 +71,10 @@ namespace NewCRMSystem
                 txt_size.Text = dt.Rows[0]["item_size"].ToString();
                 txt_itemDefect.Text = dt.Rows[0]["item_defect"].ToString();
                 txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
-                txt_repairRemarks.Text = dt.Rows[0]["repair_remarks"].ToString();
-                txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
 
+                string imagePath = dt.Rows[0]["item_defect_img"].ToString();
+                loadDefectImageFromLocal(imagePath);
+                
             }
         }
 
@@ -79,34 +86,57 @@ namespace NewCRMSystem
             if (Validation.validate(compID_Notify, CRMdbData.Complaint.comp_id.validate(cmb_compID.Text), CRMdbData.Complaint.comp_id.Error)) { }
             else { check = false; }
 
-            //Close Complaint
-            if (Validation.validate(closeComplaint_Notify, chk_closeComplaint.IsChecked == true, "This must be checked")) { }
+            //Item Decision
+            if (Validation.validate(itemDecision_Notify, rbn_investigation.IsChecked== true || rbn_repair.IsChecked==true, "Choose an Option")) { }
             else { check = false; }
-            
+
+            if(rbn_investigation.IsChecked == true)
+            {
+                //Investigation Date
+                if (Validation.validate(investigationDate_Notify, CRMdbData.Investigation.investigation_dt.validate(dt_investigationDate.Text), CRMdbData.Investigation.investigation_dt.Error)) { }
+                else { check = false; }
+            }
+
+            //Factory Manager ID
+            if (CRMdbData.Manager.emp_id.validate(Login.EmpID.ToString())) { }
+            else
+            {
+                MessageBox.Show("Logged Employee ID Error ", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                check = false;
+            }
+
+
             return check;
         }
 
-        ~Deliver_To_Customer() { }
-
-        private void back_btn_Click(object sender, RoutedEventArgs e)
-        {
-            Login.b1.goBack(this);
-        }
+        ~Factory_Item_Decision_Window() { }
 
         private void btn_next_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+
                 if (validate())
                 {
                     int compID = Int32.Parse(cmb_compID.Text);
-                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') ";
-                    query += "UPDATE ComplaintItem SET returned_dt = GETDATE() WHERE comp_item_id = @COMPitemID ";
-                    query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 16 then 17 when comp_status_id = 21 then 22 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
-                    query += "UPDATE Complaint SET comp_status_id = @COMPstatusID , closed_dt = GETDATE() WHERE comp_id = '" + compID + "' SELECT @COMPstatusID as comp_status_id ";
+                    int facManagerID = Login.EmpID;
+                    string query = "";
 
+                    if(rbn_investigation.IsChecked == true)
+                    {
+                        DateTime invDate = dt_investigationDate.DisplayDate;
+                        query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Investigation (comp_item_id , factoryManager , investigation_dt ) VALUES ( @COMPitemID , " + facManagerID + " , '" + invDate + "' ) ";
+                        query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 10 then 18 when comp_status_id = 32 then 39 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
+                        query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
+                    }
+                    else if (rbn_repair.IsChecked == true)
+                    {
+                        query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Rebate (comp_item_id , factoryManager ) VALUES ( @COMPitemID , " + facManagerID + " ) ";
+                        query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 10 then 11 when comp_status_id = 32 then 33 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
+                        query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
+                    }
+                    
                     Database db = new Database();
-
                     if (db.Save_Del_Update(query) > 0)
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
@@ -116,7 +146,6 @@ namespace NewCRMSystem
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
-
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
@@ -146,6 +175,11 @@ namespace NewCRMSystem
             {
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
+        }
+
+        private void back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.goBack(this);
         }
     }
 }

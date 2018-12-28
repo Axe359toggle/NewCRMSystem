@@ -61,5 +61,10 @@ namespace NewCRMSystem
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Item_Type_Window());
         }
+
+        private void btn_assignNewItem_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_New_Item_Window());
+        }
     }
 }

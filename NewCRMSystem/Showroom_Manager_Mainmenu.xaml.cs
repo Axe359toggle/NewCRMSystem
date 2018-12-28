@@ -40,5 +40,15 @@ namespace NewCRMSystem
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Rebate_Payment());
         }
+
+        private void btn_deliverToCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_To_Customer());
+        }
+
+        private void btn_closeBatchItemComplaint_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window());
+        }
     }
 }

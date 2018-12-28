@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="HQ_Manager_Dashboard" Height="635.638" Width="800" Background="FloralWhite" >
+        Title="HQ_Manager_Dashboard" Height="700" Width="800" Background="FloralWhite" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -51,6 +51,9 @@
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_itemTypeDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Item Type Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_itemTypeDetails_Click" />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_assignNewItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign New Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignNewItem_Click" />
                                 </Grid>
                             </StackPanel>
                         </Grid>

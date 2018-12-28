@@ -15,18 +15,18 @@ using System.Windows.Shapes;
 namespace NewCRMSystem
 {
     /// <summary>
-    /// Interaction logic for Assign_New_Item_Window.xaml
+    /// Interaction logic for Repaired_Item_WIndow.xaml
     /// </summary>
-    public partial class Assign_New_Item_Window : Window
+    public partial class Repaired_Item_Window : Window
     {
-        public Assign_New_Item_Window()
+        public Repaired_Item_Window()
         {
             InitializeComponent();
         }
 
-        private void bindCompIDList()
+        private void bindDeliveryIDList()
         {
-            string query = "SELECT C.comp_id FROM Complaint AS C , Investigation AS Inv , ComplaintItem AS CI WHERE  Inv.comp_item_id = CI.comp_item_id AND ( C.comp_status_id = 18 OR C.comp_status_id = 39 ) AND C.comp_id = CI.comp_id ";
+            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D WHERE D.destination_id = " + Login.LocID + " D.comp_id = C.comp_id AND ( C.comp_status_id = 11 OR C.comp_status_id = 33 )  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -40,7 +40,7 @@ namespace NewCRMSystem
 
         private void loadData(int compID)
         {
-            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_id , Inv.factoryManager , M.emp_fname , M.emp_lname FROM ItemType AS IT , ComplaintItem AS CI , Investigation AS Inv , Manager AS M WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = Inv.comp_item_id AND Inv.factoryManager = M.emp_id ";
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size FROM ItemType as IT , ComplaintItem as CI WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -51,10 +51,6 @@ namespace NewCRMSystem
                 txt_category.Text = dt.Rows[0]["item_category"].ToString();
                 txt_name.Text = dt.Rows[0]["item_name"].ToString();
                 txt_size.Text = dt.Rows[0]["item_size"].ToString();
-                txt_currItemID.Text = dt.Rows[0]["item_id"].ToString();
-                txt_facManagerID.Text = dt.Rows[0]["factoryManager"].ToString();
-                txt_facManagerName.Text = dt.Rows[0]["emp_fname"].ToString() + dt.Rows[0]["emp_lname"].ToString();
-
             }
         }
 
@@ -66,14 +62,18 @@ namespace NewCRMSystem
             if (Validation.validate(compID_Notify, CRMdbData.Complaint.comp_id.validate(cmb_compID.Text), CRMdbData.Complaint.comp_id.Error)) { }
             else { check = false; }
 
-            //New Item ID
-            if (Validation.validate(newItemID_Notify, CRMdbData.Item.item_id.validate(txt_newItemID.Text), CRMdbData.Item.item_id.Error)) { }
+            //Repair Remarks
+            if (Validation.validate(repairRemarks_Notify, CRMdbData.Repair.repair_remarks.validate(cmb_compID.Text), CRMdbData.Repair.repair_remarks.Error)) { }
+            else { check = false; }
+
+            //Repaired Date
+            if (Validation.validate(repairedDate_Notify, CRMdbData.Repair.repair_dt.validate(cmb_compID.Text), CRMdbData.Repair.repair_dt.Error)) { }
             else { check = false; }
             
             return check;
         }
 
-        ~Assign_New_Item_Window() { }
+        ~Repaired_Item_Window() { }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -99,37 +99,44 @@ namespace NewCRMSystem
             }
         }
 
-        private void Next_btn_Click(object sender, RoutedEventArgs e)
+        private void btn_next_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (validate())
                 {
                     int compID = Int32.Parse(cmb_compID.Text);
-                    string newItemID = txt_newItemID.Text.Trim();
+                    string repairRemarks = txt_repairRemarks.Text;
+                    string repairedDate = dt_repairedDate.Text;
 
-                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') UPDATE Investigation SET hQManager = " + Login.EmpID + " , newItem_id = '" + newItemID + "' WHERE comp_item_id = @COMPitemID ";
-                    query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 18 then 19 when comp_status_id = 39 then 40 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
+                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') Update Rebate SET repair_remarks = '" + repairRemarks + "' , repair_dt = '" + repairedDate + "' WHERE comp_item_id = @COMPitemID  ";
+                    query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 11 then 12 when comp_status_id = 33 then 34 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                     query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
-                    query += "SELECT L.location_id , L.location_name FROM Location AS L , Complaint AS C WHERE C.comp_id = '" + compID + "' AND C.recordedLocation_id = L.location_id ";
 
                     Database db = new Database();
-
-                    System.Data.DataTable dt = db.GetData(query);
-
-                    if (dt.Rows.Count == 1)
+                    if (db.Save_Del_Update(query) > 0)
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-                        DatabaseBased_Objects.Location loc = new DatabaseBased_Objects.Location();
-                        loc.locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
-                        loc.locName = dt.Rows[0]["location_name"].ToString();
-                        
-                        Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID, loc ));
+                        string query1 = "SELECT L.location_id , L.location_name FROM Location AS L WHERE location_type = 'HQ' ";
+                        System.Data.DataTable dt = db.GetData(query1);
+
+                        if (dt.Rows.Count == 1)
+                        {
+                            DatabaseBased_Objects.Location loc = new DatabaseBased_Objects.Location();
+                            loc.locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
+                            loc.locName = dt.Rows[0]["location_name"].ToString();
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID , loc));
+                        }
+                        else
+                        {
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
+                        }
                     }
                     else
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
+
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
