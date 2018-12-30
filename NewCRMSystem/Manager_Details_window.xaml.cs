@@ -175,6 +175,22 @@ namespace NewCRMSystem
             }
         }
 
+        private void refresh_ManagerDatagrid()
+        {
+            string query = "SELECT emp_id,emp_title,emp_fname,emp_lname,emp_tp,des_id,login_id,location_id,assigned_dt from Manager";
+            Database db = new Database();
+            managerDatagrid.ItemsSource = db.GetData(query).AsDataView();
+        }
+
+        private void refresh_LoginDetailsDatagrid()
+        {
+            string query = "Select login_dt,logout_dt from LoginDetails where login_id='" + loginID + "' ";
+            Database db = new Database();
+            loginDatagrid.ItemsSource = db.GetData(query).AsDataView();
+        }
+
+        ~Manager_Details_window() { }
+
         private void rbnInsert_Checked(object sender, RoutedEventArgs e)
         {
             if (rbnInsert.IsChecked == true)
@@ -230,10 +246,6 @@ namespace NewCRMSystem
                         {
                             desID = "H";
                         }
-                        else if (cmbDes.Text == "Top Manager")
-                        {
-                            desID = "T";
-                        }
 
 
                         Database db = new Database();
@@ -246,6 +258,8 @@ namespace NewCRMSystem
                             txtManagerID.Text = managerID.ToString();
                             GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                             rbnUpdate.IsChecked = true;
+                            refresh_ManagerDatagrid();
+                            refresh_LoginDetailsDatagrid();
                         }
                         else
                         {
@@ -478,6 +492,7 @@ namespace NewCRMSystem
 
                     txtlocationID.Text = dv.Row.ItemArray[7].ToString();//location_id
                     txtAssignedDt.Text = dv.Row.ItemArray[8].ToString();//assigned_dt
+
                     string query = "Select login_dt,logout_dt from LoginDetails where login_id='" + loginID + "' ";
                     Database db = new Database();
                     loginDatagrid.ItemsSource = db.GetData(query).AsDataView();
@@ -544,9 +559,7 @@ namespace NewCRMSystem
                     {
                         loginID = Int32.Parse(w.txt_loginID.Text);
 
-                        string query = "SELECT emp_id,emp_title,emp_fname,emp_lname,emp_tp,des_id,login_id,location_id,assigned_dt from Manager";
-                        Database db = new Database();
-                        managerDatagrid.ItemsSource = db.GetData(query).AsDataView();
+                        refresh_ManagerDatagrid();
                     }
                 }
             }
@@ -566,8 +579,6 @@ namespace NewCRMSystem
         {
             Login.b1.goBack(this);
         }
-        
-        ~Manager_Details_window() { }
 
         private void btnLocationSearch_Click(object sender, RoutedEventArgs e)
         {

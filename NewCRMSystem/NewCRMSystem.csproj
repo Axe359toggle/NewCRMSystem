@@ -70,6 +70,9 @@
     <Compile Include="Assign_Reabate_Window.xaml.cs">
       <DependentUpon>Assign_Reabate_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Batch_Item_Complaint_Window.xaml.cs">
+      <DependentUpon>Batch_Item_Complaint_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Close_Batch_Item_Complaint_Window.xaml.cs">
       <DependentUpon>Close_Batch_Item_Complaint_Window.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Assign_Reabate_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Batch_Item_Complaint_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

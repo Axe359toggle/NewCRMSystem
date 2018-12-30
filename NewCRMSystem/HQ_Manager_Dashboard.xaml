@@ -44,6 +44,9 @@
                                     <Button x:Name="btn_recordReceivedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Delivered Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_recordReceivedItem_Click" />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_deliverItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Deliver Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_deliverItem_Click"  />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_assignFactory" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign Factory" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignFactory_Click" />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">

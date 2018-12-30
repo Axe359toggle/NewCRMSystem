@@ -22,6 +22,7 @@ namespace NewCRMSystem
         public Showroom_Manager_Mainmenu()
         {
             InitializeComponent();
+            Login.b2 = Login.b1;
         }
 
         ~Showroom_Manager_Mainmenu() { }
@@ -49,6 +50,21 @@ namespace NewCRMSystem
         private void btn_closeBatchItemComplaint_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window());
+        }
+
+        private void Btn_batchComplaint_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Batch_Item_Complaint_Window());
+        }
+
+        private void Btn_recordReceivedCustomerItem_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new ReceivedItem_Details());
+        }
+
+        private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
         }
     }
 }

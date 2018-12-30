@@ -21,8 +21,10 @@ namespace NewCRMSystem
     /// </summary>
     public partial class Login : Window
     {
-        static BackButton B1 = new BackButton(30);
+        static BackButton B1;
         internal static BackButton b1 { get { return B1; } }
+        static BackButton B2 = new BackButton(30);
+        internal static BackButton b2 { set { B1 = B2; } }
 
         static int empID = 0; 
         internal static int EmpID { get { return empID; } }
@@ -42,6 +44,7 @@ namespace NewCRMSystem
         public Login()
         {
             InitializeComponent();
+            B1 = new BackButton(30);
         }
 
         ~Login() { }
@@ -86,6 +89,11 @@ namespace NewCRMSystem
                         {
                             B1.hideWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
                         }
+                        else if (desID.Equals("F"))
+                        {
+                            B1.hideWindowAndOpenNextWindow(this, new Factory_Manager_Dashboard());
+                        }
+                        B2 = B1;
                     }
                     else
                     {

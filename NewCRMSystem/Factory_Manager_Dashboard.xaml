@@ -39,7 +39,7 @@
                                     <Button x:Name="btn_makeFactoryDecision" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Item Decision" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_makeFactoryDecision_Click" />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_recordRepairedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Repaired Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" />
+                                    <Button x:Name="btn_recordRepairedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Repaired Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_recordRepairedItem_Click" />
                                 </Grid>
                             </StackPanel>
                         </Grid>

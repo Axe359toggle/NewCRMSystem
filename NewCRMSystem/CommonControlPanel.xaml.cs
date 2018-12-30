@@ -44,5 +44,10 @@ namespace NewCRMSystem
         {
             parentWindow = Window.GetWindow(this);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoadMainMenu.LoadFor(parentWindow);
+        }
     }
 }

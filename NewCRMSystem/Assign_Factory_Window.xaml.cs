@@ -55,7 +55,7 @@ namespace NewCRMSystem
 
         private void bindCompIDList()
         {
-            string query = "SELECT comp_id FROM ComplaintItem WHERE comp_status_id = 7 OR comp_status_id = 29";
+            string query = "SELECT comp_id FROM Complaint WHERE comp_status_id = 7 OR comp_status_id = 29";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -107,6 +107,7 @@ namespace NewCRMSystem
                     txt_locationID.Text = w.txt_LocationID.Text;
                     txt_locationName.Text = w.txt_LocationName.Text;
 
+                    loc = new DatabaseBased_Objects.Location();
                     loc.locID = Int32.Parse(txt_locationID.Text);
                     loc.locName = txt_locationName.Text;
                 }
@@ -129,7 +130,7 @@ namespace NewCRMSystem
                 if (validate())
                 {
                     int compID = Int32.Parse(cmb_compID.Text);
-                    string query = "DECLARE @COMPstatusID int SET @COMPstatusID = (SELECT CASE WHEN C.comp_status_id = 7 THEN 8 WHEN C.comp_status_id = 29 THEN 30 FROM Complaint C WHERE C.comp_id = '" + compID + "') ";
+                    string query = "DECLARE @COMPstatusID int SET @COMPstatusID = (SELECT CASE WHEN C.comp_status_id = 7 THEN 8 WHEN C.comp_status_id = 29 THEN 30 END FROM Complaint C WHERE C.comp_id = '" + compID + "') ";
                     query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
 
                     Database db = new Database();
@@ -142,6 +143,25 @@ namespace NewCRMSystem
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void Cmb_compID_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmb_compID.Text.Length > 0)
+                {
+                    loadData(cmb_compID.Text);
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)

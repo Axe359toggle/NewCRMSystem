@@ -73,7 +73,7 @@ namespace NewCRMSystem
         {
             try
             {
-                string query = "SELECT CI.comp_id from ComplaintItem as CI , Rebate as R WHERE CI.comp_item_id = R.comp_item_id ";
+                string query = "SELECT CI.comp_id from ComplaintItem as CI , Rebate as R , Complaint as C WHERE CI.comp_item_id = R.comp_item_id AND CI.comp_id = C.comp_id AND C.comp_status_id = 3 ";
                 Database db = new Database();
                 DataTable dt = db.GetData(query);
 

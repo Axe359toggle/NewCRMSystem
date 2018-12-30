@@ -22,6 +22,7 @@ namespace NewCRMSystem
         public HQ_Manager_Dashboard()
         {
             InitializeComponent();
+            Login.b2 = Login.b1;
         }
 
         ~HQ_Manager_Dashboard() { }
@@ -65,6 +66,11 @@ namespace NewCRMSystem
         private void btn_assignNewItem_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Assign_New_Item_Window());
+        }
+
+        private void Btn_deliverItem_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window());
         }
     }
 }

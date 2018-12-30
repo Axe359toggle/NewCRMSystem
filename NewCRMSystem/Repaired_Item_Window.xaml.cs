@@ -21,12 +21,24 @@ namespace NewCRMSystem
     {
         public Repaired_Item_Window()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                bindDeliveryIDList();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
         }
 
         private void bindDeliveryIDList()
         {
-            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D WHERE D.destination_id = " + Login.LocID + " D.comp_id = C.comp_id AND ( C.comp_status_id = 11 OR C.comp_status_id = 33 )  ";
+            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 11 OR C.comp_status_id = 33 )  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -109,7 +121,7 @@ namespace NewCRMSystem
                     string repairRemarks = txt_repairRemarks.Text;
                     string repairedDate = dt_repairedDate.Text;
 
-                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') Update Rebate SET repair_remarks = '" + repairRemarks + "' , repair_dt = '" + repairedDate + "' WHERE comp_item_id = @COMPitemID  ";
+                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') Update Repair SET repair_remarks = '" + repairRemarks + "' , repair_dt = '" + repairedDate + "' WHERE comp_item_id = @COMPitemID  ";
                     query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 11 then 12 when comp_status_id = 33 then 34 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                     query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
 

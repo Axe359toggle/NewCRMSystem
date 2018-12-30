@@ -303,11 +303,10 @@ namespace NewCRMSystem
                     itemRemarks = txt_remarks.Text;
                     itemPrice = Double.Parse(txt_itemPrice.Text);
 
-                    string query = "INSERT INTO Item (item_id ,item_price ) VALUES ('"+itemID+"',"+itemPrice+") ";
+                    string query = "INSERT INTO Item (item_id ,item_price ) VALUES ('" + itemID + "'," + itemPrice + ") ";
                     query += "UPDATE Complaint SET comp_status_id = 2 WHERE comp_id = " + compID + " ";
-                    query += "INSERT INTO ComplaintItem (shoe_side ,received_dt ,item_defect ,item_remarks ,item_id  ,item_type_id ,comp_id ) VALUES ('"+shoeSide+"','"+receivedDt+"','"+itemDefect+"','"+itemRemarks+"','"+itemID+"','"+itemTypeID+"','"+compID+"') DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as comp_item_id";
+                    query += "INSERT INTO ComplaintItem ( shoe_side , received_dt , item_defect , item_remarks , item_id , item_type_id ,comp_id ) VALUES ( '"+shoeSide+"' , '"+receivedDt+"' , '"+itemDefect+"' , '"+itemRemarks+"' , '"+itemID+"' , '"+itemTypeID+"' , '"+compID+"' ) DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as comp_item_id";
                     
-
                     Database db = new Database();
 
                     int compItemID = Int32.Parse(db.GetData(query).Rows[0]["comp_item_id"].ToString());

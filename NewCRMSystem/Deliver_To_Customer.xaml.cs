@@ -36,9 +36,35 @@ namespace NewCRMSystem
             }
         }
 
+        public Deliver_To_Customer(int compID)
+        {
+            try
+            {
+                InitializeComponent();
+                bindCompIDList();
+                foreach (ComboBoxItem item in cmb_compID.Items)
+                {
+                    if (item.Content.ToString() == compID.ToString())
+                    {
+                        cmb_compID.SelectedValue = item;
+                        break;
+                    }
+                }
+                loadData(compID);
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
         private void bindCompIDList()
         {
-            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , CustomerComplaint AS CC WHERE D.destination_id = " + Login.LocID + " D.comp_id = C.comp_id AND ( C.comp_status_id = 16 OR C.comp_status_id = 21 ) AND C.comp_id = CC.comp_id ";
+            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , CustomerComplaint AS CC , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND CI.comp_id = C.comp_id AND ( C.comp_status_id = 16 OR C.comp_status_id = 21 ) AND C.comp_id = CC.comp_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -50,9 +76,21 @@ namespace NewCRMSystem
             cmb_compID.SelectedIndex = 0;
         }
 
+        private void loadTxt_itemStatus(string itemDecision)
+        {
+            if (itemDecision.Equals("Repair"))
+            {
+                txt_itemStatus.Text = "Repaired";
+            }
+            else if (itemDecision.Equals("Investigation"))
+            {
+                txt_itemStatus.Text = "New Item";
+            }
+        }
+
         private void loadData(int compID)
         {
-            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_remarks , R.repair_remarks , CC.cus_id FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R , CustomerComplaint AS CC WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id AND CI.comp_id = CC.comp_id ";
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_remarks , CI.item_decision , R.repair_remarks , CC.cus_id FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R , CustomerComplaint AS CC WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id AND CI.comp_id = CC.comp_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -67,6 +105,8 @@ namespace NewCRMSystem
                 txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
                 txt_repairRemarks.Text = dt.Rows[0]["repair_remarks"].ToString();
                 txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
+
+                loadTxt_itemStatus(dt.Rows[0]["item_decision"].ToString());
 
             }
         }
@@ -103,7 +143,7 @@ namespace NewCRMSystem
                     string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') ";
                     query += "UPDATE ComplaintItem SET returned_dt = GETDATE() WHERE comp_item_id = @COMPitemID ";
                     query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 16 then 17 when comp_status_id = 21 then 22 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
-                    query += "UPDATE Complaint SET comp_status_id = @COMPstatusID , closed_dt = GETDATE() WHERE comp_id = '" + compID + "' SELECT @COMPstatusID as comp_status_id ";
+                    query += "UPDATE Complaint SET comp_status_id = @COMPstatusID , closed_dt = GETDATE() WHERE comp_id = '" + compID + "' ";
 
                     Database db = new Database();
 

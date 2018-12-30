@@ -25,6 +25,7 @@ namespace NewCRMSystem
             {
                 InitializeComponent();
                 bindCompIDList();
+                hide_investigationDT(Visibility.Collapsed);
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -38,7 +39,7 @@ namespace NewCRMSystem
 
         private void bindCompIDList()
         {
-            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D WHERE D.destination_id = " + Login.LocID + " D.comp_id = C.comp_id AND ( C.comp_status_id = 10 OR C.comp_status_id = 32 )  ";
+            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 10 OR C.comp_status_id = 32 )  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -50,15 +51,37 @@ namespace NewCRMSystem
             cmb_compID.SelectedIndex = 0;
         }
 
+        private void hide_investigationDT(Visibility visibility1)
+        {
+            lbl_investigationDt.Visibility = visibility1;
+            dt_investigationDate.Visibility = visibility1;
+        }
+
+        private void setRepair()
+        {
+            hide_investigationDT(Visibility.Collapsed);
+        }
+
+        private void setInvestigation()
+        {
+            hide_investigationDT(Visibility.Visible);
+        }
+
         private void loadDefectImageFromLocal(string path)
         {
             ImageSource imageSource = new BitmapImage(new Uri(path));
             img_defectImage.Source = imageSource;
         }
 
+        private void loadItemImageFromLocal(string path)
+        {
+            ImageSource imageSource = new BitmapImage(new Uri(path));
+            img_itemImage.Source = imageSource;
+        }
+
         private void loadData(int compID)
         {
-            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_defect_img , CI.item_remarks FROM ItemType as IT , ComplaintItem as CI WHERE CI.comp_id  = '" + compID + "' and CI.item_type_id = IT.item_type_id  ";
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_defect_img , CI.item_remarks , CC.cus_id , I.item_pic FROM ItemType as IT , ComplaintItem as CI , CustomerComplaint as CC , Item as I WHERE CI.comp_id  = '" + compID + "' and CI.item_type_id = IT.item_type_id AND CI.comp_id = CC.comp_id AND CI.item_id = I.item_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -71,10 +94,12 @@ namespace NewCRMSystem
                 txt_size.Text = dt.Rows[0]["item_size"].ToString();
                 txt_itemDefect.Text = dt.Rows[0]["item_defect"].ToString();
                 txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
+                txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
 
-                string imagePath = dt.Rows[0]["item_defect_img"].ToString();
-                loadDefectImageFromLocal(imagePath);
-                
+                string imagePath1 = dt.Rows[0]["item_defect_img"].ToString();
+                loadDefectImageFromLocal(imagePath1);
+                string imagePath2 = dt.Rows[0]["item_pic"].ToString();
+                loadItemImageFromLocal(imagePath2);
             }
         }
 
@@ -125,13 +150,13 @@ namespace NewCRMSystem
                     if(rbn_investigation.IsChecked == true)
                     {
                         DateTime invDate = dt_investigationDate.DisplayDate;
-                        query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Investigation (comp_item_id , factoryManager , investigation_dt ) VALUES ( @COMPitemID , " + facManagerID + " , '" + invDate + "' ) ";
+                        query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Investigation (comp_item_id , factoryManager , investigation_dt ) VALUES ( @COMPitemID , " + facManagerID + " , '" + invDate + "' ) UPDATE ComplaintItem SET item_decision = 'Investigation' WHERE comp_item_id = @COMPitemID ";
                         query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 10 then 18 when comp_status_id = 32 then 39 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                         query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
                     }
                     else if (rbn_repair.IsChecked == true)
                     {
-                        query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Rebate (comp_item_id , factoryManager ) VALUES ( @COMPitemID , " + facManagerID + " ) ";
+                        query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Repair (comp_item_id , factoryManager ) VALUES ( @COMPitemID , " + facManagerID + " ) UPDATE ComplaintItem SET item_decision = 'Repair' WHERE comp_item_id = @COMPitemID ";
                         query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 10 then 11 when comp_status_id = 32 then 33 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                         query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
                     }
@@ -180,6 +205,22 @@ namespace NewCRMSystem
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void rbn_repair_Checked(object sender, RoutedEventArgs e)
+        {
+            if(rbn_repair.IsChecked == true)
+            {
+                setRepair();
+            }
+        }
+
+        private void rbn_investigation_Checked(object sender, RoutedEventArgs e)
+        {
+            if (rbn_investigation.IsChecked == true)
+            {
+                setInvestigation();
+            }
         }
     }
 }

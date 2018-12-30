@@ -22,6 +22,7 @@ namespace NewCRMSystem
         public Factory_Manager_Dashboard()
         {
             InitializeComponent();
+            Login.b2 = Login.b1;
         }
 
         private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)
@@ -32,6 +33,11 @@ namespace NewCRMSystem
         private void Btn_makeFactoryDecision_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window());
+        }
+
+        private void Btn_recordRepairedItem_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Repaired_Item_Window());
         }
     }
 }

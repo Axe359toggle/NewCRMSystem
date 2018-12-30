@@ -221,10 +221,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Item Status" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmb_itemStatus" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5">
-                                <ComboBoxItem Content="Repaired"/>
-                                <ComboBoxItem Content="New Item"/>
-                            </ComboBox>
+                            <TextBox x:Name="txt_itemStatus" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True" />
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="itemStatus_Notify"/>

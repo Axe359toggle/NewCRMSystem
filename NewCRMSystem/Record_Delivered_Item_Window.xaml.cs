@@ -174,12 +174,14 @@ namespace NewCRMSystem
                     DateTime desDt = dt_destinationReceivedDate.DisplayDate;
                     string query = "UPDATE Delivery SET destination_dt = '" + desDt + "' WHERE delivery_id = '" + deliveryID + "' ";
                     query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 6 then 7 when comp_status_id = 28 then 29 when comp_status_id = 9 then 10 when comp_status_id = 31 then 32 when comp_status_id = 13 then 14 when comp_status_id = 35 then 36 when comp_status_id = 15 then 16 when comp_status_id = 37 then 38 when comp_status_id = 20 then 21 when comp_status_id = 41 then 42 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
-                    query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' SELECT @COMPstatusID as comp_status_id ";
+                    query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' SELECT @COMPstatusID as comp_status_id , L.location_id , L.location_name FROM Location as L , Complaint as C WHERE C.comp_id = '" + compID + "' AND C.recordedLocation_id = L.location_id ";
                     
                     Database db = new Database();
                     System.Data.DataTable dt = db.GetData(query);
                     int compStatusID = 0;
                     compStatusID = Int32.Parse(dt.Rows[0]["comp_status_id"].ToString());
+                    DatabaseBased_Objects.Location loc;
+
                     if (compStatusID > 0)
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
@@ -193,23 +195,26 @@ namespace NewCRMSystem
                         }
                         else if (compStatusID == 14 || compStatusID == 36)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
+                            loc = new DatabaseBased_Objects.Location();
+                            loc.locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
+                            loc.locName = dt.Rows[0]["location_name"].ToString();
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID , loc ));
                         }
                         else if (compStatusID == 16)
                         {
-
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
                         }
                         else if (compStatusID == 38)
                         {
-
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window(compID));
                         }
                         else if (compStatusID == 21)
                         {
-
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
                         }
                         else if (compStatusID == 42)
                         {
-
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window(compID));
                         }
                     }
                     else

@@ -325,6 +325,8 @@ namespace NewCRMSystem
                 Login.b1.hideWindowAndOpenNextWindow(window, new HQ_Manager_Dashboard());
             else if (Login.DesID.Equals("S"))
                 Login.b1.hideWindowAndOpenNextWindow(window, new Showroom_Manager_Mainmenu());
+            else if (Login.DesID.Equals("F"))
+                Login.b1.hideWindowAndOpenNextWindow(window, new Factory_Manager_Dashboard());
         }
     }
 

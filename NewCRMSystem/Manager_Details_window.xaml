@@ -195,7 +195,6 @@
                                 <ComboBoxItem Content="Showroom Manager"/>
                                 <ComboBoxItem Content="Factory Manager"/>
                                 <ComboBoxItem Content="Headquarters Manager"/>
-                                <ComboBoxItem Content="Top Manager"/>
                             </ComboBox>
                             <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
