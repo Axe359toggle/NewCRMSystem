@@ -1193,7 +1193,7 @@ namespace NewCRMSystem
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
-                static int size = 10;
+                static int size = 15;
                 internal static int Size
                 {
                     get { return size; }
@@ -1236,6 +1236,27 @@ namespace NewCRMSystem
                 static string error = "";
                 internal static string Error { get { return error; } }
                 static int size = 2;
+                internal static int Size
+                {
+                    get { return size; }
+                }
+                internal static bool validate(string value)
+                {
+                    value = value.Trim();
+                    bool check = true;
+                    if (value.Length == 0 || value.Length > size)
+                    {
+                        check = false;
+                        error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    return check;
+                }
+            }
+            internal static class item_pic
+            {
+                static string error = "";
+                internal static string Error { get { return error; } }
+                static int size = 120;
                 internal static int Size
                 {
                     get { return size; }
@@ -1299,30 +1320,9 @@ namespace NewCRMSystem
                     return check;
                 }
             }
-            internal static class item_pic
-            {
-                static string error = "";
-                internal static string Error { get { return error; } }
-                static int size = 120;
-                internal static int Size
-                {
-                    get { return size; }
-                }
-                internal static bool validate(string value)
-                {
-                    value = value.Trim();
-                    bool check = true;
-                    if (value.Length == 0 || value.Length > size)
-                    {
-                        check = false;
-                        error = "Cannot be Empty or Greater than " + size + " characters";
-                    }
-                    return check;
-                }
-            }
         }
 
-        //Item table
+        //Complaint Item table
         internal static class ComplaintItem
         {
             internal static class comp_item_id
@@ -1458,7 +1458,7 @@ namespace NewCRMSystem
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
-                static int size = 3;
+                static int size = 4;
                 internal static int Size
                 {
                     get { return size; }

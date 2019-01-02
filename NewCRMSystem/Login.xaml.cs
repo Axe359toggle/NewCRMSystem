@@ -23,8 +23,6 @@ namespace NewCRMSystem
     {
         static BackButton B1;
         internal static BackButton b1 { get { return B1; } }
-        static BackButton B2 = new BackButton(30);
-        internal static BackButton b2 { set { B1 = B2; } }
 
         static int empID = 0; 
         internal static int EmpID { get { return empID; } }
@@ -44,7 +42,6 @@ namespace NewCRMSystem
         public Login()
         {
             InitializeComponent();
-            B1 = new BackButton(30);
         }
 
         ~Login() { }
@@ -76,6 +73,9 @@ namespace NewCRMSystem
                         
                         desID = dt.Rows[0]["des_id"].ToString();
 
+
+                        B1 = new BackButton(50);
+
                         if (dt.Rows[0]["location_id"].ToString().Length > 0)
                         {
                             locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
@@ -93,7 +93,6 @@ namespace NewCRMSystem
                         {
                             B1.hideWindowAndOpenNextWindow(this, new Factory_Manager_Dashboard());
                         }
-                        B2 = B1;
                     }
                     else
                     {

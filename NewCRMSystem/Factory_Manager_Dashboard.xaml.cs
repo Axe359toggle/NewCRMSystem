@@ -22,7 +22,6 @@ namespace NewCRMSystem
         public Factory_Manager_Dashboard()
         {
             InitializeComponent();
-            Login.b2 = Login.b1;
         }
 
         private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)

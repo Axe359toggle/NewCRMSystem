@@ -37,6 +37,25 @@ namespace NewCRMSystem
             }
         }
 
+        public Factory_Item_Decision_Window(int compID1)
+        {
+            try
+            {
+                InitializeComponent();
+                bindCompIDList();
+                hide_investigationDT(Visibility.Collapsed);
+                cmb_compID.SelectedItem = compID1.ToString();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
         private void bindCompIDList()
         {
             string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 10 OR C.comp_status_id = 32 )  ";
@@ -81,7 +100,7 @@ namespace NewCRMSystem
 
         private void loadData(int compID)
         {
-            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_defect_img , CI.item_remarks , CC.cus_id , I.item_pic FROM ItemType as IT , ComplaintItem as CI , CustomerComplaint as CC , Item as I WHERE CI.comp_id  = '" + compID + "' and CI.item_type_id = IT.item_type_id AND CI.comp_id = CC.comp_id AND CI.item_id = I.item_id ";
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , IT.item_pic , CI.item_defect , CI.item_defect_img , CI.item_remarks FROM ItemType as IT , ComplaintItem as CI  WHERE CI.comp_id  = '" + compID + "' and CI.item_type_id = IT.item_type_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -94,7 +113,6 @@ namespace NewCRMSystem
                 txt_size.Text = dt.Rows[0]["item_size"].ToString();
                 txt_itemDefect.Text = dt.Rows[0]["item_defect"].ToString();
                 txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
-                txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
 
                 string imagePath1 = dt.Rows[0]["item_defect_img"].ToString();
                 loadDefectImageFromLocal(imagePath1);

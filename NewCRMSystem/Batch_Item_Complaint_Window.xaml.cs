@@ -25,7 +25,7 @@ namespace NewCRMSystem
         }
 
         private int refID;
-        private string compType1 = "Showroom Manager";
+        private string compType1 = "Manager";
         private int relShrmID;
 
         private bool validateRefID()

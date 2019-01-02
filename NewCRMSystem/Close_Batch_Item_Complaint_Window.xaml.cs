@@ -36,21 +36,14 @@ namespace NewCRMSystem
             }
         }
 
-        public Close_Batch_Item_Complaint_Window(int compID)
+        public Close_Batch_Item_Complaint_Window(int compID1)
         {
             try
             {
                 InitializeComponent();
                 bindCompIDList();
-                foreach (ComboBoxItem item in cmb_compID.Items)
-                {
-                    if (item.Content.ToString() == compID.ToString())
-                    {
-                        cmb_compID.SelectedValue = item;
-                        break;
-                    }
-                }
-                loadData(compID);
+                cmb_compID.SelectedItem = compID1.ToString();
+                loadData(compID1);
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -62,9 +55,11 @@ namespace NewCRMSystem
             }
         }
 
+        int compItemID = 0;
+
         private void bindCompIDList()
         {
-            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D  WHERE D.destination_id = " + Login.LocID + " D.comp_id = C.comp_id AND ( C.comp_status_id = 38 OR C.comp_status_id = 42 ) ";
+            string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 38 OR C.comp_status_id = 42 ) ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -76,21 +71,9 @@ namespace NewCRMSystem
             cmb_compID.SelectedIndex = 0;
         }
 
-        private void loadCmb_itemStatus(string itemDecision)
-        {
-            foreach (ComboBoxItem item in cmb_itemStatus.Items)
-            {
-                if (item.Content.ToString() == itemDecision)
-                {
-                    cmb_itemStatus.SelectedValue = item;
-                    break;
-                }
-            }
-        }
-
         private void loadData(int compID)
         {
-            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_remarks , CI.item_decision , R.repair_remarks FROM ItemType AS IT , ComplaintItem AS CI WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id";
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.comp_item_id , CI.item_defect , CI.item_remarks , CI.item_decision FROM ItemType AS IT , ComplaintItem AS CI WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -103,10 +86,28 @@ namespace NewCRMSystem
                 txt_size.Text = dt.Rows[0]["item_size"].ToString();
                 txt_itemDefect.Text = dt.Rows[0]["item_defect"].ToString();
                 txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
-                txt_repairRemarks.Text = dt.Rows[0]["repair_remarks"].ToString();
+                
 
-                loadCmb_itemStatus(dt.Rows[0]["item_decision"].ToString());
+                string itemDecision = dt.Rows[0]["item_decision"].ToString();
+                if (itemDecision.Equals("Repair"))
+                {
+                    txt_itemStatus.Text = "Repaired";
+                    string query1 = "SELECT R.repair_remarks FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id";
+                    System.Data.DataTable dt1 = db.GetData(query1);
+                    itemRemarksVisibility(Visibility.Visible);
+                    txt_repairRemarks.Text = dt.Rows[0]["repair_remarks"].ToString();
+                }
+                else if (itemDecision.Equals("Investigation"))
+                {
+                    itemRemarksVisibility(Visibility.Collapsed);
+                    txt_itemStatus.Text = "New Item";
+                }
             }
+        }
+        private void itemRemarksVisibility(Visibility visibility)
+        {
+            lbl_repairRemarks.Visibility = visibility;
+            txt_repairRemarks.Visibility = visibility;
         }
 
         private bool validate()

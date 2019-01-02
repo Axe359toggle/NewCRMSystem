@@ -26,6 +26,7 @@ namespace NewCRMSystem
         private string category = "";
         private string name = "";
         private string size = "";
+        private string itemImageSource = "";
 
         private bool showdialogstatus;
 
@@ -122,6 +123,7 @@ namespace NewCRMSystem
             txt_itemTypeID.IsReadOnly = true;
             txt_itemTypeID.IsEnabled = false;
             btn_ok.IsEnabled = false;
+            btn_itemImageUpload.IsEnabled = true;
             setErrorImagesNull();
             enable_chk(false);
         }
@@ -135,6 +137,7 @@ namespace NewCRMSystem
             txt_itemTypeID.IsReadOnly = true;
             txt_itemTypeID.IsEnabled = true;
             btn_ok.IsEnabled = true;
+            btn_itemImageUpload.IsEnabled = true;
             setErrorImagesNull();
             enable_chk(false);
         }
@@ -147,6 +150,7 @@ namespace NewCRMSystem
             txt_itemTypeID.IsReadOnly = false;
             txt_itemTypeID.IsEnabled = true;
             btn_ok.IsEnabled = false;
+            btn_itemImageUpload.IsEnabled = false;
             setErrorImagesNull();
             enable_chk(true);
         }
@@ -217,8 +221,77 @@ namespace NewCRMSystem
                 size_Notify.ToolTip = CRMdbData.ItemType.item_size.Error;
                 check = false;
             }
-            
+
+            //Item Image
+            if (Validation.validate(itemImage_Notify, CRMdbData.ItemType.item_pic.validate(itemImageSource), CRMdbData.ItemType.item_pic.Error)) { }
+            else { check = false; }
+
             return check;
+        }
+
+        //Save to Local required varibles
+        string filepath = "";
+        string ext = "";
+
+        private void browseItemImageToLocal()
+        {
+            Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
+            open.Multiselect = false;
+            open.DefaultExt = ".png";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.png; *.bmp)|*.jpg; *.jpeg; *.gif; *.png; *.bmp";
+            //open.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            bool? result = open.ShowDialog();
+
+
+            if (result == true)
+            {
+                filepath = open.FileName; // Stores Original Path
+                itemImageSource = filepath;
+                ext = System.IO.Path.GetExtension(open.FileName);
+                ImageSource imgsource = new BitmapImage(new Uri(filepath)); // Just show The File In Image when we browse It
+                img_itemImage.Source = imgsource;
+            }
+
+
+        }
+
+        private string saveItemImageToLocal(string itemID1)
+        {
+            string imageSource = "";
+
+            if (filepath.Length > 0)
+            {
+                var imageFile = new System.IO.FileInfo(filepath);
+                if (imageFile.Exists)// check image file exist
+                {
+                    // get your application folder
+                    var applicationPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+                    // get your 'Uploaded' folder
+                    var dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(applicationPath, "Item Images"));
+                    if (!dir.Exists)
+                        dir.Create();
+
+                    System.IO.FileInfo destFile = new System.IO.FileInfo(System.IO.Path.Combine(dir.FullName, itemID1 + ext));
+                    if (destFile.Exists)
+                    {
+                        //delete
+                        System.IO.File.Delete(System.IO.Path.Combine(dir.FullName, itemID1 + ext));
+                    }
+                    // Copy file to your folder
+                    string imageName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, itemID1 + ext)).ToString();
+
+                    imageSource = dir.FullName + @"\" + imageName;
+                }
+            }
+
+            return imageSource;
+        }
+
+        private void loadItemImageFromLocal(string path)
+        {
+            ImageSource imageSource = new BitmapImage(new Uri(path));
+            img_itemImage.Source = imageSource;
         }
 
         ~Item_Type_Window() { }
@@ -265,16 +338,27 @@ namespace NewCRMSystem
                         string query = "INSERT INTO ItemType (item_brand ,item_category ,item_name ,item_size ) VALUES ('" + brand + "','" + category + "','" + name + "','" + size + "' ) DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as item_type_id";
                         Database db = new Database();
                         itemTypeID = Int32.Parse(db.GetData(query).Rows[0]["item_type_id"].ToString());
+                        
 
                         if (itemTypeID > 0)
                         {
-                            txt_itemTypeID.Text = itemTypeID.ToString();
-                            MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                            rbnUpdate.IsChecked = true;
+                            itemImageSource = saveItemImageToLocal(itemTypeID.ToString());
+                            string query1 = "Update ItemType SET item_pic = '" + itemImageSource + "' WHERE item_type_id = '" + itemTypeID + "' ";
+                            if (db.Save_Del_Update(query1) > 0)
+                            {
+                                GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                                txt_itemTypeID.Text = itemTypeID.ToString();
+                                rbnUpdate.IsChecked = true;
+                            }
+                            else
+                            {
+                                GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                            }
+                            
                         }
                         else
                         {
-                            MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                         }
 
                     }
@@ -288,8 +372,9 @@ namespace NewCRMSystem
                         category = txt_category.Text;
                         name = txt_name.Text;
                         size = txt_size.Text;
+                        itemImageSource = saveItemImageToLocal(txt_itemTypeID.Text);
 
-                        string query = " UPDATE ItemType SET item_brand = '" + brand + "' , item_category = '" + category + "' , item_name = '" + name + "' , item_size = '" + size + "' WHERE item_type_id = " + itemTypeID + " ";
+                        string query = " UPDATE ItemType SET item_brand = '" + brand + "' , item_category = '" + category + "' , item_name = '" + name + "' , item_size = '" + size + "' , item_pic = '" + itemImageSource + "' WHERE item_type_id = " + itemTypeID + " ";
                         Database db = new Database();
 
                         if (db.Save_Del_Update(query) > 0)
@@ -305,7 +390,7 @@ namespace NewCRMSystem
                 else if (rbnSearch.IsChecked == true)
                 {
 
-                    string query = "SELECT item_type_id ,item_brand ,item_category ,item_name ,item_size from ItemType";
+                    string query = "SELECT item_type_id ,item_brand ,item_category ,item_name ,item_size , item_pic from ItemType";
                     int x = 0;
 
                     void checkX()
@@ -397,7 +482,13 @@ namespace NewCRMSystem
                     txt_category.Text = dv.Row.ItemArray[2].ToString();//Category
                     txt_name.Text = dv.Row.ItemArray[3].ToString();//Name
                     txt_size.Text = dv.Row.ItemArray[4].ToString();//Size
-                    
+
+                    string imagePath = dv.Row.ItemArray[5].ToString().ToString();//Item Pic
+                    if (imagePath.Length > 0)
+                    {
+                        loadItemImageFromLocal(imagePath);
+                    }
+
                     rbnUpdate.IsChecked = true;
                 }
             }
@@ -432,6 +523,22 @@ namespace NewCRMSystem
         {
             Login.b1.removePreviousWindow();
             this.Hide();
+        }
+
+        private void btn_itemImageUpload_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                browseItemImageToLocal();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
         }
     }
 }

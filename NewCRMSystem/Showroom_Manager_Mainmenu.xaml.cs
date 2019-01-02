@@ -22,7 +22,6 @@ namespace NewCRMSystem
         public Showroom_Manager_Mainmenu()
         {
             InitializeComponent();
-            Login.b2 = Login.b1;
         }
 
         ~Showroom_Manager_Mainmenu() { }

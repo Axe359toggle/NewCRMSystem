@@ -36,21 +36,14 @@ namespace NewCRMSystem
             }
         }
 
-        public Deliver_To_Customer(int compID)
+        public Deliver_To_Customer(int compID1)
         {
             try
             {
                 InitializeComponent();
                 bindCompIDList();
-                foreach (ComboBoxItem item in cmb_compID.Items)
-                {
-                    if (item.Content.ToString() == compID.ToString())
-                    {
-                        cmb_compID.SelectedValue = item;
-                        break;
-                    }
-                }
-                loadData(compID);
+                cmb_compID.SelectedItem = compID1.ToString();
+                loadData(compID1);
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -75,22 +68,11 @@ namespace NewCRMSystem
 
             cmb_compID.SelectedIndex = 0;
         }
-
-        private void loadTxt_itemStatus(string itemDecision)
-        {
-            if (itemDecision.Equals("Repair"))
-            {
-                txt_itemStatus.Text = "Repaired";
-            }
-            else if (itemDecision.Equals("Investigation"))
-            {
-                txt_itemStatus.Text = "New Item";
-            }
-        }
+        
 
         private void loadData(int compID)
         {
-            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_remarks , CI.item_decision , R.repair_remarks , CC.cus_id FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R , CustomerComplaint AS CC WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id AND CI.comp_id = CC.comp_id ";
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , CI.item_defect , CI.item_remarks , CI.item_decision , CC.cus_id FROM ItemType AS IT , ComplaintItem AS CI , CustomerComplaint AS CC WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_id = CC.comp_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -103,12 +85,30 @@ namespace NewCRMSystem
                 txt_size.Text = dt.Rows[0]["item_size"].ToString();
                 txt_itemDefect.Text = dt.Rows[0]["item_defect"].ToString();
                 txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
-                txt_repairRemarks.Text = dt.Rows[0]["repair_remarks"].ToString();
                 txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
 
-                loadTxt_itemStatus(dt.Rows[0]["item_decision"].ToString());
+                string itemDecision = dt.Rows[0]["item_decision"].ToString();
+                if (itemDecision.Equals("Repair"))
+                {
+                    txt_itemStatus.Text = "Repaired";
+                    string query1 = "SELECT R.repair_remarks FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id";
+                    System.Data.DataTable dt1 = db.GetData(query1);
+                    itemRemarksVisibility(Visibility.Visible);
+                    txt_repairRemarks.Text = dt1.Rows[0]["repair_remarks"].ToString();
+                }
+                else if (itemDecision.Equals("Investigation"))
+                {
+                    itemRemarksVisibility(Visibility.Collapsed);
+                    txt_itemStatus.Text = "New Item";
+                }
 
             }
+        }
+
+        private void itemRemarksVisibility(Visibility visibility)
+        {
+            lbl_repairRemarks.Visibility = visibility;
+            lbl_repairRemarks.Visibility = visibility;
         }
 
         private bool validate()

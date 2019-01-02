@@ -303,20 +303,29 @@ namespace NewCRMSystem
                     itemRemarks = txt_remarks.Text;
                     itemPrice = Double.Parse(txt_itemPrice.Text);
 
-                    string query = "INSERT INTO Item (item_id ,item_price ) VALUES ('" + itemID + "'," + itemPrice + ") ";
-                    query += "UPDATE Complaint SET comp_status_id = 2 WHERE comp_id = " + compID + " ";
-                    query += "INSERT INTO ComplaintItem ( shoe_side , received_dt , item_defect , item_remarks , item_id , item_type_id ,comp_id ) VALUES ( '"+shoeSide+"' , '"+receivedDt+"' , '"+itemDefect+"' , '"+itemRemarks+"' , '"+itemID+"' , '"+itemTypeID+"' , '"+compID+"' ) DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as comp_item_id";
+                    string query = "INSERT INTO Item (item_id ,item_price , item_type_id ) VALUES ( '" + itemID + "' , " + itemPrice + " , '" + itemTypeID + "' ) ";
+                    query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 1 then 2 when comp_status_id = 26 then 27 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
+                    query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = " + compID + " ";
+                    query += "INSERT INTO ComplaintItem ( shoe_side , received_dt , item_defect , item_remarks , item_id , item_type_id ,comp_id ) VALUES ( '"+shoeSide+"' , '"+receivedDt+"' , '"+itemDefect+"' , '"+itemRemarks+"' , '"+itemID+"' , '"+itemTypeID+"' , '"+compID+ "' ) DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as comp_item_id , @COMPstatusID as comp_status_id ";
                     
                     Database db = new Database();
-
-                    int compItemID = Int32.Parse(db.GetData(query).Rows[0]["comp_item_id"].ToString());
+                    System.Data.DataTable dt = db.GetData(query);
+                    string compStatusID = dt.Rows[0]["comp_status_id"].ToString();
+                    int compItemID = Int32.Parse(dt.Rows[0]["comp_item_id"].ToString());
 
                     string imagePath = saveImageToLocal(compItemID);
                     string query1 = "Update ComplaintItem SET item_defect_img = '" + imagePath + "' WHERE comp_item_id = " + compItemID + " ";
                     if (db.Save_Del_Update(query1)>0)
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-                        LoadMainMenu.LoadFor(this);
+                        if (compStatusID.Equals("2"))
+                        {
+                            LoadMainMenu.LoadFor(this);
+                        }
+                        else if (compStatusID.Equals("27"))
+                        {
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
+                        }
                     }
                     else
                     {

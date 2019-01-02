@@ -21,25 +21,10 @@ namespace NewCRMSystem
     {
         public Assign_Factory_Window()
         {
-            InitializeComponent();
-            bindCompIDList();
-        }
-
-        public Assign_Factory_Window(int compID1)
-        {
             try
             {
                 InitializeComponent();
                 bindCompIDList();
-                foreach (ComboBoxItem item in cmb_compID.Items)
-                {
-                    if (item.Content.ToString() == compID1.ToString())
-                    {
-                        cmb_compID.SelectedValue = item;
-                        break;
-                    }
-                }
-                loadData(compID1.ToString());
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -49,6 +34,14 @@ namespace NewCRMSystem
             {
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
+        }
+
+        public Assign_Factory_Window(int compID1)
+        {
+            InitializeComponent();
+            bindCompIDList();
+            cmb_compID.SelectedItem = compID1.ToString();
+            loadData(compID1.ToString());
         }
 
         DatabaseBased_Objects.Location loc;

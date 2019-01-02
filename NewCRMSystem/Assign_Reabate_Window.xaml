@@ -217,27 +217,6 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Item Image" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="1">
-                                <DockPanel Height="200" Width="200" VerticalAlignment="Center">
-                                    <Image x:Name="img_itemImage"/>
-                                </DockPanel>
-                            </Grid>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="itemImage_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                            <Button x:Name="btn_itemImageUpload" Grid.Column="3" Height="30" Content="Upload" Click="btn_itemImageUpload_Click" />
-                        </Grid>
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
                             <TextBlock Text="Item Remarks" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBox x:Name="txt_itemRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                             <Grid Grid.Column="2">

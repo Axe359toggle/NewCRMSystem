@@ -21,12 +21,24 @@ namespace NewCRMSystem
     {
         public Assign_New_Item_Window()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                bindCompIDList();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
         }
 
         private void bindCompIDList()
         {
-            string query = "SELECT C.comp_id FROM Complaint AS C , Investigation AS Inv , ComplaintItem AS CI WHERE  Inv.comp_item_id = CI.comp_item_id AND ( C.comp_status_id = 18 OR C.comp_status_id = 39 ) AND C.comp_id = CI.comp_id ";
+            string query = "SELECT C.comp_id FROM Complaint AS C , Investigation AS Inv , ComplaintItem AS CI WHERE  Inv.comp_item_id = CI.comp_item_id  AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 18 OR C.comp_status_id = 39 ) ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -107,8 +119,10 @@ namespace NewCRMSystem
                 {
                     int compID = Int32.Parse(cmb_compID.Text);
                     string newItemID = txt_newItemID.Text.Trim();
+                    string itemTypeID = txt_itemTypeID.Text;
 
-                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') UPDATE Investigation SET hQManager = " + Login.EmpID + " , newItem_id = '" + newItemID + "' WHERE comp_item_id = @COMPitemID ";
+                    string query = "INSERT INTO Item (item_id , item_type_id ) VALUES ( '" + newItemID + "' , '" + itemTypeID + "' ) ";
+                    query += "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') UPDATE Investigation SET hQManager = " + Login.EmpID + " , newItem_id = '" + newItemID + "' WHERE comp_item_id = @COMPitemID ";
                     query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 18 then 19 when comp_status_id = 39 then 40 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                     query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";
                     query += "SELECT L.location_id , L.location_name FROM Location AS L , Complaint AS C WHERE C.comp_id = '" + compID + "' AND C.recordedLocation_id = L.location_id ";

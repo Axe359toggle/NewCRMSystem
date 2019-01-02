@@ -55,7 +55,7 @@ namespace NewCRMSystem
 
         private void bindDeliveryIDList()
         {
-            string query = "SELECT delivery_id FROM Delivery";
+            string query = "SELECT delivery_id FROM Delivery WHERE destination_dt IS NULL";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -69,7 +69,7 @@ namespace NewCRMSystem
 
         private void bindDeliveryIDList(int locID1)
         {
-            string query = "SELECT delivery_id FROM Delivery WHERE destination_id = '" + locID1 + "' ";
+            string query = "SELECT delivery_id FROM Delivery WHERE destination_id = '" + locID1 + "' AND destination_dt IS NULL ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -164,9 +164,9 @@ namespace NewCRMSystem
         }
 
         private void next_btn_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             try
-            {
+            {*/
                 if (validate())
                 {
                     int compID = Int32.Parse(txt_compID.Text);
@@ -187,11 +187,11 @@ namespace NewCRMSystem
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                         if(compStatusID == 7 || compStatusID == 29)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Factory_Window());
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Factory_Window(compID));
                         }
                         else if (compStatusID == 10 || compStatusID == 32)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window());
+                            Login.b1.hideWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window(compID));
                         }
                         else if (compStatusID == 14 || compStatusID == 36)
                         {
@@ -222,7 +222,7 @@ namespace NewCRMSystem
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
                 }
-            }
+            /*}
             catch (System.Data.SqlClient.SqlException ex)
             {
                 GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
@@ -230,7 +230,7 @@ namespace NewCRMSystem
             catch (Exception ex)
             {
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
-            }
+            }*/
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)

@@ -21,7 +21,6 @@ namespace NewCRMSystem
     public partial class Assign_Reabate_Window : Window
     {
         private int compID = 0;
-        private string itemImageSource = "";
         private string rebatePercentage = "";
         
         public Assign_Reabate_Window()
@@ -69,7 +68,7 @@ namespace NewCRMSystem
 
         private void bindCompIDList()
         {
-                string query = "SELECT comp_id FROM ComplaintItem WHERE NOT EXISTS (SELECT comp_item_id FROM Rebate WHERE  Rebate.comp_item_id = ComplaintItem.comp_item_id)";
+                string query = "SELECT CI.comp_id FROM ComplaintItem as CI , Complaint as C WHERE C.comp_id = CI.comp_id AND C.comp_status_id = 2 AND NOT EXISTS (SELECT comp_item_id FROM Rebate as R WHERE R.comp_item_id = CI.comp_item_id)";
                 Database db = new Database();
                 System.Data.DataTable dt = db.GetData(query);
 
@@ -110,51 +109,9 @@ namespace NewCRMSystem
             txt_rebateAmount.Text = (itemPrice1 * percentage).ToString();
         }
         
-        System.Data.DataSet ds;
-        string strName, imageName;
+        
 
-        private void browseImageToDB()
-        {
-            Microsoft.Win32.FileDialog fldlg = new Microsoft.Win32.OpenFileDialog();
-            fldlg.InitialDirectory = Environment.SpecialFolder.MyPictures.ToString();
-            fldlg.Filter = "Image File (*.jpg;*.bmp;*.gif)|*.jpg;*.bmp;*.gif";
-            fldlg.ShowDialog();
-            {
-                strName = fldlg.SafeFileName;
-                imageName = fldlg.FileName;
-                ImageSourceConverter isc = new ImageSourceConverter();
-                img_itemImage.SetValue(Image.SourceProperty, isc.ConvertFromString(imageName));
-            }
-            fldlg = null;
-        }
-
-        private bool saveImageToDB(int itemID1)
-        {
-            bool value = false;
-            if (imageName != "")
-            {
-                //Initialize a file stream to read the image file
-                System.IO.FileStream fs = new System.IO.FileStream(imageName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-
-                //Initialize a byte array with size of stream
-                byte[] imgByteArr = new byte[fs.Length];
-
-                //Read data from the file stream and put into the byte array
-                fs.Read(imgByteArr, 0, Convert.ToInt32(fs.Length));
-
-                //Close a file stream
-                fs.Close();
-                string sql = "UPDATE Item SET item_pic = @img WHERE item_id = " + itemID1 + " ";
-
-                Database db = new Database();
-                if (db.Save_Del_Update(sql , imgByteArr) == 1)
-                {
-                    value = true;
-                }
-            }
-
-            return value;
-        }
+        
 
         private void loadDefectImageFromDB(byte[] blob)
         {
@@ -175,64 +132,7 @@ namespace NewCRMSystem
             img_defectImage.Source = bi;
         }
 
-        //Save to Local required varibles
-        string filepath = "";
-        string ext = "";
-
-        private void browseItemImageToLocal()
-        {
-            Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
-            open.Multiselect = false;
-            open.DefaultExt = ".png";
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.png; *.bmp)|*.jpg; *.jpeg; *.gif; *.png; *.bmp";
-            //open.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-            bool? result = open.ShowDialog();
-
-
-            if (result == true)
-            {
-                filepath = open.FileName; // Stores Original Path
-                itemImageSource = filepath;
-                ext = System.IO.Path.GetExtension(open.FileName);
-                ImageSource imgsource = new BitmapImage(new Uri(filepath)); // Just show The File In Image when we browse It
-                img_itemImage.Source = imgsource;
-            }
-
-
-        }
-
-        private string saveItemImageToLocal(string itemID1)
-        {
-            string imageSource = "";
-
-            if (filepath.Length > 0)
-            {
-                var imageFile = new System.IO.FileInfo(filepath);
-                if (imageFile.Exists)// check image file exist
-                {
-                    // get your application folder
-                    var applicationPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
-                    // get your 'Uploaded' folder
-                    var dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(applicationPath, "Item Images"));
-                    if (!dir.Exists)
-                        dir.Create();
-
-                    System.IO.FileInfo destFile = new System.IO.FileInfo(System.IO.Path.Combine(dir.FullName, itemID1 + ext));
-                    if (destFile.Exists)
-                    {
-                        //delete
-                        System.IO.File.Delete(System.IO.Path.Combine(dir.FullName, itemID1 + ext));
-                    }
-                    // Copy file to your folder
-                    string imageName = imageFile.CopyTo(System.IO.Path.Combine(dir.FullName, itemID1 + ext)).ToString();
-
-                    imageSource = dir.FullName + @"\" + imageName;
-                }
-            }
-
-            return imageSource;
-        }
+        
 
         private void loadDefectImageFromLocal(string path)
         {
@@ -262,17 +162,6 @@ namespace NewCRMSystem
             loadDefectImageFromLocal(imagePath);
         }
 
-        private bool validateItemImageSource()
-        {
-            bool check = true;
-
-            //Item Image
-            if (Validation.validate(itemImage_Notify, CRMdbData.Item.item_pic.validate(itemImageSource), CRMdbData.Item.item_pic.Error)) { }
-            else { check = false; }
-
-            return check;
-        }
-
         private bool validate()
         {
             bool check = true;
@@ -284,12 +173,7 @@ namespace NewCRMSystem
             //Rebate Percentage
             if (Validation.validate(rebatePercentage_Notify, CRMdbData.Rebate.rebate_percentage.validate(cmb_rebatePercentage.Text), CRMdbData.Rebate.rebate_percentage.Error)) { }
             else { check = false; }
-
-            //Item Image
-            if (validateItemImageSource()) { }
-            else
-            { check = false; }
-
+            
             //HQ Manager ID
             if (CRMdbData.Manager.emp_id.validate(Login.EmpID.ToString())) { }
             else
@@ -318,21 +202,7 @@ namespace NewCRMSystem
             }
         }
 
-        private void btn_itemImageUpload_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                browseItemImageToLocal();
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
-            }
-        }
+        
 
         private void cmb_rebatePercentage_DropDownClosed(object sender, EventArgs e)
         {
@@ -380,31 +250,21 @@ namespace NewCRMSystem
                 {
                     compID = Int32.Parse(cmb_compID.Text);
                     rebatePercentage = cmb_rebatePercentage.Text;
-                    string itemID = txt_itemID.Text;
-                    string itemImageSource = saveItemImageToLocal(txt_itemID.Text);
                     int HQManagerID = Login.EmpID;
 
-                    if (CRMdbData.Item.item_pic.validate(itemImageSource))
+                    string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "')  INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES (@COMPitemID," + HQManagerID + ",'" + rebatePercentage + "') ";
+                    query += "UPDATE Complaint SET comp_status_id = 3 WHERE comp_id = " + compID + " ";
+
+                    Database db = new Database();
+
+                    if (db.Save_Del_Update(query) > 0)
                     {
-                        string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "')  INSERT INTO Rebate (comp_item_id ,hQManager ,rebate_percentage ) VALUES (@COMPitemID," + HQManagerID + ",'" + rebatePercentage + "') ";
-                        query += "Update Item SET item_pic = '" + itemImageSource + "' WHERE item_id = '" + itemID + "' ";
-                        query += "UPDATE Complaint SET comp_status_id = 3 WHERE comp_id = " + compID + " ";
-
-                        Database db = new Database();
-
-                        if (db.Save_Del_Update(query) > 0)
-                        {
-                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-                            LoadMainMenu.LoadFor(this);
-                        }
-                        else
-                        {
-                            GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
-                        }
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                        LoadMainMenu.LoadFor(this);
                     }
                     else
                     {
-                        MessageBox.Show("Image Source Length Error");
+                        GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
                 }
             }

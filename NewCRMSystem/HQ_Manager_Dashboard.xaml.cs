@@ -22,7 +22,6 @@ namespace NewCRMSystem
         public HQ_Manager_Dashboard()
         {
             InitializeComponent();
-            Login.b2 = Login.b1;
         }
 
         ~HQ_Manager_Dashboard() { }

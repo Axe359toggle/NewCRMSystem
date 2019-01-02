@@ -47,24 +47,6 @@
                             </Grid>
                         </Grid>
 
-                        <!--Customer ID-->
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusID_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                            <Button x:Name="btn_cusSearch" Grid.Column="3" Content="Details" />
-                        </Grid>
-
                         <!--Item Type-->
                         <GroupBox Header="Item Type" Margin="100 20 50 0">
                             <StackPanel>
