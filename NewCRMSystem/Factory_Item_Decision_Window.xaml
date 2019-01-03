@@ -137,6 +137,29 @@
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
+
+                                <!--Item Image-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Content="Item Image" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="1">
+                                        <DockPanel Height="200" Width="200" VerticalAlignment="Center">
+                                            <Image x:Name="img_itemImage"/>
+                                        </DockPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="itemImage_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
                             </StackPanel>
                         </GroupBox>
 
@@ -177,27 +200,6 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Label Content="Item Image" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="1">
-                                <DockPanel Height="200" Width="200" VerticalAlignment="Center">
-                                    <Image x:Name="img_itemImage"/>
-                                </DockPanel>
-                            </Grid>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="itemImage_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        
                         <!--Item Remarks-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>

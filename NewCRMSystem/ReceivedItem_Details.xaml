@@ -46,7 +46,6 @@
                                     <Image x:Name="compID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btn_compSearch" Grid.Column="3" Content="Details"/>
                         </Grid>
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
@@ -63,8 +62,9 @@
                                     <Image x:Name="refID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btn_refSearch" Grid.Column="3" Content="Details"/>
                         </Grid>
+                        
+                        <!--Received Date-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -73,7 +73,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Received Date from Customer" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="Received Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <DatePicker x:Name="dt_receivedDt" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
@@ -81,6 +81,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Item Price-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -97,6 +99,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Shoe Side-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -117,6 +121,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Item Type ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -134,6 +140,8 @@
                             </Grid>
                             <Button x:Name="btn_itemTypeSearch" Grid.Column="3" Content="Search" Click="btn_itemTypeSearch_Click"/>
                         </Grid>
+                        
+                        <!--Item ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -150,6 +158,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Item Defect-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -166,6 +176,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Item Defect Image-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -187,6 +199,8 @@
                             </Grid>
                             <Button x:Name="btn_defectUpload" Grid.Column="3" Height="30" Content="Upload" Click="btn_defectUpload_Click"/>
                         </Grid>
+                        
+                        <!--Item Remarks-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>

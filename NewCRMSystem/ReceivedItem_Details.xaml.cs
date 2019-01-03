@@ -361,7 +361,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Item_Type_Window(true);
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txt_itemTypeID.Text = w.txt_itemTypeID.Text;

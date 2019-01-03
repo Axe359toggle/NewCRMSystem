@@ -94,7 +94,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Location( true , "Factory" );
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txt_locationID.Text = w.txt_LocationID.Text;

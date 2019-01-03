@@ -47,6 +47,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+
+                        <!--Staff ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -63,6 +65,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+
+                        <!--Staff Name-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -79,6 +83,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+
+                        <!--Description-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>

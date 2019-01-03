@@ -84,7 +84,6 @@
                                             <Image x:Name="sourceID_Notify"/>
                                         </DockPanel>
                                     </Grid>
-                                    <Button x:Name="btnSourceLocationDetails" Grid.Column="4" Content="Location Details" HorizontalAlignment="Center" Width="100" />
                                 </Grid>
                                 <!--Source Name-->
                                 <Grid Margin="20 10 0 0" >

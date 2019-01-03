@@ -187,5 +187,21 @@ namespace NewCRMSystem
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
+
+        private void btn_cusSearch_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var w = new Customer_Details('u',txt_cusID.Text);
+                if (w.ShowDialog() == true)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
     }
 }

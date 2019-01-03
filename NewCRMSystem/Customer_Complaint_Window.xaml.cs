@@ -158,7 +158,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Customer_Details(true);
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txt_cusID.Text = w.txt_cusID.Text;
@@ -175,7 +174,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Location(true,"Showroom");
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txt_relShrmID.Text = w.txt_LocationID.Text;

@@ -18,12 +18,12 @@ namespace NewCRMSystem
     /// <summary>
     /// Interaction logic for Assign_Reabate_Window.xaml
     /// </summary>
-    public partial class Assign_Reabate_Window : Window
+    public partial class Assign_Rebate_Window : Window
     {
         private int compID = 0;
         private string rebatePercentage = "";
         
-        public Assign_Reabate_Window()
+        public Assign_Rebate_Window()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace NewCRMSystem
             }
         }
 
-        public Assign_Reabate_Window(int compID1)
+        public Assign_Rebate_Window(int compID1)
         {
             try
             {
@@ -132,7 +132,11 @@ namespace NewCRMSystem
             img_defectImage.Source = bi;
         }
 
-        
+        private void loadItemImageFromLocal(string path)
+        {
+            ImageSource imageSource = new BitmapImage(new Uri(path));
+            img_itemImage.Source = imageSource;
+        }
 
         private void loadDefectImageFromLocal(string path)
         {
@@ -142,7 +146,7 @@ namespace NewCRMSystem
 
         private void loadData(string compID1)
         {
-            string query = "SELECT CI.item_type_id , CI.item_id , CI.item_defect , CI.item_defect_img , CI.item_remarks , CC.cus_id , I.item_price , IT.item_brand , IT.item_category , IT.item_name , IT.item_size from ComplaintItem as CI , CustomerComplaint as CC , Item as I , ItemType as IT where CI.comp_id = '" + compID1 + "' and CC.comp_id = CI.comp_id and I.item_id = CI.item_id and CI.item_type_id = IT.item_type_id ";
+            string query = "SELECT CI.item_type_id , CI.item_id , CI.item_defect , CI.item_defect_img , CI.item_remarks , CUS.cus_id , CUS.cus_name , CUS.cus_tp , CUS.cus_email , I.item_price , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , IT.item_pic from ComplaintItem as CI , CustomerComplaint as CC , Item as I , ItemType as IT , Customer as CUS WHERE CI.comp_id = '" + compID1 + "' and CC.comp_id = CI.comp_id and I.item_id = CI.item_id and CI.item_type_id = IT.item_type_id AND CC.cus_id = CUS.cus_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -151,6 +155,9 @@ namespace NewCRMSystem
             txt_itemDefect.Text = dt.Rows[0]["item_defect"].ToString();
             txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
             txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
+            txt_cusName.Text = dt.Rows[0]["cus_name"].ToString();
+            txt_cusTp.Text = dt.Rows[0]["cus_tp"].ToString();
+            txt_cusEmail.Text = dt.Rows[0]["cus_email"].ToString();
             txt_itemPrice.Text = dt.Rows[0]["item_price"].ToString();
 
             txt_brand.Text = dt.Rows[0]["item_brand"].ToString();
@@ -158,8 +165,11 @@ namespace NewCRMSystem
             txt_name.Text = dt.Rows[0]["item_name"].ToString();
             txt_size.Text = dt.Rows[0]["item_size"].ToString();
 
-            string imagePath = dt.Rows[0]["item_defect_img"].ToString();
-            loadDefectImageFromLocal(imagePath);
+            string imagePath1 = dt.Rows[0]["item_defect_img"].ToString();
+            loadDefectImageFromLocal(imagePath1);
+
+            string imagePath2 = dt.Rows[0]["item_pic"].ToString();
+            loadItemImageFromLocal(imagePath2);
         }
 
         private bool validate()
@@ -186,7 +196,7 @@ namespace NewCRMSystem
             return check;
         }
 
-        ~Assign_Reabate_Window() { }
+        ~Assign_Rebate_Window() { }
 
 
 

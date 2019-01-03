@@ -58,6 +58,9 @@
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_assignNewItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign New Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignNewItem_Click" />
                                 </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_closeStaffComplaints" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Close Staff Complaints" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_closeStaffComplaints_Click" />
+                                </Grid>
                             </StackPanel>
                         </Grid>
                     </Grid>

@@ -46,6 +46,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Rebate Percentage-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -61,6 +63,8 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
+                        
+                        <!--Rebate Amount-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -152,6 +156,7 @@
                             </StackPanel>
                         </GroupBox>
                         
+                        <!--Customer Choice-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>

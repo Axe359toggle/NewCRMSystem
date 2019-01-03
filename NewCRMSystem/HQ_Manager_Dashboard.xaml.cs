@@ -39,7 +39,7 @@ namespace NewCRMSystem
 
         private void btn_assignRebate_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Reabate_Window());
+            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Rebate_Window());
         }
 
         private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)
@@ -70,6 +70,11 @@ namespace NewCRMSystem
         private void Btn_deliverItem_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window());
+        }
+
+        private void btn_closeStaffComplaints_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Staff_Complaint_Window());
         }
     }
 }

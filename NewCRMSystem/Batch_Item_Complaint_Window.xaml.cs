@@ -122,7 +122,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Location(true, "Showroom");
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txt_relShrmID.Text = w.txt_LocationID.Text;

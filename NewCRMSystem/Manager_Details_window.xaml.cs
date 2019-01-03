@@ -511,10 +511,7 @@ namespace NewCRMSystem
                     {
                         cmbDes1 = "Headquarters Manager";
                     }
-                    else if (desID.Equals("T"))
-                    {
-                        cmbDes1 = "Top Manager";
-                    }
+
                     foreach (ComboBoxItem item in cmbDes.Items)
                     {
                         if (item.Content.ToString() == cmbDes1)
@@ -585,7 +582,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Location(true);
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txtlocationID.Text = w.txt_LocationID.Text;
@@ -603,7 +599,6 @@ namespace NewCRMSystem
             {
                 if (showdialogstatus == true)
                 {
-                    Login.b1.removePreviousWindow();
                     DialogResult = true;
                     this.Hide();
                 }
@@ -617,6 +612,22 @@ namespace NewCRMSystem
         private void back_btn_Click_1(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void CmbDes_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cmbDes.Text == "Showroom Manager")
+            {
+                desID = "S";
+            }
+            else if (cmbDes.Text == "Factory Manager")
+            {
+                desID = "F";
+            }
+            else if (cmbDes.Text == "Headquarters Manager")
+            {
+                desID = "H";
+            }
         }
     }
 }

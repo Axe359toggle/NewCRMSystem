@@ -27,6 +27,7 @@ namespace NewCRMSystem
         private string cusTp = "";
 
         private bool showdialogstatus;
+        private bool onlyAllowSearch = false;
 
         public Customer_Details()
         {
@@ -38,6 +39,7 @@ namespace NewCRMSystem
         {
             InitializeComponent();
             showdialogstatus = dialogstatus;
+            back_btn.Visibility = Visibility.Collapsed;
         }
         public Customer_Details(char option)
         {
@@ -59,11 +61,20 @@ namespace NewCRMSystem
             {
                 txt_cusID.Text = cusID1;
                 rbnUpdate.IsChecked = true;
+                rbnInsert.IsChecked = false;
+                showdialogstatus = true;
+                back_btn.Visibility = Visibility.Collapsed;
             }
             else if (option.Equals("s"))
             {
                 txt_cusID.Text = cusID1;
+                chk_cusID.IsChecked = true;
+                chk_cusID.IsEnabled = false;
                 rbnSearch.IsChecked = true;
+                rbnInsert.IsEnabled = false;
+                showdialogstatus = true;
+                onlyAllowSearch = true;
+                back_btn.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -372,8 +383,11 @@ namespace NewCRMSystem
                     txt_cusName.Text = dv.Row.ItemArray[1].ToString();//cus_name
                     txt_cusEmail.Text = dv.Row.ItemArray[2].ToString();//cus_email
                     txt_cusTp.Text = dv.Row.ItemArray[3].ToString();//cus_tp
-                    
-                    rbnUpdate.IsChecked = true;
+
+                    if (!onlyAllowSearch)
+                    {
+                        rbnUpdate.IsChecked = true;
+                    }
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
@@ -392,7 +406,6 @@ namespace NewCRMSystem
             {
                 if (showdialogstatus == true)
                 {
-                    Login.b1.removePreviousWindow();
                     DialogResult = true;
                     this.Hide();
                 }

@@ -155,41 +155,51 @@
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
-                        <Grid Margin="110 50 100 0" >
-                            <TextBlock Text="Investigation decision made Factory Manager Details" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        </Grid>
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
+                        
 
-                            <TextBlock Text="Factory Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_facManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="facManagerID_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
+                        <GroupBox Header="Investigation decision made Factory Manager Details" Margin="100 20 50 0">
+                            <StackPanel>
+                                
+                                <!--Factory Manager ID-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Factory Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_facManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="facManagerName_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
+                                    <TextBlock Text="Factory Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_facManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="facManagerID_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Factory Manager Name-->
+                                <Grid Margin="20 10 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Factory Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_facManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="facManagerName_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                                
+                            </StackPanel>
+                        </GroupBox>
+
+                        
+                        
                         <Grid Margin="110 50 100 0" >
                             <TextBlock Text="Choose New Item" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Grid>

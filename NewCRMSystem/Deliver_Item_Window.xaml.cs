@@ -103,7 +103,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Location(true);
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txt_sourceID.Text = w.txt_LocationID.Text;
@@ -125,7 +124,6 @@ namespace NewCRMSystem
             try
             {
                 var w = new Location(true);
-                Login.b1.addCurrentWindow(this);
                 if (w.ShowDialog() == true)
                 {
                     txt_destinationID.Text = w.txt_LocationID.Text;

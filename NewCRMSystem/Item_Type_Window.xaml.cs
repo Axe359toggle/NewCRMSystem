@@ -39,6 +39,7 @@ namespace NewCRMSystem
         {
             InitializeComponent();
             showdialogstatus = dialogstatus;
+            back_btn.Visibility = Visibility.Collapsed;
             rbnSearch.IsChecked = true;
         }
 
@@ -86,6 +87,7 @@ namespace NewCRMSystem
             category_Notify.Source = null;
             name_Notify.Source = null;
             size_Notify.Source = null;
+            itemImage_Notify.Source = null;
         }
 
         private void hide_chk(Visibility visibility)
@@ -508,7 +510,6 @@ namespace NewCRMSystem
             {
                 if (showdialogstatus == true)
                 {
-                    Login.b1.removePreviousWindow();
                     DialogResult = true;
                     this.Hide();
                 }

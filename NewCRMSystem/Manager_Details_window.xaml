@@ -191,7 +191,7 @@
 
                             <CheckBox x:Name="chkDes" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Label HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Designation" Grid.Column="1"/>
-                            <ComboBox x:Name="cmbDes" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                            <ComboBox x:Name="cmbDes" Padding="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" DropDownClosed="CmbDes_DropDownClosed">
                                 <ComboBoxItem Content="Showroom Manager"/>
                                 <ComboBoxItem Content="Factory Manager"/>
                                 <ComboBoxItem Content="Headquarters Manager"/>
