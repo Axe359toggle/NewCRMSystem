@@ -82,132 +82,6 @@
                             </Grid>
                         </Grid>
                         
-                        <!--Complaint Type-->
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Complaint Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_compType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="compType_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-
-                        <GroupBox Header="Customer Details" Margin="100 20 50 0">
-                            <StackPanel>
-                                <!--Customer ID-->
-                                <Grid Margin="20 20 0 0" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Content="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
-                                    <Grid Grid.Column="2">
-                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="cusID_Notify"/>
-                                        </DockPanel>
-                                    </Grid>
-                                </Grid>
-
-                                <!--Customer Name-->
-                                <Grid Margin="20 10 0 0" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Content="Name"   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                                    <TextBox x:Name="txt_cusName" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
-                                    <Grid Grid.Column="2">
-                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="cusName_Notify"/>
-                                        </DockPanel>
-                                    </Grid>
-                                </Grid>
-
-                                <!--Customer Telephone-->
-                                <Grid Margin="20 10 0 0" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Content="Telephone" HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_cusTp" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
-                                    <Grid Grid.Column="2">
-                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="cusTp_Notify"/>
-                                        </DockPanel>
-                                    </Grid>
-                                </Grid>
-
-                                <!--Customer Email-->
-                                <Grid Margin="20 10 0 0" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Content="Email" HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_cusEmail" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
-                                    <Grid Grid.Column="2">
-                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                            <Image x:Name="cusEmail_Notify"/>
-                                        </DockPanel>
-                                    </Grid>
-                                </Grid>
-                            </StackPanel>
-                        </GroupBox>
-
-                        <!--Customer Complaint Type-->
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Customer Complaint Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_cusCompType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="cusCompType_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-
-                        <!--Complained Method-->
-                        <Grid Margin="100 20 50 0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Complained Method" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_compMethod" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
-                            <Grid Grid.Column="2">
-                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
-                                    <Image x:Name="compMethod_Notify"/>
-                                </DockPanel>
-                            </Grid>
-                        </Grid>
-
                         <!--Complaint Status-->
                         <GroupBox Header="Complaint Status" Margin="100 20 50 0">
                             <StackPanel>
@@ -367,8 +241,139 @@
                             </Grid>
                         </Grid>
 
+                        <!--Complaint Type-->
+                        <Grid Margin="100 20 50 0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock   Text="Complaint Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txt_compType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <Grid Grid.Column="2">
+                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                    <Image x:Name="compType_Notify"/>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <GroupBox x:Name="gb_cusComp" Header="Customer Complaint" Margin="100 20 50 0">
+                            <StackPanel>
+                                <GroupBox Header="Customer Details" Margin="20 20 0 0">
+                                    <StackPanel>
+                                        <!--Customer ID-->
+                                        <Grid Margin="20 20 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Content="Customer ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_cusID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="cusID_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                        <!--Customer Name-->
+                                        <Grid Margin="20 10 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Content="Name"   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            <TextBox x:Name="txt_cusName" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="cusName_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                        <!--Customer Telephone-->
+                                        <Grid Margin="20 10 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Content="Telephone" HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_cusTp" Grid.Column="1" Padding="5"  HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="cusTp_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                        <!--Customer Email-->
+                                        <Grid Margin="20 10 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Content="Email" HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_cusEmail" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="cusEmail_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!--Customer Complaint Type-->
+                                <Grid Margin="20 20 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock   Text="Customer Complaint Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_cusCompType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="cusCompType_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Complained Method-->
+                                <Grid Margin="20 20 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock   Text="Complained Method" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_compMethod" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="compMethod_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        
                         <!--Staff Complaint-->
-                        <GroupBox Header="Staff Complaint" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_staffComp" Header="Staff Complaint" Margin="100 20 50 0">
                             <StackPanel>
                                 <!--Staff ID-->
                                 <Grid Margin="20 20 0 0" >
@@ -441,11 +446,50 @@
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
+
+                                <GroupBox Header="Complaint Closed Manager Details" Margin="20 20 0 0">
+                                    <StackPanel>
+                                        <!--Complaint Closed Manager ID-->
+                                        <Grid Margin="20 20 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_staffCompClosedManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="staffCompClosedManagerID_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                        <!--Complaint Closed Manager Name-->
+                                        <Grid Margin="20 20 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_staffCompClosedManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="staffCompClosedManagerName_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
                             </StackPanel>
                         </GroupBox>
                         
                         <!--Complaint Item-->
-                        <GroupBox Header="Complaint Item" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_compItem" Header="Complaint Item" Margin="100 20 50 0">
                             <StackPanel>
                                 <!--Received Date-->
                                 <Grid Margin="20 20 0 0">
@@ -566,7 +610,7 @@
                         </GroupBox>
 
                         <!--Item Type-->
-                        <GroupBox Header="Item Type" Margin="100 20 50 0">
+                        <GroupBox  x:Name="gb_itemType" Header="Item Type" Margin="100 20 50 0">
                             <StackPanel>
                                 <!--Item Brand-->
                                 <Grid Margin="20 20 0 0" >
@@ -680,7 +724,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Rebate" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_rebate" Header="Rebate" Margin="100 20 50 0">
                             <StackPanel>
                                 <!--Item Price-->
                                 <Grid Margin="20 20 0 0" >
@@ -757,7 +801,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Delivery Details" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_delivery" Header="Delivery Details" Margin="100 20 50 0">
                             <StackPanel>
                                 <Grid Margin="20 20 0 0" >
                                     <Grid HorizontalAlignment="Center">
@@ -879,7 +923,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Repair" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_repair" Header="Repair" Margin="100 20 50 0">
                             <StackPanel>
 
                                 <!--Repair Remarks-->
@@ -959,7 +1003,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Investigation" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_inv" Header="Investigation" Margin="100 20 50 0">
                             <StackPanel>
 
                                 <!--Investigation Date-->
