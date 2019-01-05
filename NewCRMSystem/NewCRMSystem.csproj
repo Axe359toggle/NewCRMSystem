@@ -130,6 +130,9 @@
     <Compile Include="View_Location_Details.xaml.cs">
       <DependentUpon>View_Location_Details.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View_Manager_Details.xaml.cs">
+      <DependentUpon>View_Manager_Details.xaml</DependentUpon>
+    </Compile>
     <Page Include="Assign_Factory_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,6 +287,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View_Location_Details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View_Manager_Details.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

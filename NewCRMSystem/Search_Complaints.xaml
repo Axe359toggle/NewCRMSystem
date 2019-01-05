@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Search Complaints" Height="800" Width="900" >
+        Title="Search Complaints" Height="1400" Width="1300" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -49,20 +49,216 @@
                         </Grid>
                     </Grid>
 
+                    <!--Complaint ID-->
+                    <Grid Margin="100 20 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_compID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="Complaint ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_compID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="compID_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+                    <!--Complained Date-->
+                    <Grid Margin="100 20 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_compDate"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock   Text="Complained Date" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="dt_compDate" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="compDate_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+                    <!--Reference ID-->
+                    <Grid Margin="100 20 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_refID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock   Text="Reference ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_refID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="refID_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+                    <!--Complaint Type-->
+                    <Grid Margin="100 20 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_compType"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock   Text="Complaint Type" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_compType" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="compType_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+                    
+                    <!--Complaint Status-->
+                    <GroupBox Header="Complaint Status" Margin="100 20 50 0">
+                        <StackPanel>
+                            <!--Complaint Status-->
+                            <Grid Margin="20 20 0 0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock   Text="Complaint Status" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txt_compStatus" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                <Grid Grid.Column="2">
+                                    <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                        <Image x:Name="compStatus_Notify"/>
+                                    </DockPanel>
+                                </Grid>
+                            </Grid>
+
+                            <!--Complaint Status Description-->
+                            <Grid Margin="20 20 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock   Text="Complaint Status Description" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txt_compStatusDes" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                <Grid Grid.Column="2">
+                                    <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                        <Image x:Name="compStatusDes_Notify"/>
+                                    </DockPanel>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!--Recorded Employee ID-->
+                    <Grid Margin="100 20 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_recEmpID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="Recorded Employee ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_recEmpID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="recEmpID_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                        <Button x:Name="btn_recEmpDetails" Grid.Column="4" Content="Details" />
+                    </Grid>
+
+                    <!--Related Location ID-->
+                    <Grid Margin="100 20 50 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_relLocID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="Related Location ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_relLocID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="relLocID_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                        <Button x:Name="btn_relLocDetails" Grid.Column="4" Content="Details" />
+                    </Grid>
+
+                    <!--Related Location ID-->
+                    <Grid Margin="100 20 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_recLocID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="Recorded Location ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_recLocID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="recLocID_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                        <Button x:Name="btn_recLocDetails" Grid.Column="4" Content="Details" />
+                    </Grid>
+
+                    <!--Complaint Closed Date-->
+                    <Grid Margin="100 20 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chk_closedDate"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock   Text="Complaint Closed Date" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="dt_closedDate" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                        <Grid Grid.Column="3">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="closedDate_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+
                     <!--Complaint Datagrid-->
                     <Grid Margin="50 100 50 0" >
                         <Grid HorizontalAlignment="Center">
-                            <DataGrid x:Name="managerDatagrid" Height="500" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="managerDatagrid_SelectionChanged">
+                            <DataGrid x:Name="managerDatagrid" Height="300" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="managerDatagrid_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Manager ID" Binding="{Binding emp_id}" />
-                                    <DataGridTextColumn Header="Title" Binding="{Binding emp_title}" />
-                                    <DataGridTextColumn Header="First Name" Binding="{Binding emp_fname}" />
-                                    <DataGridTextColumn Header="Last Name" Binding="{Binding emp_lname}" />
-                                    <DataGridTextColumn Header="Telephone" Binding="{Binding emp_tp}" />
-                                    <DataGridTextColumn Header="Designation ID" Binding="{Binding des_id}" />
-                                    <DataGridTextColumn Header="Login ID" Binding="{Binding login_id}" />
-                                    <DataGridTextColumn Header="Location ID" Binding="{Binding location_id}" />
-                                    <DataGridTextColumn Header="Assigned Date" Binding="{Binding assigned_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>
+                                    <DataGridTextColumn Header="Complaint ID" Binding="{Binding comp_id}" />
+                                    <DataGridTextColumn Header="Complained Date" Binding="{Binding comp_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>
+                                    <DataGridTextColumn Header="Reference ID" Binding="{Binding ref_id}" />
+                                    <DataGridTextColumn Header="Complaint Type" Binding="{Binding comp_type}" />
+                                    <DataGridTextColumn Header="Complaint Status" Binding="{Binding current_status}" />
+                                    <DataGridTextColumn Header="Complaint Status Description" Binding="{Binding description}" />
+                                    <DataGridTextColumn Header="Recorded Employee ID" Binding="{Binding recordedEmp_id}" />
+                                    <DataGridTextColumn Header="Related Location ID" Binding="{Binding relatedLocation_id}" />
+                                    <DataGridTextColumn Header="Recorded Location ID" Binding="{Binding recordedLocation_id}" />
+                                    <DataGridTextColumn Header="Complaint Closed Date" Binding="{Binding closed_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>

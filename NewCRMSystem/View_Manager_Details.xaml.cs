@@ -12,27 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using System.Data;
-
 namespace NewCRMSystem
 {
     /// <summary>
-    /// Interaction logic for Profile_Details_Window.xaml
+    /// Interaction logic for View_Manager_Details.xaml
     /// </summary>
-    public partial class Profile_Details_Window : Window
+    public partial class View_Manager_Details : Window
     {
-        public Profile_Details_Window()
+        public View_Manager_Details()
         {
             InitializeComponent();
         }
 
-        public Profile_Details_Window(int empID1)
+        public View_Manager_Details(int empID1)
         {
             try
             {
                 InitializeComponent();
                 loadData(empID1);
-                empID = empID1;
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -43,9 +40,6 @@ namespace NewCRMSystem
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
-
-        int empID = 0;
-        int loginID = 0;
 
         private void loadData(int empID1)
         {
@@ -72,34 +66,11 @@ namespace NewCRMSystem
                 txt_des.Text = "Factory Manager";
             }
 
-            loginID = Int32.Parse(dt.Rows[0]["login_id"].ToString());
-
-            query = "SELECT login_dt,logout_dt FROM LoginDetails WHERE login_id='" + loginID + "' ";
-            loginDatagrid.ItemsSource = db.GetData(query).AsDataView();
-
             txtlocationID.Text = dt.Rows[0]["location_id"].ToString();
             txtAssignedDt.Text = dt.Rows[0]["assigned_dt"].ToString();
         }
 
-        ~Profile_Details_Window() { }
-
-        private void back_btn_Click(object sender, RoutedEventArgs e)
-        {
-            Login.b1.goBack(this);
-        }
-
-        private void BtnUpdateLogin_Click(object sender, RoutedEventArgs e)
-        {
-            if (empID > 0)
-            {
-                Login_Details w = new Login_Details(true, empID, loginID);
-
-                if (w.ShowDialog() == true)
-                {
-
-                }
-            }
-        }
+        ~View_Manager_Details() { }
 
         private void BtnLocationView_Click(object sender, RoutedEventArgs e)
         {

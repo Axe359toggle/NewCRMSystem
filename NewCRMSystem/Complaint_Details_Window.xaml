@@ -39,7 +39,7 @@
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock   Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="Cmb_compID_DropDownClosed" />
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">

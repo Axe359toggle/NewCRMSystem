@@ -1,0 +1,167 @@
+﻿<Window x:Class="NewCRMSystem.View_Manager_Details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewCRMSystem"
+        mc:Ignorable="d"
+        Title="View Manager Details" Height="500" Width="800">
+    <Grid>
+        <ScrollViewer>
+            <Grid VerticalAlignment="Center">
+                <StackPanel>
+                    
+                    <!--Manager ID-->
+                    <Grid Margin="100 30 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Label HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Center" Content="Manager ID"/>
+                        <TextBox x:Name="txtManagerID" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True" />
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="managerIDNotify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+                    <!--Title-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Title"/>
+                        <TextBox x:Name="txt_title" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="titleNotify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+                    <!--First name-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="First Name" />
+                        <TextBox x:Name="txtFname" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                                <Image x:Name="fnameNotify"/>
+                            </DockPanel>
+                        </Grid>
+
+                    </Grid>
+
+                    <!--Last Name-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Last Name"/>
+                        <TextBox x:Name="txtLname" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="lnameNotify"/>
+                            </DockPanel>
+                        </Grid>
+
+                    </Grid>
+
+                    <!--Telephone-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Telephone"/>
+                        <TextBox x:Name="txtTp" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="tpNotify"/>
+                            </DockPanel>
+                        </Grid>
+
+                    </Grid>
+
+                    <!--Designation-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Designation"/>
+                        <TextBox x:Name="txt_des" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="desNotify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Margin="60 30 100 0" >
+                        <TextBlock Text="Assigned Location" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <!--Location ID-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Location ID"/>
+                        <TextBox Grid.Column="1" x:Name="txtlocationID" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="locationIDNotify"/>
+                            </DockPanel>
+                        </Grid>
+                        <Button x:Name="btnLocationView" Grid.Column="4" Content="View Details" HorizontalAlignment="Center" Width="100" Click="BtnLocationView_Click"  />
+                    </Grid>
+
+                    <!--Assigned Date-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Assigned Date"/>
+                        <TextBox x:Name="txtAssignedDt" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="assignedDtNotify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>

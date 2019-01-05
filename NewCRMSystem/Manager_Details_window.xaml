@@ -52,6 +52,8 @@
                         <Grid Margin="60 30 100 0" >
                             <TextBlock Text="Manager Details" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Grid>
+                        
+                        <!--Manager ID-->
                         <Grid Margin="100 30 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
