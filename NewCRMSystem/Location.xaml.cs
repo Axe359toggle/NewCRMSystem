@@ -53,7 +53,7 @@ namespace NewCRMSystem
             {
                 InitializeComponent();
                 showdialogstatus = dialogstatus;
-                back_btn.Visibility = Visibility.Collapsed;
+                grid_panel.Visibility = Visibility.Collapsed;
                 rbnSearch.IsChecked = true;
                 rbnInsert.IsEnabled = false;
                 onlyAllowSearch = true;

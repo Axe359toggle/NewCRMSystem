@@ -13,25 +13,13 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{StaticResource panelRowSize}"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
-                <DockPanel>
-                    <Image Source="{StaticResource backButtonImage}"/>
-                </DockPanel>
-            </Button>
-            <Grid Grid.Column="1">
-                <local:CommonControlPanel/>
-            </Grid>
+        <Grid Grid.Row="0">
+            
         </Grid>
         <Grid Grid.Row="1">
             <ScrollViewer>
                 <Border Padding="10">
-                    <StackPanel>
-                        <TextBlock Text="Login Details" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Heavy" FontSize="25" Margin="50,10,0,10"/>
+                    <StackPanel VerticalAlignment="Center">
 
                         <!--Buttons-->
                         <Grid Margin="10,10,10,10">
@@ -41,12 +29,12 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" >
                                 <Viewbox Height="30" RenderTransformOrigin="0.789,0.5">
-                                    <RadioButton  x:Name="rbn_insert" GroupName="Operators" Padding="2" Background="white"  Foreground="Black"  VerticalContentAlignment="Center" Content="Insert" FontWeight="Heavy" FontSize="20"  RenderTransformOrigin="0.484,0.484" Checked="insert_rbn_Checked"/>
+                                    <RadioButton  x:Name="rbn_insert" GroupName="Operators" Padding="2" Background="white" VerticalContentAlignment="Center" Content="Insert" FontSize="20"  RenderTransformOrigin="0.484,0.484" Checked="insert_rbn_Checked"/>
                                 </Viewbox>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Viewbox Height="30">
-                                    <RadioButton x:Name="rbn_update" GroupName="Operators" Padding="2" Background="white"  Foreground="Black" VerticalContentAlignment="Center" Content="Update" FontWeight="Heavy" FontSize="20" Checked="update_rbn_Checked"  />
+                                    <RadioButton x:Name="rbn_update" GroupName="Operators" Padding="2" Background="white" VerticalContentAlignment="Center" Content="Update" FontSize="20" Checked="update_rbn_Checked"  />
                                 </Viewbox>
                             </StackPanel>
                             <StackPanel Grid.Column="2" >

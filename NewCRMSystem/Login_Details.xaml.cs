@@ -63,6 +63,7 @@ namespace NewCRMSystem
                 txt_empID.Text = empID1.ToString();
                 txt_loginID.Text = loginID1.ToString();
 
+                rbn_insert.IsEnabled = false;
                 rbn_update.IsChecked = true;
                 showdialogstatus = true;
 
@@ -176,7 +177,6 @@ namespace NewCRMSystem
                             MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                             if (showdialogstatus == true)
                             {
-                                Login.b1.removePreviousWindow();
                                 DialogResult = true;
                                 this.Hide();
                             }
@@ -205,7 +205,6 @@ namespace NewCRMSystem
                                 MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                                 if (showdialogstatus == true)
                                 {
-                                    Login.b1.removePreviousWindow();
                                     DialogResult = true;
                                     this.Hide();
                                 }
@@ -338,6 +337,11 @@ namespace NewCRMSystem
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void CommonControlPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

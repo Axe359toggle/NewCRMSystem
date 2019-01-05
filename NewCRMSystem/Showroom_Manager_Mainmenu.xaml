@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-       Title="Showroom_Manager_Mainmenu" Height="700" Width="1100" Background="FloralWhite" >
+       Title="Main Menu" Height="700" Width="1100" Background="FloralWhite" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -53,6 +53,9 @@
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_recordReceivedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Delivered Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_recordReceivedItem_Click" />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_profileDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="View Profile" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_profileDetails_Click" />
                                 </Grid>
                             </StackPanel>
                         </Grid>

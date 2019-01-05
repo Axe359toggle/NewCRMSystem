@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using System.Data;
+
 namespace NewCRMSystem
 {
     /// <summary>
@@ -111,7 +113,7 @@ namespace NewCRMSystem
                 
         }
 
-        private void setType1Visibility()
+        private void setType1(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -124,9 +126,12 @@ namespace NewCRMSystem
             gb_repair.Visibility = col;
             gb_inv.Visibility = col;
 
+            setCusComp(compID1);
+            setStaffComp(compID1);
+
         }
 
-        private void setType2Visibility()
+        private void setType2(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -139,9 +144,14 @@ namespace NewCRMSystem
             gb_repair.Visibility = col;
             gb_inv.Visibility = col;
 
+            setCusComp(compID1);
+            setCompItem(compID1);
+            setItemType(compID1);
+            setRebate(compID1);
+
         }
 
-        private void setType3Visibility()
+        private void setType3(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -154,9 +164,15 @@ namespace NewCRMSystem
             gb_repair.Visibility = col;
             gb_inv.Visibility = col;
 
+            setCusComp(compID1);
+            setCompItem(compID1);
+            setItemType(compID1);
+            setRebate(compID1);
+            setDelivery(compID1);
+
         }
 
-        private void setType4Visibility()
+        private void setType4(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -169,9 +185,16 @@ namespace NewCRMSystem
             gb_repair.Visibility = vis;
             gb_inv.Visibility = col;
 
+            setCusComp(compID1);
+            setCompItem(compID1);
+            setItemType(compID1);
+            setRebate(compID1);
+            setDelivery(compID1);
+            setRepair(compID1);
+
         }
 
-        private void setType5Visibility()
+        private void setType5(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -184,9 +207,15 @@ namespace NewCRMSystem
             gb_repair.Visibility = col;
             gb_inv.Visibility = vis;
 
+            setCusComp(compID1);
+            setCompItem(compID1);
+            setItemType(compID1);
+            setRebate(compID1);
+            setDelivery(compID1);
+            setInvestigation(compID1);
         }
 
-        private void setType6Visibility()
+        private void setType6(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -199,9 +228,13 @@ namespace NewCRMSystem
             gb_repair.Visibility = col;
             gb_inv.Visibility = col;
 
+            setCompItem(compID1);
+            setItemType(compID1);
+            setDelivery(compID1);
+
         }
 
-        private void setType7Visibility()
+        private void setType7(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -214,9 +247,14 @@ namespace NewCRMSystem
             gb_repair.Visibility = vis;
             gb_inv.Visibility = col;
 
+            setCompItem(compID1);
+            setItemType(compID1);
+            setDelivery(compID1);
+            setRepair(compID1);
+
         }
 
-        private void setType8Visibility()
+        private void setType8(int compID1)
         {
             Visibility col = Visibility.Collapsed;
             Visibility vis = Visibility.Visible;
@@ -228,6 +266,11 @@ namespace NewCRMSystem
             gb_delivery.Visibility = vis;
             gb_repair.Visibility = col;
             gb_inv.Visibility = vis;
+
+            setCompItem(compID1);
+            setItemType(compID1);
+            setDelivery(compID1);
+            setInvestigation(compID1);
 
         }
 
@@ -251,7 +294,97 @@ namespace NewCRMSystem
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
-            txt_cusID.Text = dt.Rows[0]["cus_id"].ToString();
+            txt_staffID.Text = dt.Rows[0]["staff_id"].ToString();
+            txt_staffID.Text = dt.Rows[0]["staff_name"].ToString();
+            txt_staffID.Text = dt.Rows[0]["description"].ToString();
+            txt_staffID.Text = dt.Rows[0]["remarks"].ToString();
+            txt_staffCompClosedManagerID.Text = dt.Rows[0]["closed_manager"].ToString();
+            txt_staffCompClosedManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["closed_manager"].ToString()));
+        }
+
+        private void setCompItem(int compID1)
+        {
+            string query = "SELECT CI.received_dt , CI.shoe_side , CI.item_id , CI.item_defect , CI.item_defect_img , CI.item_remarks , CI.item_decision FROM ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            txt_receivedDt.Text = dt.Rows[0]["received_dt"].ToString();
+            txt_shoeSide.Text = dt.Rows[0]["shoe_side"].ToString();
+            txt_itemID.Text = dt.Rows[0]["item_id"].ToString();
+            txt_defect.Text = dt.Rows[0]["item_defect"].ToString();
+            loadDefectImageFromLocal(dt.Rows[0]["item_defect_img"].ToString());
+            txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
+            txt_itemDecision.Text = dt.Rows[0]["item_decision"].ToString();
+        }
+
+        private void setItemType(int compID1)
+        {
+            string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , IT.item_pic FROM ItemType as IT , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.item_type_id = IT.item_type_id ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            txt_itemTypeID.Text = dt.Rows[0]["item_type_id"].ToString();
+            txt_brand.Text = dt.Rows[0]["item_brand"].ToString();
+            txt_category.Text = dt.Rows[0]["item_category"].ToString();
+            txt_name.Text = dt.Rows[0]["item_name"].ToString();
+            txt_size.Text = dt.Rows[0]["item_size"].ToString();
+            loadItemImageFromLocal(dt.Rows[0]["item_pic"].ToString());
+
+        }
+
+        private void setRebate(int compID1)
+        {
+            string query = "SELECT I.item_price , R.rebate_percentage , R.customer_choice , R.hQManager , R.shrmManager FROM Rebate as R , ComplaintItem as CI , Item as I WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id AND CI.item_id = I.item_id ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            txt_itemPrice.Text = dt.Rows[0]["item_price"].ToString();
+            txt_rebatePercentage.Text = dt.Rows[0]["rebate_percentage"].ToString();
+            txt_cusChoice.Text = dt.Rows[0]["customer_choice"].ToString();
+            
+            txt_rebHQManagerID.Text = dt.Rows[0]["hQManager"].ToString();
+            txt_rebHQManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["hQManager"].ToString()));
+            
+            txt_rebShrmManagerID.Text = dt.Rows[0]["shrmManager"].ToString();
+            txt_rebShrmManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["shrmManager"].ToString()));
+        }
+
+        private void setDelivery(int compID1)
+        {
+            string query = "SELECT D.delivery_id , D.source_id , D.source_dt , D.destination_id , D.destination_dt FROM Delivery as D , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = D.comp_item_id ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            deliveryDatagrid.ItemsSource = dt.AsDataView();
+        }
+
+        private void setRepair(int compID1)
+        {
+            string query = "SELECT R.repair_remarks , R.repair_dt , R.factoryManager FROM Repair as R , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            txt_repairRemarks.Text = dt.Rows[0]["repair_remarks"].ToString();
+            txt_repairedDt.Text = dt.Rows[0]["repair_dt"].ToString();
+
+            txt_repFacManagerID.Text = dt.Rows[0]["factoryManager"].ToString();
+            txt_repFacManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["factoryManager"].ToString()));
+        }
+
+        private void setInvestigation(int compID1)
+        {
+            string query = "SELECT INV.investigation_dt , INV.newItem_id , INV.factoryManager , INV.hQManager FROM Investigation as INV , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            txt_invDt.Text = dt.Rows[0]["investigation_dt"].ToString();
+            txt_newItemID.Text = dt.Rows[0]["newItem_id"].ToString();
+
+            txt_invFacManagerID.Text = dt.Rows[0]["factoryManager"].ToString();
+            txt_invFacManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["factoryManager"].ToString()));
+
+            txt_invHQManagerID.Text = dt.Rows[0]["hQManager"].ToString();
+            txt_invHQManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["hQManager"].ToString()));
         }
 
         private string getManagerName(int empID1)
@@ -282,6 +415,20 @@ namespace NewCRMSystem
             }
 
             return LocName;
+        }
+
+        //Load Item Image from local file
+        private void loadItemImageFromLocal(string path)
+        {
+            ImageSource imageSource = new BitmapImage(new Uri(path));
+            img_itemImage.Source = imageSource;
+        }
+
+        //Load Defect Image from local file
+        private void loadDefectImageFromLocal(string path)
+        {
+            ImageSource imageSource = new BitmapImage(new Uri(path));
+            img_defect.Source = imageSource;
         }
 
         //set Related Location Details
@@ -320,14 +467,39 @@ namespace NewCRMSystem
 
             if (type == 1)
             {
-                setType1Visibility();
-                query = "SELECT  FROM Complaint as C , ComplaintStatus as CS WHERE C.comp_id = '" + compID1 + "' AND C.comp_status_id = CS.comp_status_id  ";
-                dt = db.GetData(query);
-
+                setType1(compID1);
             }
-            
+            else if (type == 2)
+            {
+                setType2(compID1);
+            }
+            if (type == 3)
+            {
+                setType3(compID1);
+            }
+            if (type == 4)
+            {
+                setType4(compID1);
+            }
+            if (type == 5)
+            {
+                setType5(compID1);
+            }
+            if (type == 6)
+            {
+                setType6(compID1);
+            }
+            if (type == 7)
+            {
+                setType7(compID1);
+            }
+            if (type == 8)
+            {
+                setType8(compID1);
+            }
 
-            
+
+
         }
 
         ~Complaint_Details_Window() { }
@@ -335,6 +507,25 @@ namespace NewCRMSystem
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             Login.b1.goBack(this);
+        }
+
+        private void Cmb_compID_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmb_compID.Text.Length > 0)
+                {
+                    loadData(Int32.Parse(cmb_compID.Text));
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
         }
     }
 }

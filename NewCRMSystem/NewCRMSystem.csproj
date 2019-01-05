@@ -94,6 +94,9 @@
     <Compile Include="Location.xaml.cs">
       <DependentUpon>Location.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Profile_Details_Window.xaml.cs">
+      <DependentUpon>Profile_Details_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rebate_Payment.xaml.cs">
       <DependentUpon>Rebate_Payment.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,15 @@
     </Compile>
     <Compile Include="Staff_Complaint_Window.xaml.cs">
       <DependentUpon>Staff_Complaint_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View_Customer_Details.xaml.cs">
+      <DependentUpon>View_Customer_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View_Item_Type_Details.xaml.cs">
+      <DependentUpon>View_Item_Type_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View_Location_Details.xaml.cs">
+      <DependentUpon>View_Location_Details.xaml</DependentUpon>
     </Compile>
     <Page Include="Assign_Factory_Window.xaml">
       <SubType>Designer</SubType>
@@ -227,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Profile_Details_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Rebate_Payment.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -256,6 +272,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Staff_Complaint_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View_Customer_Details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View_Item_Type_Details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View_Location_Details.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Complaint_Details_Window" Height="4300" Width="1000">
+        Title="Complaint Details" Height="4500" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -40,7 +40,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="Cmb_compID_DropDownClosed" />
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="compID_Notify"/>
@@ -81,7 +81,7 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
-                        
+
                         <!--Complaint Status-->
                         <GroupBox Header="Complaint Status" Margin="100 20 50 0">
                             <StackPanel>
@@ -139,7 +139,7 @@
                             </Grid>
                             <Button x:Name="btn_recEmpSearch" Grid.Column="3" Content="Search" />
                         </Grid>
-                        
+
                         <!--Related Location-->
                         <GroupBox Header="Related Location" Margin="100 20 50 0">
                             <StackPanel>
@@ -370,8 +370,8 @@
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
-                        
-                        
+
+
                         <!--Staff Complaint-->
                         <GroupBox x:Name="gb_staffComp" Header="Staff Complaint" Margin="100 20 50 0">
                             <StackPanel>
@@ -487,7 +487,7 @@
                                 </GroupBox>
                             </StackPanel>
                         </GroupBox>
-                        
+
                         <!--Complaint Item-->
                         <GroupBox x:Name="gb_compItem" Header="Complaint Item" Margin="100 20 50 0">
                             <StackPanel>
@@ -501,7 +501,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Received Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <DatePicker x:Name="dt_receivedDt" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_receivedDt" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="receivedDt_Notify"/>
@@ -519,11 +519,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Shoe Side" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <ComboBox x:Name="cmb_shoeSide" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                                        <ComboBoxItem Content="Left"/>
-                                        <ComboBoxItem Content="Right"/>
-                                        <ComboBoxItem Content="Both"/>
-                                    </ComboBox>
+                                    <TextBox x:Name="txt_shoeSide" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="shoeSide_Notify"/>
@@ -548,7 +544,7 @@
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
-                                
+
                                 <!--Item Defect-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
@@ -603,6 +599,24 @@
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="itemRemarks_Notify"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Grid>
+
+                                <!--Item Decision-->
+                                <Grid Margin="20 20 0 0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Item Decision" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_itemDecision" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                                    <Grid Grid.Column="2">
+                                        <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                            <Image x:Name="itemDecision_Notify"/>
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
@@ -787,16 +801,95 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock   Text="Customer Choice" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <ComboBox x:Name="cmb_cusChoice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" >
-                                        <ComboBoxItem Content="Accepted"/>
-                                        <ComboBoxItem Content="Rejected"/>
-                                    </ComboBox>
+                                    <TextBox x:Name="txt_cusChoice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Padding="5" />
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="cusChoice_Notify"/>
                                         </DockPanel>
                                     </Grid>
                                 </Grid>
+
+                                <GroupBox Header="Rebate assigned HQ Manager Details" Margin="20 20 0 0">
+                                    <StackPanel>
+
+                                        <!--HQ Manager ID-->
+                                        <Grid Margin="20 20 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="HQ Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebHQManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="rebHQManagerID_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                        <!--HQ Manager Name-->
+                                        <Grid Margin="20 20 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="HQ Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebHQManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="rebHQManagerName_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <GroupBox Header="Rebate offered Showroom Manager Details" Margin="20 20 0 0">
+                                    <StackPanel>
+
+                                        <!--Showroom Manager ID-->
+                                        <Grid Margin="20 20 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="Showroom Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebShrmManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="rebShrmManagerID_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                        <!--Showroom Manager Name-->
+                                        <Grid Margin="20 20 0 0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="Showroom Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebShrmManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <Grid Grid.Column="2">
+                                                <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                                    <Image x:Name="rebShrmManagerName_Notify"/>
+                                                </DockPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                    </StackPanel>
+                                </GroupBox>
 
                             </StackPanel>
                         </GroupBox>
@@ -808,7 +901,6 @@
                                         <DataGrid x:Name="deliveryDatagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" >
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Header="Delivery ID" Binding="{Binding delivery_id}" />
-                                                <DataGridTextColumn Header="Complaint Item ID" Binding="{Binding comp_item_id}" />
                                                 <DataGridTextColumn Header="Source ID" Binding="{Binding source_id}" />
                                                 <DataGridTextColumn Header="Source Sent Date" Binding="{Binding source_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>
                                                 <DataGridTextColumn Header="Destination ID" Binding="{Binding destination_id}" />
@@ -1079,7 +1171,7 @@
                                                 </DockPanel>
                                             </Grid>
                                         </Grid>
-                                        
+
                                     </StackPanel>
                                 </GroupBox>
                                 <GroupBox Header="New Item Assigned HQ Manager Details" Margin="20 20 0 0" >

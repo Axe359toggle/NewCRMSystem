@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace NewCRMSystem
 {
     /// <summary>
-    /// Interaction logic for Search_Complaints.xaml
+    /// Interaction logic for View_Item_Type_Details.xaml
     /// </summary>
-    public partial class Search_Complaints : Window
+    public partial class View_Item_Type_Details : Window
     {
-        public Search_Complaints()
+        public View_Item_Type_Details()
         {
             InitializeComponent();
-        }
-
-        private void back_btn_Click(object sender, RoutedEventArgs e)
-        {
-            Login.b1.goBack(this);
-        }
-
-        private void Btn_search_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

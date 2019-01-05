@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Manager_Details_window" Height="750" Width="1600">
+        Title="Manager Details" Height="750" Width="1600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -201,6 +201,9 @@
                                     <Image x:Name="desNotify"/>
                                 </DockPanel>
                             </Grid>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="btnProcess_Click"/>
                         </Grid>
                         <Grid Margin="60 30 100 0" >
                             <TextBlock Text="Assigned Location" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>

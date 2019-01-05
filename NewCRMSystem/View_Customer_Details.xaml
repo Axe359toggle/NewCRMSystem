@@ -1,0 +1,88 @@
+﻿<Window x:Class="NewCRMSystem.View_Customer_Details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewCRMSystem"
+        mc:Ignorable="d"
+        Title="View Customer Details" Height="300" Width="800">
+    <Grid>
+        <ScrollViewer>
+            <Grid VerticalAlignment="Center">
+                <StackPanel>
+                    <!--Customer ID-->
+                    <Grid Margin="100 30 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Customer ID"/>
+                        <TextBox x:Name="txt_cusID" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="cusID_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+
+                    <!--Customer Name-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"   Content="Name"/>
+                        <TextBox x:Name="txt_cusName" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="cusName_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+
+                    <!--Customer Email Address-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Email"/>
+                        <TextBox x:Name="txt_cusEmail" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="cusEmail_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+
+                    <!--Customer Telephone Number-->
+                    <Grid Margin="100 10 50 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Contact No."/>
+                        <TextBox x:Name="txt_cusTp" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Grid Grid.Column="2">
+                            <DockPanel Height="30" Width="30" VerticalAlignment="Center">
+                                <Image x:Name="cusTp_Notify"/>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>

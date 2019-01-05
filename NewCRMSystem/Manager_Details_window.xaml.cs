@@ -493,7 +493,7 @@ namespace NewCRMSystem
                     txtlocationID.Text = dv.Row.ItemArray[7].ToString();//location_id
                     txtAssignedDt.Text = dv.Row.ItemArray[8].ToString();//assigned_dt
 
-                    string query = "Select login_dt,logout_dt from LoginDetails where login_id='" + loginID + "' ";
+                    string query = "SELECT login_dt,logout_dt FROM LoginDetails WHERE login_id='" + loginID + "' ";
                     Database db = new Database();
                     loginDatagrid.ItemsSource = db.GetData(query).AsDataView();
                     
@@ -550,8 +550,7 @@ namespace NewCRMSystem
                     {
                         w = new Login_Details(true, managerID);
                     }
-
-                    Login.b1.addCurrentWindow(this);
+                    
                     if (w.ShowDialog() == true)
                     {
                         loginID = Int32.Parse(w.txt_loginID.Text);

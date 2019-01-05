@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="HQ_Manager_Dashboard" Height="700" Width="800" Background="FloralWhite" >
+        Title="Main Menu" Height="700" Width="800" Background="FloralWhite" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -60,6 +60,9 @@
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_closeStaffComplaints" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Close Staff Complaints" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_closeStaffComplaints_Click" />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_profileDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="View Profile" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_profileDetails_Click" />
                                 </Grid>
                             </StackPanel>
                         </Grid>

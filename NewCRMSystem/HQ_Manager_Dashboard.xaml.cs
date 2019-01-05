@@ -76,5 +76,10 @@ namespace NewCRMSystem
         {
             Login.b1.hideWindowAndOpenNextWindow(this, new Staff_Complaint_Window());
         }
+
+        private void Btn_profileDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.hideWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
+        }
     }
 }

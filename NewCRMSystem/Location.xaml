@@ -12,7 +12,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
+        <Grid x:Name="grid_panel" Grid.Row="0" Height="{StaticResource panelSize}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
@@ -110,6 +110,9 @@
                                     <Image x:Name="locationName_Notify"/>
                                 </DockPanel>
                             </Grid>
+                        </Grid>
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="btnProcess_Click"/>
                         </Grid>
                         <Grid Margin="100 50 100 0" >
                             <TextBlock Text="Address" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -230,6 +233,8 @@
                                 </DataGrid>
                             </Grid>
                         </Grid>
+                        
+                        <!--Location Datagrid-->
                         <Grid Margin="50 10 50 0" >
                             <Grid HorizontalAlignment="Center">
                                 <DataGrid x:Name="location_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="location_Datagrid_SelectionChanged">

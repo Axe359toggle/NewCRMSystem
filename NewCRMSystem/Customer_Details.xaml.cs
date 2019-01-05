@@ -39,7 +39,7 @@ namespace NewCRMSystem
         {
             InitializeComponent();
             showdialogstatus = dialogstatus;
-            back_btn.Visibility = Visibility.Collapsed;
+            grid_panel.Visibility = Visibility.Collapsed;
         }
         public Customer_Details(char option)
         {
@@ -254,7 +254,7 @@ namespace NewCRMSystem
                         cusTp = txt_cusTp.Text;
 
                         Database db = new Database();
-                        string query = "INSERT INTO Customer (cus_name ,cus_email ,cus_tp ) VALUES ('" + cusName + "','" + cusEmail + "','" + cusTp + "') DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as cus_id ";
+                        string query = "INSERT INTO Customer ( cus_name , cus_email , cus_tp ) VALUES ('" + cusName + "','" + cusEmail + "','" + cusTp + "') DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as cus_id ";
 
                         cusID = Int32.Parse(db.GetData(query).Rows[0]["cus_id"].ToString());
 

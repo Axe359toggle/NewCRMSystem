@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="{StaticResource panelSize}">
+        <Grid x:Name="grid_panel" Grid.Row="0" Height="{StaticResource panelSize}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
@@ -131,6 +131,10 @@
                                     <Image x:Name="cusTp_Notify"/>
                                 </DockPanel>
                             </Grid>
+                        </Grid>
+
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" />
                         </Grid>
 
                         <Grid Margin="50 50 50 0" >
