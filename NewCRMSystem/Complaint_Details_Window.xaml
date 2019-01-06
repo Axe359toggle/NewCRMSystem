@@ -34,7 +34,7 @@
                         <!--Complaint ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -51,7 +51,7 @@
                         <!--Complained Date-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -68,7 +68,7 @@
                         <!--Reference ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -88,7 +88,7 @@
                                 <!--Complaint Status-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -105,7 +105,7 @@
                                 <!--Complaint Status Description-->
                                 <Grid Margin="20 20 0 0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -124,7 +124,7 @@
                         <!--Recorded Employee ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -137,7 +137,7 @@
                                     <Image x:Name="recEmpID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btn_recEmpSearch" Grid.Column="3" Content="Search" />
+                            <Button x:Name="btn_recEmpSearch" Grid.Column="3" Content="Search" Click="Btn_recEmpSearch_Click" />
                         </Grid>
 
                         <!--Related Location-->
@@ -146,7 +146,7 @@
                                 <!--Related Location ID-->
                                 <Grid Margin="20 20 0 0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -165,7 +165,7 @@
                                 <!--Related Location Name-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -188,7 +188,7 @@
                                 <!--Related Location ID-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -207,7 +207,7 @@
                                 <!--Related Location Name-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -227,7 +227,7 @@
                         <!--Complaint Closed Date-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -244,7 +244,7 @@
                         <!--Complaint Type-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -265,7 +265,7 @@
                                         <!--Customer ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -282,7 +282,7 @@
                                         <!--Customer Name-->
                                         <Grid Margin="20 10 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -300,7 +300,7 @@
                                         <!--Customer Telephone-->
                                         <Grid Margin="20 10 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -318,7 +318,7 @@
                                         <!--Customer Email-->
                                         <Grid Margin="20 10 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -338,7 +338,7 @@
                                 <!--Customer Complaint Type-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -355,7 +355,7 @@
                                 <!--Complained Method-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -378,7 +378,7 @@
                                 <!--Staff ID-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -396,7 +396,7 @@
                                 <!--Staff Name-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -414,7 +414,7 @@
                                 <!--Description-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -432,7 +432,7 @@
                                 <!--Remrks-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -452,7 +452,7 @@
                                         <!--Complaint Closed Manager ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -470,7 +470,7 @@
                                         <!--Complaint Closed Manager Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -494,7 +494,7 @@
                                 <!--Received Date-->
                                 <Grid Margin="20 20 0 0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -512,7 +512,7 @@
                                 <!--Shoe Side-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -530,7 +530,7 @@
                                 <!--Item ID-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -548,7 +548,7 @@
                                 <!--Item Defect-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -566,7 +566,7 @@
                                 <!--Item Defect Image-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -588,7 +588,7 @@
                                 <!--Item Remarks-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -606,7 +606,7 @@
                                 <!--Item Decision-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -629,7 +629,7 @@
                                 <!--Item Brand-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -646,7 +646,7 @@
                                 <!--Item Brand-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -664,7 +664,7 @@
                                 <!--Item Category-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -682,7 +682,7 @@
                                 <!--Item Name-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -700,7 +700,7 @@
                                 <!--Item Size-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -717,7 +717,7 @@
                                 <!--Item Image-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -743,7 +743,7 @@
                                 <!--Item Price-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -761,7 +761,7 @@
                                 <!--Rebate Percentage-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -778,7 +778,7 @@
                                 <!--Rebate Amount-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -795,7 +795,7 @@
                                 <!--Customer Choice-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -815,7 +815,7 @@
                                         <!--HQ Manager ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -833,7 +833,7 @@
                                         <!--HQ Manager Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -856,7 +856,7 @@
                                         <!--Showroom Manager ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -874,7 +874,7 @@
                                         <!--Showroom Manager Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -913,7 +913,7 @@
                                 <!--Delivery ID-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -934,7 +934,7 @@
                                         <!--Source Location ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -953,7 +953,7 @@
                                         <!--Source Location Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -976,7 +976,7 @@
                                         <!--Destination Location ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -995,7 +995,7 @@
                                         <!--Destination Location Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -1021,7 +1021,7 @@
                                 <!--Repair Remarks-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -1038,7 +1038,7 @@
                                 <!--Repaired Date-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -1058,7 +1058,7 @@
                                         <!--Factory Manager ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -1076,7 +1076,7 @@
                                         <!--Factory Manager Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -1101,7 +1101,7 @@
                                 <!--Investigation Date-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -1119,7 +1119,7 @@
                                 <!--New Item ID-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -1140,7 +1140,7 @@
                                         <!--Factory Manager ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -1158,7 +1158,7 @@
                                         <!--Factory Manager Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -1180,7 +1180,7 @@
                                         <!--HQ Manager ID-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>
@@ -1198,7 +1198,7 @@
                                         <!--HQ Manager Name-->
                                         <Grid Margin="20 20 0 0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="200"/>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="30"/>
                                                 <ColumnDefinition Width="100"/>

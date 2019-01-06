@@ -83,15 +83,15 @@ namespace NewCRMSystem
 
                         if (desID.Equals("H"))
                         {
-                            B1.hideWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());
+                            B1.closeWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());
                         }
                         else if (desID.Equals("S"))
                         {
-                            B1.hideWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
+                            B1.closeWindowAndOpenNextWindow(this, new Showroom_Manager_Mainmenu());
                         }
                         else if (desID.Equals("F"))
                         {
-                            B1.hideWindowAndOpenNextWindow(this, new Factory_Manager_Dashboard());
+                            B1.closeWindowAndOpenNextWindow(this, new Factory_Manager_Dashboard());
                         }
                     }
                     else

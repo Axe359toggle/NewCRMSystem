@@ -123,11 +123,11 @@ namespace NewCRMSystem
 
                         if (rbn_staffComp.IsChecked == true)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Staff_Complaint(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Staff_Complaint(compID));
                         }
                         else if (rbn_itemComp.IsChecked == true)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new ReceivedItem_Details(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new ReceivedItem_Details(compID));
                         }
                         //open next window
                     }

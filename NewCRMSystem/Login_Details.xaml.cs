@@ -178,7 +178,7 @@ namespace NewCRMSystem
                             if (showdialogstatus == true)
                             {
                                 DialogResult = true;
-                                this.Hide();
+                                this.Close();
                             }
                         }
                         else
@@ -206,7 +206,7 @@ namespace NewCRMSystem
                                 if (showdialogstatus == true)
                                 {
                                     DialogResult = true;
-                                    this.Hide();
+                                    this.Close();
                                 }
                             }
                             else

@@ -33,7 +33,7 @@
                     <StackPanel>
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -50,7 +50,7 @@
                         <!--Rebate Percentage-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -67,7 +67,7 @@
                         <!--Rebate Amount-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -86,7 +86,7 @@
                                 <!--Customer ID-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -103,7 +103,7 @@
                                 <!--Customer Name-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -121,7 +121,7 @@
                                 <!--Customer Telephone-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -139,7 +139,7 @@
                                 <!--Customer Email-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -159,7 +159,7 @@
                         <!--Customer Choice-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>

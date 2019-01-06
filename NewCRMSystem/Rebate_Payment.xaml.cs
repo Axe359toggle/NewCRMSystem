@@ -219,7 +219,7 @@ namespace NewCRMSystem
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                         if (cusChoice.Equals("Rejected"))
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
                         }
                         else if (cusChoice.Equals("Accepted"))
                         {

@@ -33,13 +33,13 @@
                     <!--Search-->
                     <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="Search"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                        <TextBox x:Name="txt_search" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                        <TextBox x:Name="txt_search" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
                         <Grid Grid.Column="3">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="search_Notify"/>
@@ -53,7 +53,7 @@
                     <Grid Margin="100 20 50 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -69,10 +69,10 @@
                     </Grid>
 
                     <!--Complained Date-->
-                    <Grid Margin="100 20 50 0" >
+                    <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -88,10 +88,10 @@
                     </Grid>
 
                     <!--Reference ID-->
-                    <Grid Margin="100 20 50 0" >
+                    <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -107,17 +107,20 @@
                     </Grid>
 
                     <!--Complaint Type-->
-                    <Grid Margin="100 20 50 0" >
+                    <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <CheckBox x:Name="chk_compType"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock   Text="Complaint Type" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="cmb_compType" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                        <ComboBox x:Name="cmb_compType" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5">
+                            <ComboBoxItem Content="Customer"/>
+                            <ComboBoxItem Content="Manager"/>
+                        </ComboBox>
                         <Grid Grid.Column="3">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="compType_Notify"/>
@@ -126,12 +129,12 @@
                     </Grid>
                     
                     <!--Complaint Status-->
-                    <GroupBox Header="Complaint Status" Margin="100 20 50 0">
+                    <GroupBox Header="Complaint Status" Margin="100 20 50 0" Padding="5">
                         <StackPanel>
                             <!--Complaint Status-->
                             <Grid Margin="20 20 0 0" >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="30"/>
                                     <ColumnDefinition Width="100"/>
@@ -148,7 +151,7 @@
                             <!--Complaint Status Description-->
                             <Grid Margin="20 20 0 0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="30"/>
                                     <ColumnDefinition Width="100"/>
@@ -165,10 +168,10 @@
                     </GroupBox>
 
                     <!--Recorded Employee ID-->
-                    <Grid Margin="100 20 50 0" >
+                    <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -181,14 +184,14 @@
                                 <Image x:Name="recEmpID_Notify"/>
                             </DockPanel>
                         </Grid>
-                        <Button x:Name="btn_recEmpDetails" Grid.Column="4" Content="Details" />
+                        <Button x:Name="btn_recEmpDetails" Grid.Column="4" Content="Details" Click="Btn_recEmpDetails_Click" />
                     </Grid>
 
                     <!--Related Location ID-->
-                    <Grid Margin="100 20 50 0">
+                    <Grid Margin="100 10 50 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -201,14 +204,14 @@
                                 <Image x:Name="relLocID_Notify"/>
                             </DockPanel>
                         </Grid>
-                        <Button x:Name="btn_relLocDetails" Grid.Column="4" Content="Details" />
+                        <Button x:Name="btn_relLocDetails" Grid.Column="4" Content="Details" Click="Btn_relLocDetails_Click" />
                     </Grid>
 
                     <!--Related Location ID-->
-                    <Grid Margin="100 20 50 0" >
+                    <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -221,14 +224,14 @@
                                 <Image x:Name="recLocID_Notify"/>
                             </DockPanel>
                         </Grid>
-                        <Button x:Name="btn_recLocDetails" Grid.Column="4" Content="Details" />
+                        <Button x:Name="btn_recLocDetails" Grid.Column="4" Content="Details" Click="Btn_recLocDetails_Click" />
                     </Grid>
 
                     <!--Complaint Closed Date-->
-                    <Grid Margin="100 20 50 0" >
+                    <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -247,7 +250,7 @@
                     <!--Complaint Datagrid-->
                     <Grid Margin="50 100 50 0" >
                         <Grid HorizontalAlignment="Center">
-                            <DataGrid x:Name="managerDatagrid" Height="300" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="managerDatagrid_SelectionChanged">
+                            <DataGrid x:Name="complaint_datagrid" Height="300" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="Complaint_datagrid_SelectionChanged" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Complaint ID" Binding="{Binding comp_id}" />
                                     <DataGridTextColumn Header="Complained Date" Binding="{Binding comp_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>

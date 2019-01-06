@@ -34,52 +34,62 @@ namespace NewCRMSystem
 
         private void btn_managerDetails_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Manager_Details_window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Manager_Details_window());
         }
 
         private void btn_assignRebate_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Rebate_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Assign_Rebate_Window());
         }
 
         private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
+            Login.b1.closeWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
         }
 
         private void btn_assignFactory_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Factory_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Assign_Factory_Window());
         }
 
         private void btn_locationDetails_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Location());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Location());
         }
 
         private void btn_itemTypeDetails_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Item_Type_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Item_Type_Window());
         }
 
         private void btn_assignNewItem_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_New_Item_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Assign_New_Item_Window());
         }
 
         private void Btn_deliverItem_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window());
         }
 
         private void btn_closeStaffComplaints_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Staff_Complaint_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Staff_Complaint_Window());
         }
 
         private void Btn_profileDetails_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
+            Login.b1.closeWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
+        }
+
+        private void Btn_complaintDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.closeWindowAndOpenNextWindow(this, new Complaint_Details_Window());
+        }
+
+        private void Btn_searchComplaints_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.closeWindowAndOpenNextWindow(this, new Search_Complaints());
         }
     }
 }

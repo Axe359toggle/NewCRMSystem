@@ -57,7 +57,7 @@ namespace NewCRMSystem
                 previousWindows[noOfWindows] = null;
                 noOfWindows--;
                 Window2.Show();
-                currentWindow.Hide();
+                currentWindow.Close();
             }
             else
             {
@@ -89,11 +89,11 @@ namespace NewCRMSystem
             noOfWindows++;
         }
 
-        public void hideWindowAndOpenNextWindow(Window Window1, Window Window2)
+        public void closeWindowAndOpenNextWindow(Window Window1, Window Window2)
         {
             addCurrentWindow(Window1);
             Window2.Show();
-            Window1.Hide();
+            Window1.Close();
 
         }
 
@@ -322,11 +322,11 @@ namespace NewCRMSystem
         internal static void LoadFor(Window window)
         {
             if (Login.DesID.Equals("H"))
-                Login.b1.hideWindowAndOpenNextWindow(window, new HQ_Manager_Dashboard());
+                Login.b1.closeWindowAndOpenNextWindow(window, new HQ_Manager_Dashboard());
             else if (Login.DesID.Equals("S"))
-                Login.b1.hideWindowAndOpenNextWindow(window, new Showroom_Manager_Mainmenu());
+                Login.b1.closeWindowAndOpenNextWindow(window, new Showroom_Manager_Mainmenu());
             else if (Login.DesID.Equals("F"))
-                Login.b1.hideWindowAndOpenNextWindow(window, new Factory_Manager_Dashboard());
+                Login.b1.closeWindowAndOpenNextWindow(window, new Factory_Manager_Dashboard());
         }
     }
 

@@ -302,6 +302,7 @@ namespace NewCRMSystem
                     itemDefect = txt_defect.Text;
                     itemRemarks = txt_remarks.Text;
                     itemPrice = Double.Parse(txt_itemPrice.Text);
+                    shoeSide = cmb_shoeSide.Text;
 
                     string query = "INSERT INTO Item (item_id ,item_price , item_type_id ) VALUES ( '" + itemID + "' , " + itemPrice + " , '" + itemTypeID + "' ) ";
                     query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 1 then 2 when comp_status_id = 26 then 27 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
@@ -324,7 +325,7 @@ namespace NewCRMSystem
                         }
                         else if (compStatusID.Equals("27"))
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
                         }
                     }
                     else

@@ -35,7 +35,7 @@ namespace NewCRMSystem
 
             Login lg = new Login();
             lg.Show();
-            parentWindow.Hide();
+            parentWindow.Close();
 
             MessageBox.Show("Logged out","Information",MessageBoxButton.OK,MessageBoxImage.Information);
         }

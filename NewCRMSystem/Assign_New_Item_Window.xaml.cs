@@ -138,7 +138,7 @@ namespace NewCRMSystem
                         loc.locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
                         loc.locName = dt.Rows[0]["location_name"].ToString();
                         
-                        Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID, loc ));
+                        Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID, loc ));
                     }
                     else
                     {

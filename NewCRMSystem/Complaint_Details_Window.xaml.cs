@@ -276,7 +276,7 @@ namespace NewCRMSystem
 
         private void setCusComp(int compID1)
         {
-            string query = "SELECT CUS.cus_id , CUS.cus_name , CUS.cus_tp , CUS.cus_email , CC.cus_comp_type , CC.comp_method FROM CustomerComplaint as CC , Cusotmer as CUS WHERE CC.comp_id = '" + compID1 + "' AND CC.cus_id = CUS.cus_id  ";
+            string query = "SELECT CUS.cus_id , CUS.cus_name , CUS.cus_tp , CUS.cus_email , CC.cus_comp_type , CC.comp_method FROM CustomerComplaint as CC , Customer as CUS WHERE CC.comp_id = '" + compID1 + "' AND CC.cus_id = CUS.cus_id  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
@@ -517,6 +517,23 @@ namespace NewCRMSystem
                 {
                     loadData(Int32.Parse(cmb_compID.Text));
                 }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void Btn_recEmpSearch_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                View_Manager_Details w = new View_Manager_Details(Int32.Parse(txt_recEmpID.Text));
+                w.Show();
             }
             catch (System.Data.SqlClient.SqlException ex)
             {

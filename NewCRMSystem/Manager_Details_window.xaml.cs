@@ -599,7 +599,7 @@ namespace NewCRMSystem
                 if (showdialogstatus == true)
                 {
                     DialogResult = true;
-                    this.Hide();
+                    this.Close();
                 }
             }
             catch (Exception ex)

@@ -33,7 +33,7 @@
                         <!--Complaint ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -52,7 +52,7 @@
                                 <!--Item Brand-->
                                 <Grid Margin="20 20 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -69,7 +69,7 @@
                                 <!--Item Brand-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -87,7 +87,7 @@
                                 <!--Item Category-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -105,7 +105,7 @@
                                 <!--Item Name-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -123,7 +123,7 @@
                                 <!--Item Size-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -142,7 +142,7 @@
                         <!--Item Remarks-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -160,7 +160,7 @@
                         <!--Repaired Date-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>

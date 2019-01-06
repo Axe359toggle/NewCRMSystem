@@ -511,7 +511,7 @@ namespace NewCRMSystem
                 if (showdialogstatus == true)
                 {
                     DialogResult = true;
-                    this.Hide();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -522,8 +522,7 @@ namespace NewCRMSystem
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.removePreviousWindow();
-            this.Hide();
+            Login.b1.goBack(this);
         }
 
         private void btn_itemImageUpload_Click(object sender, RoutedEventArgs e)

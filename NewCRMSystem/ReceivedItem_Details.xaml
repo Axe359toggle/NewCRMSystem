@@ -33,7 +33,7 @@
                     <StackPanel>
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -49,7 +49,7 @@
                         </Grid>
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -67,7 +67,7 @@
                         <!--Received Date-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -85,7 +85,7 @@
                         <!--Item Price-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -103,7 +103,7 @@
                         <!--Shoe Side-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -125,7 +125,7 @@
                         <!--Item Type ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -144,7 +144,7 @@
                         <!--Item ID-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -162,7 +162,7 @@
                         <!--Item Defect-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -180,7 +180,7 @@
                         <!--Item Defect Image-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -203,7 +203,7 @@
                         <!--Item Remarks-->
                         <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>

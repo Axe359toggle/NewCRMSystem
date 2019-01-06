@@ -47,6 +47,7 @@ namespace NewCRMSystem
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
+            txtManagerID.Text = empID1.ToString();
             txt_title.Text = dt.Rows[0]["emp_title"].ToString();
             txtFname.Text = dt.Rows[0]["emp_fname"].ToString();
             txtLname.Text = dt.Rows[0]["emp_lname"].ToString();
@@ -77,6 +78,7 @@ namespace NewCRMSystem
             try
             {
                 View_Location_Details w = new View_Location_Details(Int32.Parse(txtlocationID.Text));
+                w.Show();
             }
             catch (System.Data.SqlClient.SqlException ex)
             {

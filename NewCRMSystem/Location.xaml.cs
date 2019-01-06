@@ -520,8 +520,7 @@ namespace NewCRMSystem
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.removePreviousWindow();
-            this.Hide();
+            Login.b1.goBack(this);
         }
 
         private void location_Datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -599,9 +598,8 @@ namespace NewCRMSystem
             {
                 if (showdialogstatus == true)
                 {
-                    Login.b1.removePreviousWindow();
                     DialogResult = true;
-                    this.Hide();
+                    this.Close();
                 }
             }
             catch (Exception ex)

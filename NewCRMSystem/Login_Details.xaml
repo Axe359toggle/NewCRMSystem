@@ -44,11 +44,11 @@
                         <!--Login Id-->
                         <Grid Margin="10 10 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Login ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <TextBox Grid.Column="2" x:Name="txt_loginID" Background="AliceBlue"  Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
@@ -59,11 +59,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Employee ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <TextBox Grid.Column="2" x:Name="txt_empID" Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
@@ -74,11 +74,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Designation ID" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <TextBox Grid.Column="2" x:Name="txt_desID" Background="AliceBlue" Padding="5" Height="28" IsReadOnly="True" VerticalContentAlignment="Center"/>
@@ -89,11 +89,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Username" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <TextBox Grid.Column="2" x:Name="txt_uName" Background="AliceBlue" Padding="5" Height="28" VerticalContentAlignment="Center"/>
@@ -103,11 +103,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Current Password" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <PasswordBox Grid.Column="2" x:Name="txt_currPass" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
@@ -118,11 +118,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="New Password" Foreground="Black" FontWeight="Heavy" FontSize="15" />
                             <PasswordBox Grid.Column="2" x:Name="txt_newPass" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
@@ -133,11 +133,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Re-Enter Password" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <PasswordBox Grid.Column="2" x:Name="txt_rePass" Background="AliceBlue" Height="28" VerticalContentAlignment="Center"/>
@@ -148,11 +148,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Account Status" Foreground="Black" FontWeight="Heavy" FontSize="15" />
                             <ComboBox Grid.Column="2" x:Name="cmb_accStatus" Background="AliceBlue" Padding="5" VerticalContentAlignment="Center"/>
@@ -160,11 +160,11 @@
                         </Grid>
                         <Grid Margin="10 5 10 5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Login set Date" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <TextBox Grid.Column="2" x:Name="txt_loginSetDate" IsReadOnly="True" Height="28" VerticalAlignment="Top" VerticalContentAlignment="Center" />

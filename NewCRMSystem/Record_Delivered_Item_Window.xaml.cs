@@ -187,34 +187,34 @@ namespace NewCRMSystem
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                         if(compStatusID == 7 || compStatusID == 29)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Assign_Factory_Window(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Assign_Factory_Window(compID));
                         }
                         else if (compStatusID == 10 || compStatusID == 32)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window(compID));
                         }
                         else if (compStatusID == 14 || compStatusID == 36)
                         {
                             loc = new DatabaseBased_Objects.Location();
                             loc.locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
                             loc.locName = dt.Rows[0]["location_name"].ToString();
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID , loc ));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID , loc ));
                         }
                         else if (compStatusID == 16)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
                         }
                         else if (compStatusID == 38)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window(compID));
                         }
                         else if (compStatusID == 21)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
                         }
                         else if (compStatusID == 42)
                         {
-                            Login.b1.hideWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window(compID));
                         }
                     }
                     else

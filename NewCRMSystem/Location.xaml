@@ -52,7 +52,7 @@
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -72,7 +72,7 @@
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -96,7 +96,7 @@
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -124,7 +124,7 @@
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -144,7 +144,7 @@
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -165,7 +165,7 @@
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -185,7 +185,7 @@
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -203,7 +203,7 @@
                         <Grid Margin="100 50 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>

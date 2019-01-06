@@ -28,7 +28,7 @@ namespace NewCRMSystem
 
         private void btn_cusComplaint_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Customer_Complaint_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Customer_Complaint_Window());
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
@@ -38,37 +38,37 @@ namespace NewCRMSystem
 
         private void btn_assignRebate_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Rebate_Payment());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Rebate_Payment());
         }
 
         private void btn_deliverToCustomer_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Deliver_To_Customer());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_To_Customer());
         }
 
         private void btn_closeBatchItemComplaint_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Close_Batch_Item_Complaint_Window());
         }
 
         private void Btn_batchComplaint_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Batch_Item_Complaint_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Batch_Item_Complaint_Window());
         }
 
         private void Btn_recordReceivedCustomerItem_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new ReceivedItem_Details());
+            Login.b1.closeWindowAndOpenNextWindow(this, new ReceivedItem_Details());
         }
 
         private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
+            Login.b1.closeWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
         }
 
         private void Btn_profileDetails_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
+            Login.b1.closeWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
         }
     }
 }

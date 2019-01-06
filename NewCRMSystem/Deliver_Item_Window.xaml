@@ -34,7 +34,7 @@
                         <!--Complaint ID-->
                         <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="100"/>
@@ -54,7 +54,7 @@
                                 <!--Source ID-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -72,7 +72,7 @@
                                 <!--Source Name-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -89,7 +89,7 @@
                                 <!--Source Sent Date-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -111,7 +111,7 @@
                                 <!--Destination ID-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>
@@ -130,7 +130,7 @@
                                 <!--Destination Name-->
                                 <Grid Margin="20 10 0 0" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="100"/>

@@ -97,7 +97,7 @@ namespace NewCRMSystem
                     if (compID > 0)
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-                        Login.b1.hideWindowAndOpenNextWindow(this, new ReceivedItem_Details(compID));
+                        Login.b1.closeWindowAndOpenNextWindow(this, new ReceivedItem_Details(compID));
                     }
 
                 }

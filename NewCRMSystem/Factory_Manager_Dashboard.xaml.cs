@@ -26,22 +26,22 @@ namespace NewCRMSystem
 
         private void btn_recordReceivedItem_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
+            Login.b1.closeWindowAndOpenNextWindow(this, new Record_Delivered_Item_Window(Login.LocID));
         }
 
         private void Btn_makeFactoryDecision_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Factory_Item_Decision_Window());
         }
 
         private void Btn_recordRepairedItem_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Repaired_Item_Window());
+            Login.b1.closeWindowAndOpenNextWindow(this, new Repaired_Item_Window());
         }
 
         private void Btn_profileDetails_Click(object sender, RoutedEventArgs e)
         {
-            Login.b1.hideWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
+            Login.b1.closeWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
         }
     }
 }

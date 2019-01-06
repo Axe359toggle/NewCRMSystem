@@ -106,6 +106,7 @@ namespace NewCRMSystem
             try
             {
                 View_Location_Details w = new View_Location_Details(Int32.Parse(txtlocationID.Text));
+                w.Show();
             }
             catch (System.Data.SqlClient.SqlException ex)
             {

@@ -13,7 +13,7 @@
                     <!--Item Type ID-->
                     <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -31,7 +31,7 @@
                     <!--Item Brand-->
                     <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -48,7 +48,7 @@
                     <!--Item Category-->
                     <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -65,7 +65,7 @@
                     <!--Item Name-->
                     <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -82,7 +82,7 @@
                     <!--Item Size-->
                     <Grid Margin="100 10 50 0" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
@@ -99,7 +99,7 @@
                     <!--Item Image-->
                     <Grid Margin="100 20 50 0" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="100"/>
