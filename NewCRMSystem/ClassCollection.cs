@@ -283,13 +283,16 @@ namespace NewCRMSystem
 
     static class Logout
     {
+        internal static bool logoutInitiated = false;
         internal static void logout()
         {
-            if (Login.LogindetailID > 0)
+
+            if (Login.LogindetailID > 0 && !logoutInitiated )
             {
                 Database db = new Database();
                 string query = "Update LoginDetails set logout_dt = GETDATE() WHERE logindetail_id ='" + Login.LogindetailID + "' ";
                 db.Save_Del_Update(query);
+                logoutInitiated = true;
 
                 Login lg = new Login();
                 lg.Show();

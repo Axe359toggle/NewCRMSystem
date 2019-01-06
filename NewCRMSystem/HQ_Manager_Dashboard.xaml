@@ -34,40 +34,61 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                                <!--Assign Rebate-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_assignRebate" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign Rebate" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignRebate_Click" />
                                 </Grid>
-                                <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/>
-                                    <!-- <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager&#xD;&#xA; Details"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/> -->
-                                </Grid>
+                                
+                                <!--Record Received Item-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_recordReceivedItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Delivered Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_recordReceivedItem_Click" />
                                 </Grid>
+
+                                <!--Deliver Item-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_deliverItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Deliver Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_deliverItem_Click"  />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_assignFactory" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign Factory" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignFactory_Click" />
                                 </Grid>
+
+                                <!--Manager Details-->
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/>
+                                    <!-- <Button x:Name="btn_managerDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Manager&#xD;&#xA; Details"  Height="150" Margin="361,51,-451,0" VerticalAlignment="Top" Background="DarkOrange" Click="btn_managerDetails_Click"/> -->
+                                </Grid>
+
+                                <!--Location Details-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_locationDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Location Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_locationDetails_Click" />
                                 </Grid>
+                                
+                                <!--Item Type Details-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_itemTypeDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Item Type Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_itemTypeDetails_Click" />
                                 </Grid>
+                                
+                                <!--Assign New Item-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_assignNewItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign New Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignNewItem_Click" />
                                 </Grid>
+                                
+                                <!--Close Staff Complaints-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_closeStaffComplaints" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Close Staff Complaints" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_closeStaffComplaints_Click" />
                                 </Grid>
+                                
+                                <!--Profile Details-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_profileDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="View Profile" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_profileDetails_Click" />
                                 </Grid>
+                                
+                                <!--Complaint Details-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_complaintDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Complaint Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_complaintDetails_Click" />
                                 </Grid>
+                                
+                                <!--Search Complaints-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_searchComplaints" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Search Complaints" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_searchComplaints_Click" />
                                 </Grid>

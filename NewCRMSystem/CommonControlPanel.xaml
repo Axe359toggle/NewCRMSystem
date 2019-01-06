@@ -19,7 +19,7 @@
                 <Image Width="30" Height="30" Source="/Resources/icons8_Home_100px.png"/>
             </DockPanel>
         </Button>
-        <Button x:Name="btn_logout" Grid.Column="3" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Click="btn_logout_Click">
+        <Button x:Name="btn_logout" Grid.Column="4" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Click="btn_logout_Click">
             <DockPanel>
                 <Image Width="30" Height="30" Source="/Resources/icons8_Logout_Rounded_Up_96px.png"/>
             </DockPanel>
