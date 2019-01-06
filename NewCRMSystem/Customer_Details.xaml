@@ -68,6 +68,9 @@
                                     <Image x:Name="cusID_Notify"/>
                                 </DockPanel>
                             </Grid>
+                            <Grid Grid.Column="4" >
+                                <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" />
+                            </Grid>
                         </Grid>
 
 
@@ -133,9 +136,7 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Margin="50 10 50 0" >
-                            <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" />
-                        </Grid>
+                        
 
                         <Grid Margin="50 50 50 0" >
                             <Grid HorizontalAlignment="Center">

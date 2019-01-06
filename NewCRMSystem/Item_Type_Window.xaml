@@ -49,7 +49,7 @@
                         </Grid>
 
                         <!--Item Type ID-->
-                        <Grid Margin="100 10 50 0" >
+                        <Grid Margin="100 20 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="200"/>
@@ -65,6 +65,9 @@
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="itemTypeID_Notify"/>
                                 </DockPanel>
+                            </Grid>
+                            <Grid Grid.Column="4" >
+                                <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="btnProcess_Click"/>
                             </Grid>
                         </Grid>
 
@@ -172,9 +175,6 @@
                             <Button x:Name="btn_itemImageUpload" Grid.Column="3" Height="30" Content="Upload" Click="btn_itemImageUpload_Click" IsEnabled="False" />
                         </Grid>
 
-                        <Grid Margin="50 10 50 0" >
-                            <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="btnProcess_Click"/>
-                        </Grid>
                         <Grid Margin="50 10 50 0" >
                             <Grid HorizontalAlignment="Center">
                                 <DataGrid x:Name="itemType_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="itemType_Datagrid_SelectionChanged">

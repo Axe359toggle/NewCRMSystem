@@ -66,6 +66,9 @@
                                     <Image x:Name="locationID_Notify"/>
                                 </DockPanel>
                             </Grid>
+                            <Grid Grid.Column="4">
+                                <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="btnProcess_Click"/>
+                            </Grid>
                         </Grid>
 
                         <!--Location Type-->
@@ -111,9 +114,7 @@
                                 </DockPanel>
                             </Grid>
                         </Grid>
-                        <Grid Margin="50 10 50 0" >
-                            <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="btnProcess_Click"/>
-                        </Grid>
+                        
                         <Grid Margin="100 50 100 0" >
                             <TextBlock Text="Address" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Grid>
