@@ -92,6 +92,7 @@ namespace NewCRMSystem
             txtManagerID.IsReadOnly = true;
             txtlocationID.IsReadOnly = true;
             btnSetLogin.IsEnabled = false;
+            btn_delete.IsEnabled = false;
             rbnUpdate.IsEnabled = false;
             txtAssignedDt.IsEnabled = false;
             btn_ok.IsEnabled = false;
@@ -106,6 +107,7 @@ namespace NewCRMSystem
             txtManagerID.IsReadOnly = true;
             txtlocationID.IsReadOnly = true;
             btnSetLogin.IsEnabled = true;
+            btn_delete.IsEnabled = true;
             rbnUpdate.IsEnabled = true;
             txtAssignedDt.IsEnabled = false;
             btn_ok.IsEnabled = true;
@@ -120,6 +122,7 @@ namespace NewCRMSystem
             txtManagerID.IsReadOnly = false;
             txtlocationID.IsReadOnly = false;
             btnSetLogin.IsEnabled = false;
+            btn_delete.IsEnabled = false;
             rbnUpdate.IsEnabled = false;
             txtAssignedDt.IsEnabled = true;
             btn_ok.IsEnabled = false;
@@ -260,6 +263,7 @@ namespace NewCRMSystem
                             rbnUpdate.IsChecked = true;
                             refresh_ManagerDatagrid();
                             refresh_LoginDetailsDatagrid();
+                            loginID = 0;
                         }
                         else
                         {
@@ -554,6 +558,7 @@ namespace NewCRMSystem
                     if (w.ShowDialog() == true)
                     {
                         loginID = Int32.Parse(w.txt_loginID.Text);
+                        btnSetLogin.Content = "Update Login";
 
                         refresh_ManagerDatagrid();
                     }

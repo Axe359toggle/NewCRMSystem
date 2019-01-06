@@ -30,8 +30,8 @@
             <ScrollViewer>
                 <Grid VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
                         <Grid Margin="50 10 50 0" >
@@ -70,6 +70,9 @@
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="managerIDNotify"/>
                                 </DockPanel>
+                            </Grid>
+                            <Grid Grid.Column="4">
+                                <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" />
                             </Grid>
                         </Grid>
 
@@ -203,9 +206,6 @@
                                     <Image x:Name="desNotify"/>
                                 </DockPanel>
                             </Grid>
-                        </Grid>
-                        <Grid Margin="50 10 50 0" >
-                            <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="btnProcess_Click"/>
                         </Grid>
                         <Grid Margin="60 30 100 0" >
                             <TextBlock Text="Assigned Location" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>

@@ -84,6 +84,7 @@ namespace NewCRMSystem
             txt_loginID.IsEnabled = false;
             txt_currPass.IsEnabled = false;
             cmb_accStatus.IsEnabled = false;
+            rbn_update.IsEnabled = false;
         }
 
         private void setUpdate()

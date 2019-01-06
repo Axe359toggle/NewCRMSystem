@@ -27,8 +27,8 @@ namespace NewCRMSystem
         static int empID = 0; 
         internal static int EmpID { get { return empID; } }
 
-        static string logindetailID = "";
-        internal static string LogindetailID { get { return logindetailID; } }
+        static int logindetailID = 0;
+        internal static int LogindetailID { get { return logindetailID; } }
 
         static string desID = "";
         internal static string DesID { get { return desID; } }
@@ -38,6 +38,9 @@ namespace NewCRMSystem
 
         static string uName = "";
         internal static string UName { get { return uName; } }
+
+        static bool loginStatus = false;
+        internal static bool LoginStatus { get { return loginStatus; } }
 
         public Login()
         {
@@ -64,7 +67,7 @@ namespace NewCRMSystem
                     {
                         string query2 = "insert into LoginDetails (login_id,login_dt) values ('"+ dt.Rows[0]["login_id"] + "',DEFAULT)  declare @ID int = SCOPE_IDENTITY() Select @ID as logindetail_id";
                         System.Data.DataTable dt1 = db.GetData(query2);
-                        logindetailID = dt1.Rows[0]["logindetail_id"].ToString();
+                        logindetailID = Int32.Parse(dt1.Rows[0]["logindetail_id"].ToString());
 
                         if (dt.Rows[0]["emp_id"].ToString().Length > 0)
                         {
@@ -81,6 +84,7 @@ namespace NewCRMSystem
                             locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
                         }
 
+                        loginStatus = true;
                         if (desID.Equals("H"))
                         {
                             B1.closeWindowAndOpenNextWindow(this, new HQ_Manager_Dashboard());

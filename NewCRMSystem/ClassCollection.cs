@@ -220,73 +220,8 @@ namespace NewCRMSystem
             closeCon();
             return dt;
         }
-
-        /*
-        public string ReadData(string query, string column)
-        {
-            string tb = "555";
-            try
-            {
-                openCon();
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("Check the Database Connection", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            SqlDataReader dr;
-            dr = cmd.ExecuteReader();
-            if (dr.HasRows)
-            {
-                dr.Read();
-                tb = Convert.ToString(dr[column]);
-            }
-            else
-            {
-                MessageBox.Show("Either returns multiple values or does not return a value");
-            }
-            closeCon();
-
-            return tb;
-
-        }
-        */
-
-        public Person ReadData1(string query)
-        {
-            string x = "";
-            string y = "";
-            string z = "";
-
-            try
-            {
-                openCon();
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("Check the Database Connection", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            SqlDataReader dr;
-            dr = cmd.ExecuteReader();
-            if (dr.HasRows)
-            {
-                dr.Read();
-                x = Convert.ToString(dr["emp_id"]);
-                y = Convert.ToString(dr["password"]);
-                z = Convert.ToString(dr["desID"]);
-            }
-            else
-            {
-                MessageBox.Show("Either returns multiple values or does not return a value");
-            }
-            closeCon();
-            Person p = new Person(x, y, z);
-            return p;
-
-        }
+        
+        
         ~Database() { }
     }
 
@@ -343,6 +278,24 @@ namespace NewCRMSystem
                 hash.Append(theByte.ToString("x2"));
             }
             return hash.ToString();
+        }
+    }
+
+    static class Logout
+    {
+        internal static void logout()
+        {
+            if (Login.LogindetailID > 0)
+            {
+                Database db = new Database();
+                string query = "Update LoginDetails set logout_dt = GETDATE() WHERE logindetail_id ='" + Login.LogindetailID + "' ";
+                db.Save_Del_Update(query);
+
+                Login lg = new Login();
+                lg.Show();
+
+                MessageBox.Show("Logged out", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 

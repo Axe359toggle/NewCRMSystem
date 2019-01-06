@@ -29,15 +29,20 @@ namespace NewCRMSystem
 
         private void btn_logout_Click(object sender, RoutedEventArgs e)
         {
-            Database db = new Database();
-            string query = "Update LoginDetails set logout_dt = GETDATE() WHERE logindetail_id ='"+ Login.LogindetailID +"' ";
-            db.Save_Del_Update(query);
-
-            Login lg = new Login();
-            lg.Show();
-            parentWindow.Close();
-
-            MessageBox.Show("Logged out","Information",MessageBoxButton.OK,MessageBoxImage.Information);
+            try
+            {
+                Logout.logout();
+                parentWindow.Close();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+            
         }
 
         private void Loaded_Panel(object sender, RoutedEventArgs e)

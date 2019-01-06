@@ -4,7 +4,9 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:NewCRMSystem"
              StartupUri="Login.xaml"
-             ShutdownMode="OnLastWindowClose">
+             ShutdownMode="OnLastWindowClose"
+             Exit="Application_Exit"
+             >
     <Application.Resources>
         <BitmapImage x:Key="backButtonImage" UriSource="/Resources/icons8_Back_To_96px.png" />
         <BitmapImage x:Key="notifyCorrectImage" UriSource="/Resources/icons8_Checked_96px.png" />

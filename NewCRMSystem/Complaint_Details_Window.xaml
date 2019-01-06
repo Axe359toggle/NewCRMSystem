@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Complaint Details" Height="4500" Width="1000">
+        Title="Complaint Details" Height="700" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -49,7 +49,7 @@
                         </Grid>
 
                         <!--Complained Date-->
-                        <Grid Margin="100 20 50 0" >
+                        <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
@@ -66,7 +66,7 @@
                         </Grid>
 
                         <!--Reference ID-->
-                        <Grid Margin="100 20 50 0" >
+                        <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
@@ -83,7 +83,7 @@
                         </Grid>
 
                         <!--Complaint Status-->
-                        <GroupBox Header="Complaint Status" Margin="100 20 50 0">
+                        <GroupBox Header="Complaint Status" Margin="100 10 50 0">
                             <StackPanel>
                                 <!--Complaint Status-->
                                 <Grid Margin="20 20 0 0" >
@@ -122,7 +122,7 @@
                         </GroupBox>
 
                         <!--Recorded Employee ID-->
-                        <Grid Margin="100 20 50 0" >
+                        <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
@@ -141,7 +141,7 @@
                         </Grid>
 
                         <!--Related Location-->
-                        <GroupBox Header="Related Location" Margin="100 20 50 0">
+                        <GroupBox Header="Related Location" Margin="100 10 50 0">
                             <StackPanel>
                                 <!--Related Location ID-->
                                 <Grid Margin="20 20 0 0">
@@ -183,7 +183,7 @@
                         </GroupBox>
 
                         <!--Recorded Location-->
-                        <GroupBox Header="Recorded Location" Margin="100 20 50 0">
+                        <GroupBox Header="Recorded Location" Margin="100 10 50 0">
                             <StackPanel>
                                 <!--Related Location ID-->
                                 <Grid Margin="20 20 0 0" >
@@ -225,7 +225,7 @@
                         </GroupBox>
 
                         <!--Complaint Closed Date-->
-                        <Grid Margin="100 20 50 0" >
+                        <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
@@ -242,7 +242,7 @@
                         </Grid>
 
                         <!--Complaint Type-->
-                        <Grid Margin="100 20 50 0" >
+                        <Grid Margin="100 10 50 0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
@@ -258,7 +258,7 @@
                             </Grid>
                         </Grid>
 
-                        <GroupBox x:Name="gb_cusComp" Header="Customer Complaint" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_cusComp" Header="Customer Complaint" Margin="100 10 50 0">
                             <StackPanel>
                                 <GroupBox Header="Customer Details" Margin="20 20 0 0">
                                     <StackPanel>
@@ -373,7 +373,7 @@
 
 
                         <!--Staff Complaint-->
-                        <GroupBox x:Name="gb_staffComp" Header="Staff Complaint" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_staffComp" Header="Staff Complaint" Margin="100 10 50 0">
                             <StackPanel>
                                 <!--Staff ID-->
                                 <Grid Margin="20 20 0 0" >
@@ -489,7 +489,7 @@
                         </GroupBox>
 
                         <!--Complaint Item-->
-                        <GroupBox x:Name="gb_compItem" Header="Complaint Item" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_compItem" Header="Complaint Item" Margin="100 10 50 0">
                             <StackPanel>
                                 <!--Received Date-->
                                 <Grid Margin="20 20 0 0">
@@ -624,7 +624,7 @@
                         </GroupBox>
 
                         <!--Item Type-->
-                        <GroupBox  x:Name="gb_itemType" Header="Item Type" Margin="100 20 50 0">
+                        <GroupBox  x:Name="gb_itemType" Header="Item Type" Margin="100 10 50 0">
                             <StackPanel>
                                 <!--Item Brand-->
                                 <Grid Margin="20 20 0 0" >
@@ -738,7 +738,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="gb_rebate" Header="Rebate" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_rebate" Header="Rebate" Margin="100 10 50 0">
                             <StackPanel>
                                 <!--Item Price-->
                                 <Grid Margin="20 20 0 0" >
@@ -894,7 +894,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="gb_delivery" Header="Delivery Details" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_delivery" Header="Delivery Details" Margin="100 10 50 0">
                             <StackPanel>
                                 <Grid Margin="20 20 0 0" >
                                     <Grid HorizontalAlignment="Center">
@@ -1015,7 +1015,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="gb_repair" Header="Repair" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_repair" Header="Repair" Margin="100 10 50 0">
                             <StackPanel>
 
                                 <!--Repair Remarks-->
@@ -1095,7 +1095,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="gb_inv" Header="Investigation" Margin="100 20 50 0">
+                        <GroupBox x:Name="gb_inv" Header="Investigation" Margin="100 10 50 0">
                             <StackPanel>
 
                                 <!--Investigation Date-->
