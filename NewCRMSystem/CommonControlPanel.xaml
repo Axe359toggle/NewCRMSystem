@@ -10,8 +10,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{StaticResource panelRowSize}"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="{StaticResource panelRowSize}"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Click="Button_Click">

@@ -11,15 +11,20 @@
     <Grid>
         <Grid Margin="30" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <StackPanel VerticalAlignment="Center" Grid.Column="1">
-                <GroupBox Header="Username">
+                <GroupBox FontWeight="Bold">
+                    <GroupBox.Header>
+                        <TextBlock>
+                            <Span FontWeight="Bold">Username</Span>
+                        </TextBlock>
+                    </GroupBox.Header>
                     <Grid Margin="0 20 0 20">
 
-                        <TextBox x:Name="uname_txt" VerticalAlignment="Center" Padding="10 5 10 5" KeyDown="uname_txt_KeyDown" />
+                        <TextBox x:Name="uname_txt" FontWeight="Normal" VerticalAlignment="Center" Padding="10 5 10 5" KeyDown="uname_txt_KeyDown" />
                         <!--<TextBlock IsHitTestVisible="False" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="Username" Padding="10 5 10 5"  Foreground="DarkGray">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
@@ -35,7 +40,12 @@
                     </Grid>
                 </GroupBox>
 
-                <GroupBox Header="Password">
+                <GroupBox>
+                    <GroupBox.Header>
+                        <TextBlock>
+                            <Span FontWeight="Bold">Password</Span>
+                        </TextBlock>
+                    </GroupBox.Header>
                     <PasswordBox x:Name="upass_txt" Margin="0 20 0 20" HorizontalAlignment="Stretch" Padding="10 5 10 5" KeyDown="upass_txt_KeyDown"/>
                 </GroupBox>
                 <Button x:Name="login_btn" Margin="0 20 0 20" HorizontalAlignment="Center" Padding="10 0" Content="Login" Click="login_btn_Click"/>
