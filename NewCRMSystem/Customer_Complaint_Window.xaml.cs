@@ -95,10 +95,10 @@ namespace NewCRMSystem
                     cusID = Int32.Parse(txt_cusID.Text);
                     int compStatusID = 0;
 
-                    if (rbn_byCall.IsChecked == true) { compMethod = "By Call"; compStatusID = 23; }
+                    if (rbn_byCall.IsChecked == true) { compMethod = "By Call"; }
                     else if (rbn_inPerson.IsChecked == true) { compMethod = "In Person"; }
 
-                    if (rbn_staffComp.IsChecked == true) { compType2 = "Staff"; }
+                    if (rbn_staffComp.IsChecked == true) { compType2 = "Staff"; compStatusID = 23; }
                     else if (rbn_itemComp.IsChecked == true) { compType2 = "Item"; compStatusID = 1; }
                     
                     Database db = new Database();

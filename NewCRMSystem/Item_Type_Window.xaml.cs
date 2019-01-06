@@ -335,7 +335,7 @@ namespace NewCRMSystem
                         brand = txt_brand.Text;
                         category = txt_category.Text;
                         name = txt_name.Text;
-                        size = txt_size.Text;
+                        size = txt_size.Text.Trim(); ;
                         
                         string query = "INSERT INTO ItemType (item_brand ,item_category ,item_name ,item_size ) VALUES ('" + brand + "','" + category + "','" + name + "','" + size + "' ) DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as item_type_id";
                         Database db = new Database();

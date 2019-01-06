@@ -284,6 +284,10 @@ namespace NewCRMSystem
     static class Logout
     {
         internal static bool logoutInitiated = false;
+        internal static void resetLogout()
+        {
+            logoutInitiated = false;
+        }
         internal static void logout()
         {
 
@@ -1018,7 +1022,7 @@ namespace NewCRMSystem
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
-                static int size = 4;
+                static int size = 6;
                 internal static int Size
                 {
                     get { return size; }

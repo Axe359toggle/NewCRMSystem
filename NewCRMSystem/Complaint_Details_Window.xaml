@@ -137,7 +137,7 @@
                                     <Image x:Name="recEmpID_Notify"/>
                                 </DockPanel>
                             </Grid>
-                            <Button x:Name="btn_recEmpSearch" Grid.Column="3" Content="Search" Click="Btn_recEmpSearch_Click" />
+                            <Button x:Name="btn_recEmpSearch" Grid.Column="3" Content="Details" Click="Btn_recEmpSearch_Click" />
                         </Grid>
 
                         <!--Related Location-->
@@ -159,7 +159,7 @@
                                             <Image x:Name="relLocID_Notify"/>
                                         </DockPanel>
                                     </Grid>
-                                    <Button x:Name="btn_relLocSearch" Grid.Column="3" Content="Search" />
+                                    <Button x:Name="btn_relLocSearch" Grid.Column="3" Content="Details" />
                                 </Grid>
 
                                 <!--Related Location Name-->
@@ -201,7 +201,7 @@
                                             <Image x:Name="recLocID_Notify"/>
                                         </DockPanel>
                                     </Grid>
-                                    <Button x:Name="btn_recLocSearch" Grid.Column="3" Content="Search" />
+                                    <Button x:Name="btn_recLocSearch" Grid.Column="3" Content="Details" />
                                 </Grid>
 
                                 <!--Related Location Name-->

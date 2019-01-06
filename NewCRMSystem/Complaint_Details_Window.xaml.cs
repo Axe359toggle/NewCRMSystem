@@ -462,7 +462,10 @@ namespace NewCRMSystem
             setRelatedLocationDetails(Int32.Parse(dt.Rows[0]["relatedLocation_id"].ToString()));
             setRecordedLocationDetails(Int32.Parse(dt.Rows[0]["recordedLocation_id"].ToString()));
 
-            txt_closedDate.Text = dt.Rows[0]["closed_dt"].ToString();
+            if (dt.Rows[0]["closed_dt"].ToString().Length > 0)
+            {
+                txt_closedDate.Text = dt.Rows[0]["closed_dt"].ToString();
+            }
             txt_compType.Text = dt.Rows[0]["comp_type"].ToString();
 
             if (type == 1)

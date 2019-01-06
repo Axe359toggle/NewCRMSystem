@@ -83,7 +83,7 @@ namespace NewCRMSystem
                         {
                             locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
                         }
-
+                        Logout.resetLogout();
                         loginStatus = true;
                         if (desID.Equals("H"))
                         {
