@@ -254,7 +254,7 @@ namespace NewCRMSystem
         {
             reset();
             //Checking if complaint type is Customer or Staff
-            string query = "SELECT comp_type FROM Complaint WHERE comp_id = '" + compID1 + "' ";
+            string query = "SELECT C.comp_type FROM Complaint as C WHERE comp_id = '" + compID1 + "' ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
