@@ -49,6 +49,7 @@ namespace NewCRMSystem
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
+            txt_LocationID.Text = locID1.ToString();
             txt_LocationType.Text = dt.Rows[0]["location_type"].ToString();
             txt_LocationName.Text = dt.Rows[0]["location_name"].ToString();
             txt_AddrNo.Text = dt.Rows[0]["addr_no"].ToString();

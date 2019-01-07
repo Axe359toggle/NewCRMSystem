@@ -252,6 +252,7 @@ namespace NewCRMSystem
 
         private void checkConditionsAndLoad(int compID1)
         {
+            reset();
             //Checking if complaint type is Customer or Staff
             string query = "SELECT comp_type FROM Complaint WHERE comp_id = '" + compID1 + "' ";
             Database db = new Database();
