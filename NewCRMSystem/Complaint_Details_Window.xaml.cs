@@ -37,8 +37,9 @@ namespace NewCRMSystem
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
-
-        int type = 0;
+        
+        Visibility col = Visibility.Collapsed;
+        Visibility vis = Visibility.Visible;
 
         private void bindCompIDList()
         {
@@ -54,228 +55,21 @@ namespace NewCRMSystem
             cmb_compID.SelectedIndex = 0;
         }
 
-        private void setType(int compID1)
+        private void reset()
         {
-            string query = "SELECT comp_type FROM Complaint WHERE comp_id = '" + compID1 + "' ";
-            Database db = new Database();
-            System.Data.DataTable dt = db.GetData(query);
-
-            if (dt.Rows[0]["comp_type"].ToString().Equals("Customer"))
-            {
-                query = "SELECT cus_comp_type FROM CustomerComplaint WHERE comp_id = '" + compID1 + "' ";
-                dt = db.GetData(query);
-                if (dt.Rows[0]["cus_comp_type"].ToString().Equals("Staff"))
-                {
-                    type = 1;
-                }
-                else if (dt.Rows[0]["cus_comp_type"].ToString().Equals("Item"))
-                {
-                    query = "SELECT R.customer_choice FROM Rebate as R , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
-                    dt = db.GetData(query);
-
-                    if (dt.Rows[0]["customer_choice"].ToString().Equals("Accepted"))
-                    {
-                        type = 2;
-                    }
-                    else if (dt.Rows[0]["customer_choice"].ToString().Equals("Rejected"))
-                    {
-                        type = 3;
-
-                        query = "SELECT CI.item_decision FROM ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' ";
-                        dt = db.GetData(query);
-                        if (dt.Rows[0]["item_decision"].ToString().Equals("Repair"))
-                        {
-                            type = 4;
-                        }
-                        else if (dt.Rows[0]["item_decision"].ToString().Equals("Investigation"))
-                        {
-                            type = 5;
-                        }
-                    }
-                }
-            }
-            else if (dt.Rows[0]["comp_type"].ToString().Equals("Manager"))
-            {
-                type = 6;
-
-                query = "SELECT CI.item_decision FROM ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' ";
-                dt = db.GetData(query);
-                if (dt.Rows[0]["item_decision"].ToString().Equals("Repair"))
-                {
-                    type = 7;
-                }
-                else if (dt.Rows[0]["item_decision"].ToString().Equals("Investigation"))
-                {
-                    type = 8;
-                }
-            }
-            
-                
-        }
-
-        private void setType1(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = vis;
-            gb_staffComp.Visibility = vis;
+            gb_cusComp.Visibility = col;
+            gb_staffComp.Visibility = col;
             gb_compItem.Visibility = col;
             gb_itemType.Visibility = col;
             gb_rebate.Visibility = col;
             gb_delivery.Visibility = col;
             gb_repair.Visibility = col;
             gb_inv.Visibility = col;
-
-            setCusComp(compID1);
-            setStaffComp(compID1);
-
-        }
-
-        private void setType2(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = vis;
-            gb_staffComp.Visibility = col;
-            gb_compItem.Visibility = vis;
-            gb_itemType.Visibility = vis;
-            gb_rebate.Visibility = vis;
-            gb_delivery.Visibility = col;
-            gb_repair.Visibility = col;
-            gb_inv.Visibility = col;
-
-            setCusComp(compID1);
-            setCompItem(compID1);
-            setItemType(compID1);
-            setRebate(compID1);
-
-        }
-
-        private void setType3(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = vis;
-            gb_staffComp.Visibility = col;
-            gb_compItem.Visibility = vis;
-            gb_itemType.Visibility = vis;
-            gb_rebate.Visibility = vis;
-            gb_delivery.Visibility = vis;
-            gb_repair.Visibility = col;
-            gb_inv.Visibility = col;
-
-            setCusComp(compID1);
-            setCompItem(compID1);
-            setItemType(compID1);
-            setRebate(compID1);
-            setDelivery(compID1);
-
-        }
-
-        private void setType4(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = vis;
-            gb_staffComp.Visibility = col;
-            gb_compItem.Visibility = vis;
-            gb_itemType.Visibility = vis;
-            gb_rebate.Visibility = vis;
-            gb_delivery.Visibility = vis;
-            gb_repair.Visibility = vis;
-            gb_inv.Visibility = col;
-
-            setCusComp(compID1);
-            setCompItem(compID1);
-            setItemType(compID1);
-            setRebate(compID1);
-            setDelivery(compID1);
-            setRepair(compID1);
-
-        }
-
-        private void setType5(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = vis;
-            gb_staffComp.Visibility = col;
-            gb_compItem.Visibility = vis;
-            gb_itemType.Visibility = vis;
-            gb_rebate.Visibility = vis;
-            gb_delivery.Visibility = vis;
-            gb_repair.Visibility = col;
-            gb_inv.Visibility = vis;
-
-            setCusComp(compID1);
-            setCompItem(compID1);
-            setItemType(compID1);
-            setRebate(compID1);
-            setDelivery(compID1);
-            setInvestigation(compID1);
-        }
-
-        private void setType6(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = col;
-            gb_staffComp.Visibility = col;
-            gb_compItem.Visibility = vis;
-            gb_itemType.Visibility = vis;
-            gb_rebate.Visibility = col;
-            gb_delivery.Visibility = vis;
-            gb_repair.Visibility = col;
-            gb_inv.Visibility = col;
-
-            setCompItem(compID1);
-            setItemType(compID1);
-            setDelivery(compID1);
-
-        }
-
-        private void setType7(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = col;
-            gb_staffComp.Visibility = col;
-            gb_compItem.Visibility = vis;
-            gb_itemType.Visibility = vis;
-            gb_rebate.Visibility = col;
-            gb_delivery.Visibility = vis;
-            gb_repair.Visibility = vis;
-            gb_inv.Visibility = col;
-
-            setCompItem(compID1);
-            setItemType(compID1);
-            setDelivery(compID1);
-            setRepair(compID1);
-
-        }
-
-        private void setType8(int compID1)
-        {
-            Visibility col = Visibility.Collapsed;
-            Visibility vis = Visibility.Visible;
-            gb_cusComp.Visibility = col;
-            gb_staffComp.Visibility = col;
-            gb_compItem.Visibility = vis;
-            gb_itemType.Visibility = vis;
-            gb_rebate.Visibility = col;
-            gb_delivery.Visibility = vis;
-            gb_repair.Visibility = col;
-            gb_inv.Visibility = vis;
-
-            setCompItem(compID1);
-            setItemType(compID1);
-            setDelivery(compID1);
-            setInvestigation(compID1);
-
         }
 
         private void setCusComp(int compID1)
         {
+            gb_cusComp.Visibility = vis;
             string query = "SELECT CUS.cus_id , CUS.cus_name , CUS.cus_tp , CUS.cus_email , CC.cus_comp_type , CC.comp_method FROM CustomerComplaint as CC , Customer as CUS WHERE CC.comp_id = '" + compID1 + "' AND CC.cus_id = CUS.cus_id  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -290,20 +84,26 @@ namespace NewCRMSystem
 
         private void setStaffComp(int compID1)
         {
+            gb_staffComp.Visibility = vis;
             string query = "SELECT SC.staff_id , SC.staff_name , SC.description , SC.remarks , SC.closed_manager FROM StaffComplaint as SC WHERE SC.comp_id = '" + compID1 + "' ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 
             txt_staffID.Text = dt.Rows[0]["staff_id"].ToString();
-            txt_staffID.Text = dt.Rows[0]["staff_name"].ToString();
-            txt_staffID.Text = dt.Rows[0]["description"].ToString();
-            txt_staffID.Text = dt.Rows[0]["remarks"].ToString();
-            txt_staffCompClosedManagerID.Text = dt.Rows[0]["closed_manager"].ToString();
-            txt_staffCompClosedManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["closed_manager"].ToString()));
+            txt_staffName.Text = dt.Rows[0]["staff_name"].ToString();
+            txt_description.Text = dt.Rows[0]["description"].ToString();
+            txt_staffRemarks.Text = dt.Rows[0]["remarks"].ToString();
+
+            if (dt.Rows[0]["closed_manager"].ToString().Length > 0)
+            {
+                txt_staffCompClosedManagerID.Text = dt.Rows[0]["closed_manager"].ToString();
+                txt_staffCompClosedManagerName.Text = getManagerName(Int32.Parse(dt.Rows[0]["closed_manager"].ToString()));
+            }
         }
 
         private void setCompItem(int compID1)
         {
+            gb_compItem.Visibility = vis;
             string query = "SELECT CI.received_dt , CI.shoe_side , CI.item_id , CI.item_defect , CI.item_defect_img , CI.item_remarks , CI.item_decision FROM ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -319,6 +119,7 @@ namespace NewCRMSystem
 
         private void setItemType(int compID1)
         {
+            gb_itemType.Visibility = vis;
             string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , IT.item_pic FROM ItemType as IT , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.item_type_id = IT.item_type_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -334,6 +135,7 @@ namespace NewCRMSystem
 
         private void setRebate(int compID1)
         {
+            gb_rebate.Visibility = vis;
             string query = "SELECT I.item_price , R.rebate_percentage , R.customer_choice , R.hQManager , R.shrmManager FROM Rebate as R , ComplaintItem as CI , Item as I WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id AND CI.item_id = I.item_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -351,6 +153,7 @@ namespace NewCRMSystem
 
         private void setDelivery(int compID1)
         {
+            gb_delivery.Visibility = vis;
             string query = "SELECT D.delivery_id , D.source_id , D.source_dt , D.destination_id , D.destination_dt FROM Delivery as D , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = D.comp_item_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -360,6 +163,7 @@ namespace NewCRMSystem
 
         private void setRepair(int compID1)
         {
+            gb_repair.Visibility = vis;
             string query = "SELECT R.repair_remarks , R.repair_dt , R.factoryManager FROM Repair as R , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -373,6 +177,7 @@ namespace NewCRMSystem
 
         private void setInvestigation(int compID1)
         {
+            gb_inv.Visibility = vis;
             string query = "SELECT INV.investigation_dt , INV.newItem_id , INV.factoryManager , INV.hQManager FROM Investigation as INV , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -445,10 +250,154 @@ namespace NewCRMSystem
             txt_recLocName.Text = getLocationName(locID1);
         }
 
+        private void checkConditionsAndLoad(int compID1)
+        {
+            //Checking if complaint type is Customer or Staff
+            string query = "SELECT comp_type FROM Complaint WHERE comp_id = '" + compID1 + "' ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            if (dt.Rows[0]["comp_type"].ToString().Equals("Customer"))
+            {
+                setCusComp(compID1);
+                
+                //Checking if Customer Complaint Type is Staff or Item
+                query = "SELECT cus_comp_type FROM CustomerComplaint WHERE comp_id = '" + compID1 + "' ";
+                dt = db.GetData(query);
+                if (dt.Rows[0]["cus_comp_type"].ToString().Equals("Staff"))
+                {
+                    //Checking if Staff Complaint is set
+                    query = "SELECT comp_id FROM StaffComplaint WHERE comp_id = '" + compID1 + "' ";
+                    dt = db.GetData(query);
+
+                    if(dt.Rows.Count == 1)
+                    {
+                        setStaffComp(compID1);
+                    }
+                }
+                else if (dt.Rows[0]["cus_comp_type"].ToString().Equals("Item"))
+                {
+                    //Checking if Complaint Item is set
+                    query = "SELECT comp_id FROM ComplaintItem WHERE comp_id = '" + compID1 + "' ";
+                    dt = db.GetData(query);
+
+                    if (dt.Rows.Count == 1)
+                    {
+                        setCompItem(compID1);
+                        setItemType(compID1);
+
+                        //Checking if Rebate is set
+                        query = "SELECT R.comp_item_id FROM Rebate as R , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
+                        dt = db.GetData(query);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            setRebate(compID1);
+
+                            //Check if customer choice is set
+                            query = "SELECT R.customer_choice FROM Rebate as R , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
+                            dt = db.GetData(query);
+                            if (dt.Rows.Count > 0)
+                            {
+                                if (dt.Rows[0]["customer_choice"].ToString().Equals("Rejected"))
+                                {
+                                    //Checking if delivery is set
+                                    query = "SELECT D.delivery_id FROM ComplaintItem as CI , Delivery as D WHERE CI.comp_id = '" + compID1 + "' AND D.comp_item_id = CI.comp_item_id ";
+                                    dt = db.GetData(query);
+                                    if (dt.Rows.Count > 0)
+                                    {
+                                        setDelivery(compID1);
+
+                                        //Checking if Item Decision is set
+                                        query = "SELECT CI.item_decision FROM ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' ";
+                                        dt = db.GetData(query);
+
+                                        if (dt.Rows.Count > 0)
+                                        {
+                                            if (dt.Rows[0]["item_decision"].ToString().Equals("Repair"))
+                                            {
+                                                //Checking if Repair is set
+                                                query = "SELECT R.comp_item_id FROM Repair as R , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
+                                                dt = db.GetData(query);
+
+                                                if (dt.Rows.Count > 0)
+                                                {
+                                                    setRepair(compID1);
+                                                }
+                                            }
+                                            else if (dt.Rows[0]["item_decision"].ToString().Equals("Investigation"))
+                                            {
+                                                //Checking if Investigation is set
+                                                query = "SELECT I.comp_item_id FROM Investigation as I , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = I.comp_item_id ";
+                                                dt = db.GetData(query);
+
+                                                if (dt.Rows.Count > 0)
+                                                {
+                                                    setInvestigation(compID1);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (dt.Rows[0]["comp_type"].ToString().Equals("Manager"))
+            {
+                //Checking if Complaint Item is set
+                query = "SELECT comp_id FROM ComplaintItem WHERE comp_id = '" + compID1 + "' ";
+                dt = db.GetData(query);
+
+                if (dt.Rows.Count == 1)
+                {
+                    setCompItem(compID1);
+                    setItemType(compID1);
+
+                    //Checking if delivery is set
+                    query = "SELECT D.delivery_id FROM ComplaintItem as CI , Delivery as D WHERE CI.comp_id = '" + compID1 + "' AND D.comp_item_id = CI.comp_item_id ";
+                    dt = db.GetData(query);
+                    if (dt.Rows.Count > 0)
+                    {
+                        setDelivery(compID1);
+
+                        //Checking if Item Decision is set
+                        query = "SELECT CI.item_decision FROM ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' ";
+                        dt = db.GetData(query);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            if (dt.Rows[0]["item_decision"].ToString().Equals("Repair"))
+                            {
+                                //Checking if Repair is set
+                                query = "SELECT R.comp_item_id FROM Repair as R , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = R.comp_item_id ";
+                                dt = db.GetData(query);
+
+                                if (dt.Rows.Count > 0)
+                                {
+                                    setRepair(compID1);
+                                }
+                            }
+                            else if (dt.Rows[0]["item_decision"].ToString().Equals("Investigation"))
+                            {
+                                //Checking if Investigation is set
+                                query = "SELECT I.comp_item_id FROM Investigation as I , ComplaintItem as CI WHERE CI.comp_id = '" + compID1 + "' AND CI.comp_item_id = I.comp_item_id ";
+                                dt = db.GetData(query);
+
+                                if (dt.Rows.Count > 0)
+                                {
+                                    setInvestigation(compID1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void loadData(int compID1)
         {
-            setType(compID1);
-
             string query = "SELECT C.comp_dt , C.ref_id , CS.current_status , CS.description , C.recordedEmp_id , C.relatedLocation_id , C.recordedLocation_id , C.closed_dt , C.comp_type FROM Complaint as C , ComplaintStatus as CS WHERE C.comp_id = '" + compID1 + "' AND C.comp_status_id = CS.comp_status_id  ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
@@ -468,41 +417,8 @@ namespace NewCRMSystem
             }
             txt_compType.Text = dt.Rows[0]["comp_type"].ToString();
 
-            if (type == 1)
-            {
-                setType1(compID1);
-            }
-            else if (type == 2)
-            {
-                setType2(compID1);
-            }
-            if (type == 3)
-            {
-                setType3(compID1);
-            }
-            if (type == 4)
-            {
-                setType4(compID1);
-            }
-            if (type == 5)
-            {
-                setType5(compID1);
-            }
-            if (type == 6)
-            {
-                setType6(compID1);
-            }
-            if (type == 7)
-            {
-                setType7(compID1);
-            }
-            if (type == 8)
-            {
-                setType8(compID1);
-            }
 
-
-
+            checkConditionsAndLoad(compID1);//Load remaining data with only avaliable data as visible
         }
 
         ~Complaint_Details_Window() { }
