@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Complaint Details" Height="700" Width="1000">
+        Title="Complaint Details" Height="4700" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -57,7 +57,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Complained Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_compDate" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_compDate" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="compDate_Notify"/>
@@ -74,7 +74,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Reference ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_refID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_refID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="refID_Notify"/>
@@ -94,7 +94,7 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock   Text="Complaint Status" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_compStatus" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_compStatus" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="compStatus_Notify"/>
@@ -111,7 +111,7 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock   Text="Complaint Status Description" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_compStatusDes" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_compStatusDes" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="compStatusDes_Notify"/>
@@ -233,7 +233,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Complaint Closed Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_closedDate" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_closedDate" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="closedDate_Notify"/>
@@ -250,7 +250,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Complaint Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_compType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                            <TextBox x:Name="txt_compType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="compType_Notify"/>
@@ -344,7 +344,7 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock   Text="Customer Complaint Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_cusCompType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_cusCompType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="cusCompType_Notify"/>
@@ -361,7 +361,7 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock   Text="Complained Method" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_compMethod" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_compMethod" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="compMethod_Notify"/>
@@ -385,7 +385,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Staff ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_staffID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_staffID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="staffID_Notify"/>
@@ -403,7 +403,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Staff Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_staffName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_staffName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="staffName_Notify"/>
@@ -421,7 +421,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Description" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_description" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"/>
+                                    <TextBox x:Name="txt_description" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="description_Notify"/>
@@ -439,7 +439,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Remarks" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_staffRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"/>
+                                    <TextBox x:Name="txt_staffRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="staffRemarks_Notify"/>
@@ -459,7 +459,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_staffCompClosedManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_staffCompClosedManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="staffCompClosedManagerID_Notify"/>
@@ -476,7 +476,7 @@
                                                 <ColumnDefinition Width="100"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_staffCompClosedManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_staffCompClosedManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="staffCompClosedManagerName_Notify"/>
@@ -501,7 +501,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Received Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_receivedDt" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_receivedDt" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="receivedDt_Notify"/>
@@ -519,7 +519,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Shoe Side" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_shoeSide" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_shoeSide" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="shoeSide_Notify"/>
@@ -537,7 +537,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Item ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_itemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                                    <TextBox x:Name="txt_itemID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="itemID_Notify"/>
@@ -555,7 +555,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Item Defect" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_defect" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
+                                    <TextBox x:Name="txt_defect" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="defect_Notify"/>
@@ -595,7 +595,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Item Remarks" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_itemRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
+                                    <TextBox x:Name="txt_itemRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="itemRemarks_Notify"/>
@@ -613,7 +613,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Item Decision" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_itemDecision" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                                    <TextBox x:Name="txt_itemDecision" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="itemDecision_Notify"/>
@@ -750,7 +750,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Item Price" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_itemPrice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5"/>
+                                    <TextBox x:Name="txt_itemPrice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="itemPrice_Notify"/>
@@ -801,7 +801,7 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock   Text="Customer Choice" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_cusChoice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Padding="5" />
+                                    <TextBox x:Name="txt_cusChoice" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Padding="5" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="cusChoice_Notify"/>
@@ -822,7 +822,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="HQ Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_rebHQManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebHQManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="rebHQManagerID_Notify"/>
@@ -839,7 +839,7 @@
                                                 <ColumnDefinition Width="100"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="HQ Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_rebHQManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebHQManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="rebHQManagerName_Notify"/>
@@ -863,7 +863,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="Showroom Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_rebShrmManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebShrmManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="rebShrmManagerID_Notify"/>
@@ -880,7 +880,7 @@
                                                 <ColumnDefinition Width="100"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="Showroom Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_rebShrmManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_rebShrmManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="rebShrmManagerName_Notify"/>
@@ -898,7 +898,7 @@
                             <StackPanel>
                                 <Grid Margin="20 20 0 0" >
                                     <Grid HorizontalAlignment="Center">
-                                        <DataGrid x:Name="deliveryDatagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" >
+                                        <DataGrid x:Name="deliveryDatagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="DeliveryDatagrid_SelectionChanged" >
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Header="Delivery ID" Binding="{Binding delivery_id}" />
                                                 <DataGridTextColumn Header="Source ID" Binding="{Binding source_id}" />
@@ -1027,7 +1027,7 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Repair Remarks" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_repairRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
+                                    <TextBox x:Name="txt_repairRemarks" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Height="80" TextWrapping="Wrap" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="repairRemarks_Notify"/>
@@ -1045,7 +1045,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Repaired Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_repairedDt" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_repairedDt" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="repairedDt_Notify"/>
@@ -1065,7 +1065,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="Factory Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_repFacManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_repFacManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="repFacManagerID_Notify"/>
@@ -1082,7 +1082,7 @@
                                                 <ColumnDefinition Width="100"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="Factory Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_repFacManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_repFacManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="repFacManagerName_Notify"/>
@@ -1108,7 +1108,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="Investigation Date" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_invDt" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_invDt" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="invDt_Notify"/>
@@ -1126,7 +1126,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="New Item ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txt_newItemID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txt_newItemID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                     <Grid Grid.Column="2">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="newItemID_Notify"/>
@@ -1147,7 +1147,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="Factory Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_invFacManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_invFacManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="invFacManagerID_Notify"/>
@@ -1164,7 +1164,7 @@
                                                 <ColumnDefinition Width="100"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="Factory Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_invFacManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_invFacManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="invFacManagerName_Notify"/>
@@ -1187,7 +1187,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="Headquarters Manager ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_invHQManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_invHQManagerID" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="invHQManagerID_Notify"/>
@@ -1204,7 +1204,7 @@
                                                 <ColumnDefinition Width="100"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="Headquarters Manager Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBox x:Name="txt_invHQManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <TextBox x:Name="txt_invHQManagerName" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                                             <Grid Grid.Column="2">
                                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                                     <Image x:Name="invHQManagerName_Notify"/>

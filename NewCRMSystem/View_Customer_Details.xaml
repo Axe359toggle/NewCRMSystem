@@ -37,7 +37,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"   Content="Name"/>
-                        <TextBox x:Name="txt_cusName" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_cusName" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="cusName_Notify"/>
@@ -55,7 +55,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Email"/>
-                        <TextBox x:Name="txt_cusEmail" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_cusEmail" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="cusEmail_Notify"/>
@@ -73,7 +73,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Contact No."/>
-                        <TextBox x:Name="txt_cusTp" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_cusTp" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="cusTp_Notify"/>

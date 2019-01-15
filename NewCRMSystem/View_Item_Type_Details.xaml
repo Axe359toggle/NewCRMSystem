@@ -37,7 +37,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="Brand"   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                        <TextBox x:Name="txt_brand" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_brand" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="brand_Notify"/>
@@ -54,7 +54,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Category"/>
-                        <TextBox x:Name="txt_category" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_category" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="category_Notify"/>
@@ -71,7 +71,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Name"/>
-                        <TextBox x:Name="txt_name" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_name" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="name_Notify"/>
@@ -88,7 +88,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label HorizontalAlignment="Left"  Grid.Column="0" VerticalAlignment="Center" Content="Size"/>
-                        <TextBox x:Name="txt_size" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_size" Padding="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="size_Notify"/>

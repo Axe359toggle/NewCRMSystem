@@ -81,7 +81,7 @@ namespace NewCRMSystem
             txtFname.Text = "";
             txtLname.Text = "";
             txtTp.Text = "";
-            txtLoginStatus.Text = "";
+            cmb_loginStatus.Text = "";
             cmbDes.Text = "";
             txtlocationID.Text = "";
         }
@@ -180,7 +180,7 @@ namespace NewCRMSystem
 
         private void refresh_ManagerDatagrid()
         {
-            string query = "SELECT emp_id,emp_title,emp_fname,emp_lname,emp_tp,des_id,login_id,location_id,assigned_dt from Manager";
+            string query = "SELECT M.emp_id , M.emp_title , M.emp_fname , M.emp_lname , M.emp_tp , M.des_id , M.login_id , M.location_id , M.assigned_dt , L.account_status from Manager as M , Login as L WHERE M.login_id = L.login_id";
             Database db = new Database();
             managerDatagrid.ItemsSource = db.GetData(query).AsDataView();
         }
@@ -298,9 +298,22 @@ namespace NewCRMSystem
                             desID = "T";
                         }
 
+                        if (cmb_loginStatus.Text == "Activated")
+                        {
+                            accStatus = "1";
+                        }
+                        else if (cmb_loginStatus.Text == "Deactivated")
+                        {
+                            accStatus = "0";
+                        }
+
                         locationID = Int32.Parse(txtlocationID.Text);
 
                         string query = " UPDATE Manager SET emp_title = '" + title + "' , emp_fname = '" + fname + "' , emp_lname  = '" + lname + "' , emp_tp = '" + tp + "' , des_id = '" + desID + "' , location_id = '" + locationID + "' WHERE emp_id = " + managerID + " ";
+                        if (loginID > 0)
+                        {
+                            query += " UPDATE Login SET account_status = '" + accStatus + "' WHERE login_id = '" + loginID + "' ";
+                        }
                         Database db = new Database();
 
                         if (db.Save_Del_Update(query) > 0)
@@ -317,8 +330,8 @@ namespace NewCRMSystem
                 else if (rbnSearch.IsChecked == true)
                 {
 
-                    string query = "SELECT emp_id,emp_title,emp_fname,emp_lname,emp_tp,des_id,login_id,location_id,assigned_dt from Manager";
-                    int x = 0;
+                    string query = "SELECT M.emp_id , M.emp_title , M.emp_fname , M.emp_lname , M.emp_tp , M.des_id , M.login_id , M.location_id , M.assigned_dt , L.account_status from Manager as M , Login as L WHERE M.login_id = L.login_id";
+                    int x = 1;
 
                     void checkX()
                     {
@@ -327,13 +340,7 @@ namespace NewCRMSystem
                             query = query + " AND";
                         }
                     }
-
-                    if (chkManagerID.IsChecked == true || chkTitle.IsChecked == true || chkFname.IsChecked==true || chkLname.IsChecked == true || chkTp.IsChecked==true || chkAccStatus.IsChecked==true || chkDes.IsChecked==true || chkLocationID.IsChecked==true || chkAssignedDt.IsChecked == true)
-                    {
-                        query = query + " WHERE";
-                    }
-
-
+                    
                     if (chkManagerID.IsChecked == true && txtManagerID.Text.Length > 0)
                     {
                         checkX();
@@ -496,12 +503,32 @@ namespace NewCRMSystem
 
                     txtlocationID.Text = dv.Row.ItemArray[7].ToString();//location_id
                     txtAssignedDt.Text = dv.Row.ItemArray[8].ToString();//assigned_dt
+                    accStatus = dv.Row.ItemArray[9].ToString();//account_status
+                    string accStatus1 = "";
+                    if (accStatus.Equals("True"))
+                    {
+                        accStatus1 = "Activated";
+                    }
+                    else if (accStatus.Equals("False"))
+                    {
+                        accStatus1 = "Deactivated";
+                    }
+
+                    foreach (ComboBoxItem item in cmb_loginStatus.Items)
+                    {
+                        if (item.Content.ToString() == accStatus1)
+                        {
+                            cmb_loginStatus.SelectedValue = item;
+                            break;
+                        }
+                    }
+                    //cmb_loginStatus.SelectedItem = accStatus1;
 
                     string query = "SELECT login_dt,logout_dt FROM LoginDetails WHERE login_id='" + loginID + "' ";
                     Database db = new Database();
                     loginDatagrid.ItemsSource = db.GetData(query).AsDataView();
                     
-                    desID = dv.Row.ItemArray[5].ToString();//emp_title
+                    desID = dv.Row.ItemArray[5].ToString();//des_id
                     string cmbDes1 = "";
                     if (desID.Equals("S"))
                     {

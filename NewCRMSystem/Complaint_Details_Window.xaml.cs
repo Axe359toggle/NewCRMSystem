@@ -141,7 +141,25 @@ namespace NewCRMSystem
             System.Data.DataTable dt = db.GetData(query);
 
             txt_itemPrice.Text = dt.Rows[0]["item_price"].ToString();
+            double itemPrice = Double.Parse(dt.Rows[0]["item_price"].ToString());
             txt_rebatePercentage.Text = dt.Rows[0]["rebate_percentage"].ToString();
+
+            double percentage = 0;
+            if (dt.Rows[0]["rebate_percentage"].ToString().Equals("25%"))
+            {
+                percentage = 0.25;
+            }
+            else if (dt.Rows[0]["rebate_percentage"].ToString().Equals("50%"))
+            {
+                percentage = 0.50;
+            }
+            else if (dt.Rows[0]["rebate_percentage"].ToString().Equals("75%"))
+            {
+                percentage = 0.75;
+            }
+
+            txt_rebatePercentage.Text = (itemPrice * percentage).ToString();
+
             txt_cusChoice.Text = dt.Rows[0]["customer_choice"].ToString();
             
             txt_rebHQManagerID.Text = dt.Rows[0]["hQManager"].ToString();
@@ -221,7 +239,7 @@ namespace NewCRMSystem
 
             return LocName;
         }
-
+        
         //Load Item Image from local file
         private void loadItemImageFromLocal(string path)
         {
@@ -454,6 +472,33 @@ namespace NewCRMSystem
             {
                 View_Manager_Details w = new View_Manager_Details(Int32.Parse(txt_recEmpID.Text));
                 w.Show();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void DeliveryDatagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                DataRowView dv = (DataRowView)deliveryDatagrid.SelectedItem;
+                if (dv != null)
+                {
+                    txt_deliveryID.Text = dv.Row.ItemArray[0].ToString();//deliver_id
+
+                    txt_sourceLocID.Text = dv.Row.ItemArray[1].ToString();//source_id
+                    txt_sourceLocName.Text = getLocationName(Int32.Parse(dv.Row.ItemArray[1].ToString()));
+
+                    txt_desLocID.Text = dv.Row.ItemArray[3].ToString();//source_id
+                    txt_desLocName.Text = getLocationName(Int32.Parse(dv.Row.ItemArray[3].ToString()));
+                    
+                }
             }
             catch (System.Data.SqlClient.SqlException ex)
             {

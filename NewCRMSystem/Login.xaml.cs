@@ -42,9 +42,27 @@ namespace NewCRMSystem
         static bool loginStatus = false;
         internal static bool LoginStatus { get { return loginStatus; } }
 
+        static DatabaseBased_Objects.Location loc;
+        internal static DatabaseBased_Objects.Location Loc { get { return loc; } }
+        
         public Login()
         {
             InitializeComponent();
+        }
+
+        private string getLocationName(int locID1)
+        {
+            string query = "SELECT location_name from Location WHERE location_id = '" + locID1 + "' ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            string LocName = "";
+            if (dt.Rows.Count == 1)
+            {
+                LocName = dt.Rows[0]["location_name"].ToString();
+            }
+
+            return LocName;
         }
 
         ~Login() { }
@@ -75,14 +93,18 @@ namespace NewCRMSystem
                         }
                         
                         desID = dt.Rows[0]["des_id"].ToString();
-
-
+                        
                         B1 = new BackButton(50);
 
                         if (dt.Rows[0]["location_id"].ToString().Length > 0)
                         {
                             locID = Int32.Parse(dt.Rows[0]["location_id"].ToString());
+
+                            loc = new DatabaseBased_Objects.Location();
+                            loc.locID = locID;
+                            loc.locName = getLocationName(locID);
                         }
+
                         Logout.resetLogout();
                         loginStatus = true;
                         if (desID.Equals("H"))

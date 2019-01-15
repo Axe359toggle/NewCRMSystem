@@ -295,6 +295,17 @@ namespace NewCRMSystem
             {
                 if (validate())
                 {
+                    string query2 = "SELECT location_id , location_name from Location WHERE location_type = 'HQ' ";
+                    Database db1 = new Database();
+                    System.Data.DataTable dt1 = db1.GetData(query2);
+
+                    DatabaseBased_Objects.Location HQ = new DatabaseBased_Objects.Location();
+                    if (dt1.Rows.Count == 1)
+                    {
+                        HQ.locID = Int32.Parse(dt1.Rows[0]["location_id"].ToString());
+                        HQ.locName = dt1.Rows[0]["location_name"].ToString();
+                    }
+
                     compID = Int32.Parse(txt_compID.Text);
                     receivedDt = DateTime.Parse(dt_receivedDt.Text);
                     itemTypeID = Int32.Parse(txt_itemTypeID.Text);
@@ -325,7 +336,7 @@ namespace NewCRMSystem
                         }
                         else if (compStatusID.Equals("27"))
                         {
-                            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID));
+                            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID , HQ , Login.Loc));
                         }
                     }
                     else

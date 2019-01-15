@@ -95,7 +95,7 @@
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="1" Text="Username" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
+                            <TextBlock Grid.Column="1" Text="New Username" Foreground="Black" FontWeight="Heavy" FontSize="15"/>
                             <TextBox Grid.Column="2" x:Name="txt_uName" Background="AliceBlue" Padding="5" Height="28" VerticalContentAlignment="Center"/>
                             <DockPanel Grid.Column="3" Height="32" Width="32" VerticalAlignment="Center">
                                 <Image x:Name="uName_Notify"/>

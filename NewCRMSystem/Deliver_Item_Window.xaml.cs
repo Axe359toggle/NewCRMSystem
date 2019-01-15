@@ -73,6 +73,43 @@ namespace NewCRMSystem
             }
         }
 
+        public Deliver_Item_Window(int compID, DatabaseBased_Objects.Location destinationLocation, DatabaseBased_Objects.Location sourceLocation)
+        {
+            try
+            {
+                InitializeComponent();
+                txt_compID.Text = compID.ToString();
+                txt_compID.IsReadOnly = true;
+
+                if (destinationLocation.locID > 0)
+                {
+                    txt_destinationID.Text = destinationLocation.locID.ToString();
+                }
+                if (destinationLocation.locName.Length > 0)
+                {
+                    txt_destinationName.Text = destinationLocation.locName;
+                }
+
+                if (sourceLocation.locID > 0)
+                {
+                    txt_sourceID.Text = destinationLocation.locID.ToString();
+                    btnSourceLocationSearch.IsEnabled = false;
+                }
+                if (sourceLocation.locName.Length > 0)
+                {
+                    txt_sourceName.Text = sourceLocation.locName;
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
         private bool validate()
         {
             bool check = true;

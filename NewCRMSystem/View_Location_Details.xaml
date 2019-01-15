@@ -36,7 +36,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="Location Type" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                        <TextBox x:Name="txt_LocationType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                        <TextBox x:Name="txt_LocationType" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True" />
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="locationType_Notify"/>
@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="Location Name" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                        <TextBox x:Name="txt_LocationName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                        <TextBox x:Name="txt_LocationName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="locationName_Notify"/>
@@ -75,7 +75,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="No."/>
-                        <TextBox Grid.Column="1" x:Name="txt_AddrNo" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="txt_AddrNo" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="addrNo_Notify"/>
@@ -92,7 +92,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Lane"/>
-                        <TextBox x:Name="txt_AddrLane" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_AddrLane" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="addrLane_Notify"/>
@@ -110,7 +110,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Town"/>
-                        <TextBox Grid.Column="1" x:Name="txt_AddrTown" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="txt_AddrTown" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="addrTown_Notify"/>
@@ -127,7 +127,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="City"/>
-                        <TextBox x:Name="txt_AddrCity" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_AddrCity" Grid.Column="1" Padding="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
                         <Grid Grid.Column="2">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="addrCity_Notify"/>
