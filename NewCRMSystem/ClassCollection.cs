@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Windows;
 
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace NewCRMSystem
 {
@@ -236,7 +237,7 @@ namespace NewCRMSystem
         {
             try
             {
-                string query = " insert into Notifications (des_id,notification_type) values('" + des + "','" + type1 + "') declare @ID int = SCOPE_IDENTITY() insert into " + type1 + "_Notification values(@ID,'" + value + "','" + type2 + "') ";
+                string query = " insert into Notifications (des_id,notification_type) values('" + des + "','" + type1 + "') declare @ID int = SCOPE_IDENTITY() insert into " + type1 + "_Notification values( @ID , '" + value + "' , '" + type2 + "' ) ";
 
                 Database db = new Database();
                 int rows = db.Save_Del_Update(query);
@@ -301,7 +302,7 @@ namespace NewCRMSystem
                 Login lg = new Login();
                 lg.Show();
 
-                MessageBox.Show("Logged out", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show( "Logged out" , "Information" , MessageBoxButton.OK , MessageBoxImage.Information );
             }
         }
     }
@@ -314,12 +315,12 @@ namespace NewCRMSystem
             {
                 internal static void Successful()
                 {
-                    MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show( "Data inserted Successfully" , "Success" , MessageBoxButton.OK , MessageBoxImage.Information );
                 }
 
                 internal static void Failed()
                 {
-                    MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show( "Data insertion failed" , "Error" , MessageBoxButton.OK , MessageBoxImage.Exclamation );
                 }
             }
         }
@@ -328,12 +329,12 @@ namespace NewCRMSystem
         {
             internal static void ExceptionMessage(Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show( ex.ToString() , "Error" , MessageBoxButton.OK , MessageBoxImage.Error );
             }
 
             internal static void SQLExceptionMessage(SqlException ex)
             {
-                MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show( ex.ToString() , "SQL Error" , MessageBoxButton.OK , MessageBoxImage.Error );
             }
         }
     }
@@ -356,6 +357,25 @@ namespace NewCRMSystem
             }
 
             return check;
+        }
+
+        internal static DateTime getCompDate(int compID)
+        {
+            string query = "SELECT comp_dt FROM Complaint WHERE comp_id = '" + compID + "'  ";
+            Database db = new Database();
+            DataTable dt = db.GetData(query);
+            DateTime compDt = DateTime.Parse(dt.Rows[0]["comp_dt"].ToString());
+
+            return compDt;
+        }
+        internal static DateTime getSourceDate(int deliveryID)
+        {
+            string query = "SELECT source_dt FROM Complaint WHERE delivery_id = '" + deliveryID + "'  ";
+            Database db = new Database();
+            DataTable dt = db.GetData(query);
+            DateTime sourceDt = DateTime.Parse(dt.Rows[0]["source_dt"].ToString());
+
+            return sourceDt;
         }
     }
 
@@ -562,6 +582,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (!Regex.IsMatch(value, @"^(\+[0-9]{12})$"))
+                    {
+                        check = false;
+                        error = "Invalid telephone number";
+                    }
                     return check;
                 }
             }
@@ -717,9 +742,15 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (!Regex.IsMatch(value, @"^(\+[0-9]{12})$"))
+                    {
+                        check = false;
+                        error = "Invalid telephone number";
+                    }
                     return check;
                 }
             }
+            /*
             internal static class emp_email
             {
                 static string error = "";
@@ -740,7 +771,7 @@ namespace NewCRMSystem
                     }
                     return check;
                 }
-            }
+            }*/
         }
         //Complaint table
         internal static class Complaint
@@ -851,6 +882,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (!Regex.IsMatch(value, @"^(\+[0-9]{12})$"))
+                    {
+                        check = false;
+                        error = "Invalid telephone number";
+                    }
                     return check;
                 }
             }
@@ -872,6 +908,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (!Regex.IsMatch(value, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
+                    {
+                        check = false;
+                        error = "Enter a valid email.";
+                    }
                     return check;
                 }
             }
@@ -879,6 +920,7 @@ namespace NewCRMSystem
         //CustomerComplaint table
         internal static class CustomerComplaint
         {
+
             internal static class comp_method
             {
                 static string error = "";
@@ -1003,12 +1045,46 @@ namespace NewCRMSystem
                 }
                 internal static bool validate(string value)
                 {
-                    value = value.Trim();
                     bool check = true;
-                    if (value.Length == 0 || value.Length > size)
+
+                    var input = value;
+                    if (string.IsNullOrWhiteSpace(input))
                     {
                         check = false;
-                        error = "Cannot be Empty or Greater than " + size + " characters";
+                        error = "Password should not be empty";
+                    }
+
+                    var hasNumber = new Regex(@"[0-9]+");
+                    var hasUpperChar = new Regex(@"[A-Z]+");
+                    var hasMiniMaxChars = new Regex(@".{8,15}");
+                    var hasLowerChar = new Regex(@"[a-z]+");
+                    var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
+
+                    if (!hasLowerChar.IsMatch(input))
+                    {
+                        check = false;
+                        error = "Password should contain At least one lower case letter";
+
+                    }
+                    else if (!hasUpperChar.IsMatch(input))
+                    {
+                        check = false;
+                        error = "Password should contain At least one upper case letter";
+                    }
+                    else if (!hasMiniMaxChars.IsMatch(input))
+                    {
+                        check = false;
+                        error = "Password should not be less than or greater than 12 characters";
+                    }
+                    else if (!hasNumber.IsMatch(input))
+                    {
+                        check = false;
+                        error = "Password should contain At least one numeric value";
+                    }
+                    else if (!hasSymbols.IsMatch(input))
+                    {
+                        check = false;
+                        error = "Password should contain at least one special case characters";
                     }
                     return check;
                 }
@@ -1272,10 +1348,18 @@ namespace NewCRMSystem
                 {
                     value = value.Trim();
                     bool check = true;
+
+                    var moneyR = new Regex(@"^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$");
+
                     if (value.Length == 0 || value.Length > size)
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (!moneyR.IsMatch(value))
+                    {
+                        check = false;
+                        error = "Invalid price. (Valid)Eg:- 200.00";
                     }
                     return check;
                 }

@@ -38,18 +38,20 @@ namespace NewCRMSystem
         {
             InitializeComponent();
             rbnInsert.IsChecked = true;
+            setAssignedDtLimit();
         }
 
         public Manager_Details_window(bool dialogstatus)
         {
             InitializeComponent();
             showdialogstatus = dialogstatus;
+            setAssignedDtLimit();
         }
 
         public Manager_Details_window(char option)
         {
             InitializeComponent();
-
+            setAssignedDtLimit();
             if (option.Equals("i"))
             {
                 rbnInsert.IsChecked = true;
@@ -61,6 +63,7 @@ namespace NewCRMSystem
         }
         public Manager_Details_window(char option,string empID)
         {
+            setAssignedDtLimit();
             if (option.Equals("u"))
             {
                 txtManagerID.Text = empID;
@@ -71,6 +74,12 @@ namespace NewCRMSystem
                 txtManagerID.Text = empID;
                 rbnSearch.IsChecked = true;
             }
+        }
+
+        //Set assignd Date limit
+        private void setAssignedDtLimit()
+        {
+            dt_AssignedDt.DisplayDateEnd = DateTime.Today.Date;
         }
 
         //clear allowed text
@@ -344,7 +353,7 @@ namespace NewCRMSystem
                     if (chkManagerID.IsChecked == true && txtManagerID.Text.Length > 0)
                     {
                         checkX();
-                        query = query + " emp_id LIKE '%" + txtManagerID.Text + "%'";
+                        query = query + " emp_id LIKE '%" + txtManagerID.Text + "%' ";
                         x++;
                     }
                     if (chkTitle.IsChecked == true && cmbTitle.Text.Length > 0)
@@ -362,19 +371,19 @@ namespace NewCRMSystem
                     if (chkTp.IsChecked == true && txtTp.Text.Length > 0)
                     {
                         checkX();
-                        query = query + " emp_tp LIKE '%" + txtTp.Text + "%'";
+                        query = query + " emp_tp LIKE '%" + txtTp.Text + "%' ";
                         x++;
                     }
                     if (chkLocationID.IsChecked == true && txtlocationID.Text.Length > 0)
                     {
                         checkX();
-                        query = query + " location_id LIKE '%" + txtlocationID.Text + "%'";
+                        query = query + " location_id LIKE '%" + txtlocationID.Text + "%' ";
                         x++;
                     }
                     if (chkAssignedDt.IsChecked == true)
                     {
                         checkX();
-                        query = query + " emp_tp LIKE '%" + txtTp.Text + "%'";
+                        query = query + " assigned_dt LIKE '%" + txtAssignedDt.Text + "%' ";
                         x++;
                     }
                     //accStatus = 

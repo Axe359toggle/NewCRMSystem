@@ -29,9 +29,12 @@ namespace NewCRMSystem
         private string itemRemarks = "";
         private string defectImageSource = "";
         
+        
         public ReceivedItem_Details()
         {
             InitializeComponent();
+            bindCompIDList();
+            setReceviedDtLimits(compID1);
         }
 
         public ReceivedItem_Details(int compID1)
@@ -39,10 +42,14 @@ namespace NewCRMSystem
             try
             {
                 InitializeComponent();
-                txt_compID.Text = compID1.ToString();
+                bindCompIDList();
+                setReceviedDtLimits(compID1);
+                cmb_compID.SelectedItem = compID1.ToString();
                 string query = "SELECT ref_id FROM Complaint WHERE comp_id = '" + compID1 + "' ";
                 Database db = new Database();
                 txt_refID.Text = db.GetData(query).Rows[0]["ref_id"].ToString();
+                cmb_compID.IsHitTestVisible = false;
+                cmb_compID.Focusable = false;
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -52,6 +59,26 @@ namespace NewCRMSystem
             {
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
+        }
+
+        private void setReceviedDtLimits(int compID1)
+        {
+            dt_receivedDt.DisplayDateStart = Validation.getCompDate(compID1);
+            dt_receivedDt.DisplayDateEnd = DateTime.Today.Date;
+        }
+
+        private void bindCompIDList()
+        {
+            string query = "SELECT C.comp_id FROM Complaint as C WHERE (C.comp_status_id = 1 OR C.comp_status_id = 26) ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            cmb_compID.Items.Clear();
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+                cmb_compID.Items.Add(dr["comp_id"].ToString());
+
+            cmb_compID.SelectedIndex = 0;
         }
 
         //Save to Local required varibles
@@ -167,7 +194,7 @@ namespace NewCRMSystem
             bool check = true;
             
             //Complaint ID
-            if (CRMdbData.Complaint.comp_id.validate(txt_compID.Text))
+            if (CRMdbData.Complaint.comp_id.validate(cmb_compID.Text))
             {
                 compID_Notify.Source = compID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
             }
@@ -306,7 +333,7 @@ namespace NewCRMSystem
                         HQ.locName = dt1.Rows[0]["location_name"].ToString();
                     }
 
-                    compID = Int32.Parse(txt_compID.Text);
+                    compID = Int32.Parse(cmb_compID.Text);
                     receivedDt = DateTime.Parse(dt_receivedDt.Text);
                     itemTypeID = Int32.Parse(txt_itemTypeID.Text);
                     itemID = txt_itemID.Text;
@@ -365,6 +392,16 @@ namespace NewCRMSystem
             catch (Exception ex)
             {
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void Cmb_compID_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cmb_compID.Text.Length > 0)
+            {
+                string query = "SELECT ref_id FROM Complaint WHERE comp_id = '" + cmb_compID.Text + "' ";
+                Database db = new Database();
+                txt_refID.Text = db.GetData(query).Rows[0]["ref_id"].ToString();
             }
         }
 

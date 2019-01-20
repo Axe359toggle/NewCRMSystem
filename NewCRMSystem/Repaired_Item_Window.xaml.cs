@@ -36,6 +36,16 @@ namespace NewCRMSystem
             }
         }
 
+        //Set repaired date limits
+        private void setRepairedDtLimits(int compID1)
+        {
+            dt_repairedDate.DisplayDateEnd = DateTime.Today.Date;
+            string query = "SELECT D.destination_dt FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND C.comp_id = '" + compID1 + "'   ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+            dt_repairedDate.DisplayDateStart = DateTime.Parse(dt.Rows[0]["destination_dt"].ToString());
+        }
+
         private void bindDeliveryIDList()
         {
             string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 11 OR C.comp_status_id = 33 )  ";
@@ -64,6 +74,7 @@ namespace NewCRMSystem
                 txt_name.Text = dt.Rows[0]["item_name"].ToString();
                 txt_size.Text = dt.Rows[0]["item_size"].ToString();
             }
+            setRepairedDtLimits(compID);
         }
 
         private bool validate()

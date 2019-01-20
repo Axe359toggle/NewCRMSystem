@@ -83,22 +83,71 @@ namespace NewCRMSystem
         private double getRebatePercentage()
         {
             double percentage = 0;
-                if (cmb_rebatePercentage.Text.Equals("25%"))
-                {
-                    percentage = 0.25;
-                }
-                else if (cmb_rebatePercentage.Text.Equals("50%"))
-                {
-                    percentage = 0.50;
-                }
-                else if (cmb_rebatePercentage.Text.Equals("75%"))
-                {
-                    percentage = 0.75;
-                }
-                else if (cmb_rebatePercentage.Text.Equals("100%"))
-                {
-                    percentage = 1.00;
-                }
+            string rebPerc = cmb_rebatePercentage.Text;
+            if (rebPerc.Equals("5%"))
+            {
+                percentage = 0.05;
+            }
+            else if (rebPerc.Equals("10%"))
+            {
+                percentage = 0.10;
+            }
+            else if (rebPerc.Equals("15%"))
+            {
+                percentage = 0.15;
+            }
+            else if (rebPerc.Equals("20%"))
+            {
+                percentage = 0.20;
+            }
+            else if (rebPerc.Equals("25%"))
+            {
+                percentage = 0.25;
+            }
+            else if (rebPerc.Equals("50%"))
+            {
+                percentage = 0.50;
+            }
+            else if (rebPerc.Equals("55%"))
+            {
+                percentage = 0.55;
+            }
+            else if (rebPerc.Equals("60%"))
+            {
+                percentage = 0.60;
+            }
+            else if (rebPerc.Equals("65%"))
+            {
+                percentage = 0.65;
+            }
+            else if (rebPerc.Equals("70%"))
+            {
+                percentage = 0.70;
+            }
+            else if (rebPerc.Equals("75%"))
+            {
+                percentage = 0.75;
+            }
+            else if (rebPerc.Equals("80%"))
+            {
+                percentage = 0.80;
+            }
+            else if (rebPerc.Equals("85%"))
+            {
+                percentage = 0.85;
+            }
+            else if (rebPerc.Equals("90%"))
+            {
+                percentage = 0.90;
+            }
+            else if (rebPerc.Equals("95%"))
+            {
+                percentage = 0.95;
+            }
+            else if (rebPerc.Equals("100%"))
+            {
+                percentage = 1.00;
+            }
             return percentage;
         }
 

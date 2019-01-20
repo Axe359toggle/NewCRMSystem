@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click" BorderBrush="{x:Null}">
                 <DockPanel>
                     <Image Source="{StaticResource backButtonImage}"/>
                 </DockPanel>
@@ -40,7 +40,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Text="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True" DropDownClosed="Cmb_compID_DropDownClosed"/>
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="compID_Notify"/>

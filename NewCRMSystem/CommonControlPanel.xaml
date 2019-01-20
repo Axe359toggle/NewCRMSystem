@@ -14,12 +14,12 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="{StaticResource panelRowSize}"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Click="Button_Click">
+        <Button Grid.Column="0" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Click="Button_Click" BorderBrush="{x:Null}">
             <DockPanel>
                 <Image Width="30" Height="30" Source="/Resources/icons8_Home_100px.png"/>
             </DockPanel>
         </Button>
-        <Button x:Name="btn_logout" Grid.Column="4" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Click="btn_logout_Click">
+        <Button x:Name="btn_logout" Grid.Column="4" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Click="btn_logout_Click" BorderBrush="{x:Null}">
             <DockPanel>
                 <Image Width="30" Height="30" Source="/Resources/icons8_Logout_Rounded_Up_96px.png"/>
             </DockPanel>

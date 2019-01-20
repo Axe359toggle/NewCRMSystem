@@ -56,6 +56,16 @@ namespace NewCRMSystem
             }
         }
 
+        //Set investigation date limit
+        private void setInvDtLimit(int compID1)
+        {
+            dt_investigationDate.DisplayDateEnd = DateTime.Today.Date;
+            string query = "SELECT D.destination_dt FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND C.comp_id = '" + compID1 + "'   ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+            dt_investigationDate.DisplayDateStart = DateTime.Parse(dt.Rows[0]["destination_dt"].ToString());
+        }
+
         private void bindCompIDList()
         {
             string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 10 OR C.comp_status_id = 32 )  ";
@@ -103,7 +113,7 @@ namespace NewCRMSystem
             string query = "SELECT IT.item_type_id , IT.item_brand , IT.item_category , IT.item_name , IT.item_size , IT.item_pic , CI.item_defect , CI.item_defect_img , CI.item_remarks FROM ItemType as IT , ComplaintItem as CI  WHERE CI.comp_id  = '" + compID + "' and CI.item_type_id = IT.item_type_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
-
+            setInvDtLimit(compID);
             if (dt.Rows.Count == 1)
             {
                 txt_itemTypeID.Text = dt.Rows[0]["item_type_id"].ToString();
@@ -167,7 +177,7 @@ namespace NewCRMSystem
 
                     if(rbn_investigation.IsChecked == true)
                     {
-                        DateTime invDate = dt_investigationDate.DisplayDate;
+                        DateTime invDate = dt_investigationDate.SelectedDate.Value.Date;
                         query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Investigation (comp_item_id , factoryManager , investigation_dt ) VALUES ( @COMPitemID , " + facManagerID + " , '" + invDate + "' ) UPDATE ComplaintItem SET item_decision = 'Investigation' WHERE comp_item_id = @COMPitemID ";
                         query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 10 then 18 when comp_status_id = 32 then 39 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                         query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";

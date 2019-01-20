@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click" BorderBrush="{x:Null}">
                 <DockPanel>
                     <Image Source="{StaticResource backButtonImage}"/>
                 </DockPanel>
@@ -173,10 +173,10 @@
                                     <DataGrid.Columns>
 
                                         <DataGridTextColumn Header="Logged In Date" Binding="{Binding login_dt,  StringFormat={}{0:yyyy-MM-dd}}"/>
-                                        <DataGridTextColumn Header="Logged In Date" Binding="{Binding login_dt,  StringFormat={}{0:HH:mm:ss}}"/>
+                                        <DataGridTextColumn Header="Logged In Time" Binding="{Binding login_dt,  StringFormat={}{0:HH:mm:ss}}"/>
 
                                         <DataGridTextColumn Header="Logged Out Date" Binding="{Binding logout_dt,  StringFormat={}{0:yyyy-MM-dd}}" />
-                                        <DataGridTextColumn Header="Logged Out Date" Binding="{Binding logout_dt,  StringFormat={}{0:HH:mm:ss}}" />
+                                        <DataGridTextColumn Header="Logged Out Time" Binding="{Binding logout_dt,  StringFormat={}{0:HH:mm:ss}}" />
 
                                     </DataGrid.Columns>
                                 </DataGrid>

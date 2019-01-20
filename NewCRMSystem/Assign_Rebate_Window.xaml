@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click" BorderBrush="{x:Null}">
                 <DockPanel>
                     <Image Source="{StaticResource backButtonImage}"/>
                 </DockPanel>
@@ -330,9 +330,25 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock   Text="Rebate Percentage" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <ComboBox x:Name="cmb_rebatePercentage" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" DropDownClosed="cmb_rebatePercentage_DropDownClosed">
+                                <ComboBoxItem Content="5%"/>
+                                <ComboBoxItem Content="10%"/>
+                                <ComboBoxItem Content="15%"/>
+                                <ComboBoxItem Content="20%"/>
                                 <ComboBoxItem Content="25%"/>
+                                <ComboBoxItem Content="30%"/>
+                                <ComboBoxItem Content="35%"/>
+                                <ComboBoxItem Content="40%"/>
+                                <ComboBoxItem Content="45%"/>
                                 <ComboBoxItem Content="50%"/>
+                                <ComboBoxItem Content="55%"/>
+                                <ComboBoxItem Content="60%"/>
+                                <ComboBoxItem Content="65%"/>
+                                <ComboBoxItem Content="70%"/>
                                 <ComboBoxItem Content="75%"/>
+                                <ComboBoxItem Content="80%"/>
+                                <ComboBoxItem Content="85%"/>
+                                <ComboBoxItem Content="90%"/>
+                                <ComboBoxItem Content="95%"/>
                                 <ComboBoxItem Content="100%"/>
                             </ComboBox>
                             <Grid Grid.Column="2">

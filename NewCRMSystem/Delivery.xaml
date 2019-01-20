@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click" BorderBrush="{x:Null}">
                 <DockPanel>
                     <Image Source="{StaticResource backButtonImage}"/>
                 </DockPanel>
@@ -32,22 +32,7 @@
                 <Grid VerticalAlignment="Center">
                     <StackPanel>
 
-                        <!--Radio Buttons-->
-                        <Grid Margin="50 50 50 0" >
-                            <Grid HorizontalAlignment="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
-                                </Grid.ColumnDefinitions>
-                                <RadioButton x:Name="rbnInsert" Grid.Column="0" Content="Insert" HorizontalAlignment="Center" />
-                                <RadioButton x:Name="rbnUpdate" Grid.Column="1" Content="Update" HorizontalAlignment="Center" IsEnabled="False"/>
-                                <RadioButton x:Name="rbnSearch" Grid.Column="2" Content="Search" HorizontalAlignment="Center" />
-                            </Grid>
-                        </Grid>
-                        <Grid Margin="50 10 50 0" >
-                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Process" />
-                        </Grid>
+                        
 
                         <!--Delivery ID-->
                         <Grid Margin="100 10 50 0" >
@@ -120,7 +105,6 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <CheckBox x:Name="chk_sourceName" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <Label Content="Source Name" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  />
                                     <TextBox x:Name="txt_sourceName" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                                     <Grid Grid.Column="3">
@@ -182,7 +166,6 @@
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <CheckBox x:Name="chk_destinationName" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <Label Content="Destination Name" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  />
                                     <TextBox x:Name="txt_destinationName" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                                     <Grid Grid.Column="3">
@@ -212,6 +195,10 @@
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
+
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Search" />
+                        </Grid>
 
                         <Grid Margin="50 30 50 0" >
                             <Grid HorizontalAlignment="Center">

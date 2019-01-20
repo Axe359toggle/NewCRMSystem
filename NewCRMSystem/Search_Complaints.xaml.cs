@@ -48,7 +48,7 @@ namespace NewCRMSystem
                     }
                 }
 
-                if (chk_compID.IsChecked == true || chk_compID.IsChecked == true || chk_refID.IsChecked == true || chk_compType.IsChecked == true || chk_recEmpID.IsChecked == true || chk_relLocID.IsChecked == true || chk_recLocID.IsChecked == true || chk_closedDate.IsChecked == true)
+                if (chk_compID.IsChecked == true || chk_compDate.IsChecked == true || chk_refID.IsChecked == true || chk_compType.IsChecked == true || chk_recEmpID.IsChecked == true || chk_relLocID.IsChecked == true || chk_recLocID.IsChecked == true || chk_closedDate.IsChecked == true)
                 {
                     //Complaint ID
                     if (chk_compID.IsChecked == true && txt_compID.Text.Length > 0)
@@ -59,10 +59,10 @@ namespace NewCRMSystem
                     }
 
                     //Complaint Date
-                    if (chk_compDate.IsChecked == true && dt_compDate.Text.Length > 0)
+                    if (chk_compDate.IsChecked == true && dt_compDate.SelectedDate.Value.Date.ToShortDateString().Length > 0)
                     {
                         checkX();
-                        query = query + " C.comp_dt LIKE '%" + dt_compDate.Text + "%'";
+                        query = query + " C.comp_dt LIKE '%" + dt_compDate.SelectedDate.Value.Date.ToShortDateString() + "%'";
                         x++;
                     }
 

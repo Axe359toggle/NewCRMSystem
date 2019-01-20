@@ -81,6 +81,17 @@ namespace NewCRMSystem
             cmb_deliveryID.SelectedIndex = 0;
         }
 
+        //Set destination date limits
+        private void setDestinationDtLimit(int deliveryID1)
+        {
+            dt_destinationReceivedDate.DisplayDateEnd = DateTime.Today.Date;
+
+            string query = "SELECT D.source_dt FROM Delivery AS D WHERE D.delivery_id = '" + deliveryID1 + "'  ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+            dt_destinationReceivedDate.DisplayDateStart = DateTime.Parse(dt.Rows[0]["source_dt"].ToString());
+        }
+
         private void loadData(int deliveryID1)
         {
             string query = "SELECT CI.comp_id , D.source_id , D.destination_id , D.source_dt FROM Delivery as D , ComplaintItem as CI WHERE delivery_id = '" + deliveryID1 + "' and D.comp_item_id = CI.comp_item_id ";
@@ -94,6 +105,7 @@ namespace NewCRMSystem
                 setDestinationDetails(Int32.Parse(dt.Rows[0]["destination_id"].ToString()));
                 txt_sourceSentDate.Text = dt.Rows[0]["source_dt"].ToString();
             }
+            setDestinationDtLimit(deliveryID1);
         }
 
         private void setDestinationDetails(int locID1)
@@ -171,7 +183,7 @@ namespace NewCRMSystem
                 {
                     int compID = Int32.Parse(txt_compID.Text);
                     int deliveryID = Int32.Parse(cmb_deliveryID.Text);
-                    DateTime desDt = dt_destinationReceivedDate.DisplayDate;
+                    DateTime desDt = dt_destinationReceivedDate.SelectedDate.Value.Date;
                     string query = "UPDATE Delivery SET destination_dt = '" + desDt + "' WHERE delivery_id = '" + deliveryID + "' ";
                     query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 6 then 7 when comp_status_id = 28 then 29 when comp_status_id = 9 then 10 when comp_status_id = 31 then 32 when comp_status_id = 13 then 14 when comp_status_id = 35 then 36 when comp_status_id = 15 then 16 when comp_status_id = 37 then 38 when comp_status_id = 20 then 21 when comp_status_id = 41 then 42 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                     query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' SELECT @COMPstatusID as comp_status_id , L.location_id , L.location_name FROM Location as L , Complaint as C WHERE C.comp_id = '" + compID + "' AND C.recordedLocation_id = L.location_id ";

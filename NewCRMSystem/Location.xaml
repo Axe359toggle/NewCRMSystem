@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-         Title="Location" Height="1200" Width="800" >
+         Title="Location" Height="1200" Width="900" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>
@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="{StaticResource panelRowSize}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click">
+            <Button x:Name="back_btn" Width="{StaticResource panelSize}" Height="{StaticResource panelSize}" Background="Transparent" Grid.Column="0" Click="back_btn_Click" BorderBrush="{x:Null}">
                 <DockPanel>
                     <Image Source="{StaticResource backButtonImage}"/>
                 </DockPanel>
@@ -207,9 +207,9 @@
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="80"/>
                                 <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="80"/>
                             </Grid.ColumnDefinitions>
 
                             <CheckBox x:Name="chk_Tp" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>

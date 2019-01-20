@@ -25,6 +25,7 @@ namespace NewCRMSystem
         public Deliver_Item_Window()
         {
             InitializeComponent();
+            dt_sourceSentDate.DisplayDateEnd = DateTime.Today.Date;
         }
 
         public Deliver_Item_Window(int compID)
@@ -32,6 +33,7 @@ namespace NewCRMSystem
             try
             {
                 InitializeComponent();
+                setSourceSentDtLimits(compID);
                 txt_compID.Text = compID.ToString();
                 txt_compID.IsReadOnly = true;
             }
@@ -50,6 +52,7 @@ namespace NewCRMSystem
             try
             {
                 InitializeComponent();
+                setSourceSentDtLimits(compID);
                 txt_compID.Text = compID.ToString();
                 txt_compID.IsReadOnly = true;
 
@@ -78,6 +81,7 @@ namespace NewCRMSystem
             try
             {
                 InitializeComponent();
+                setSourceSentDtLimits(compID);
                 txt_compID.Text = compID.ToString();
                 txt_compID.IsReadOnly = true;
 
@@ -108,6 +112,13 @@ namespace NewCRMSystem
             {
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
+        }
+
+        //Set Source Sent Date limits
+        private void setSourceSentDtLimits(int compID1)
+        {
+            dt_sourceSentDate.DisplayDateStart = Validation.getCompDate(compID1);
+            dt_sourceSentDate.DisplayDateEnd = DateTime.Today.Date;
         }
 
         private bool validate()
@@ -188,7 +199,7 @@ namespace NewCRMSystem
             {
                 int sourceID = Int32.Parse(txt_sourceID.Text);
                 int destinationID = Int32.Parse(txt_destinationID.Text);
-                DateTime sourceDt= dt_sourceSentDate.DisplayDate;
+                DateTime sourceDt= dt_sourceSentDate.SelectedDate.Value.Date;
                 if (validate())
                 {
                     compID = Int32.Parse(txt_compID.Text);

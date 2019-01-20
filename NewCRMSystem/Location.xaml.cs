@@ -226,10 +226,10 @@ namespace NewCRMSystem
             //Address Town
             if (Validation.validate(addrTown_Notify, CRMdbData.Location.addr_town.validate(txt_AddrTown.Text), CRMdbData.Location.addr_town.Error)) { }
             else { check = false; }
-
+            /*
             //Address City
             if (Validation.validate(addrCity_Notify, CRMdbData.Location.addr_city.validate(txt_AddrCity.Text), CRMdbData.Location.addr_city.Error)) { }
-            else { check = false; }
+            else { check = false; }*/
             
             return check;
         }
@@ -296,7 +296,16 @@ namespace NewCRMSystem
                         tp = txt_Tp.Text;
                         
                         Database db = new Database();
-                        string query = "INSERT INTO Location (location_type ,location_name ,addr_no ,addr_lane ,addr_town ,addr_city ) VALUES ('" + locType + "','" + locName+"','"+addrNo+"','"+addrLane+"','"+addrTown+"','"+addrCity+"') DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO Location_tp (location_id ,location_tp ) VALUES (@ID,'"+tp+"')  SELECT @ID as location_id";
+                        string query = "";
+                        if (addrCity.Length > 0)
+                        {
+                            query = "INSERT INTO Location (location_type ,location_name ,addr_no ,addr_lane ,addr_town ,addr_city ) VALUES ('" + locType + "','" + locName + "','" + addrNo + "','" + addrLane + "','" + addrTown + "','" + addrCity + "') DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO Location_tp (location_id ,location_tp ) VALUES (@ID,'" + tp + "')  SELECT @ID as location_id";
+                        }
+                        else
+                        {
+                            query = "INSERT INTO Location (location_type ,location_name ,addr_no ,addr_lane ,addr_town ) VALUES ('" + locType + "','" + locName + "','" + addrNo + "','" + addrLane + "','" + addrTown + "' ) DECLARE @ID int = SCOPE_IDENTITY() INSERT INTO Location_tp (location_id ,location_tp ) VALUES (@ID,'" + tp + "')  SELECT @ID as location_id";
+                        }
+                        
                         
                         locID = Int32.Parse(db.GetData(query).Rows[0]["location_id"].ToString());
 
