@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
-        Title="Assign Factory" Height="600" Width="800">
+        Title="Assign Factory" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource panelRowSize}"/>

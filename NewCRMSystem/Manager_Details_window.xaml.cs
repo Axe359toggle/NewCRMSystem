@@ -103,7 +103,7 @@ namespace NewCRMSystem
             btnSetLogin.IsEnabled = false;
             btn_delete.IsEnabled = false;
             rbnUpdate.IsEnabled = false;
-            txtAssignedDt.IsEnabled = false;
+            dt_AssignedDt.IsEnabled = false;
             btn_ok.IsEnabled = false;
             btnProcess.Content = "Insert";
             setErrorImagesNull();
@@ -118,7 +118,7 @@ namespace NewCRMSystem
             btnSetLogin.IsEnabled = true;
             btn_delete.IsEnabled = true;
             rbnUpdate.IsEnabled = true;
-            txtAssignedDt.IsEnabled = false;
+            dt_AssignedDt.IsEnabled = false;
             btn_ok.IsEnabled = true;
             btnProcess.Content = "Update";
             setErrorImagesNull();
@@ -133,7 +133,7 @@ namespace NewCRMSystem
             btnSetLogin.IsEnabled = false;
             btn_delete.IsEnabled = false;
             rbnUpdate.IsEnabled = false;
-            txtAssignedDt.IsEnabled = true;
+            dt_AssignedDt.IsEnabled = true;
             btn_ok.IsEnabled = false;
             btnProcess.Content = "Search";
             setErrorImagesNull();
@@ -383,7 +383,7 @@ namespace NewCRMSystem
                     if (chkAssignedDt.IsChecked == true)
                     {
                         checkX();
-                        query = query + " assigned_dt LIKE '%" + txtAssignedDt.Text + "%' ";
+                        query = query + " assigned_dt LIKE '%" + dt_AssignedDt.Text + "%' ";
                         x++;
                     }
                     //accStatus = 
@@ -511,7 +511,7 @@ namespace NewCRMSystem
                     }
 
                     txtlocationID.Text = dv.Row.ItemArray[7].ToString();//location_id
-                    txtAssignedDt.Text = dv.Row.ItemArray[8].ToString();//assigned_dt
+                    dt_AssignedDt.Text = dv.Row.ItemArray[8].ToString();//assigned_dt
                     accStatus = dv.Row.ItemArray[9].ToString();//account_status
                     string accStatus1 = "";
                     if (accStatus.Equals("True"))

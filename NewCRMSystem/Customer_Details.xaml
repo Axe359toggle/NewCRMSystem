@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NewCRMSystem"
         mc:Ignorable="d"
         Title="Customer Details" Height="700" Width="900"
-        WindowStartupLocation="Manual">
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>

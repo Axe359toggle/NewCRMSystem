@@ -34,7 +34,6 @@ namespace NewCRMSystem
         {
             InitializeComponent();
             bindCompIDList();
-            setReceviedDtLimits(compID1);
         }
 
         public ReceivedItem_Details(int compID1)
@@ -397,11 +396,24 @@ namespace NewCRMSystem
 
         private void Cmb_compID_DropDownClosed(object sender, EventArgs e)
         {
-            if (cmb_compID.Text.Length > 0)
+            try
             {
-                string query = "SELECT ref_id FROM Complaint WHERE comp_id = '" + cmb_compID.Text + "' ";
-                Database db = new Database();
-                txt_refID.Text = db.GetData(query).Rows[0]["ref_id"].ToString();
+                if (cmb_compID.Text.Length > 0)
+                {
+                    string query = "SELECT ref_id FROM Complaint WHERE comp_id = '" + cmb_compID.Text + "' ";
+                    Database db = new Database();
+                    txt_refID.Text = db.GetData(query).Rows[0]["ref_id"].ToString();
+
+                    setReceviedDtLimits(Int32.Parse(cmb_compID.Text));
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
 
