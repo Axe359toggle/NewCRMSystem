@@ -45,25 +45,7 @@ namespace NewCRMSystem
         {
             try
             {
-                if (rbnInsert.IsChecked == true)
-                {
-                    compItemID = Int32.Parse(txt_compID.Text.Trim());
-                    sourceID = Int32.Parse(txt_sourceID.Text.Trim());
-                    destinationID = Int32.Parse(txt_destinationID.Text.Trim());
-
-                    string query = "INSERT INTO Delivery (comp_item_id ,source_id ,destination_id ,source_dt ) values (" + compItemID + ", " + sourceID + ", " + destinationID + ", DEFAULT)";
-                    Database db = new Database();
-
-                    if (db.Save_Del_Update(query) > 0)
-                    {
-                        MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Data insertion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    }
-                }
+                
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
