@@ -92,7 +92,7 @@ namespace NewCRMSystem
         
         private void loadData(string compID1)
         {
-            string query = "SELECT I.item_price , RB.rebate_percentage , CC.cus_id , C.cus_name , C.cus_tp , C.cus_email from Rebate as RB , ComplaintItem as CI , CustomerComplaint as CC , Item as I , Customer as C WHERE CI.comp_id = '" + compID1 + "' and CI.comp_item_id = RB.comp_item_id and CI.comp_id = CC.comp_id and CI.item_id = I.item_id and CC.cus_id = C.cus_id";
+            string query = "SELECT I.item_price , RB.rebate_percentage , CC.cus_id , C.cus_name , C.cus_tp , C.cus_email from Rebate as RB , ComplaintItem as CI , CustomerComplaint as CC , Item as I , Customer as C WHERE CI.comp_id = '" + compID1 + "' and CI.comp_item_id = RB.comp_item_id and CI.comp_id = CC.comp_id and CI.item_id = I.item_id and CC.cus_id = C.cus_id ";
             Database db = new Database();
             System.Data.DataTable dt = db.GetData(query);
 

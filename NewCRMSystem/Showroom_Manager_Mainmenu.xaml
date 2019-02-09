@@ -41,10 +41,13 @@
                                     <Button x:Name="btn_batchComplaint" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Make Batch Complaint" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_batchComplaint_Click"/>
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
-                                    <Button x:Name="btn_recordReceivedCustomerItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record received item from Customer" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_recordReceivedCustomerItem_Click"  />
+                                    <Button x:Name="btn_recordReceivedCustomerItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Record Item Defect Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_recordReceivedCustomerItem_Click"  />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_assignRebate" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Rebate Payment" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignRebate_Click" />
+                                </Grid>
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_deliverToShowroom" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Deliver to Showroom" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_deliverToShowroom_Click"  />
                                 </Grid>
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_deliverToCustomer" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Deliver to Customer" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_deliverToCustomer_Click"  />

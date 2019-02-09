@@ -129,7 +129,7 @@ namespace NewCRMSystem
                     if (db.Save_Del_Update(query) > 0)
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-                        Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID, loc));
+                        Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window(compID, loc , Login.Loc));
                     }
                     else
                     {

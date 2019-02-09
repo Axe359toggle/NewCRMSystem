@@ -230,8 +230,8 @@
                             <Label Content="Item Decision" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <Grid Grid.Column="1" VerticalAlignment="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="200"/>
-                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="200*"/>
+                                    <ColumnDefinition Width="200*"/>
                                 </Grid.ColumnDefinitions>
                                 <RadioButton x:Name="rbn_repair" Grid.Column="0" GroupName="grp_itemDecision" Content="Repair" HorizontalAlignment="Center" Checked="rbn_repair_Checked"/>
                                 <RadioButton x:Name="rbn_investigation" Grid.Column="1" GroupName="grp_itemDecision" Content="Investigaion" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Checked="rbn_investigation_Checked"/>

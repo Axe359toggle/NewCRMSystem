@@ -176,9 +176,9 @@ namespace NewCRMSystem
         }
 
         private void next_btn_Click(object sender, RoutedEventArgs e)
-        {/*
+        {
             try
-            {*/
+            {
                 if (validate())
                 {
                     int compID = Int32.Parse(txt_compID.Text);
@@ -214,6 +214,7 @@ namespace NewCRMSystem
                         }
                         else if (compStatusID == 16)
                         {
+                            SMSMessages.sendMessage(SMSMessages.getCusTp(compID), "Repaired Item is ready for you to pick up at the Showroom for Complaint ID '" + compID + "' ");
                             Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
                         }
                         else if (compStatusID == 38)
@@ -222,6 +223,7 @@ namespace NewCRMSystem
                         }
                         else if (compStatusID == 21)
                         {
+                            SMSMessages.sendMessage(SMSMessages.getCusTp(compID), "New Item is ready for you to pick up at the Showroom for Complaint ID '" + compID + "' ");
                             Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_To_Customer(compID));
                         }
                         else if (compStatusID == 42)
@@ -234,7 +236,7 @@ namespace NewCRMSystem
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
                     }
                 }
-            /*}
+            }
             catch (System.Data.SqlClient.SqlException ex)
             {
                 GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
@@ -242,7 +244,7 @@ namespace NewCRMSystem
             catch (Exception ex)
             {
                 GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
-            }*/
+            }
         }
 
         private void back_btn_Click(object sender, RoutedEventArgs e)

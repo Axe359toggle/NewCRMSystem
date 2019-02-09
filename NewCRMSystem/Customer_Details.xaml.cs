@@ -163,53 +163,23 @@ namespace NewCRMSystem
             if (value == true)
             {
                 //Customer ID
-                if (CRMdbData.Customer.cus_id.validate(txt_cusID.Text))
-                {
-                    cusID_Notify.Source = cusID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-                }
-                else
-                {
-                    cusID_Notify.Source = cusID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                    cusID_Notify.ToolTip = CRMdbData.Customer.cus_id.Error;
-                    check = false;
-                }
+                if (Validation.validate(cusID_Notify, CRMdbData.Customer.cus_id.validate(txt_cusID.Text), CRMdbData.Customer.cus_id.Error)) { }
+                else { check = false; }
+                
             }
 
             //Customer Name
-            if (CRMdbData.Customer.cus_name.validate(txt_cusName.Text))
-            {
-                cusName_Notify.Source = cusName_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                cusName_Notify.Source = cusName_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                cusName_Notify.ToolTip = CRMdbData.Customer.cus_name.Error;
-                check = false;
-            }
+            if (Validation.validate(cusName_Notify, CRMdbData.Customer.cus_name.validate(txt_cusName.Text), CRMdbData.Customer.cus_name.Error)) { }
+            else { check = false; }
 
             //Customer Email
-            if (CRMdbData.Customer.cus_email.validate(txt_cusEmail.Text))
-            {
-                cusEmail_Notify.Source = cusEmail_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                cusEmail_Notify.Source = cusEmail_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                cusEmail_Notify.ToolTip = CRMdbData.Customer.cus_email.Error;
-                check = false;
-            }
+            if (Validation.validate(cusEmail_Notify, CRMdbData.Customer.cus_email.validate(txt_cusEmail.Text), CRMdbData.Customer.cus_email.Error)) { }
+            else { check = false; }
 
-            //Customer Telephone
-            if (CRMdbData.Customer.cus_tp.validate(txt_cusTp.Text))
-            {
-                cusTp_Notify.Source = cusTp_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                cusTp_Notify.Source = cusTp_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                cusTp_Notify.ToolTip = CRMdbData.Customer.cus_tp.Error;
-                check = false;
-            }
+            //Location Type
+            if (Validation.validate(cusTp_Notify, CRMdbData.Customer.cus_tp.validate(txt_cusTp.Text), CRMdbData.Customer.cus_tp.Error)) { }
+            else { check = false; }
+            
 
             return check;
         }
@@ -261,6 +231,7 @@ namespace NewCRMSystem
                         if (cusID > 0)
                         {
                             txt_cusID.Text = cusID.ToString();
+                            SMSMessages.sendMessage(cusTp, "This number has been registered for Customer Complaint updates");
                             MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                             rbnUpdate.IsChecked = true;
                         }

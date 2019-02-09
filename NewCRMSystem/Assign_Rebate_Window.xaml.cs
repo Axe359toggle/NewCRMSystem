@@ -319,6 +319,8 @@ namespace NewCRMSystem
                     if (db.Save_Del_Update(query) > 0)
                     {
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+
+                        SMSMessages.sendMessage( SMSMessages.getCusTp(compID) , "Rebate has been assigned for your Item with Complaint ID '" + compID + "' \n Item Price : Rs." + txt_itemPrice.Text + " \n Rebate Percentage : " + rebatePercentage + " \n Rebate Amount : Rs." + txt_rebateAmount.Text + " ");
                         LoadMainMenu.LoadFor(this);
                     }
                     else

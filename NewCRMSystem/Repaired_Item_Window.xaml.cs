@@ -24,7 +24,7 @@ namespace NewCRMSystem
             try
             {
                 InitializeComponent();
-                bindDeliveryIDList();
+                bindCompIDList();
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -46,7 +46,7 @@ namespace NewCRMSystem
             dt_repairedDate.DisplayDateStart = DateTime.Parse(dt.Rows[0]["destination_dt"].ToString());
         }
 
-        private void bindDeliveryIDList()
+        private void bindCompIDList()
         {
             string query = "SELECT C.comp_id FROM Complaint AS C , Delivery AS D , ComplaintItem AS CI WHERE D.destination_id = " + Login.LocID + " AND D.comp_item_id = CI.comp_item_id AND C.comp_id = CI.comp_id AND ( C.comp_status_id = 11 OR C.comp_status_id = 33 )  ";
             Database db = new Database();

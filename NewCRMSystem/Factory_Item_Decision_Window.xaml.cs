@@ -192,6 +192,19 @@ namespace NewCRMSystem
                     Database db = new Database();
                     if (db.Save_Del_Update(query) > 0)
                     {
+                        if (rbn_investigation.IsChecked == true)
+                        {
+                            string query1 = "SELECT M.emp_tp FROM Manager as M , Login as L WHERE M.login_id = L.login_id AND L.account_status = 1 AND M.des_id = 'H' ";
+                            System.Data.DataTable dt = db.GetData(query1);
+
+                            foreach (System.Data.DataRow dr in dt.Rows)
+                            {
+                                string empTP = dt.Rows[0]["emp_tp"].ToString();
+                                SMSMessages.sendMessage(empTP, "Item with Complaint ID '" + compID + "' has been assigned to be Investigated ");
+                            }
+                        }
+                            
+
                         GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                         LoadMainMenu.LoadFor(this);
                     }

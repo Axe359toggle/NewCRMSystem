@@ -70,5 +70,10 @@ namespace NewCRMSystem
         {
             Login.b1.closeWindowAndOpenNextWindow(this, new Profile_Details_Window(Login.EmpID));
         }
+
+        private void btn_deliverToShowroom_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.closeWindowAndOpenNextWindow(this, new Deliver_Item_Window());
+        }
     }
 }

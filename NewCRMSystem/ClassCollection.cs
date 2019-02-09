@@ -11,6 +11,9 @@ using System.Windows;
 using System.Configuration;
 using System.Text.RegularExpressions;
 
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+
 namespace NewCRMSystem
 {
     public class BackButton
@@ -251,6 +254,55 @@ namespace NewCRMSystem
             { MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
+    }
+
+    static class SMSMessages
+    {
+        internal static string getCusTp(int compID1)
+        {
+            string cusTP = "";
+
+            string query1 = "SELECT C.cus_tp FROM CustomerComplaint as CC , Customer as C WHERE CC.comp_id = " + compID1 + " AND CC.cus_id = C.cus_id ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query1);
+
+            if (dt.Rows.Count > 0)
+            {
+                cusTP = dt.Rows[0]["cus_tp"].ToString();
+            }
+            return cusTP;
+        }
+
+        internal static void sendMessage(string receiverNo , string content)
+        {
+            try
+            {
+                // Find your Account Sid and Token at twilio.com/console
+                const string accountSid = "AC2b264433451ba21e2f9bd18827f15d18";
+                const string authToken = "auth_token";//your_auth_token
+
+                TwilioClient.Init(accountSid, authToken);
+
+                var message = MessageResource.Create(
+                    body: content,
+                    from: new Twilio.Types.PhoneNumber("+14143107178"),
+                    to: new Twilio.Types.PhoneNumber(receiverNo)
+                );
+
+                // Console.WriteLine(message.Sid);
+                MessageBox.Show("Message Sent Successfully","SMS", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                
+            }
+            catch (Twilio.Exceptions.TwilioException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 
     static class LoadMainMenu
@@ -582,7 +634,7 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
-                    else if (!Regex.IsMatch(value, @"^(\+[0-9]{12})$"))
+                    else if (!Regex.IsMatch(value, @"^[+]{1}[0-9]{11}$"))
                     {
                         check = false;
                         error = "Invalid telephone number";
@@ -742,7 +794,7 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
-                    else if (!Regex.IsMatch(value, @"^(\+[0-9]{12})$"))
+                    else if (!Regex.IsMatch(value, @"^[+]{1}[0-9]{11}$"))
                     {
                         check = false;
                         error = "Invalid telephone number";
@@ -882,7 +934,7 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
-                    else if (!Regex.IsMatch(value, @"^(\+[0-9]{12})$"))
+                    else if (!Regex.IsMatch(value, @"^[+]{1}[0-9]{11}$"))
                     {
                         check = false;
                         error = "Invalid telephone number";
@@ -1327,10 +1379,10 @@ namespace NewCRMSystem
                 {
                     value = value.Trim();
                     bool check = true;
-                    if (value.Length == 0 || value.Length > size)
+                    if (value.Length != size)
                     {
                         check = false;
-                        error = "Cannot be Empty or Greater than " + size + " characters";
+                        error = "Length should be " + size + " characters";
                     }
                     return check;
                 }

@@ -42,7 +42,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Content="Complaint ID" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                            <TextBox x:Name="txt_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                            <ComboBox x:Name="cmb_compID" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                             <Grid Grid.Column="2">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="compID_Notify"/>

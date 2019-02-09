@@ -25,6 +25,7 @@ namespace NewCRMSystem
         public Deliver_Item_Window()
         {
             InitializeComponent();
+            bindCompIDList();
             dt_sourceSentDate.DisplayDateEnd = DateTime.Today.Date;
         }
 
@@ -34,8 +35,8 @@ namespace NewCRMSystem
             {
                 InitializeComponent();
                 setSourceSentDtLimits(compID);
-                txt_compID.Text = compID.ToString();
-                txt_compID.IsReadOnly = true;
+                bindCompIDList();
+                cmb_compID.SelectedValue = compID.ToString();
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -53,8 +54,8 @@ namespace NewCRMSystem
             {
                 InitializeComponent();
                 setSourceSentDtLimits(compID);
-                txt_compID.Text = compID.ToString();
-                txt_compID.IsReadOnly = true;
+                bindCompIDList();
+                cmb_compID.SelectedValue = compID.ToString();
 
                 if (destinationLocation.locID > 0)
                 {
@@ -82,12 +83,13 @@ namespace NewCRMSystem
             {
                 InitializeComponent();
                 setSourceSentDtLimits(compID);
-                txt_compID.Text = compID.ToString();
-                txt_compID.IsReadOnly = true;
+                bindCompIDList();
+                cmb_compID.SelectedValue = compID.ToString();
 
                 if (destinationLocation.locID > 0)
                 {
                     txt_destinationID.Text = destinationLocation.locID.ToString();
+                    btnDestinationLocationSearch.IsEnabled = false;
                 }
                 if (destinationLocation.locName.Length > 0)
                 {
@@ -96,7 +98,7 @@ namespace NewCRMSystem
 
                 if (sourceLocation.locID > 0)
                 {
-                    txt_sourceID.Text = destinationLocation.locID.ToString();
+                    txt_sourceID.Text = sourceLocation.locID.ToString();
                     btnSourceLocationSearch.IsEnabled = false;
                 }
                 if (sourceLocation.locName.Length > 0)
@@ -114,6 +116,20 @@ namespace NewCRMSystem
             }
         }
 
+        private void bindCompIDList()
+        {
+            string query = "SELECT C.comp_id FROM Complaint as C WHERE (C.comp_status_id = 5 OR C.comp_status_id = 27 OR C.comp_status_id = 8 OR C.comp_status_id = 15 OR C.comp_status_id = 19 OR C.comp_status_id = 30 OR C.comp_status_id = 36 OR C.comp_status_id = 40 OR C.comp_status_id = 12 OR C.comp_status_id = 34) ";
+            Database db = new Database();
+            System.Data.DataTable dt = db.GetData(query);
+
+            cmb_compID.Items.Clear();
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+                cmb_compID.Items.Add(dr["comp_id"].ToString());
+
+            cmb_compID.SelectedIndex = 0;
+        }
+
         //Set Source Sent Date limits
         private void setSourceSentDtLimits(int compID1)
         {
@@ -126,7 +142,7 @@ namespace NewCRMSystem
             bool check = true;
 
             //Complaint ID
-            if (Validation.validate(compID_Notify, CRMdbData.Complaint.comp_id.validate(txt_compID.Text), CRMdbData.Complaint.comp_id.Error)) { }
+            if (Validation.validate(compID_Notify, CRMdbData.Complaint.comp_id.validate(cmb_compID.Text), CRMdbData.Complaint.comp_id.Error)) { }
             else { check = false; }
 
             //Source ID
@@ -202,7 +218,7 @@ namespace NewCRMSystem
                 DateTime sourceDt= dt_sourceSentDate.SelectedDate.Value.Date;
                 if (validate())
                 {
-                    compID = Int32.Parse(txt_compID.Text);
+                    compID = Int32.Parse(cmb_compID.Text);
                     string query = "DECLARE @COMPitemID int SET @COMPitemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') INSERT INTO Delivery ( comp_item_id , source_id , destination_id , source_dt) VALUES ( @COMPitemID , '" + sourceID + "' , '" + destinationID + "' , '" + sourceDt + "' )  DECLARE @ID int = SCOPE_IDENTITY() SELECT @ID as delivery_id ";
                     query += "DECLARE @COMPstatusID int SET @COMPstatusID = (select case when comp_status_id = 5 then 6 when comp_status_id = 27 then 28 when comp_status_id = 8 then 9 when comp_status_id = 30 then 31 when comp_status_id = 12 then 13 when comp_status_id = 34 then 35 when comp_status_id = 14 then 15 when comp_status_id = 36 then 37 when comp_status_id = 19 then 20 when comp_status_id = 40 then 41 END as comp_status_id from Complaint WHERE comp_id = '" + compID + "') ";
                     query += "UPDATE Complaint SET comp_status_id = @COMPstatusID WHERE comp_id = '" + compID + "' ";

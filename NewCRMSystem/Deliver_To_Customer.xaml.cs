@@ -91,7 +91,7 @@ namespace NewCRMSystem
                 if (itemDecision.Equals("Repair"))
                 {
                     txt_itemStatus.Text = "Repaired";
-                    string query1 = "SELECT R.repair_remarks FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id";
+                    string query1 = "SELECT R.repair_remarks FROM ItemType AS IT , ComplaintItem AS CI , Repair AS R WHERE CI.comp_id  = '" + compID + "' AND CI.item_type_id = IT.item_type_id AND CI.comp_item_id = R.comp_item_id ";
                     System.Data.DataTable dt1 = db.GetData(query1);
                     itemRemarksVisibility(Visibility.Visible);
                     txt_repairRemarks.Text = dt1.Rows[0]["repair_remarks"].ToString();
@@ -108,7 +108,7 @@ namespace NewCRMSystem
         private void itemRemarksVisibility(Visibility visibility)
         {
             lbl_repairRemarks.Visibility = visibility;
-            lbl_repairRemarks.Visibility = visibility;
+            txt_repairRemarks.Visibility = visibility;
         }
 
         private bool validate()
