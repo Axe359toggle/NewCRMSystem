@@ -124,6 +124,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = false;
             txt_itemTypeID.IsReadOnly = true;
             txt_itemTypeID.IsEnabled = false;
+            btn_delete.IsEnabled = false;
             btn_ok.IsEnabled = false;
             btn_itemImageUpload.IsEnabled = true;
             setErrorImagesNull();
@@ -138,6 +139,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = true;
             txt_itemTypeID.IsReadOnly = true;
             txt_itemTypeID.IsEnabled = true;
+            btn_delete.IsEnabled = false;
             btn_ok.IsEnabled = true;
             btn_itemImageUpload.IsEnabled = true;
             setErrorImagesNull();
@@ -151,6 +153,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = false;
             txt_itemTypeID.IsReadOnly = false;
             txt_itemTypeID.IsEnabled = true;
+            btn_delete.IsEnabled = false;
             btn_ok.IsEnabled = false;
             btn_itemImageUpload.IsEnabled = false;
             setErrorImagesNull();
@@ -476,7 +479,7 @@ namespace NewCRMSystem
                 {
                     itemTypeID = Int32.Parse(dv.Row.ItemArray[0].ToString());//Item Type ID
                     txt_itemTypeID.Text = itemTypeID.ToString();
-
+                    btn_delete.IsEnabled = true;
 
                     btn_ok.IsEnabled = true;
                     
@@ -530,6 +533,33 @@ namespace NewCRMSystem
             try
             {
                 browseItemImageToLocal();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void Btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "DELETE FROM ItemType WHERE item_type_id = '" + txt_itemTypeID.Text + "' ";
+                Database db = new Database();
+
+                if (db.Save_Del_Update(query) > 0)
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+
+                }
+                else
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                }
             }
             catch (System.Data.SqlClient.SqlException ex)
             {

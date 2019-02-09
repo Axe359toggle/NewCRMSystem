@@ -116,7 +116,7 @@ namespace NewCRMSystem
             txtManagerID.IsReadOnly = true;
             txtlocationID.IsReadOnly = true;
             btnSetLogin.IsEnabled = true;
-            btn_delete.IsEnabled = true;
+            btn_delete.IsEnabled = false;
             rbnUpdate.IsEnabled = true;
             dt_AssignedDt.IsEnabled = false;
             btn_ok.IsEnabled = true;
@@ -480,7 +480,9 @@ namespace NewCRMSystem
                 {
                     managerID = Int32.Parse(dv.Row.ItemArray[0].ToString());//manager_id
                     txtManagerID.Text = managerID.ToString();
-                    
+                    btn_delete.IsEnabled = true;
+
+
                     btn_ok.IsEnabled = true;
 
                     string title1 = dv.Row.ItemArray[1].ToString();//emp_title
@@ -667,6 +669,33 @@ namespace NewCRMSystem
             else if (cmbDes.Text == "Headquarters Manager")
             {
                 desID = "H";
+            }
+        }
+
+        private void Btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "DELETE FROM Manager WHERE emp_id = '" + txtManagerID.Text + "' ";
+                Database db = new Database();
+
+                if (db.Save_Del_Update(query) > 0)
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+
+                }
+                else
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
             }
         }
     }

@@ -153,6 +153,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = false;
             txt_LocationID.IsReadOnly = true;
             txt_LocationID.IsEnabled = false;
+            btn_delete.IsEnabled = false;
             btn_tpAdd.IsEnabled = false;
             btn_tpRemove.IsEnabled = false;
             btn_ok.IsEnabled = false;
@@ -168,6 +169,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = true;
             txt_LocationID.IsReadOnly = true;
             txt_LocationID.IsEnabled = true;
+            btn_delete.IsEnabled = false;
             btn_tpAdd.IsEnabled = true;
             btn_tpRemove.IsEnabled = true;
             btn_ok.IsEnabled = true;
@@ -182,6 +184,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = false;
             txt_LocationID.IsReadOnly = false;
             txt_LocationID.IsEnabled = true;
+            btn_delete.IsEnabled = false;
             btn_tpAdd.IsEnabled = false;
             btn_tpRemove.IsEnabled = false;
             btn_ok.IsEnabled = false;
@@ -541,6 +544,7 @@ namespace NewCRMSystem
                 {
                     locID = Int32.Parse(dv.Row.ItemArray[0].ToString());//location_id
                     txt_LocationID.Text = locID.ToString();
+                    btn_delete.IsEnabled = true;
 
 
                     btn_ok.IsEnabled = true;
@@ -610,6 +614,33 @@ namespace NewCRMSystem
                     DialogResult = true;
                     this.Close();
                 }
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
+        }
+
+        private void Btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "DELETE FROM Location WHERE location_id = '" + txt_LocationID.Text + "' ";
+                Database db = new Database();
+
+                if (db.Save_Del_Update(query) > 0)
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+
+                }
+                else
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
             }
             catch (Exception ex)
             {

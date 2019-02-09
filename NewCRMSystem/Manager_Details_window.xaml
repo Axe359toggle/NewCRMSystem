@@ -73,7 +73,7 @@
                                 </DockPanel>
                             </Grid>
                             <Grid Grid.Column="4">
-                                <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" />
+                                <Button x:Name="btn_delete" HorizontalAlignment="Center" Width="100" Content="Delete" Click="Btn_delete_Click" />
                             </Grid>
                         </Grid>
 
