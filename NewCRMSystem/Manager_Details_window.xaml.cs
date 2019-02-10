@@ -328,6 +328,7 @@ namespace NewCRMSystem
                         if (db.Save_Del_Update(query) > 0)
                         {
                             GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                            refresh_ManagerDatagrid();
 
                         }
                         else
@@ -681,12 +682,12 @@ namespace NewCRMSystem
 
                 if (db.Save_Del_Update(query) > 0)
                 {
-                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Successful();
+                    refresh_ManagerDatagrid();
                 }
                 else
                 {
-                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Failed();
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)

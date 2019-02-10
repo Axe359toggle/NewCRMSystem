@@ -78,6 +78,14 @@ namespace NewCRMSystem
             }
         }
 
+        private void refreshTable()
+        {
+            string query = "SELECT cus_id ,cus_name ,cus_tp ,cus_email from Customer";
+            Database db = new Database();
+            cus_Datagrid.ItemsSource = db.GetData(query).AsDataView();
+
+        }
+
         private void clearText()
         {
             txt_cusID.Text = "";
@@ -126,6 +134,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = false;
             txt_cusID.IsReadOnly = true;
             txt_cusID.IsEnabled = false;
+            btn_delete.IsEnabled = false;
             btn_ok.IsEnabled = false;
             setErrorImagesNull();
             enable_chk(false);
@@ -139,6 +148,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = true;
             txt_cusID.IsReadOnly = true;
             txt_cusID.IsEnabled = true;
+            btn_delete.IsEnabled = false;
             btn_ok.IsEnabled = true;
             setErrorImagesNull();
             enable_chk(false);
@@ -151,6 +161,7 @@ namespace NewCRMSystem
             rbnUpdate.IsEnabled = false;
             txt_cusID.IsReadOnly = false;
             txt_cusID.IsEnabled = true;
+            btn_delete.IsEnabled = false;
             btn_ok.IsEnabled = false;
             setErrorImagesNull();
             enable_chk(true);
@@ -233,6 +244,7 @@ namespace NewCRMSystem
                             txt_cusID.Text = cusID.ToString();
                             SMSMessages.sendMessage(cusTp, "This number has been registered for Customer Complaint updates");
                             MessageBox.Show("Data inserted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            refreshTable();
                             rbnUpdate.IsChecked = true;
                         }
                         else
@@ -257,6 +269,7 @@ namespace NewCRMSystem
                         if (db.Save_Del_Update(query) > 0)
                         {
                             MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            refreshTable();
                         }
                         else
                         {
@@ -348,7 +361,8 @@ namespace NewCRMSystem
                 {
                     cusID = Int32.Parse(dv.Row.ItemArray[0].ToString());//cus_id
                     txt_cusID.Text = cusID.ToString();
-                    
+                    btn_delete.IsEnabled = true;
+
                     btn_ok.IsEnabled = true;
 
                     txt_cusName.Text = dv.Row.ItemArray[1].ToString();//cus_name
@@ -386,6 +400,34 @@ namespace NewCRMSystem
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+
+        private void Btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "DELETE FROM Customer WHERE cus_id = '" + txt_cusID.Text + "' ";
+                Database db = new Database();
+
+                if (db.Save_Del_Update(query) > 0)
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Successful();
+                    refreshTable();
+
+                }
+                else
+                {
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Failed();
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.SQLExceptionMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageBoxes.ExceptionMessages.ExceptionMessage(ex);
+            }
         }
     }      
 }

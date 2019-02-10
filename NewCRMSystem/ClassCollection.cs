@@ -375,6 +375,32 @@ namespace NewCRMSystem
                     MessageBox.Show( "Data insertion failed" , "Error" , MessageBoxButton.OK , MessageBoxImage.Exclamation );
                 }
             }
+
+            internal static class DataDeleteMessage
+            {
+                internal static void Successful()
+                {
+                    MessageBox.Show("Data deleted Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                internal static void Failed()
+                {
+                    MessageBox.Show("Data deletion failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+
+            internal static class DataUpdateMessage
+            {
+                internal static void Successful()
+                {
+                    MessageBox.Show("Data updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                internal static void Failed()
+                {
+                    MessageBox.Show("Data updation failed", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
         }
 
         internal static class ExceptionMessages

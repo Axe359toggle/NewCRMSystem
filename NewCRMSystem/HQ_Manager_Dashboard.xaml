@@ -67,7 +67,12 @@
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_itemTypeDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Item Type Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_itemTypeDetails_Click" />
                                 </Grid>
-                                
+
+                                <!--Customer Details-->
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_cusDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Customer Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_cusDetails_Click" />
+                                </Grid>
+
                                 <!--Assign New Item-->
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_assignNewItem" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Assign New Item" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="btn_assignNewItem_Click" />

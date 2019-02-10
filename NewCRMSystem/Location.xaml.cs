@@ -110,6 +110,14 @@ namespace NewCRMSystem
             }
         }
 
+        private void refreshTable()
+        {
+            string query = "SELECT location_id ,location_type ,location_name ,addr_no ,addr_lane ,addr_town ,addr_city from Location";
+            Database db = new Database();
+            location_Datagrid.ItemsSource = db.GetData(query).AsDataView();
+
+        }
+
         private void clearText()
         {
             txt_LocationID.Text = "";
@@ -316,6 +324,7 @@ namespace NewCRMSystem
                         {
                             txt_LocationID.Text = locID.ToString();
                             GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
+                            refreshTable();
                             rbnUpdate.IsChecked = true;
                         }
                         else
@@ -343,6 +352,7 @@ namespace NewCRMSystem
                         if (db.Save_Del_Update(query) > 0)
                         {
                             MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            refreshTable();
                         }
                         else
                         {
@@ -630,12 +640,12 @@ namespace NewCRMSystem
 
                 if (db.Save_Del_Update(query) > 0)
                 {
-                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Successful();
+                    refreshTable();
                 }
                 else
                 {
-                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Failed();
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)

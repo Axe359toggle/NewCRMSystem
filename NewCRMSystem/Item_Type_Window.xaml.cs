@@ -71,6 +71,14 @@ namespace NewCRMSystem
             }
         }
 
+        private void refreshTable()
+        {
+            string query = "SELECT item_type_id ,item_brand ,item_category ,item_name ,item_size , item_pic from ItemType";
+            Database db = new Database();
+            itemType_Datagrid.ItemsSource = db.GetData(query).AsDataView();
+
+        }
+
         private void clearText()
         {
             txt_itemTypeID.Text = "";
@@ -353,6 +361,7 @@ namespace NewCRMSystem
                             {
                                 GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
                                 txt_itemTypeID.Text = itemTypeID.ToString();
+                                refreshTable();
                                 rbnUpdate.IsChecked = true;
                             }
                             else
@@ -385,6 +394,7 @@ namespace NewCRMSystem
                         if (db.Save_Del_Update(query) > 0)
                         {
                             MessageBox.Show("Data Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            refreshTable();
                         }
                         else
                         {
@@ -553,12 +563,12 @@ namespace NewCRMSystem
 
                 if (db.Save_Del_Update(query) > 0)
                 {
-                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Successful();
-
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Successful();
+                    refreshTable();
                 }
                 else
                 {
-                    GenericMessageBoxes.DatabaseMessages.DataInsertMessage.Failed();
+                    GenericMessageBoxes.DatabaseMessages.DataDeleteMessage.Failed();
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)
