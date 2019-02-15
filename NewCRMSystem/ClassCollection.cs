@@ -279,7 +279,7 @@ namespace NewCRMSystem
             {
                 // Find your Account Sid and Token at twilio.com/console
                 const string accountSid = "AC2b264433451ba21e2f9bd18827f15d18";
-                const string authToken = "auth_token";//your_auth_token
+                const string authToken = "auth";//your_auth_token
 
                 TwilioClient.Init(accountSid, authToken);
 
