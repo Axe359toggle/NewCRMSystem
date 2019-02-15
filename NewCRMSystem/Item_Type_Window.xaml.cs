@@ -259,7 +259,10 @@ namespace NewCRMSystem
             if (result == true)
             {
                 filepath = open.FileName; // Stores Original Path
-                itemImageSource = filepath;
+
+                var applicationPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                var dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(applicationPath, "Item Images"));
+                itemImageSource = dir.FullName + @"\" + itemTypeID.ToString();
                 ext = System.IO.Path.GetExtension(open.FileName);
                 ImageSource imgsource = new BitmapImage(new Uri(filepath)); // Just show The File In Image when we browse It
                 img_itemImage.Source = imgsource;
@@ -473,6 +476,10 @@ namespace NewCRMSystem
             catch (System.Data.SqlClient.SqlException ex)
             {
                 MessageBox.Show(ex.ToString(), "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (System.IO.IOException)
+            {
+                MessageBox.Show("This image is already used", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
