@@ -191,116 +191,43 @@ namespace NewCRMSystem
         private bool validate()
         {
             bool check = true;
-            
+
             //Complaint ID
-            if (CRMdbData.Complaint.comp_id.validate(cmb_compID.Text))
-            {
-                compID_Notify.Source = compID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                compID_Notify.Source = compID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                compID_Notify.ToolTip = CRMdbData.Complaint.comp_id.Error;
-                check = false;
-            }
-            
+            if (Validation.validate(compID_Notify, CRMdbData.Complaint.comp_id.validate(cmb_compID.Text), CRMdbData.Complaint.comp_id.Error)) { }
+            else { check = false; }
+
             //Received Date
-            if (CRMdbData.ComplaintItem.received_dt.validate(dt_receivedDt.Text))
-            {
-                receivedDt_Notify.Source = receivedDt_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                receivedDt_Notify.Source = receivedDt_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                receivedDt_Notify.ToolTip = CRMdbData.ComplaintItem.received_dt.Error;
-                check = false;
-            }
-            
+            if (Validation.validate(receivedDt_Notify, CRMdbData.ComplaintItem.received_dt.validate(dt_receivedDt.Text), CRMdbData.ComplaintItem.received_dt.Error)) { }
+            else { check = false; }
+
             //Item Price
-            if (CRMdbData.Item.item_price.validate(txt_itemPrice.Text))
-            {
-                itemPrice_Notify.Source = itemPrice_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                itemPrice_Notify.Source = itemPrice_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                itemPrice_Notify.ToolTip = CRMdbData.Item.item_price.Error;
-                check = false;
-            }
+            if (Validation.validate(itemPrice_Notify, CRMdbData.Item.item_price.validate(txt_itemPrice.Text), CRMdbData.Item.item_price.Error)) { }
+            else { check = false; }
 
             //Shoe Side
-            if (CRMdbData.ComplaintItem.shoe_side.validate(cmb_shoeSide.Text))
-            {
-                shoeSide_Notify.Source = shoeSide_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                shoeSide_Notify.Source = shoeSide_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                shoeSide_Notify.ToolTip = CRMdbData.ComplaintItem.shoe_side.Error;
-                check = false;
-            }
-
+            if (Validation.validate(shoeSide_Notify, CRMdbData.ComplaintItem.shoe_side.validate(cmb_shoeSide.Text), CRMdbData.ComplaintItem.shoe_side.Error)) { }
+            else { check = false; }
 
             //Item Type ID
-            if (CRMdbData.ItemType.item_type_id.validate(txt_itemTypeID.Text))
-            {
-                itemTypeID_Notify.Source = itemTypeID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                itemTypeID_Notify.Source = itemTypeID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                itemTypeID_Notify.ToolTip = CRMdbData.ItemType.item_type_id.Error;
-                check = false;
-            }
+            if (Validation.validate(itemTypeID_Notify, CRMdbData.ItemType.item_type_id.validate(txt_itemTypeID.Text), CRMdbData.ItemType.item_type_id.Error)) { }
+            else { check = false; }
 
             //Item ID
-            if (CRMdbData.Item.item_id.validate(txt_itemID.Text))
-            {
-                itemID_Notify.Source = itemID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                itemID_Notify.Source = itemID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                itemID_Notify.ToolTip = CRMdbData.Item.item_id.Error;
-                check = false;
-            }
+            if (Validation.validate(itemID_Notify, CRMdbData.Item.item_id.validate(txt_itemID.Text), CRMdbData.Item.item_id.Error)) { }
+            else { check = false; }
 
             //Item Defect
-            if (CRMdbData.ComplaintItem.item_defect.validate(txt_defect.Text))
-            {
-                defect_Notify.Source = defect_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                defect_Notify.Source = defect_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                defect_Notify.ToolTip = CRMdbData.ComplaintItem.item_defect.Error;
-                check = false;
-            }
+            if (Validation.validate(defect_Notify, CRMdbData.ComplaintItem.item_defect.validate(txt_defect.Text), CRMdbData.ComplaintItem.item_defect.Error)) { }
+            else { check = false; }
 
             //Item Defect Image
-            if (CRMdbData.ComplaintItem.item_defect_img.validate(defectImageSource))
-            {
-                defectImage_Notify.Source = defectImage_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                defectImage_Notify.Source = defectImage_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                defectImage_Notify.ToolTip = CRMdbData.ComplaintItem.item_defect_img.Error;
-                check = false;
-            }
+            if (Validation.validate(defectImage_Notify, CRMdbData.ComplaintItem.item_defect_img.validate(defectImageSource), CRMdbData.ComplaintItem.item_defect_img.Error)) { }
+            else { check = false; }
 
             //Item Remarks
-            if (CRMdbData.ComplaintItem.item_remarks.validate(txt_remarks.Text))
-            {
-                remarks_Notify.Source = remarks_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                remarks_Notify.Source = remarks_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                remarks_Notify.ToolTip = CRMdbData.ComplaintItem.item_remarks.Error;
-                check = false;
-            }
-
+            if (Validation.validate(remarks_Notify, CRMdbData.ComplaintItem.item_remarks.validate(txt_remarks.Text), CRMdbData.ComplaintItem.item_remarks.Error)) { }
+            else { check = false; }
+            
             return check;
         }
 

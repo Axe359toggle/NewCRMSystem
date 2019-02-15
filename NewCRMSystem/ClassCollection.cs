@@ -490,14 +490,28 @@ namespace NewCRMSystem
         }
     }
 
-    static class CRMdbData
+    internal static class CommonMethods
     {
+        internal static bool checkInvertedComma(string value)
+        {
+            bool check = false;
+            if (Regex.IsMatch(value, @"^[']$"))
+            {
+                check = true;
+            }
+            return check;
+        }
+    }
+
+    internal static class CRMdbData
+    {
+        
         //Location table
         internal static class Location
         {
-            internal static class location_id
+            internal static class location_id 
             {
-                static string error = "";
+                static string error = "" ;
                 internal static string Error { get { return error; } }
                 static int size = 5;
                 internal static int Size
@@ -516,7 +530,7 @@ namespace NewCRMSystem
                     return check;
                 }
             }
-            internal static class location_type
+            internal static class location_type 
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
@@ -537,7 +551,7 @@ namespace NewCRMSystem
                     return check;
                 }
             }
-            internal static class location_name
+            internal static class location_name 
             {
                 static string error = "";
                 internal static string Error { get { return error; } }
@@ -554,6 +568,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -576,6 +595,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -596,6 +620,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -618,6 +647,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -638,6 +672,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -711,6 +750,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -778,6 +822,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -798,6 +847,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -938,6 +992,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1109,6 +1168,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -1190,6 +1254,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -1210,6 +1279,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1232,6 +1306,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -1252,6 +1331,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1300,6 +1384,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -1320,6 +1409,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1342,6 +1436,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -1362,6 +1461,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1410,6 +1514,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Length should be " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -1438,6 +1547,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Invalid price. (Valid)Eg:- 200.00";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1485,6 +1599,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1547,6 +1666,11 @@ namespace NewCRMSystem
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
                     }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
+                    }
                     return check;
                 }
             }
@@ -1568,6 +1692,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1593,6 +1722,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }
@@ -1737,6 +1871,11 @@ namespace NewCRMSystem
                     {
                         check = false;
                         error = "Cannot be Empty or Greater than " + size + " characters";
+                    }
+                    else if (CommonMethods.checkInvertedComma(value))
+                    {
+                        check = false;
+                        error = "Cannot include single inverted comma (')";
                     }
                     return check;
                 }

@@ -112,7 +112,17 @@ namespace NewCRMSystem
             txt_shoeSide.Text = dt.Rows[0]["shoe_side"].ToString();
             txt_itemID.Text = dt.Rows[0]["item_id"].ToString();
             txt_defect.Text = dt.Rows[0]["item_defect"].ToString();
-            loadDefectImageFromLocal(dt.Rows[0]["item_defect_img"].ToString());
+
+            string imagePath = dt.Rows[0]["item_defect_img"].ToString();
+            if (imagePath.Length > 0)
+            {
+                loadDefectImageFromLocal(imagePath);
+            }
+            else
+            {
+                img_defect.Source = null;
+            }
+
             txt_itemRemarks.Text = dt.Rows[0]["item_remarks"].ToString();
             txt_itemDecision.Text = dt.Rows[0]["item_decision"].ToString();
         }
@@ -129,8 +139,16 @@ namespace NewCRMSystem
             txt_category.Text = dt.Rows[0]["item_category"].ToString();
             txt_name.Text = dt.Rows[0]["item_name"].ToString();
             txt_size.Text = dt.Rows[0]["item_size"].ToString();
-            loadItemImageFromLocal(dt.Rows[0]["item_pic"].ToString());
 
+            string imagePath = dt.Rows[0]["item_pic"].ToString();
+            if (imagePath.Length > 0)
+            {
+                loadItemImageFromLocal(imagePath);
+            }
+            else
+            {
+                img_itemImage.Source = null;
+            }
         }
 
         private void setRebate(int compID1)

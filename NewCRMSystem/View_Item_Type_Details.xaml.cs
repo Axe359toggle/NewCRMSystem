@@ -58,7 +58,15 @@ namespace NewCRMSystem
             txt_category.Text = dt.Rows[0]["item_category"].ToString();
             txt_name.Text = dt.Rows[0]["item_name"].ToString();
             txt_size.Text = dt.Rows[0]["item_size"].ToString();
-            loadItemImageFromLocal(dt.Rows[0]["item_pic"].ToString());
+            string imagePath = dt.Rows[0]["item_pic"].ToString();
+            if (imagePath.Length > 0)
+            {
+                loadItemImageFromLocal(imagePath);
+            }
+            else
+            {
+                img_itemImage.Source = null;
+            }
         }
 
         ~View_Item_Type_Details() { }

@@ -33,7 +33,9 @@
                 <Grid VerticalAlignment="Center">
                     <StackPanel>
 
-                        
+                        <Grid Margin="50 10 50 0" >
+                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Search" Click="BtnProcess_Click" />
+                        </Grid>
 
                         <!--Delivery ID-->
                         <Grid Margin="100 10 50 0" >
@@ -47,7 +49,7 @@
 
                             <CheckBox x:Name="chk_deliveryID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <Label Content="Delivery ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBox x:Name="txt_deliveryID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                            <TextBox x:Name="txt_deliveryID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                             <Grid Grid.Column="3">
                                 <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                     <Image x:Name="deliveryID_Notify"/>
@@ -187,7 +189,7 @@
 
                                     <CheckBox x:Name="chk_destinationReceivedDate" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <Label Content="Destination Received Date" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                                    <DatePicker x:Name="txt_destinationReceivedDate" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
+                                    <DatePicker x:Name="dt_destinationReceivedDate" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                                     <Grid Grid.Column="3">
                                         <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                             <Image x:Name="destinationReceivedDate_Notify"/>
@@ -197,13 +199,10 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <Grid Margin="50 10 50 0" >
-                            <Button x:Name="btnProcess" HorizontalAlignment="Center" Width="100" Content="Search" />
-                        </Grid>
 
                         <Grid Margin="50 30 50 0" >
                             <Grid HorizontalAlignment="Center">
-                                <DataGrid x:Name="delivery_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" >
+                                <DataGrid x:Name="delivery_Datagrid" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" EnableColumnVirtualization="True" IsReadOnly="True" HorizontalGridLinesBrush="YellowGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Right" SelectionChanged="Delivery_Datagrid_SelectionChanged"  >
                                     <DataGrid.Columns>
 
                                         <DataGridTextColumn Header="Delivery ID" Binding="{Binding delivery_id}"/>
@@ -222,11 +221,6 @@
                     </StackPanel>
                 </Grid>
             </ScrollViewer>
-        </Grid>
-        <Grid Grid.Row="3">
-            <Grid Grid.Row="2" Margin="100 10 50 20">
-                <Button x:Name="ok_btn" Width="100" HorizontalAlignment="Right" Padding="5" Content="Ok" />
-            </Grid>
         </Grid>
 
     </Grid>

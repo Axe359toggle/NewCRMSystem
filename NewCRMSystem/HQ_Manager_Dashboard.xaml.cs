@@ -96,5 +96,10 @@ namespace NewCRMSystem
         {
             Login.b1.closeWindowAndOpenNextWindow(this, new Customer_Details());
         }
+
+        private void Btn_deliveryDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Login.b1.closeWindowAndOpenNextWindow(this, new Delivery());
+        }
     }
 }

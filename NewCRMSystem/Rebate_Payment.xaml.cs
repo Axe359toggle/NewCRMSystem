@@ -178,29 +178,13 @@ namespace NewCRMSystem
         {
             bool check = true;
 
-            //Complaint Item ID
-            if (CRMdbData.Complaint.comp_id.validate(cmb_compID.Text))
-            {
-                compID_Notify.Source = compID_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                compID_Notify.Source = compID_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                compID_Notify.ToolTip = CRMdbData.ComplaintItem.comp_item_id.Error;
-                check = false;
-            }
+            //Complaint ID
+            if (Validation.validate(compID_Notify, CRMdbData.Complaint.comp_id.validate(cmb_compID.Text), CRMdbData.Complaint.comp_id.Error)) { }
+            else { check = false; }
 
             //Customer Choice
-            if (CRMdbData.Rebate.customer_choice.validate(cmb_cusChoice.Text))
-            {
-                cusChoice_Notify.Source = cusChoice_Notify.TryFindResource("notifyCorrectImage") as BitmapImage;
-            }
-            else
-            {
-                cusChoice_Notify.Source = cusChoice_Notify.TryFindResource("notifyErrorImage") as BitmapImage;
-                cusChoice_Notify.ToolTip = CRMdbData.Item.item_price.Error;
-                check = false;
-            }
+            if (Validation.validate(cusChoice_Notify, CRMdbData.Rebate.customer_choice.validate(cmb_cusChoice.Text) , CRMdbData.Rebate.customer_choice.Error)) { }
+            else { check = false; }
 
             //Showroom Manager ID
             if (CRMdbData.Manager.emp_id.validate(Login.EmpID.ToString()))
@@ -262,14 +246,16 @@ namespace NewCRMSystem
                     compID = Int32.Parse(cmb_compID.Text);
                     cusChoice = cmb_cusChoice.Text;
 
+                    string query = "";
+
                     int compStatusID = 0;
-                    if (cmb_cusChoice.Text.Equals("Accepted")) { compStatusID = 4; }
+                    if (cmb_cusChoice.Text.Equals("Accepted")) { compStatusID = 4;  query += "UPDATE Complaint SET closed_dt = GETDATE() WHERE comp_id = " + compID + " "; }
                     else if(cmb_cusChoice.Text.Equals("Rejected")) { compStatusID = 5; }
 
                     int ShowroomManagerID = Login.EmpID;
 
-                    string query = "DECLARE @ID int SET @ID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') ";
-                    query += "Update Rebate SET shrmManager = " + ShowroomManagerID + " , customer_choice = '" + cusChoice + "' WHERE comp_item_id = @ID ";
+                    query += "DECLARE @compItemID int SET @compItemID = (SELECT CI.comp_item_id FROM ComplaintItem CI WHERE CI.comp_id = '" + compID + "') ";
+                    query += "Update Rebate SET shrmManager = " + ShowroomManagerID + " , customer_choice = '" + cusChoice + "' WHERE comp_item_id = @compItemID ";
                     query += "UPDATE Complaint SET comp_status_id = " + compStatusID + " WHERE comp_id = " + compID + " ";
 
                     Database db = new Database();

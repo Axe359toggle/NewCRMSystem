@@ -179,7 +179,7 @@
                         </Grid.ColumnDefinitions>
                         <CheckBox x:Name="chk_recEmpID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock Text="Recorded Employee ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txt_recEmpID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                        <TextBox x:Name="txt_recEmpID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                         <Grid Grid.Column="3">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="recEmpID_Notify"/>
@@ -199,7 +199,7 @@
                         </Grid.ColumnDefinitions>
                         <CheckBox x:Name="chk_relLocID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock Text="Related Location ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txt_relLocID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                        <TextBox x:Name="txt_relLocID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                         <Grid Grid.Column="3">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="relLocID_Notify"/>
@@ -219,7 +219,7 @@
                         </Grid.ColumnDefinitions>
                         <CheckBox x:Name="chk_recLocID"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock Text="Recorded Location ID" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txt_recLocID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
+                        <TextBox x:Name="txt_recLocID" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" />
                         <Grid Grid.Column="3">
                             <DockPanel Height="30" Width="30" VerticalAlignment="Center">
                                 <Image x:Name="recLocID_Notify"/>

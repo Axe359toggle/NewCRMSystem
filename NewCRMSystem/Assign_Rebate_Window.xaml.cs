@@ -215,10 +215,26 @@ namespace NewCRMSystem
             txt_size.Text = dt.Rows[0]["item_size"].ToString();
 
             string imagePath1 = dt.Rows[0]["item_defect_img"].ToString();
-            loadDefectImageFromLocal(imagePath1);
+            if (imagePath1.Length > 0)
+            {
+                loadDefectImageFromLocal(imagePath1);
+            }
+            else
+            {
+                img_defectImage.Source = null;
+            }
+            
 
             string imagePath2 = dt.Rows[0]["item_pic"].ToString();
-            loadItemImageFromLocal(imagePath2);
+            if (imagePath2.Length > 0)
+            {
+                loadItemImageFromLocal(imagePath2);
+            }
+            else
+            {
+                img_itemImage.Source = null;
+            }
+            
         }
 
         private bool validate()

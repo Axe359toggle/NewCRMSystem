@@ -503,6 +503,10 @@ namespace NewCRMSystem
                     {
                         loadItemImageFromLocal(imagePath);
                     }
+                    else
+                    {
+                        img_itemImage.Source = null;
+                    }
 
                     rbnUpdate.IsChecked = true;
                 }

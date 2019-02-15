@@ -97,6 +97,11 @@
                                 <Grid Margin="0 20 0 20">
                                     <Button x:Name="btn_searchComplaints" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Search Complaints" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_searchComplaints_Click" />
                                 </Grid>
+
+                                <!--Delivery Details-->
+                                <Grid Margin="0 20 0 20">
+                                    <Button x:Name="btn_deliveryDetails" Foreground="Black" FontFamily="ALGERIAN" FontSize="30" Content="Delvery Details" Height="83" VerticalAlignment="Top" Background="DarkOrange" Click="Btn_deliveryDetails_Click"  />
+                                </Grid>
                             </StackPanel>
                         </Grid>
                     </Grid>
